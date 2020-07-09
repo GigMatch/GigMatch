@@ -12,7 +12,7 @@ public class Profile {
     private long id;
 
     @Column
-    private String profile_photo;
+    private String profilePhoto;
 
     @Column(nullable = false)
     private String city;
@@ -21,7 +21,7 @@ public class Profile {
     private String state;
 
     @Column(nullable = false, length = 25)
-    private String profile_type;
+    private String profileType;
 
     @Column
     private String bio;
@@ -40,11 +40,11 @@ public class Profile {
 
     public Profile() { }
 
-    public Profile(String profile_photo, String city, String state, String profile_type, String bio, String interests, String skills, String genres, User owner) {
-        this.profile_photo = profile_photo;
+    public Profile(String profilePhoto, String city, String state, String profileType, String bio, String interests, String skills, String genres, User owner) {
+        this.profilePhoto = profilePhoto;
         this.city = city;
         this.state = state;
-        this.profile_type = profile_type;
+        this.profileType = profileType;
         this.bio = bio;
         this.interests = interests;
         this.skills = skills;
@@ -52,12 +52,12 @@ public class Profile {
         this.owner = owner;
     }
 
-    public Profile(long id, String profile_photo, String city, String state, String profile_type, String bio, String interests, String skills, String genres, User owner) {
+    public Profile(long id, String profilePhoto, String city, String state, String profileType, String bio, String interests, String skills, String genres, User owner) {
         this.id = id;
-        this.profile_photo = profile_photo;
+        this.profilePhoto = profilePhoto;
         this.city = city;
         this.state = state;
-        this.profile_type = profile_type;
+        this.profileType = profileType;
         this.bio = bio;
         this.interests = interests;
         this.skills = skills;
@@ -73,12 +73,12 @@ public class Profile {
         this.id = id;
     }
 
-    public String getProfile_photo() {
-        return profile_photo;
+    public String getProfilePhoto() {
+        return profilePhoto;
     }
 
-    public void setProfile_photo(String profile_photo) {
-        this.profile_photo = profile_photo;
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
     }
 
     public String getCity() {
@@ -97,12 +97,12 @@ public class Profile {
         this.state = state;
     }
 
-    public String getProfile_type() {
-        return profile_type;
+    public String getProfileType() {
+        return profileType;
     }
 
-    public void setProfile_type(String profile_type) {
-        this.profile_type = profile_type;
+    public void setProfileType(String profileType) {
+        this.profileType = profileType;
     }
 
     public String getBio() {
