@@ -4,11 +4,15 @@ import javax.persistence.*;
 
 // TODO: Verify structure and third column content?
 
-@EntityListeners(Post.class)
+@Entity
 @Table(name = "post_reactions")
 public class PostReaction {
 
-    @ManyToOne
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @OneToOne
     private Post post;
 
     @OneToOne
