@@ -17,7 +17,7 @@ public class Post {
     @Column
     private String img;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
     @DateTimeFormat

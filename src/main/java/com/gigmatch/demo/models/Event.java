@@ -28,7 +28,7 @@ public class Event {
     @Column(nullable = false)
     private int zipcode;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
     @OneToOne

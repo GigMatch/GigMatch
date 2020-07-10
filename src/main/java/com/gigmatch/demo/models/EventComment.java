@@ -25,7 +25,7 @@ public class EventComment {
     private User owner;
 
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
 

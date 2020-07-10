@@ -24,7 +24,7 @@ public class PostComment {
     @OneToOne
     private User owner;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
     public PostComment() {

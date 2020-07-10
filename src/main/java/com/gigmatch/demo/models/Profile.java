@@ -23,16 +23,16 @@ public class Profile {
     @Column(nullable = false, length = 25)
     private String profileType;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String bio;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String interests;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String skills;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String genres;
 
     @OneToOne
