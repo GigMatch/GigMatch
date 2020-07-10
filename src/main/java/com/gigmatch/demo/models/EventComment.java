@@ -24,8 +24,10 @@ public class EventComment {
     @OneToOne
     private User owner;
 
-    @Column(nullable = false)
+
+    @Column(nullable = false, length = 20)
     private String content;
+
 
     public EventComment() {
     }
