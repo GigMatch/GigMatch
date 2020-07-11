@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Footer</title>
+<!--    <link rel="stylesheet" href="">-->
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
-<footer th:fragment="footer">
+
+<footer th:fragment="footer" class="footer fixed-bottom">
     <h3>GigMatch &trade;</h3>
 </footer>
-
 </body>
+
 </html>
