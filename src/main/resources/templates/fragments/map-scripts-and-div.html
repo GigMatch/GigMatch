@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Map-Scripts</title>
+</head>
+<body>
+
+<div id="map" th:fragment="map" ></div>
+
+<script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous" th:fragment="jquery-script"></script>
+<script src="js/keys.js" th:fragment="key-script"></script>
+<script src="js/mapbox-geocoder-utils.js" th:fragment="geocode-script"></script>
+<script>
+
+
+    var accessToken = mapboxToken;
+    mapboxgl.accessToken = accessToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 10,
+        center: [-96.8057, 32.7787]
+    });
+
+
+    geocode("600 Navarro St #350, San Antonio, TX 78205", mapboxToken).then(function(result) {
+        console.log(result);
+        map.setCenter(result);
+        map.setZoom(20);
+    });
+</script>
+
+
+</body>
+</html>

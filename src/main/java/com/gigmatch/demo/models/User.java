@@ -26,7 +26,7 @@ public class User {
     @Column(nullable = false, length = 255)
     private String password;
 
-    public User () {}
+    public User() {}
 
     public User(String first_name, String last_name, String email, String username, String password) {
         this.first_name = first_name;

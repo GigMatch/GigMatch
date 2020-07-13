@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Sign Up')">
-
 </head>
 
 <body>
@@ -14,6 +13,7 @@
 <div class="form-page">
     <div class="form">
         <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+
             <label for="first_name">First Name</label>
             <input id="first_name" th:field="*{first_name}"/>
 
