@@ -8,6 +8,7 @@
 
 <div id="map" th:fragment="map" ></div>
 
+<script src="https://code.jquery.com/jquery-2.1.3.js" integrity="sha256-goy7ystDD5xbXSf+kwL4eV6zOPJCEBD1FBiCElIm+U8=" crossorigin="anonymous" th:fragment="jquery-script"></script>
 <script src="js/keys.js" th:fragment="key-script"></script>
 <script src="js/mapbox-geocoder-utils.js" th:fragment="geocode-script"></script>
 <script>
@@ -17,8 +18,9 @@
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
         zoom: 10,
-        center: [-98.4916, 29.4252]
+        center: [-96.8057, 32.7787]
     });
+
 
     geocode("600 Navarro St #350, San Antonio, TX 78205", mapboxToken).then(function(result) {
         console.log(result);
