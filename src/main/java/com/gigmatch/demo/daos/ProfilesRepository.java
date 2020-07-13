@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProfilesRepository extends JpaRepository<Profile, Long> {
 
-//    User findProfileByUsername(String username);
+    User findProfileByUsername(String username);
 
 }
