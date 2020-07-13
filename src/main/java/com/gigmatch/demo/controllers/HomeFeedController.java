@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HomeFeedController {
 
     @GetMapping("/feed")
-    public String feed(){
+    public String feed() {
         return "homeFeed";
     }
 
@@ -23,10 +23,11 @@ public class HomeFeedController {
         model.addAttribute("post", new Post());
         return "posts/create";
     }
-    @PostMapping("/posts/create")
-    public String savePost(@ModelAttribute Post newPost) {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        newPost.setOwner((com.gigmatch.demo.models.User) currentUser);
-        Post savedPost = postsDao.save(newPost);
-        return "redirect:/posts/" + savedPost.getId();
+//    @PostMapping("/posts/create")
+//    public String savePost(@ModelAttribute Post newPost) {
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        newPost.setOwner((com.gigmatch.demo.models.User) currentUser);
+//        Post savedPost = postsDao.save(newPost);
+//        return "redirect:/posts/" + savedPost.getId();
+//}
 }
