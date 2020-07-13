@@ -19,7 +19,7 @@
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <form th:action="@{/homeFeed}" th:method="post" th:object="${}" >
+            <form th:action="@{/feed}" th:method="post" th:object="${post}" >
             <div class="form-group">
                 <h5>Title of Post</h5>
                 <input class="form-control" id="exampleFormControlTextarea1" rows="3">
@@ -42,7 +42,7 @@
 
 
 
-<h3 th:field="*{body}">Title</h3>
+<!--<h3 th:field="*{body}">Title</h3>-->
 
 <footer th:replace="fragments/footer :: footer"></footer>
 

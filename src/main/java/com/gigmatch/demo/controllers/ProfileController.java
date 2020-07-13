@@ -1,6 +1,7 @@
 package com.gigmatch.demo.controllers;
 
 import com.gigmatch.demo.daos.UsersRepository;
+import com.gigmatch.demo.models.Profile;
 import com.gigmatch.demo.models.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ public class ProfileController {
     @GetMapping("/profile")
     public String showProfileForm(Model model){
         model.addAttribute("user", new User());
-        return "users/userProfile";
+        return "/users/updateProfile";
     }
 
     @PostMapping("/profile")
@@ -30,7 +31,7 @@ public class ProfileController {
         String hash = passwordEncoder.encode(userProfileToBeSaved.getPassword());
         userProfileToBeSaved.setPassword(hash);
         users.save(userProfileToBeSaved);
-        return "users/userProfile";
+        return "buildprofile";
     }
 
 }

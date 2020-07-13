@@ -25,8 +25,9 @@ public class HomeFeedController {
     }
 
     @GetMapping("/feed")
-    public String feed() {
-        return "homeFeed";
+    public String feed(Model model) {
+        model.addAttribute("post", new Post());
+        return "/homeFeed";
     }
 
     @GetMapping("/posts/create")
