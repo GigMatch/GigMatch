@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<!--<head th:replace="fragments/head :: head2"></head>-->
+<head th:replace="fragments/head :: head('Welcome')">
 
+</head>
 <body>
-<!--<nav th:replace="fragments/navbar :: navbar2" class="navbar"></nav>-->
+
+<header th:replace="fragments/navbar :: navbar"></header>
 
 <h1 class="welcome">Welcome to GigMatch</h1>
 
@@ -45,8 +47,6 @@
     </div>
 </div>
 
-
-
-<!--<footer th:replace="fragments/footer :: footer"></footer>-->
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>

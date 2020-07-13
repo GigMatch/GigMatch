@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Sign Up')">
-</head>
 
+</head>
 <body>
+
 <header th:replace="fragments/navbar :: navbar"></header>
+
 <h1 class="text-center">Sign Up</h1><br>
 <h2 class="text-center">Create an account</h2>
 <br>
@@ -47,48 +49,3 @@
 
 
 
-
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head th:replace="fragments/head :: head('Sign Up')">-->
-<!--</head>-->
-
-<!--<body>-->
-<!--<header th:replace="fragments/navbar :: navbar"></header>-->
-<!--<h1 class="text-center">Sign Up</h1><br>-->
-<!--<h2 class="text-center">Create an account</h2>-->
-<!--<br>-->
-<!--<br>-->
-
-<!--<div class="form-page">-->
-<!--    <div class="form">-->
-<!--        <form th:action="@{/sign-up}" method="POST" th:object="${user}">-->
-
-<!--            <label for="first_name">First Name</label>-->
-<!--            <input id="first_name" th:field="*{first_name}"/>-->
-
-<!--            <label for="last_name">Last Name</label>-->
-<!--            <input id="last_name" th:field="*{last_name}"/>-->
-
-<!--            <label for="username">Username</label>-->
-<!--            <input id="username" th:field="*{username}"/>-->
-
-<!--            <label for="email">Email</label>-->
-<!--            <input id="email" th:field="*{email}"/>-->
-
-<!--            <label for="password">Password</label>-->
-<!--            <input id="password" type="password" th:field="*{password}"/>-->
-
-<!--            <input value="Sign me up!" type="submit"/>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</div>-->
-
-<!--<footer th:replace="fragments/footer :: footer"></footer>-->
-
-<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
-<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>-->
-<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>-->
-<!--</body>-->
-<!--</html>-->
