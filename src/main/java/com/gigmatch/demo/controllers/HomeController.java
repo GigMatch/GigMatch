@@ -11,6 +11,11 @@ public class HomeController {
     public String getHome(){
         return "index";
     }
+
+    @GetMapping("/welcome")
+    public String welcome(){
+        return "welcomePage";
+    }
 }
 
 
