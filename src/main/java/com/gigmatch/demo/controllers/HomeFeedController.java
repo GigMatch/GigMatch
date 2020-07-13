@@ -2,6 +2,7 @@ package com.gigmatch.demo.controllers;
 
 import com.gigmatch.demo.models.Post;
 import org.apache.catalina.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public class HomeFeedController {
     @PostMapping("/posts/create")
     public String savePost(@ModelAttribute Post newPost) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        newPost.setOwner(currentUser);
+        newPost.setOwner((com.gigmatch.demo.models.User) currentUser);
         Post savedPost = postsDao.save(newPost);
         return "redirect:/posts/" + savedPost.getId();
 }
