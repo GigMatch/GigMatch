@@ -26,7 +26,7 @@ public class User {
     @Column(nullable = false, length = 255)
     private String password;
 
-    public User () {}
+    public User() {}
 
     public User(String first_name, String last_name, String email, String username, String password) {
         this.first_name = first_name;
@@ -44,6 +44,14 @@ public class User {
         this.username = username;
         this.password = password;
     }
+
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
+
 
     public long getId() {
         return id;

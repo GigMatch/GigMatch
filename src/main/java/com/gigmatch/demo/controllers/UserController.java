@@ -10,27 +10,27 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class ProfileController {
+public class UserController {
     private UsersRepository users;
     private PasswordEncoder passwordEncoder;
 
-    public ProfileController(UsersRepository users, PasswordEncoder passwordEncoder) {
+    public UserController(UsersRepository users, PasswordEncoder passwordEncoder) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/profile")
-    public String showProfileForm(Model model){
+    @GetMapping("/sign-up")
+    public String showSignupForm(Model model){
         model.addAttribute("user", new User());
-        return "users/userProfile";
+        return "users/sign-up";
     }
 
-    @PostMapping("/profile")
-    public String saveProfileForm(@ModelAttribute User userProfileToBeSaved){
-        String hash = passwordEncoder.encode(userProfileToBeSaved.getPassword());
-        userProfileToBeSaved.setPassword(hash);
-        users.save(userProfileToBeSaved);
-        return "users/userProfile";
-    }
+    @PostMapping("/sign-up")
+    public String saveUser(@ModelAttribute User user){
 
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        users.save(user);
+        return "redirect:/login";
+    }
 }
