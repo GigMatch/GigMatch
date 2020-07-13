@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head('Sign Up')">
-
+<head th:replace="fragments/head :: head('Update Profile')">
 </head>
 
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
-<h1 class="text-center">Sign Up</h1><br>
-<h2 class="text-center">Create an account</h2>
+<h1 class="text-center">Update Profile</h1><br>
 <br>
 <br>
 
 <div class="form-page">
     <div class="form">
-        <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+        <form th:action="@{/profile}" method="POST" th:object="${user}">
+
+            <!--USE filestack here?-->
+            <label for="profilePhoto">Profile Photo</label>
+            <input id="profilePhoto" th:field="*{profilePhoto}"/>
+
             <label for="first_name">First Name</label>
             <input id="first_name" th:field="*{first_name}"/>
 
@@ -29,7 +32,28 @@
             <label for="password">Password</label>
             <input id="password" type="password" th:field="*{password}"/>
 
-            <input value="Sign me up!" type="submit"/>
+            <label for="city">City</label>
+            <input id="city" th:field="*{city}"/>
+
+            <label for="state">State</label>
+            <input id="state" th:field="*{state}"/>
+
+            <label for="profileType">Profile Type</label>
+            <input id="profileType" th:field="*{profileType}"/>
+
+            <label for="bio">Bio</label>
+            <input id="bio" th:field="*{bio}"/>
+
+            <label for="interests">Interests</label>
+            <input id="interests" th:field="*{interests}"/>
+
+            <label for="skills">Skills</label>
+            <input id="skills" th:field="*{skills}"/>
+
+            <label for="genres">Genres</label>
+            <input id="genres" th:field="*{genres}"/>
+
+            <input value="Update Profile" type="submit"/>
         </form>
     </div>
 </div>
