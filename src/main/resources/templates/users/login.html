@@ -1,41 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Login')">
-<!--    <link href="../css/style.css" th:href="@{/css/style.css}" rel="stylesheet">-->
-    <meta charset="UTF-8">
-    <title>Title</title>
+
 </head>
 <body>
-    <header th:replace="fragments/navbar :: navbar"></header>
-    <h1 class="text-center">Login</h1>
+<header th:replace="fragments/navbar :: navbar"></header>
+<h1 class="text-center">Login</h1>
 
-    <div th:if="${param.error}">
-        <p class="text-center">Invalid Username and Password.</p>
+<div th:if="${param.error}">
+    <p class="text-center">Invalid Username and Password.</p>
+</div>
+
+<div th:if="${param.logout}">
+    <p class="text-center">You have been logged out.</p>
+</div>
+
+<div class="form-page">
+    <div class="form">
+        <form th:action="@{/login}" method="post" class="register-form">
+            <label for="username">Username</label>
+            <input id="username"  type="text" name="username" placeholder="Username"/>
+
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" placeholder="password"/>
+
+            <input type="submit" value="Log In" />
+            <p class="message">Not registered? <a href="/sign-up">Create an account</a></p>
+        </form>
     </div>
+</div>
 
-    <div th:if="${param.logout}">
-        <p class="text-center">You have been logged out.</p>
-    </div>
-
-    <div class="form-page">
-        <div class="form">
-            <form th:action="@{/login}" method="post" class="register-form">
-                <label for="username">Username</label>
-                <input id="username"  type="text" name="username" placeholder="Username"/>
-
-                <label for="password">Password</label>
-                <input id="password" type="password" name="password" placeholder="password"/>
-
-                <input type="submit" value="Log In" />
-                <p class="message">Not registered? <a href="/sign-up">Create an account</a></p>
-            </form>
-        </div>
-    </div>
-
-    <footer th:replace="fragments/footer :: footer"></footer>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>
