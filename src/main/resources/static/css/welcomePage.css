@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Yesteryear&display=swap');
+
+body {
+    background-image: url("https://g.foolcdn.com/image/?url=https%3A%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F567869%2Flive-nation-concert-from-the-audience.jpg&w=1200&h=630&op=resize");
+    margin: 0;
+    padding: 0;
+    min-height: 750px;
+    font-family: 'Yesteryear', cursive;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*welcome heading*/
+.welcome{
+    text-align: center;
+    /*padding-left: 90px;*/
+    font-size: 150px;
+    color: whitesmoke;
+}
+
+/*navbar*/
+ul{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0;
+    height: 50px;
+}
+
+li{
+    font-size: 32px;
+    list-style: none;
+    text-decoration: none;
+}
+
+/*nav links*/
+a:active{
+    color: gray;
+}
+a:hover{
+    color: lightgray;
+}
+
+a:visited{
+    color: navy;
+}
