@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProfilesRepository extends JpaRepository<Profile, Long> {
 
-//    User findProfileByUsername(String username);
+    Profile findProfileByUserId(long id);
+    //should this change to user.id?  if User is the OneToOne relationship
 
 }
