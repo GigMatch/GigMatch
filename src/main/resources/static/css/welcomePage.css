@@ -1,26 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Yesteryear&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Yesteryear&display=swap');*/
 
-body {
-    /*background-image: url("https://g.foolcdn.com/image/?url=https%3A%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F567869%2Flive-nation-concert-from-the-audience.jpg&w=1200&h=630&op=resize");*/
-    margin: 0;
-    padding: 0;
-    color: black;
+/*body {*/
+/*    !*background-image: url("https://g.foolcdn.com/image/?url=https%3A%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F567869%2Flive-nation-concert-from-the-audience.jpg&w=1200&h=630&op=resize");*!*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    color: black;*/
 
-    min-height: 740px;
+/*    min-height: 740px;*/
 
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+/*    !* Create the parallax scrolling effect *!*/
+/*    background-attachment: fixed;*/
+/*    background-position: center;*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+/*}*/
+img { max-width: 100%; }
+
+.navbar-dark {
+    background:transparent !important;
+    transition:0.75s ease;
+    font-family: "Hiragino Sans";
+
+
+}
+.navbar-dark.scrolled {
+    background: #292929 !important;
 }
 
+
+
 .top {
-    background-image: url("https://g.foolcdn.com/image/?url=https%3A%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F567869%2Flive-nation-concert-from-the-audience.jpg&w=1200&h=630&op=resize");
+    background-image: url("../imgs/homePage.jpg");
 
 
     /* Set a specific height */
-    min-height: 740px;
+    min-height: 750px;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -29,51 +43,70 @@ body {
     background-size: cover;
 }
 
-button{
-    background-color: gray;
-    opacity: 90%;
-    color: whitesmoke;
+.top-content {
+    padding: 210px 0;
+
 }
 
-/*welcome heading*/
-.welcome{
-    margin: 65px;
-    text-align: center;
-    align-content: center;
-    font-family: 'Yesteryear', cursive;
-    font-size: 150px;
-    color: whitesmoke;
-}
+/*.top {*/
+/*    background-image: url("https://g.foolcdn.com/image/?url=https%3A%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F567869%2Flive-nation-concert-from-the-audience.jpg&w=1200&h=630&op=resize");*/
 
-/*navbar*/
-nav{
-    position: fixed; /* Set the navbar to fixed position */
-    top: 0; /* Position the navbar at the top of the page */
-    width: 100%; /* Full width */
-}
-ul{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0;
-    height: 50px;
-    font-family: 'Yesteryear', cursive;
-}
 
-li{
-    font-family: 'Yesteryear', cursive;
-    font-size: 32px;
-    list-style: none;
-    text-decoration: none;
-}
+/*    !* Set a specific height *!*/
+/*    min-height: 740px;*/
 
-/*nav links*/
-a:active{
-    color: gray;
-}
-a:hover{
-    color: lightgray;
-}
+/*    !* Create the parallax scrolling effect *!*/
+/*    background-attachment: fixed;*/
+/*    background-position: center;*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+/*}*/
 
-a:visited{
-    color: black;
-}
+/*button{*/
+/*    background-color: gray;*/
+/*    opacity: 90%;*/
+/*    color: whitesmoke;*/
+/*}*/
+
+/*!*welcome heading*!*/
+/*.welcome{*/
+/*    margin: 65px;*/
+/*    text-align: center;*/
+/*    align-content: center;*/
+/*    font-family: 'Yesteryear', cursive;*/
+/*    font-size: 150px;*/
+/*    color: whitesmoke;*/
+/*}*/
+
+/*!*navbar*!*/
+/*nav{*/
+/*    position: fixed; !* Set the navbar to fixed position *!*/
+/*    top: 0; !* Position the navbar at the top of the page *!*/
+/*    width: 100%; !* Full width *!*/
+/*}*/
+/*ul{*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    margin-top: 0;*/
+/*    height: 50px;*/
+/*    font-family: 'Yesteryear', cursive;*/
+/*}*/
+
+/*li{*/
+/*    font-family: 'Yesteryear', cursive;*/
+/*    font-size: 32px;*/
+/*    list-style: none;*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*!*nav links*!*/
+/*a:active{*/
+/*    color: gray;*/
+/*}*/
+/*a:hover{*/
+/*    color: lightgray;*/
+/*}*/
+
+/*a:visited{*/
+/*    color: black;*/
+/*}*/

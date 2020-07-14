@@ -6,11 +6,33 @@
 <body>
 
 <header th:replace="fragments/navbar :: navbar2" class="navbar"></header>
+
+
+<!--<div class="top-content top">-->
+<!--<h1 class="welcome"> Welcome to GigMatch</h1>-->
+<!--    <button><a href="#about">About GigMatch</a></button>-->
+<!--    <button><a href="#founders">About Founders</a></button>-->
+<!--    <button><a href="/sign-up">Sign Up</a></button>-->
+<!--</div>-->
+
+
+<!-- Top content -->
 <div class="top-content top">
-<h1 class="welcome"> Welcome to GigMatch</h1>
-    <button><a href="#about">About GigMatch</a></button>
-    <button><a href="#founders">About Founders</a></button>
-    <button><a href="/sign-up">Sign Up</a></button>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8 offset-md-2 text">
+                <h1 class="wow fadeInLeftBig animate__animated animate__fadeInLeft ">-Esai Flores-</h1>
+                <div class="description wow fadeInLeftBig animate__animated ">
+                    <h4>Software Developer</h4>
+                </div>
+                <div class="top-big-link wow fadeInUp">
+                    <a class="btn btn-primary btn-link-2 scroll-link" href="#about">Learn more</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <div id="about">
@@ -55,5 +77,15 @@
 </div>
 
 <footer th:replace="fragments/footer :: footer"></footer>
+
+
+<script>
+    $(window).scroll(function () {
+        $('nav').toggleClass('scrolled', $(this).scrollTop() > 500);
+    });
+
+
+</script>
+
 </body>
 </html>
