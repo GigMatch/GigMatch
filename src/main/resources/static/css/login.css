@@ -1,0 +1,20 @@
+
+.nav-link {
+    margin-bottom: 19px;
+}
+
+.navbar-dark {
+    background:transparent !important;
+    transition:0.75s ease;
+    font-family: "";
+
+
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    margin-bottom: 0;
+}
+.navbar-dark.scrolled {
+    background: rgba(0, 0, 0, 0.7) !important;
+
+}

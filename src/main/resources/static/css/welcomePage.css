@@ -14,16 +14,19 @@
 /*    background-repeat: no-repeat;*/
 /*    background-size: cover;*/
 /*}*/
+
+html {
+    scroll-behavior: smooth;
+}
 img { max-width: 100%; }
 
 
-.btn-link-1 {
+.btn-link-2 {
     display: inline-block;
     height: 50px;
-    margin: 0 5px;
     padding: 0 28px;
-    background: rgba(19, 35, 128, 0.71);
-    background: rgba(19, 35, 128, 0.65);
+    background: #333;
+    background: rgba(0, 0, 0, 0.2);
     border: 0;
     font-size: 15px;
     font-weight: 600;
@@ -31,7 +34,16 @@ img { max-width: 100%; }
     color: #fff;
     border-radius: 4px;
     transition: all .3s;
+    margin-left: 226px;
+    margin-bottom: 30px;
+
 }
+.btn-link-2:hover, .btn-link-2:focus, .btn-link-2:active, .btn-link-2:active:focus,
+.btn-link-2.btn-primary:not(:disabled):not(.disabled):active,
+.btn-link-2.btn-primary:not(:disabled):not(.disabled):active:focus {
+    background: #333; background: rgba(0, 0, 0, 0.4); outline: 0; color: #fff; box-shadow: none;
+}
+
 
 .logo {
     height: auto;
@@ -47,12 +59,17 @@ img { max-width: 100%; }
 .navbar-dark {
     background:transparent !important;
     transition:0.75s ease;
-    font-family: "Hiragino Sans";
+    font-family: "";
 
 
 }
+
+.navbar-dark .navbar-nav .nav-link {
+    margin-bottom: 0;
+}
 .navbar-dark.scrolled {
-    background: #292929 !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+
 }
 
 .img-fluid {
@@ -108,10 +125,23 @@ img { max-width: 100%; }
 }
 
 .pageBox {
-    margin-left: 50px;
-    background-color: rgba(13, 13, 13, 0.48);
-   outline: white solid 2px;
+
+    background-color: rgba(13, 13, 13, 0.71);
+    outline: white solid 2px;
+    animation: myanim 3s infinite;
 }
+
+@keyframes myanim {
+    50% {
+        outline-color: rgba(218, 165, 32, 0.55);
+    }
+}
+.container-home {
+    width: 893px;
+}
+
+
+
 
 /*.top {*/
 /*    background-image: url("https://g.foolcdn.com/image/?url=https%3A%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F567869%2Flive-nation-concert-from-the-audience.jpg&w=1200&h=630&op=resize");*/
