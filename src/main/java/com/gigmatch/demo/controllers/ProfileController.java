@@ -25,7 +25,7 @@ public class ProfileController {
         this.profilesDao = profilesDao;
     }
 
-
+    // Reading current user profile
     @GetMapping("/my-profile/{id}")
     public String showMyProfile(@PathVariable long id, Model model){
 //        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -33,26 +33,45 @@ public class ProfileController {
         return "/users/myProfile";
     }
 
-    @GetMapping("/profile/{id}")
-    public String showProfileForm(){
-        return "/users/otherUsersProfile";
-    }
-
-//    @PostMapping("/profile")
-//    public String saveProfileForm(@ModelAttribute User userProfileToBeSaved){
-//        String hash = passwordEncoder.encode(userProfileToBeSaved.getPassword());
-//        userProfileToBeSaved.setPassword(hash);
-//        users.save(userProfileToBeSaved);
-//        return "buildprofile";
+    // Reading other user profile
+//    @GetMapping("/profile/{id}")
+//    public String showOtherUser(){
+//        return "/users/otherUsersProfile";
 //    }
 
+    // Creating a profile for user
     @PostMapping("/profile/create")
-    public String saveProfile(@ModelAttribute Profile newProfile) {
+    public String saveProfile(@ModelAttribute Profile userProfile) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        newProfile.setOwner(currentUser);
-        Profile savedProfile = profilesDao.save(newProfile);
-        return "redirect:/my-profile/{id}" + savedProfile.getId();
+        userProfile.setOwner(currentUser);
+        Profile savedProfile = profilesDao.save(userProfile);
+        return "redirect:/my-profile/" + savedProfile.getId();
     }
+
+    // Read current user profile update form
+    @GetMapping("/profile/{id}/edit")
+    public String showUpdateProfileForm(Model model, @PathVariable long id) {
+        Profile profileToEdit = profilesDao.getOne(id);
+        model.addAttribute("profile", profileToEdit);
+        return "profiles/edit";
+    }
+
+    // Update current user profile
+    @PostMapping("/profile/{id}/edit")
+    public String update(@ModelAttribute Profile profileToEdit){
+        User currentUser = usersDao.getOne(1L);
+        profileToEdit.setOwner(currentUser);
+        profilesDao.save(profileToEdit);
+        return "redirect:/profile/" + profileToEdit.getId();
+    }
+
+
+
+
+
+
+
+
 
 
 

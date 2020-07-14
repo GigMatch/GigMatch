@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProfilesRepository extends JpaRepository<Profile, Long> {
 
-    Profile findProfileByUserId(long id);
+    Profile findByOwner(User owner);
 
 }
