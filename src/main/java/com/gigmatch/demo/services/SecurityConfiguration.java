@@ -61,12 +61,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
-                .authorizeRequests()
-                .antMatchers(
-                        "/feed/create", // only authenticated users can create ads
-                        "/feed/{id}/edit"// only authenticated users can edit ads
-                )
-                .authenticated()
+//                .authorizeRequests()
+//                .antMatchers(
+//                        "/feed/create", // only authenticated users can create ads
+//                        "/feed/{id}/edit"// only authenticated users can edit ads
+//                )
+//                .authenticated()
         ;
     }
 }
