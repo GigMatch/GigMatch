@@ -20,11 +20,10 @@ public class ProfileController {
         this.passwordEncoder = passwordEncoder;
     }
 
-//    @GetMapping("/profile")
-//    public String showProfileForm(Model model){
-//        model.addAttribute("user", new User());
-//        return "/users/updateProfile";
-//    }
+    @GetMapping("/profile")
+    public String showProfileForm(){
+        return "/users/otherUsersProfile";
+    }
 //
 //    @PostMapping("/profile")
 //    public String saveProfileForm(@ModelAttribute User userProfileToBeSaved){

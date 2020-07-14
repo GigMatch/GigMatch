@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('User Profile')">
+<body>
+<header th:replace="fragments/navbar :: navbar3"></header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="/feed">Home Feed</a></li>
+                    <li class="list-group-item"><a href="#">Notifications</a></li>
+                    <li class="list-group-item"><a href="#">Messages</a></li>
+                    <li class="list-group-item"><a href="#">Recommendations</a></li>
+                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"
+                             class="card-img m-2" alt="...">
+<!--                        <div class="ml-4"><a href="#">Upload Photo</a></div>-->
+<!--                        <div class="ml-4">-->
+<!--                            <button type="button" class="btn btn-primary btn-lg">Create Post</button>-->
+<!--                        </div>-->
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h3 class="card-title">First Last</h3>
+                            <h4>Profile Type</h4>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">About/Bio</h3>
+                            <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
+                                dolorem eveniet explicabo itaque maiores nemo nesciunt officiis ut. A atque consequuntur
+                                cupiditate explicabo nisi officiis quam quas, quisquam sed sint!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h4>Interests</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Tell us what you're into...</p>
+<!--                    <a href="#" class="btn btn-primary btn-sm">Edit Interests</a>-->
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h4>Skills</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Tell us what you can do maybe drop some links.</p>
+<!--                    <a href="#" class="btn btn-primary btn-sm">Edit Skills</a>-->
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Their Posts
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Their Name</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+<!--                                <a href="#" class="btn btn-primary">Edit Post</a>-->
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Their Name</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+<!--                                <a href="#" class="btn btn-primary">Edit Post</a>-->
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Map with center view of their city.</p>
+                </div>
+            </div>
+<!--            <div class="card mb-3">-->
+<!--                <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif" class="card-img-top" alt="...">-->
+<!--                <div class="card-body">-->
+<!--                    <p class="card-text">Your Calendar.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+
+</body>
+</html>
