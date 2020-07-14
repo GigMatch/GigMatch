@@ -30,6 +30,7 @@ public class ProfileController {
     public String showMyProfile(@PathVariable long id, Model model){
 //        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("profile", new Profile());
+        model.addAttribute("profileId", id);
         return "/users/myProfile";
     }
 
@@ -41,7 +42,7 @@ public class ProfileController {
 
     // Creating a profile for user
     @PostMapping("/profile/create")
-    public String saveProfile(@ModelAttribute Profile userProfile) {
+    public String saveProfile(@ModelAttribute Profile userProfile, @PathVariable long id) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userProfile.setOwner(currentUser);
         Profile savedProfile = profilesDao.save(userProfile);
