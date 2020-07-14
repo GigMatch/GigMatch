@@ -16,6 +16,34 @@
 /*}*/
 img { max-width: 100%; }
 
+
+.btn-link-1 {
+    display: inline-block;
+    height: 50px;
+    margin: 0 5px;
+    padding: 0 28px;
+    background: rgba(19, 35, 128, 0.71);
+    background: rgba(19, 35, 128, 0.65);
+    border: 0;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 48px;
+    color: #fff;
+    border-radius: 4px;
+    transition: all .3s;
+}
+
+.logo {
+    height: auto;
+    width: 64px;
+    padding-right: 15px;
+    padding-left: 0px;
+}
+
+.nav-link {
+    margin-bottom: 19px;
+}
+
 .navbar-dark {
     background:transparent !important;
     transition:0.75s ease;
@@ -27,6 +55,10 @@ img { max-width: 100%; }
     background: #292929 !important;
 }
 
+.img-fluid {
+    width: 150px;
+    height: auto; //which is default, you don't need to mention that unless you want to override.
+}
 
 
 .top {
@@ -46,6 +78,39 @@ img { max-width: 100%; }
 .top-content {
     padding: 210px 0;
 
+}
+
+
+.top-content .text {
+    color: #ffffff;
+    font-family: "Bodoni 72 Oldstyle";
+}
+
+.top-content .text h1 {
+    margin-top: 25px;
+    font-size: 50px;
+    color: #ffffff;
+    font-family: "Yesteryear";
+    text-align: center;
+    font-size: 80px;
+}
+
+.top-content .description {
+    margin: 30px 0 10px 0;
+}
+
+.top-content .description p {
+    opacity: 0.8;
+}
+
+.top-content .top-big-link {
+    margin-top: 45px;
+}
+
+.pageBox {
+    margin-left: 50px;
+    background-color: rgba(13, 13, 13, 0.48);
+   outline: white solid 2px;
 }
 
 /*.top {*/

@@ -5,7 +5,7 @@
 
 <body>
 
-<header th:replace="fragments/navbar :: navbar2" class="navbar"></header>
+<header th:replace="fragments/navbar :: navbar2"></header>
 
 
 <!--<div class="top-content top">-->
@@ -20,12 +20,10 @@
 <div class="top-content top">
     <div class="container">
 
-        <div class="row">
+        <div class="row pageBox">
             <div class="col-md-8 offset-md-2 text">
-                <h1 class="wow fadeInLeftBig animate__animated animate__fadeInLeft ">-Esai Flores-</h1>
-                <div class="description wow fadeInLeftBig animate__animated ">
-                    <h4>Software Developer</h4>
-                </div>
+                <h1 class="wow fadeInLeftBig animate__animated animate__fadeInLeft ">Welcome To GigMatch</h1>
+
                 <div class="top-big-link wow fadeInUp">
                     <a class="btn btn-primary btn-link-2 scroll-link" href="#about">Learn more</a>
                 </div>
@@ -79,13 +77,6 @@
 <footer th:replace="fragments/footer :: footer"></footer>
 
 
-<script>
-    $(window).scroll(function () {
-        $('nav').toggleClass('scrolled', $(this).scrollTop() > 500);
-    });
-
-
-</script>
 
 </body>
 </html>
