@@ -3,7 +3,7 @@
 <head th:replace="fragments/head :: head3('Login')"></head>
 <body>
 
-<header th:replace="fragments/navbar :: navbar4"></header>
+<!--<header th:replace="fragments/navbar :: navbar2"></header>-->
 
 <h1 class="text-center">Login</h1>
 
@@ -15,18 +15,53 @@
     <p class="text-center">You have been logged out.</p>
 </div>
 
-<div class="form-page">
-    <div class="form">
-        <form th:action="@{/login}" method="post" class="register-form">
-            <label for="username">Username</label>
-            <input id="username"  type="text" name="username" placeholder="Username"/>
+<!--<div class="form-page">-->
+<!--    <div class="form">-->
+<!--        <form th:action="@{/login}" method="post" class="register-form">-->
+<!--            <label for="username">Username</label>-->
+<!--            <input id="username"  type="text" name="username" placeholder="Username"/>-->
 
-            <label for="password">Password</label>
-            <input id="password" type="password" name="password" placeholder="password"/>
+<!--            <label for="password">Password</label>-->
+<!--            <input id="password" type="password" name="password" placeholder="password"/>-->
 
-            <input type="submit" value="Log In" />
-            <p class="message">Not registered? <a href="/sign-up">Create an account</a></p>
-        </form>
+<!--            <input type="submit" value="Log In" />-->
+<!--            <p class="message">Not registered? <a href="/sign-up">Create an account</a></p>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Sign In</h5>
+                    <form th:action="@{/login}" method="post" class="register-form form-signin">
+                        <div class="form-label-group">
+                            <label for="username">Username</label>
+                            <input id="username" type="text" name="username" class="form-control" required autofocus />
+
+                        </div>
+
+                        <div class="form-label-group">
+                            <label for="password">Password</label>
+                            <input id="password" type="password" name="password" class="form-control"/>
+                        </div>
+
+                        <input type="submit" value="Log In" class="btn btn-lg btn-primary btn-block text-uppercase"/>
+                        <hr class="my-4">
+
+
+                        <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i
+                                class="fab fa-google mr-2"></i> Sign in with Google
+                        </button>
+                        <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i
+                                class="fab fa-facebook-f mr-2"></i> Sign in with Facebook
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
