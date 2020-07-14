@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
+<<<<<<< HEAD
 <head th:replace="fragments/head :: head2(Title)"></head>
+=======
+<head th:replace="fragments/head :: head('Welcome')">
+>>>>>>> d2f215a66957f3029bbd017bbe365aa6fff48eee
 
+</head>
 <body>
+<<<<<<< HEAD
 <nav th:replace="fragments/navbar :: navbar2" class="navbar"></nav>
 <div class="top-content top">
 <h1 class="welcome"> Welcome to GigMatch</h1>
@@ -11,6 +17,13 @@
     <button><a href="#founders">About Founders</a></button>
     <button><a href="/sign-up">Sign Up</a></button>
 </div>
+=======
+
+<header th:replace="fragments/navbar :: navbar"></header>
+
+<h1 class="welcome">Welcome to GigMatch</h1>
+
+>>>>>>> d2f215a66957f3029bbd017bbe365aa6fff48eee
 <div id="about">
     <h3>About GigMatch</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque eveniet incidunt nisi obcaecati ratione recusandae similique, tempore vitae voluptate. Enim esse est fugit illum recusandae! Dolorem doloremque est officia.</p>
@@ -51,8 +64,6 @@
     </p>
     </div>
 </div>
-
-
 
 <footer th:replace="fragments/footer :: footer"></footer>
 </body>
