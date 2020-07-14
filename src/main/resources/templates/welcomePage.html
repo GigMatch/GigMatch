@@ -18,28 +18,32 @@
 
 <!-- Top content -->
 <div class="top-content top">
-    <div class="container">
-
+    <div class="container container-home">
         <div class="row pageBox">
             <div class="col-md-8 offset-md-2 text">
-                <h1 class="wow fadeInLeftBig animate__animated animate__fadeInLeft ">Welcome To GigMatch</h1>
-
+                <h1>Welcome To GigMatch</h1>
                 <div class="top-big-link wow fadeInUp">
                     <a class="btn btn-primary btn-link-2 scroll-link" href="#about">Learn more</a>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
+
 <div id="about">
     <h3>About GigMatch</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque eveniet incidunt nisi obcaecati ratione recusandae similique, tempore vitae voluptate. Enim esse est fugit illum recusandae! Dolorem doloremque est officia.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque eveniet incidunt nisi obcaecati ratione
+        recusandae similique, tempore vitae voluptate. Enim esse est fugit illum recusandae! Dolorem doloremque est
+        officia.</p>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque eveniet incidunt nisi obcaecati ratione recusandae similique, tempore vitae voluptate. Enim esse est fugit illum recusandae! Dolorem doloremque est officia.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque eveniet incidunt nisi obcaecati ratione
+        recusandae similique, tempore vitae voluptate. Enim esse est fugit illum recusandae! Dolorem doloremque est
+        officia.</p>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque eveniet incidunt nisi obcaecati ratione recusandae similique, tempore vitae voluptate. Enim esse est fugit illum recusandae! Dolorem doloremque est officia.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque eveniet incidunt nisi obcaecati ratione
+        recusandae similique, tempore vitae voluptate. Enim esse est fugit illum recusandae! Dolorem doloremque est
+        officia.</p>
 </div>
 
 <div id="founders">
@@ -47,35 +51,59 @@
 
     <div id="founder1">
         <h5>Ry Ance Sutton</h5>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi, aspernatur corporis cum earum eos eveniet exercitationem maxime modi quia quibusdam voluptatem. Alias delectus iste maiores porro quasi sequi unde?
-    </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi, aspernatur corporis cum earum
+            eos eveniet exercitationem maxime modi quia quibusdam voluptatem. Alias delectus iste maiores porro quasi
+            sequi unde?
+        </p>
     </div>
 
     <div id="founder2">
         <h5>Esai Flores</h5>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi, aspernatur corporis cum earum eos eveniet exercitationem maxime modi quia quibusdam voluptatem. Alias delectus iste maiores porro quasi sequi unde?
-    </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi, aspernatur corporis cum earum
+            eos eveniet exercitationem maxime modi quia quibusdam voluptatem. Alias delectus iste maiores porro quasi
+            sequi unde?
+        </p>
     </div>
 
     <div id="founder3">
         <h5>Roshan Jacob</h5>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi, aspernatur corporis cum earum eos eveniet exercitationem maxime modi quia quibusdam voluptatem. Alias delectus iste maiores porro quasi sequi unde?
-    </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi, aspernatur corporis cum earum
+            eos eveniet exercitationem maxime modi quia quibusdam voluptatem. Alias delectus iste maiores porro quasi
+            sequi unde?
+        </p>
     </div>
 
     <div id="founder4">
         <h5>Evelyn Acosta</h5>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi, aspernatur corporis cum earum eos eveniet exercitationem maxime modi quia quibusdam voluptatem. Alias delectus iste maiores porro quasi sequi unde?
-    </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi, aspernatur corporis cum earum
+            eos eveniet exercitationem maxime modi quia quibusdam voluptatem. Alias delectus iste maiores porro quasi
+            sequi unde?
+        </p>
     </div>
 </div>
 
-<footer th:replace="fragments/footer :: footer"></footer>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+<script>
+    $(window).scroll(function () {
+        $('nav').toggleClass('scrolled', $(this).scrollTop() > 500);
+    });
 
+</script>
+
+
+<footer th:replace="fragments/footer :: footer"></footer>
 
 
 </body>
