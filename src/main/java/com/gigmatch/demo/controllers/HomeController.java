@@ -9,13 +9,13 @@ public class HomeController {
 
     @GetMapping("/")
     public String getHome(){
-        return "index";
-    }
-
-    @GetMapping("/welcome")
-    public String welcome(){
         return "welcomePage";
     }
+
+//    @GetMapping("/welcome")
+//    public String welcome(){
+//        return "welcomePage";
+//    }
 }
 
 
