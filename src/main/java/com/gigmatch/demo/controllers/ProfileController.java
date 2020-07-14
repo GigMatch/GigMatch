@@ -40,9 +40,16 @@ public class ProfileController {
 //        return "/users/otherUsersProfile";
 //    }
 
+    // Getting create form for profile
+    @GetMapping("/profile/create")
+    public String showCreateProfileForm(Model model) {
+        model.addAttribute("profile", new Profile());
+        return "profiles/create";
+    }
+
     // Creating a profile for user
     @PostMapping("/profile/create")
-    public String saveProfile(@ModelAttribute Profile userProfile, @PathVariable long id) {
+    public String saveProfile(@ModelAttribute Profile userProfile) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userProfile.setOwner(currentUser);
         Profile savedProfile = profilesDao.save(userProfile);

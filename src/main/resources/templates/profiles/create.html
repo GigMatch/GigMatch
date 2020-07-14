@@ -9,36 +9,36 @@
 <br>
 <div class="form-page">
     <div class="form">
-        <form th:action="@{/profile/${id}/edit}" method="POST" th:object="${profile}">
+        <form th:action="@{/profile/create}" method="POST" th:object="${profile}">
 
             <!--USE filestack here?-->
             <label for="profilePhoto">Profile Photo</label>
-<!--            <input id="profilePhoto" th:field="*{profilePhoto}"/>-->
+            <!--            <input id="profilePhoto" th:field="*{profilePhoto}"/>-->
             <input id="profilePhoto"  type="text" name="profilePhoto" placeholder="profilePhoto"/>
 
             <label for="city">City</label>
-<!--            <input id="city" th:field="*{city}"/>-->
+            <!--            <input id="city" th:field="*{city}"/>-->
             <input id="city"  type="text" name="city" placeholder="city"/>
 
             <label for="state">State</label>
-<!--            <input id="state" th:field="*{state}"/>-->
+            <!--            <input id="state" th:field="*{state}"/>-->
             <input id="state"  type="text" name="state" placeholder="state"/>
 
             <label for="profileType">Profile Type</label>
-<!--            <input id="profileType" th:field="*{profileType}"/>-->
+            <!--            <input id="profileType" th:field="*{profileType}"/>-->
             <input id="profileType"  type="text" name="profileType" placeholder="profileType"/>
 
-            <input type="submit" value="Edit Profile" />
+            <input type="submit" value="Create Profile" />
 
             <!--            <label for="bio">Bio</label>-->
-<!--            <input id="bio" th:field="*{bio}"/>-->
-<!--            <label for="interests">Interests</label>-->
-<!--            <input id="interests" th:field="*{interests}"/>-->
-<!--            <label for="skills">Skills</label>-->
-<!--            <input id="skills" th:field="*{skills}"/>-->
-<!--            <label for="genres">Genres</label>-->
-<!--            <input id="genres" th:field="*{genres}"/>-->
-<!--            <input value="Update Profile" type="submit"/>-->
+            <!--            <input id="bio" th:field="*{bio}"/>-->
+            <!--            <label for="interests">Interests</label>-->
+            <!--            <input id="interests" th:field="*{interests}"/>-->
+            <!--            <label for="skills">Skills</label>-->
+            <!--            <input id="skills" th:field="*{skills}"/>-->
+            <!--            <label for="genres">Genres</label>-->
+            <!--            <input id="genres" th:field="*{genres}"/>-->
+            <!--            <input value="Update Profile" type="submit"/>-->
         </form>
     </div>
 </div>
