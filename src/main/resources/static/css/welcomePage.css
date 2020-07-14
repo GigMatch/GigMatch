@@ -128,8 +128,14 @@ img { max-width: 100%; }
 
     background-color: rgba(13, 13, 13, 0.71);
     outline: white solid 2px;
+    animation: myanim 3s infinite;
 }
 
+@keyframes myanim {
+    50% {
+        outline-color: rgba(218, 165, 32, 0.55);
+    }
+}
 .container-home {
     width: 893px;
 }
