@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: myProfileHead('My Profile')">
+<body>
+<header th:replace="fragments/navbar :: myProfileNav"></header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="#">Notifications</a></li>
+                    <li class="list-group-item"><a href="#">Messages</a></li>
+                    <li class="list-group-item"><a href="/feed/posts">Posts</a></li>
+                    <li class="list-group-item"><a href="/feed/events">Events</a></li>
+                    <li class="list-group-item"><a href="#">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    Create a post or event.
+                </div>
+            </div>
+            <div th:if="${noPostsFound}">
+            No posts were found.
+            </div>
+            <div class="card mb-2" th:each="post : ${posts}">
+                <div class="card-body">
+                    <h5 th:text="${post.owner.getUsername()}"></h5>
+                    <p class="card-text" th:text="${post.body}"></p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Map with center view of your city.</p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Your Calendar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+
+</body>
+</html>

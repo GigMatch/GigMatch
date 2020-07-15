@@ -25,13 +25,13 @@ public class EventController {
 
     }
 
-    @GetMapping("/events")
+    @GetMapping("/feed/events")
 //    @RequestMapping(value = "/ads", method = RequestMethod.GET)
     public String index(Model model) {
         List<Event> eventList = eventsDao.findAll();
-        model.addAttribute("noEventFound", eventList.size() == 0);
+        model.addAttribute("noEventsFound", eventList.size() == 0);
         model.addAttribute("events", eventList);
-        return "events/showEvents";
+        return "/events/eventsFeed";
 
     }
 
@@ -47,7 +47,8 @@ public class EventController {
 
         eventToBeSaved.setOwner(currentUser);
         Event savedEvent = eventsDao.save(eventToBeSaved);
-        return "redirect:/feed" + savedEvent.getId();
+//        return "redirect:/feed" + savedEvent.getId();
+        return "redirect:/feed/events";
     }
 
     @GetMapping("/events/{id}/edit")
