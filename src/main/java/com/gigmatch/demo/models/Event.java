@@ -26,7 +26,7 @@ public class Event {
     private String state;
 
     @Column(nullable = false)
-    private int zipcode;
+    private String zipcode;
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
@@ -37,7 +37,8 @@ public class Event {
     public Event() {
     }
 
-    public Event(Date dateTime, String streetAddress, String city, String state, int zipcode, String description, User owner) {
+    public Event(Date dateTime, String streetAddress, String city, String state, String zipcode, String description,
+                 User owner) {
         this.dateTime = dateTime;
         this.streetAddress = streetAddress;
         this.city = city;
@@ -47,7 +48,8 @@ public class Event {
         this.owner = owner;
     }
 
-    public Event(long id, Date dateTime, String streetAddress, String city, String state, int zipcode, String description, User owner) {
+    public Event(long id, Date dateTime, String streetAddress, String city, String state, String zipcode,
+                 String description, User owner) {
         this.id = id;
         this.dateTime = dateTime;
         this.streetAddress = streetAddress;
@@ -98,11 +100,11 @@ public class Event {
         this.state = state;
     }
 
-    public int getZipcode() {
+    public String getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(int zipcode) {
+    public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
 
