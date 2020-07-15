@@ -26,10 +26,11 @@ public class ProfileController {
     }
 
     // Reading current user profile
-    @GetMapping("/my-profile/{id}")
+    @GetMapping("/profile/{id}")
     public String showMyProfile(@PathVariable long id, Model model){
 //        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("profile", new Profile());
+        Profile profile = profilesDao.getOne(id);
+        model.addAttribute("profile", profile);
         model.addAttribute("profileId", id);
         return "/users/myProfile";
     }
@@ -39,6 +40,7 @@ public class ProfileController {
 //    public String showOtherUser(){
 //        return "/users/otherUsersProfile";
 //    }
+
 
     // Getting create form for profile
     @GetMapping("/profile/create")
@@ -53,7 +55,7 @@ public class ProfileController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userProfile.setOwner(currentUser);
         Profile savedProfile = profilesDao.save(userProfile);
-        return "redirect:/my-profile/" + savedProfile.getId();
+        return "redirect:/profile/" + savedProfile.getId();
     }
 
     // Read current user profile update form

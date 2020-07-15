@@ -9,7 +9,7 @@
 <br>
 <div class="form-page">
     <div class="form">
-        <form th:action="@{/profile/${id}/edit}" method="POST" th:object="${profile}">
+        <form th:action="${'/profile/' + profile.id + '/edit'}" method="POST" th:object="${profile}">
 
             <!--USE filestack here?-->
             <label for="profilePhoto">Profile Photo</label>
