@@ -59,4 +59,21 @@ public class PostController {
         return "redirect:/feed" + savedPost.getId();
     }
 
+    @GetMapping("/posts/{id}/edit")
+    public String showEditForm(Model model, @PathVariable long id){
+        // find an ad
+        Post postToEdit = postDao.getOne(id);
+        model.addAttribute("post", postToEdit);
+        return "posts/editAPost";
+    }
+
+    @PostMapping("/posts/{id}/edit")
+    public String update(@ModelAttribute Post postToEdit){
+        User currentUser = usersDao.getOne(1L);
+        postToEdit.setOwner(currentUser);
+        // save the changes
+        postDao.save(postToEdit); // update ads set title = ? where id = ?
+        return "redirect:/feed" + postToEdit.getId();
+    }
+
 }
