@@ -32,7 +32,7 @@ public class PostController {
         List<Post> postList = postDao.findAll();
         model.addAttribute("noPostsFound", postList.size() == 0);
         model.addAttribute("posts", postList);
-        return "/homeFeed";
+        return "/posts/postsFeed";
 
     }
 
