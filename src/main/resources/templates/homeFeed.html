@@ -1,53 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head('homefeed')">
-    <meta charset="UTF-8">
-    <title>Home Feed</title>
-</head>
+<head th:replace="fragments/head :: myProfileHead('My Profile')">
 <body>
 <header th:replace="fragments/navbar :: myProfileNav"></header>
 
 <div class="container">
-<h1>HomeFeed</h1>
-</div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <form th:action="@{/feed}" th:method="post" th:object="${post}" >
-            <div class="form-group">
-                <h5>Title of Post</h5>
-                <input class="form-control" id="exampleFormControlTextarea1" rows="3">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="#">Notifications</a></li>
+                    <li class="list-group-item"><a href="#">Messages</a></li>
+                    <li class="list-group-item"><a href="/feed/posts">Posts</a></li>
+                    <li class="list-group-item"><a href="/feed/events">Events</a></li>
+                    <li class="list-group-item"><a href="#">Profile</a></li>
+                </ul>
             </div>
-                <div class="form-group">
-                    <h5>Event Description</h5>
-                    <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    Create a post or event.
                 </div>
-            </form>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <input type="submit" class="btn btn-primary">
+            </div>
+            <div th:if="${noPostsFound}">
+            No posts were found.
+            </div>
+            <div class="card mb-2" th:each="post : ${posts}">
+                <div class="card-body">
+                    <h5 th:text="${post.owner.getUsername()}"></h5>
+                    <p class="card-text" th:text="${post.body}"></p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Map with center view of your city.</p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Your Calendar.</p>
+                </div>
             </div>
         </div>
     </div>
+
+
+</div>
 </div>
 
 
-
-
-
-<!--<h3 th:field="*{body}">Title</h3>-->
-
-<footer th:replace="fragments/footer :: footer"></footer>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>

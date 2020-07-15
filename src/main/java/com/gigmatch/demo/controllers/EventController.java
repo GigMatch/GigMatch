@@ -25,13 +25,13 @@ public class EventController {
 
     }
 
-    @GetMapping("/events")
+    @GetMapping("/feed/events")
 //    @RequestMapping(value = "/ads", method = RequestMethod.GET)
     public String index(Model model) {
         List<Event> eventList = eventsDao.findAll();
         model.addAttribute("noEventFound", eventList.size() == 0);
         model.addAttribute("events", eventList);
-        return "events/showEvents";
+        return "/homeFeed";
 
     }
 

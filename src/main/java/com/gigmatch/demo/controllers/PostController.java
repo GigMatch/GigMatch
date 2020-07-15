@@ -26,13 +26,13 @@ public class PostController {
 
     }
 
-    @GetMapping("/posts")
+    @GetMapping("/feed/posts")
 //    @RequestMapping(value = "/ads", method = RequestMethod.GET)
     public String index(Model model) {
         List<Post> postList = postDao.findAll();
-        model.addAttribute("noPostFound", postList.size() == 0);
+        model.addAttribute("noPostsFound", postList.size() == 0);
         model.addAttribute("posts", postList);
-        return "posts/CreateAPost";
+        return "/homeFeed";
 
     }
 
@@ -56,7 +56,8 @@ public class PostController {
 
         postToBeSaved.setOwner(currentUser);
         Post savedPost = postDao.save(postToBeSaved);
-        return "redirect:/feed" + savedPost.getId();
+//        return "redirect:/feed" + savedPost.getId();
+        return "redirect:/feed/posts";
     }
 
     @GetMapping("/posts/{id}/edit")
