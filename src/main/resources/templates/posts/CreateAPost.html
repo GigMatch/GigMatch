@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="fragments/head :: head('Sign Up')">
+    <meta charset="UTF-8">
+    <title>Create A Post</title>
+</head>
+<body>
+
+<div class="container">
+    <h1>Create a new Ad</h1>
+    <form th:action="@{/posts/create}" method="POST" th:object="${post}">
+<!--        <div class="form-group">-->
+<!--            <label for="title">Title</label>-->
+<!--            <input id="title" name="title" class="form-control" type="text">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="exampleFormControlSelect1">Category</label>-->
+<!--            <select class="form-control" name="category" id="exampleFormControlSelect1">-->
+<!--                <option>Events</option>-->
+<!--                <option>Business Operations</option>-->
+<!--            </select>-->
+<!--        </div>-->
+
+        <div class="form-group">
+            <label for="body">body</label>
+            <textarea id="body" name="body" class="form-control" type="text"></textarea>
+        </div>
+        <input id="btn" type="submit" class="btn btn-block btn-primary" value="create a Post">
+    </form>
+</div>
+
+
+</body>
+</html>
