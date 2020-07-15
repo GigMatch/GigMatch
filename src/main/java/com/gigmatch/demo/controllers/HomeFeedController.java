@@ -29,16 +29,4 @@ public class HomeFeedController {
         return "homeFeed";
     }
 
-    @GetMapping("/posts/create")
-    public String viewCreateForm(Model model) {
-        model.addAttribute("post", new Post());
-        return "posts/create";
-    }
-    @PostMapping("/posts/create")
-    public String savePost(@ModelAttribute Post newPost) {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        newPost.setOwner((com.gigmatch.demo.models.User) currentUser);
-        Post savedPost = postsDao.save(newPost);
-        return "redirect:/feed" + savedPost.getId();
-}
 }
