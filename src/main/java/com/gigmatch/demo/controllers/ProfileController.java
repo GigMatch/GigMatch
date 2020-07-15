@@ -28,9 +28,7 @@ public class ProfileController {
     // Reading current user profile
     @GetMapping("/profile/{id}")
     public String showMyProfile(@PathVariable long id, Model model){
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Profile profile = profilesDao.getOne(id);
-
         model.addAttribute("profile", profile);
         model.addAttribute("profileId", id);
         return "/users/myProfile";

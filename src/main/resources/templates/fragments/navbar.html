@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Nav</title>
@@ -73,7 +73,7 @@
         <li class="nav-item mr-5 mt-1">
             <a href="#"><i class="far fa-user-circle" style="color: white"></i></a>
         </li>
-        <li>
+        <li class="nav-item" sec:authorize="isAuthenticated()">
             <form th:action="@{/logout}" th:method="post">
                 <button class="btn-link btn" style="margin-top: 8px">Logout</button>
             </form>
