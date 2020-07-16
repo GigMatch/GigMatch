@@ -10,8 +10,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface PostsRepository extends JpaRepository<Post, Long> {
-    @Query("from Post a where a.body like %:term%")
-    List<Post> searchByTitle(@Param("term") String term);
+    @Query("from Post as a where a.body like %:term%")
+    List<Post> searchByBody(@Param("term") String term);
 
     Post findByOwner(User owner);
 }

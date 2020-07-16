@@ -79,9 +79,9 @@ public class PostController {
     }
 
     @GetMapping("/search")
-    public String searchResults(Model model, @RequestParam(name = "term") String term){
-        List<Post> postList = postDao.searchByTitle(term);
-        model.addAttribute("post", postList);
-        return "/posts/postsFeed";
+    public String searchByBody(Model model, @RequestParam(name = "term") String term){
+        List<Post> postList = postDao.searchByBody(term);
+        model.addAttribute("posts", postList);
+        return "posts/postsFeed";
     }
 }
