@@ -74,7 +74,7 @@ public class PostController {
         postToEdit.setOwner(currentUser);
         // save the changes
         postDao.save(postToEdit); // update ads set title = ? where id = ?
-        return "redirect:/feed" + postToEdit.getId();
+        return "redirect:/feed/posts";
     }
 
 }

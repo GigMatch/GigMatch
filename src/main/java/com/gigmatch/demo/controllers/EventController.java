@@ -7,10 +7,7 @@ import com.gigmatch.demo.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +22,7 @@ public class EventController {
 
     }
 
+    //shows all events
     @GetMapping("/feed/events")
 //    @RequestMapping(value = "/ads", method = RequestMethod.GET)
     public String index(Model model) {
@@ -35,12 +33,14 @@ public class EventController {
 
     }
 
+    //creates an event
     @GetMapping("/events/create")
     public String showForm(Model viewModel){
         viewModel.addAttribute("event", new Event());
         return "/events/CreateAnEvent";
     }
 
+    //saves the event made
     @PostMapping("/events/create")
     public String save(@ModelAttribute Event eventToBeSaved) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -51,20 +51,38 @@ public class EventController {
         return "redirect:/feed/events";
     }
 
+    //finds event to edit
     @GetMapping("/events/{id}/edit")
     public String showEditForm(Model model, @PathVariable long id){
-        // find an ad
+        // find an event
         Event eventToEdit = eventsDao.getOne(id);
         model.addAttribute("event", eventToEdit);
         return "events/editAnEvent";
     }
 
+    //allows event to be edited
     @PostMapping("/events/{id}/edit")
     public String update(@ModelAttribute Event eventToEdit){
         User currentUser = usersDao.getOne(1L);
         eventToEdit.setOwner(currentUser);
         // save the changes
         eventsDao.save(eventToEdit); // update ads set title = ? where id = ?
-        return "redirect:/feed" + eventToEdit.getId();
+        return "redirect:/feed/events";
+
+//        + eventToEdit.getId();
+    }
+
+    //deletes event
+//    @PostMapping("/events/{id}/delete")
+//    public String destroy(@PathVariable long id){
+//        eventsDao.deleteById(id);
+//        return "redirect:/feed/events";
+//
+//    }
+
+    @PostMapping("/events/{id}/delete")
+    public String destroy(@PathVariable long id){
+        eventsDao.deleteById(id);
+        return "redirect:/feed/events";
     }
 }

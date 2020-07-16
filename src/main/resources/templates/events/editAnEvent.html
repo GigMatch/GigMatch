@@ -30,6 +30,10 @@
         </div>
         <input id="btn" type="submit" class="btn btn-block btn-primary" value="Edit this event">
     </form>
+
+    <form th:action="${'/events/' + event.id + '/delete'}" method="post">
+        <button class="btn btn-danger">Delete</button>
+    </form>
 </div>
 
 </body>
