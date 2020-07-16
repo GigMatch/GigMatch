@@ -7,10 +7,7 @@ import com.gigmatch.demo.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,7 +20,6 @@ public class PostController {
     public PostController(PostsRepository postsRepository, UsersRepository usersRepository){
         this.postDao = postsRepository;
         this.usersDao = usersRepository;
-
     }
 
     @GetMapping("/feed/posts")
@@ -33,7 +29,6 @@ public class PostController {
         model.addAttribute("noPostsFound", postList.size() == 0);
         model.addAttribute("posts", postList);
         return "/posts/postsFeed";
-
     }
 
 //    @GetMapping("/posts/{id}")
@@ -74,7 +69,13 @@ public class PostController {
         postToEdit.setOwner(currentUser);
         // save the changes
         postDao.save(postToEdit); // update ads set title = ? where id = ?
-        return "redirect:/feed" + postToEdit.getId();
+        return "redirect:/feed/posts";
     }
 
+    @GetMapping("/search")
+    public String searchResults(Model model, @RequestParam(name = "term") String term){
+        List<Post> postList = postDao.searchByTitle(term);
+        model.addAttribute("post", postList);
+        return "/posts/postsFeed";
+    }
 }
