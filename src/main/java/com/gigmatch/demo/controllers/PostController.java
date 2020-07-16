@@ -37,14 +37,6 @@ public class PostController {
 //        return "users/sign-up";
 //    }
 
-//    @GetMapping("/posts/{id}")
-//    public String show(@PathVariable long id, Model model){
-//        Post ad = postDao.getOne(id);
-//        model.addAttribute("postId", id);
-//        model.addAttribute("post", ad);
-//        return "/static/homeFeed";
-//    }
-
     @GetMapping("/posts/create")
     public String showForm(Model viewModel){
         viewModel.addAttribute("post", new Post());
