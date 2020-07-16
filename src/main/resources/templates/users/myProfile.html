@@ -14,7 +14,7 @@
                     <li class="list-group-item"><a href="#">Messages</a></li>
                     <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>
                     <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>
-                    <li class="list-group-item"><a href="/profile/">Update Profile</a></li>
+                    <li class="list-group-item"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Profile</a></li>
                     <li class="list-group-item"><a href="/profile/create">Create Profile</a></li>
 
                 </ul>
@@ -33,14 +33,12 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h3 class="card-title">First Last</h3>
-                            <h4>Profile Type</h4>
+                            <h3 class="card-title" th:text="${profile.owner.first_name} + ' ' + ${profile.owner.last_name}">First Last</h3>
+                            <h4 th:text="${profile.profileType}">Profile Type</h4>
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">About/Bio</h3>
-                            <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
-                                dolorem eveniet explicabo itaque maiores nemo nesciunt officiis ut. A atque consequuntur
-                                cupiditate explicabo nisi officiis quam quas, quisquam sed sint!</p>
+                            <p class="card-text" th:text="${profile.bio}">Tell us about yourself...</p>
                         </div>
                     </div>
                 </div>
@@ -50,7 +48,7 @@
                     <h4>Interests</h4>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">Tell us what you're into...</p>
+                    <p class="card-text" th:text="${profile.interests}">Tell us what you're into...</p>
                 </div>
             </div>
             <div class="card mb-3">
@@ -58,7 +56,7 @@
                     <h4>Skills</h4>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">Tell us what you can do maybe drop some links.</p>
+                    <p class="card-text" th:text="${profile.skills}">Tell us what you can do maybe drop some links.</p>
                 </div>
             </div>
             <div class="card mb-3">
@@ -66,7 +64,7 @@
                     <h4>Genres</h4>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">Tell us what kind of music you play/like.</p>
+                    <p class="card-text" th:text="${profile.genres}">Tell us what kind of music you play/like.</p>
                 </div>
             </div>
             <div class="card">
@@ -77,7 +75,7 @@
                     <li class="list-group-item">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Your Name</h5>
+                                <h5 class="card-title" th:text="${profile.owner.getUsername()}">Your Name</h5>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                 <a href="#" class="btn btn-primary">Edit Post</a>
                             </div>

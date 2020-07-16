@@ -26,20 +26,24 @@ public class ProfileController {
     }
 
     // Reading current user profile
-    @GetMapping("/profile/{id}")
+    @GetMapping("/my-profile/{id}")
     public String showMyProfile(@PathVariable long id, Model model){
         Profile profile = profilesDao.getOne(id);
         model.addAttribute("profile", profile);
+        model.addAttribute("owner", profile.getOwner());
         model.addAttribute("profileId", id);
         return "/users/myProfile";
     }
 
 
-    // Reading other user profile
-//    @GetMapping("/profile/{id}")
-//    public String showOtherUser(){
-//        return "/users/otherUsersProfile";
-//    }
+    @GetMapping("/profile/{id}")
+    public String showOtherProfile(@PathVariable long id, Model model){
+        Profile profile = profilesDao.getOne(id);
+        model.addAttribute("profile", profile);
+        model.addAttribute("owner", profile.getOwner());
+        model.addAttribute("profileId", id);
+        return "/users/otherUsersProfile";
+    }
 
 
     // Getting create form for profile

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head('Update Profile')">
+<head th:replace="fragments/head :: head('Create Profile')">
 </head>
 <body>
 <header th:replace="fragments/navbar :: myProfileNav"></header>
-<h1 class="text-center">Update Profile</h1><br>
+<h1 class="text-center">Create Profile</h1><br>
 <br>
 <br>
 <div class="form-page">
@@ -14,31 +14,38 @@
             <!--USE filestack here?-->
             <label for="profilePhoto">Profile Photo</label>
             <!--            <input id="profilePhoto" th:field="*{profilePhoto}"/>-->
-            <input id="profilePhoto"  type="text" name="profilePhoto" placeholder="profilePhoto"/>
+            <input id="profilePhoto"  type="text" name="profilePhoto" placeholder="Profile Photo"/>
 
             <label for="city">City</label>
             <!--            <input id="city" th:field="*{city}"/>-->
-            <input id="city"  type="text" name="city" placeholder="city"/>
+            <input id="city"  type="text" name="city" placeholder="City"/>
 
             <label for="state">State</label>
             <!--            <input id="state" th:field="*{state}"/>-->
-            <input id="state"  type="text" name="state" placeholder="state"/>
+            <input id="state"  type="text" name="state" placeholder="State"/>
 
             <label for="profileType">Profile Type</label>
             <!--            <input id="profileType" th:field="*{profileType}"/>-->
-            <input id="profileType"  type="text" name="profileType" placeholder="profileType"/>
+            <input id="profileType"  type="text" name="profileType" placeholder="Profile type"/>
 
-            <input type="submit" value="Create Profile" />
-
-            <!--            <label for="bio">Bio</label>-->
+            <label for="bio">Bio</label>
             <!--            <input id="bio" th:field="*{bio}"/>-->
-            <!--            <label for="interests">Interests</label>-->
+            <input id="bio"  type="text" name="bio" placeholder="About/Bio"/>
+
+            <label for="interests">Interests</label>
             <!--            <input id="interests" th:field="*{interests}"/>-->
-            <!--            <label for="skills">Skills</label>-->
+            <input id="interests"  type="text" name="interests" placeholder="Interests"/>
+
+            <label for="skills">Skills</label>
             <!--            <input id="skills" th:field="*{skills}"/>-->
-            <!--            <label for="genres">Genres</label>-->
+            <input id="skills"  type="text" name="skills" placeholder="Skills"/>
+
+            <label for="genres">Genres</label>
             <!--            <input id="genres" th:field="*{genres}"/>-->
+            <input id="genres"  type="text" name="genres" placeholder="Genres"/>
+
             <!--            <input value="Update Profile" type="submit"/>-->
+            <input type="submit" value="Create Profile" />
         </form>
     </div>
 </div>
