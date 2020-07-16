@@ -51,11 +51,11 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String save(@ModelAttribute Post postToBeSaved) {
+    public String save(@ModelAttribute Post postToBeSaved, Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         postToBeSaved.setOwner(currentUser);
         Post savedPost = postDao.save(postToBeSaved);
+
 //        return "redirect:/feed" + savedPost.getId();
         return "redirect:/feed/posts";
     }

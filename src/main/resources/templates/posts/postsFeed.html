@@ -28,7 +28,7 @@
             </div>
             <div class="card mb-2" th:each="post : ${posts}">
                 <div class="card-body">
-                    <h5 th:text="${post.owner.getUsername()}"></h5>
+                    <h5 th:text="${post.owner.username}"></h5>
                     <p class="card-text" th:text="${post.body}"></p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
