@@ -13,7 +13,7 @@
                     <li class="list-group-item"><a href="#">Messages</a></li>
                     <li class="list-group-item"><a href="/feed/posts">Posts</a></li>
                     <li class="list-group-item"><a href="/feed/events">Events</a></li>
-                    <li class="list-group-item"><a href="#">Profile</a></li>
+                    <li class="list-group-item"><a th:href="'/my-profile/' + ${profileId}">My Profile</a></li>
                 </ul>
             </div>
         </div>
@@ -30,7 +30,7 @@
                 <div class="card-body">
                     <h5 th:text="${post.owner.username}"></h5>
                     <p class="card-text" th:text="${post.body}"></p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn btn-primary">Edit Post</a>
                 </div>
             </div>
         </div>
@@ -49,7 +49,6 @@
             </div>
         </div>
     </div>
-
 
 </div>
 </div>

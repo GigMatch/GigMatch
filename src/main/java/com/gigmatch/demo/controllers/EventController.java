@@ -3,6 +3,7 @@ package com.gigmatch.demo.controllers;
 import com.gigmatch.demo.daos.EventsRepository;
 import com.gigmatch.demo.daos.UsersRepository;
 import com.gigmatch.demo.models.Event;
+import com.gigmatch.demo.models.Post;
 import com.gigmatch.demo.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -19,18 +20,15 @@ public class EventController {
     public EventController(EventsRepository eventsRepository, UsersRepository usersRepository){
         this.eventsDao = eventsRepository;
         this.usersDao = usersRepository;
-
     }
 
     //shows all events
     @GetMapping("/feed/events")
-//    @RequestMapping(value = "/ads", method = RequestMethod.GET)
     public String index(Model model) {
         List<Event> eventList = eventsDao.findAll();
         model.addAttribute("noEventsFound", eventList.size() == 0);
         model.addAttribute("events", eventList);
         return "events/eventsFeed";
-
     }
 
     //creates an event
@@ -44,10 +42,8 @@ public class EventController {
     @PostMapping("/events/create")
     public String save(@ModelAttribute Event eventToBeSaved) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         eventToBeSaved.setOwner(currentUser);
         Event savedEvent = eventsDao.save(eventToBeSaved);
-//        return "redirect:/feed" + savedEvent.getId();
         return "redirect:/feed/events";
     }
 
@@ -68,21 +64,18 @@ public class EventController {
         // save the changes
         eventsDao.save(eventToEdit); // update ads set title = ? where id = ?
         return "redirect:/feed/events";
-
-//        + eventToEdit.getId();
     }
-
-    //deletes event
-//    @PostMapping("/events/{id}/delete")
-//    public String destroy(@PathVariable long id){
-//        eventsDao.deleteById(id);
-//        return "redirect:/feed/events";
-//
-//    }
 
     @PostMapping("/events/{id}/delete")
     public String destroy(@PathVariable long id){
         eventsDao.deleteById(id);
         return "redirect:/feed/events";
+    }
+
+    @GetMapping("/search/events")
+    public String searchByDescription(Model model, @RequestParam(name = "term") String term){
+        List<Event> eventList = eventsDao.searchByDescription(term);
+        model.addAttribute("events", eventList);
+        return "events/eventsFeed";
     }
 }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: myProfileHead('My Profile')">
 <body>
-<header th:replace="fragments/navbar :: myProfileNav"></header>
+<header th:replace="fragments/navbar :: eventsFeed"></header>
 
 <div class="container">
     <div class="row">
@@ -13,7 +13,7 @@
                     <li class="list-group-item"><a href="#">Messages</a></li>
                     <li class="list-group-item"><a href="/feed/posts">Posts</a></li>
                     <li class="list-group-item"><a href="/feed/events">Events</a></li>
-                    <li class="list-group-item"><a href="#">Profile</a></li>
+                    <li class="list-group-item"><a th:href="'/my-profile/' + ${profileId}">My Profile</a></li>
                 </ul>
             </div>
         </div>
@@ -34,7 +34,7 @@
 <!--                    <p class="card-text" th:text="${event.state}"></p>-->
 <!--                    <p class="card-text" th:text="${event.zipcode}"></p>-->
                     <p class="card-text" th:text="${event.description}"></p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a th:href="'/events/' + ${event.id} + '/edit'" class="btn btn-primary">Edit Event</a>
                 </div>
             </div>
         </div>
@@ -53,7 +53,6 @@
             </div>
         </div>
     </div>
-
 
 </div>
 </div>

@@ -7,10 +7,7 @@ import com.gigmatch.demo.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,7 +20,6 @@ public class PostController {
     public PostController(PostsRepository postsRepository, UsersRepository usersRepository){
         this.postDao = postsRepository;
         this.usersDao = usersRepository;
-
     }
 
     @GetMapping("/feed/posts")
@@ -33,21 +29,12 @@ public class PostController {
         model.addAttribute("noPostsFound", postList.size() == 0);
         model.addAttribute("posts", postList);
         return "posts/postsFeed";
-
     }
 
 //    @GetMapping("/sign-up")
 //    public String showSignupForm(Model model){
 //        model.addAttribute("user", new User());
 //        return "users/sign-up";
-//    }
-
-//    @GetMapping("/posts/{id}")
-//    public String show(@PathVariable long id, Model model){
-//        Post ad = postDao.getOne(id);
-//        model.addAttribute("postId", id);
-//        model.addAttribute("post", ad);
-//        return "/static/homeFeed";
 //    }
 
     @GetMapping("/posts/create")
@@ -83,4 +70,16 @@ public class PostController {
         return "redirect:/feed/posts";
     }
 
+    @PostMapping("/posts/{id}/delete")
+    public String destroy(@PathVariable long id){
+        postDao.deleteById(id);
+        return "redirect:/feed/posts";
+    }
+
+    @GetMapping("/search/posts")
+    public String searchByBody(Model model, @RequestParam(name = "term") String term){
+        List<Post> postList = postDao.searchByBody(term);
+        model.addAttribute("posts", postList);
+        return "posts/postsFeed";
+    }
 }
