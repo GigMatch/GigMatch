@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head('User Profile')">
+<head th:replace="fragments/head :: myProfileHead('User Profile')">
 <body>
 <header th:replace="fragments/navbar :: myProfileNav"></header>
 
@@ -9,10 +9,10 @@
         <div class="col-md-3">
             <div class="card">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="/feed">Home Feed</a></li>
+                    <li class="list-group-item"><a href="/feed/posts">Home Feed</a></li>
                     <li class="list-group-item"><a href="#">Notifications</a></li>
-                    <li class="list-group-item"><a href="#">Messages</a></li>
-                    <li class="list-group-item"><a href="#">Recommendations</a></li>
+                    <li class="list-group-item"><a href="#">Messages(Maybe)</a></li>
+                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>
                     <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>
                 </ul>
             </div>
@@ -23,21 +23,15 @@
                     <div class="col-md-4">
                         <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"
                              class="card-img m-2" alt="...">
-<!--                        <div class="ml-4"><a href="#">Upload Photo</a></div>-->
-<!--                        <div class="ml-4">-->
-<!--                            <button type="button" class="btn btn-primary btn-lg">Create Post</button>-->
-<!--                        </div>-->
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h3 class="card-title">First Last</h3>
-                            <h4>Profile Type</h4>
+                            <h3 class="card-title" th:text="${profile.owner.getFirst_name()} + ' ' + ${profile.owner.getLast_name()}">First Last</h3>
+                            <h4 th:text="${profile.profileType}">Profile Type</h4>
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">About/Bio</h3>
-                            <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
-                                dolorem eveniet explicabo itaque maiores nemo nesciunt officiis ut. A atque consequuntur
-                                cupiditate explicabo nisi officiis quam quas, quisquam sed sint!</p>
+                            <p class="card-text" th:text="${profile.bio}"> Tell us about yourself...</p>
                         </div>
                     </div>
                 </div>
@@ -47,8 +41,7 @@
                     <h4>Interests</h4>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">Tell us what you're into...</p>
-<!--                    <a href="#" class="btn btn-primary btn-sm">Edit Interests</a>-->
+                    <p class="card-text" th:text="${profile.interests}">Tell us what you're into...</p>
                 </div>
             </div>
             <div class="card mb-3">
@@ -56,8 +49,15 @@
                     <h4>Skills</h4>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">Tell us what you can do maybe drop some links.</p>
-<!--                    <a href="#" class="btn btn-primary btn-sm">Edit Skills</a>-->
+                    <p class="card-text" th:text="${profile.skills}">Tell us what you can do maybe drop some links.</p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h4>Genres</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text" th:text="${profile.genres}">Tell us what kind of music you play/like.</p>
                 </div>
             </div>
             <div class="card">
