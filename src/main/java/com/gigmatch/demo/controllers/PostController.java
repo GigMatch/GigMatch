@@ -32,9 +32,15 @@ public class PostController {
         List<Post> postList = postDao.findAll();
         model.addAttribute("noPostsFound", postList.size() == 0);
         model.addAttribute("posts", postList);
-        return "/posts/postsFeed";
+        return "posts/postsFeed";
 
     }
+
+//    @GetMapping("/sign-up")
+//    public String showSignupForm(Model model){
+//        model.addAttribute("user", new User());
+//        return "users/sign-up";
+//    }
 
 //    @GetMapping("/posts/{id}")
 //    public String show(@PathVariable long id, Model model){
@@ -47,7 +53,7 @@ public class PostController {
     @GetMapping("/posts/create")
     public String showForm(Model viewModel){
         viewModel.addAttribute("post", new Post());
-        return "/posts/CreateAPost";
+        return "posts/CreateAPost";
     }
 
     @PostMapping("/posts/create")

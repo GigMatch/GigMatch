@@ -32,7 +32,7 @@ public class ProfileController {
         model.addAttribute("profile", profile);
         model.addAttribute("owner", profile.getOwner());
         model.addAttribute("profileId", id);
-        return "/users/myProfile";
+        return "users/myProfile";
     }
 
 
@@ -42,7 +42,7 @@ public class ProfileController {
         model.addAttribute("profile", profile);
         model.addAttribute("owner", profile.getOwner());
         model.addAttribute("profileId", id);
-        return "/users/otherUsersProfile";
+        return "users/otherUsersProfile";
     }
 
 
@@ -59,7 +59,7 @@ public class ProfileController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userProfile.setOwner(currentUser);
         Profile savedProfile = profilesDao.save(userProfile);
-        return "redirect:/profile/" + savedProfile.getId();
+        return "redirect:/my-profile/" + savedProfile.getId();
     }
 
     // Read current user profile update form

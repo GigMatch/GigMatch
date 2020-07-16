@@ -29,7 +29,7 @@ public class EventController {
         List<Event> eventList = eventsDao.findAll();
         model.addAttribute("noEventsFound", eventList.size() == 0);
         model.addAttribute("events", eventList);
-        return "/events/eventsFeed";
+        return "events/eventsFeed";
 
     }
 
@@ -37,7 +37,7 @@ public class EventController {
     @GetMapping("/events/create")
     public String showForm(Model viewModel){
         viewModel.addAttribute("event", new Event());
-        return "/events/CreateAnEvent";
+        return "events/CreateAnEvent";
     }
 
     //saves the event made
