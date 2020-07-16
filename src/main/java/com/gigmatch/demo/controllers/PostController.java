@@ -78,7 +78,7 @@ public class PostController {
         return "redirect:/feed/posts";
     }
 
-    @GetMapping("/search")
+    @GetMapping("/search/posts")
     public String searchByBody(Model model, @RequestParam(name = "term") String term){
         List<Post> postList = postDao.searchByBody(term);
         model.addAttribute("posts", postList);

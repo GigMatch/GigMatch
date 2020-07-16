@@ -87,7 +87,7 @@ public class EventController {
         return "redirect:/feed/events";
     }
 
-    @GetMapping("/search")
+    @GetMapping("/search/events")
     public String searchByDescription(Model model, @RequestParam(name = "term") String term){
         List<Event> eventList = eventsDao.searchByDescription(term);
         model.addAttribute("events", eventList);
