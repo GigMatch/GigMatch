@@ -30,7 +30,7 @@ public class CommentController {
         List<PostComment> postCommentList = postCommentsDao.findAll();
         model.addAttribute("noCommentsFound", postCommentList.size() == 0);
         model.addAttribute("comments", postCommentList);
-        return "/posts/postsFeed";
+        return "posts/postsFeed";
 
     }
 
@@ -38,7 +38,7 @@ public class CommentController {
     @GetMapping("/feed/posts")
     public String showCommentForm(Model viewModel){
         viewModel.addAttribute("comment", new PostComment());
-        return "/posts/postsFeed";
+        return "posts/postsFeed";
     }
 
     @PostMapping("/feed/posts")
