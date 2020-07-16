@@ -78,6 +78,12 @@ public class PostController {
         return "redirect:/feed/posts";
     }
 
+    @PostMapping("/posts/{id}/delete")
+    public String destroy(@PathVariable long id){
+        postDao.deleteById(id);
+        return "redirect:/feed/posts";
+    }
+
     @GetMapping("/search/posts")
     public String searchByBody(Model model, @RequestParam(name = "term") String term){
         List<Post> postList = postDao.searchByBody(term);

@@ -17,6 +17,9 @@
 </div>
 <input id="btn" type="submit" class="btn btn-block btn-primary" value="edit a Post">
 </form>
+    <form th:action="${'/posts/' + post.id + '/delete'}" method="post">
+        <button class="btn btn-danger">Delete</button>
+    </form>
 </div>
 
 </body>

@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface EventsRepository extends JpaRepository<Event, Long> {
+
     @Query("from Event as a where a.description like %:term%")
     List<Event> searchByDescription(@Param("term") String term);
 
