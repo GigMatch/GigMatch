@@ -3,6 +3,7 @@ package com.gigmatch.demo.controllers;
 import com.gigmatch.demo.daos.EventsRepository;
 import com.gigmatch.demo.daos.UsersRepository;
 import com.gigmatch.demo.models.Event;
+import com.gigmatch.demo.models.Post;
 import com.gigmatch.demo.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -84,5 +85,12 @@ public class EventController {
     public String destroy(@PathVariable long id){
         eventsDao.deleteById(id);
         return "redirect:/feed/events";
+    }
+
+    @GetMapping("/search")
+    public String searchByDescription(Model model, @RequestParam(name = "term") String term){
+        List<Event> eventList = eventsDao.searchByDescription(term);
+        model.addAttribute("events", eventList);
+        return "events/eventsFeed";
     }
 }
