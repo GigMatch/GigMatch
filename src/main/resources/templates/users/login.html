@@ -1,63 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: loginHead('Login')"></head>
-<body>
+<body onload="myFunction()">
 
-<!--<header th:replace="fragments/navbar :: navbar2"></header>-->
+<div id="loader">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
 
-<h1 class="text-center">Login</h1>
+<div class="container box" id="myDiv" style="display: none">
+<h4 class="wordCarousel text-l">
+    <span><a href="/">You Need: </a></span>
+    <div class="div">
+        <!--        Use classes 2,3, or 4 to match the number of words -->
+        <ul class="flip3">
+            <li>GigMatch</li>
+            <li>Gigs</li>
+            <li>Artist</li>
+        </ul>
+    </div>
+</h4>
+</div>
+
 
 <div th:if="${param.error}">
-    <p class="text-center">Invalid Username and Password.</p>
+    <p  class="text-left">Invalid Username and Password.</p>
 </div>
 
 <div th:if="${param.logout}">
     <p class="text-center">You have been logged out.</p>
 </div>
 
-<!--<div class="form-page">-->
-<!--    <div class="form">-->
-<!--        <form th:action="@{/login}" method="post" class="register-form">-->
-<!--            <label for="username">Username</label>-->
-<!--            <input id="username"  type="text" name="username" placeholder="Username"/>-->
 
-<!--            <label for="password">Password</label>-->
-<!--            <input id="password" type="password" name="password" placeholder="password"/>-->
-
-<!--            <input type="submit" value="Log In" />-->
-<!--            <p class="message">Not registered? <a href="/sign-up">Create an account</a></p>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</div>-->
-
-<div class="container">
+<div class="container" id="margin-l">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Sign In</h5>
-                    <form th:action="@{/login}" method="post" class="register-form form-signin">
+                    <h5 class="card-title text-center">Log In</h5>
+                    <form name="username" class="form-signin" th:action="@{/login}" method="post">
                         <div class="form-label-group">
+                            <input type="text" id="username" class="form-control" name="username"  placeholder="username" required autofocus/>
                             <label for="username">Username</label>
-                            <input id="username" type="text" name="username" class="form-control" required autofocus />
-
                         </div>
-
                         <div class="form-label-group">
+                            <input type="password" id="password" class="form-control" placeholder="password" name="password" required/>
                             <label for="password">Password</label>
-                            <input id="password" type="password" name="password" class="form-control"/>
                         </div>
 
-                        <input type="submit" value="Log In" class="btn btn-lg btn-primary btn-block text-uppercase"/>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Log In" type="submit">Log in</button>
                         <hr class="my-4">
 
-
-                        <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i
-                                class="fab fa-google mr-2"></i> Sign in with Google
-                        </button>
-                        <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i
-                                class="fab fa-facebook-f mr-2"></i> Sign in with Facebook
-                        </button>
                     </form>
                 </div>
             </div>
@@ -66,6 +72,18 @@
 </div>
 
 <footer th:replace="fragments/footer :: footer"></footer>
+
+<script>
+    var myVar;
+    function myFunction() {
+        myVar = setTimeout(showPage, 2500);
+    }
+
+    function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("myDiv").style.display = "block";
+    }
+</script>
 </body>
 </html>
 

@@ -6,19 +6,40 @@
     <title>Footer</title>
     <!--    <link rel="stylesheet" href="">-->
     <style>
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
+
+
+        html, body {
+            height: 100%;
         }
+
+
+        #sticky-footer {
+            flex-shrink: 0;
+
+        }
+footer {
+    position: fixed;
+
+            color: black;
+            background-color: goldenrod;
+
+        }
+
     </style>
 </head>
+
+
+
 <body>
 
-<footer th:fragment="footer" class="footer fixed-bottom">
-    <h3>GigMatch &trade;</h3>
+<footer id="sticky-footer" class="py-4 foot text-white-50">
+    <div class="container text-center">
+        <small>Copyright &copy; GigMatch 2020</small>
+    </div>
 </footer>
+
+</body>
+
+
 </body>
 </html>
