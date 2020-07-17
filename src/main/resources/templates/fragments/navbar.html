@@ -25,9 +25,14 @@
 <!--                <li class="nav-item">-->
 <!--                    <a class="nav-link scroll-link" href="/sign-up">Sign Up</a>-->
 <!--                </li>-->
-<!--                <li class="nav-item">-->
+<!--                <li class="nav-item" sec:authorize="isAuthenticated()">-->
 <!--                    <a class="nav-link" href="/login">Login</a>-->
 <!--                </li>-->
+<!--                    <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                        <form th:action="@{/logout}" th:method="post">-->
+<!--                            <button class="btn-link btn" style="margin-top: 8px">Logout</button>-->
+<!--                        </form>-->
+<!--                    </li>-->
 <!--            </ul>-->
 <!--        </div>-->
 <!--    </div>-->
@@ -49,14 +54,19 @@
                 <li class="nav-item">
                     <a class="nav-link scroll-link" href="/sign-up">Sign Up</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
                     <a class="nav-link scroll-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" th:method="post">
+                        <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                    </form>
                 </li>
             </ul>
         </div>
     </div>
-
 </nav>
+
 
 <nav th:fragment="myProfileNav" class="navbar-homepage navbar navbar-light navbar-expand-md" style="background-color: goldenrod">
     <ul class="d-flex justify-content-end">
@@ -79,6 +89,9 @@
         <li class="nav-item mr-5 mt-1">
             <a href="#"><i class="far fa-user-circle" style="color: white"></i></a>
         </li>
+        <li class="nav-item" sec:authorize="!isAuthenticated()">
+            <a class="nav-link scroll-link" href="/login">Login</a>
+        </li>
         <li class="nav-item" sec:authorize="isAuthenticated()">
             <form th:action="@{/logout}" th:method="post">
                 <button class="btn-link btn" style="margin-top: 8px">Logout</button>
@@ -86,6 +99,7 @@
         </li>
     </ul>
 </nav>
+
 
 <nav th:fragment="eventsFeed" class="navbar-homepage navbar navbar-light navbar-expand-md" style="background-color: goldenrod">
     <ul class="d-flex justify-content-end">
@@ -108,6 +122,9 @@
         <li class="nav-item mr-5 mt-1">
             <a href="#"><i class="far fa-user-circle" style="color: white"></i></a>
         </li>
+        <li class="nav-item" sec:authorize="!isAuthenticated()">
+            <a class="nav-link scroll-link" href="/login">Login</a>
+        </li>
         <li class="nav-item" sec:authorize="isAuthenticated()">
             <form th:action="@{/logout}" th:method="post">
                 <button class="btn-link btn" style="margin-top: 8px">Logout</button>
@@ -115,8 +132,6 @@
         </li>
     </ul>
 </nav>
-
-
 
 
 

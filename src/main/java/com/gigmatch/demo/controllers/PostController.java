@@ -44,13 +44,12 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String save(@ModelAttribute Post postToBeSaved, Model model) {
+    public String save(@ModelAttribute Post postToBeSaved) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         postToBeSaved.setOwner(currentUser);
-        Post savedPost = postDao.save(postToBeSaved);
-
-//        return "redirect:/feed" + savedPost.getId();
-        return "redirect:/feed/posts";
+        postDao.save(postToBeSaved);
+//        + savedPost.getId();
+        return "redirect:/feed/posts" ;
     }
 
     @GetMapping("/posts/{id}/edit")
@@ -63,9 +62,8 @@ public class PostController {
 
     @PostMapping("/posts/{id}/edit")
     public String update(@ModelAttribute Post postToEdit){
-        User currentUser = usersDao.getOne(1L);
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         postToEdit.setOwner(currentUser);
-        // save the changes
         postDao.save(postToEdit); // update ads set title = ? where id = ?
         return "redirect:/feed/posts";
     }

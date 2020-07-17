@@ -59,7 +59,7 @@ public class EventController {
     //allows event to be edited
     @PostMapping("/events/{id}/edit")
     public String update(@ModelAttribute Event eventToEdit){
-        User currentUser = usersDao.getOne(1L);
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         eventToEdit.setOwner(currentUser);
         // save the changes
         eventsDao.save(eventToEdit); // update ads set title = ? where id = ?

@@ -15,9 +15,8 @@
     <p class="text-center">You have been logged out.</p>
 </div>
 
-<!--<div class="form-page">-->
 <!--    <div class="form">-->
-<!--        <form th:action="@{/login}" method="post" class="register-form">-->
+<!--        <form th:action="@{/login}" method="post">-->
 <!--            <label for="username">Username</label>-->
 <!--            <input id="username"  type="text" name="username" placeholder="Username"/>-->
 
@@ -28,7 +27,7 @@
 <!--            <p class="message">Not registered? <a href="/sign-up">Create an account</a></p>-->
 <!--        </form>-->
 <!--    </div>-->
-<!--</div>-->
+
 
 <div class="container">
     <div class="row">
@@ -39,13 +38,13 @@
                     <form th:action="@{/login}" method="post" class="register-form form-signin">
                         <div class="form-label-group">
                             <label for="username">Username</label>
-                            <input id="username" type="text" name="username" class="form-control" required autofocus />
+                            <input id="username" type="text" name="username" placeholder="username" class="form-control"  />
 
                         </div>
 
                         <div class="form-label-group">
                             <label for="password">Password</label>
-                            <input id="password" type="password" name="password" class="form-control"/>
+                            <input id="password" type="password" name="password" placeholder="password" class="form-control"/>
                         </div>
 
                         <input type="submit" value="Log In" class="btn btn-lg btn-primary btn-block text-uppercase"/>

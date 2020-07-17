@@ -7,7 +7,7 @@
 <body>
 
 <div class="container">
-    <h1>Create a new Ad</h1>
+    <h1>Create a new post</h1>
     <form th:action="@{/posts/create}" method="POST" th:object="${post}">
 <!--        <div class="form-group">-->
 <!--            <label for="title">Title</label>-->
@@ -26,7 +26,7 @@
             <label for="body">body</label>
             <textarea id="body" name="body" class="form-control" type="text"></textarea>
         </div>
-        <input id="btn" type="submit" class="btn btn-block btn-primary" value="create a Post">
+        <input id="btn" type="submit" class="btn btn-block btn-primary" value="Create Post">
     </form>
 </div>
 
