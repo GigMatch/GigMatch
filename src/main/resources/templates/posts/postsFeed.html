@@ -37,20 +37,7 @@
 
 
 
-        <div id="comments">
-            <h4>Comments</h4>
-            <ul class="collection">
-                <li th:each="comment : ${posts.comments}" class="collection-item avatar">
-                    <span class="title" th:text="${comment.user.username}"></span>
-                    <p th:text="${comment.content}"></p>
-                    <p th:text="${comment.children}"></p>
-                    <th:block th:if="comment.children != null" th:each="child : ${comment.children}">
-                        <span class="title" th:text="${child.user.username}"></span>
-                        <blockquote th:text="child.body"></blockquote>
-                    </th:block>
-                </li>
-            </ul>
-        </div>
+
 
 <!--        <div class="container" th:if="${post}">-->
 <!--            <form th:action="@{/feed/posts}" th:method="POST" th:object="${posts}">-->
@@ -88,19 +75,19 @@
         <!--            </div>-->
         <!--        </div>-->
 
-        <!--                <div class="card-body">-->
-        <!--                    <h6>Post a comment</h6>-->
-        <!--                    <br>-->
-        <!--                    <form th:action="@{/feed/post}" method="POST" th:object="${comment}">-->
-        <!--                    <div class="form-group">-->
-        <!--                        <label for="content"></label>-->
-        <!--                        <textarea id="content" name="content" class="form-control" type="text"></textarea>-->
-        <!--                    </div>-->
-        <!--                    <input id="btn" type="submit" class="btn btn-block btn-primary" value="comment">-->
-        <!--                    </form>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
+                        <div class="card-body">
+                            <h6>Post a comment</h6>
+                            <br>
+                            <form th:action="@{/feed/post}" method="POST" th:object="${comment}">
+                            <div class="form-group">
+                                <label for="content"></label>
+                                <textarea id="content" name="content" class="form-control" type="text"></textarea>
+                            </div>
+                            <input id="btn" type="submit" class="btn btn-block btn-primary" value="comment">
+                            </form>
+                        </div>
+                    </div>
+                </div>
         <div class="col-md-3">
             <div class="card mb-3">
                 <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top"
