@@ -14,4 +14,5 @@ public interface PostsRepository extends JpaRepository<Post, Long> {
     List<Post> searchByBody(@Param("term") String term);
 
     Post findByOwner(User owner);
+    List<Post> findAllByOwner(User owner);
 }

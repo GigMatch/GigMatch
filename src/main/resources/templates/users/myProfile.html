@@ -24,6 +24,7 @@
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
                     <div class="col-md-4">
+                        <!--USE filestack here?-->
                         <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"
                              class="card-img m-2" alt="...">
                         <div class="ml-4"><a href="#">Upload Photo</a></div>
@@ -34,6 +35,7 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h3 class="card-title" th:text="${profile.owner.first_name} + ' ' + ${profile.owner.last_name}">First Last</h3>
+                            <h4 class="card-title" th:text="${profile.owner.username}">First Last</h4>
                             <h4 th:text="${profile.profileType}">Profile Type</h4>
                         </div>
                         <div class="card-body">
@@ -67,31 +69,41 @@
                     <p class="card-text" th:text="${profile.genres}">Tell us what kind of music you play/like.</p>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    Your Posts
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title" th:text="${profile.owner.getUsername()}">Your Name</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Edit Post</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Your Name</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Edit Post</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+            <div th:if="${noPostsFound}">
+                You haven't created any posts yet.
             </div>
+            <div class="card mb-2" th:each="post : ${userPosts}">
+                <div class="card-body">
+                    <h5 th:text="${post.owner.username}"></h5>
+                    <p class="card-text" th:text="${post.body}"></p>
+                    <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn btn-primary">Edit Post</a>
+                </div>
+            </div>
+<!--            <div class="card">-->
+<!--                <div class="card-header">-->
+<!--                    Your Posts-->
+<!--                </div>-->
+<!--                <ul class="list-group list-group-flush">-->
+<!--                    <li class="list-group-item">-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-body">-->
+<!--                                <h5 class="card-title" th:text="${profile.owner.getUsername()}">Your Name</h5>-->
+<!--                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
+<!--                                <a href="#" class="btn btn-primary">Edit Post</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li class="list-group-item">-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-body">-->
+<!--                                <h5 class="card-title">Your Name</h5>-->
+<!--                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
+<!--                                <a href="#" class="btn btn-primary">Edit Post</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
         </div>
         <div class="col-md-3">
             <div class="card mb-3">
