@@ -12,8 +12,8 @@
                     <li class="list-group-item"><a href="/feed/posts">Home Feed</a></li>
                     <li class="list-group-item"><a href="#">Notifications</a></li>
                     <li class="list-group-item"><a href="#">Messages</a></li>
-                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>
-                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>
+<!--                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>-->
+<!--                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>-->
                     <li class="list-group-item"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Profile</a></li>
                 </ul>
             </div>
@@ -26,9 +26,6 @@
                         <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"
                              class="card-img m-2" alt="...">
                         <div class="ml-4"><a href="#">Upload Photo</a></div>
-                        <div class="ml-4">
-                            <button type="button" class="btn btn-primary btn-lg">Create Post</button>
-                        </div>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -70,6 +67,12 @@
             <div th:if="${noPostsFound}">
                 You haven't created any posts yet.
             </div>
+            <div>
+                <a th:href="'/posts/create'" class="btn btn-primary">Create a post</a>
+            </div>
+            <div>
+                <a th:href="'/events/create'" class="btn btn-primary col-md-6">Create an event</a>
+            </div>
             <div class="card mb-2" th:each="post : ${userPosts}">
                 <div class="card-body">
                     <h5 th:text="${post.owner.username}"></h5>
@@ -77,37 +80,12 @@
                     <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn btn-primary">Edit Post</a>
                 </div>
             </div>
-<!--            <div class="card">-->
-<!--                <div class="card-header">-->
-<!--                    Your Posts-->
-<!--                </div>-->
-<!--                <ul class="list-group list-group-flush">-->
-<!--                    <li class="list-group-item">-->
-<!--                        <div class="card">-->
-<!--                            <div class="card-body">-->
-<!--                                <h5 class="card-title" th:text="${profile.owner.getUsername()}">Your Name</h5>-->
-<!--                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-<!--                                <a href="#" class="btn btn-primary">Edit Post</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </li>-->
-<!--                    <li class="list-group-item">-->
-<!--                        <div class="card">-->
-<!--                            <div class="card-body">-->
-<!--                                <h5 class="card-title">Your Name</h5>-->
-<!--                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-<!--                                <a href="#" class="btn btn-primary">Edit Post</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--            </div>-->
         </div>
         <div class="col-md-3">
             <div class="card mb-3">
                 <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Map with center view of your city.</p>
+                    <p class="card-text" th:text="${profile.city} + ', ' + ${profile.state}"></p>
                 </div>
             </div>
             <div class="card mb-3">

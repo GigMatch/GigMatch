@@ -68,48 +68,16 @@
                 <div class="card-body">
                     <h5 th:text="${post.owner.username}"></h5>
                     <p class="card-text" th:text="${post.body}"></p>
-<!--                    <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn btn-primary">Edit Post</a>-->
                 </div>
             </div>
-<!--            <div class="card">-->
-<!--                <div class="card-header">-->
-<!--                    Their Posts-->
-<!--                </div>-->
-<!--                <ul class="list-group list-group-flush">-->
-<!--                    <li class="list-group-item">-->
-<!--                        <div class="card">-->
-<!--                            <div class="card-body">-->
-<!--                                <h5 class="card-title">Their Name</h5>-->
-<!--                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-<!--&lt;!&ndash;                                <a href="#" class="btn btn-primary">Edit Post</a>&ndash;&gt;-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </li>-->
-<!--                    <li class="list-group-item">-->
-<!--                        <div class="card">-->
-<!--                            <div class="card-body">-->
-<!--                                <h5 class="card-title">Their Name</h5>-->
-<!--                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-<!--&lt;!&ndash;                                <a href="#" class="btn btn-primary">Edit Post</a>&ndash;&gt;-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--            </div>-->
         </div>
         <div class="col-md-3">
             <div class="card mb-3">
                 <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Map with center view of their city.</p>
+                    <p class="card-text" th:text="${profile.city} + ', ' + ${profile.state}"></p>
                 </div>
             </div>
-<!--            <div class="card mb-3">-->
-<!--                <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif" class="card-img-top" alt="...">-->
-<!--                <div class="card-body">-->
-<!--                    <p class="card-text">Your Calendar.</p>-->
-<!--                </div>-->
-<!--            </div>-->
         </div>
     </div>
 
