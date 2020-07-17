@@ -76,7 +76,7 @@ public class ProfileController {
         User currentUser = usersDao.getOne(1L);
         profileToEdit.setOwner(currentUser);
         profilesDao.save(profileToEdit);
-        return "redirect:/profile/" + profileToEdit.getId();
+        return "redirect:/my-profile/" + profileToEdit.getId();
     }
 
 
