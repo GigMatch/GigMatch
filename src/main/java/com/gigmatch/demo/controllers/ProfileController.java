@@ -40,7 +40,7 @@ public class ProfileController {
         model.addAttribute("noPostsFound", postList.size() == 0);
         model.addAttribute("profile", profile);
         model.addAttribute("owner", profile.getOwner());
-        model.addAttribute("profileId", id);
+        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         model.addAttribute("userPosts", postList);
         return "users/myProfile";
     }
@@ -48,10 +48,16 @@ public class ProfileController {
 
     @GetMapping("/profile/{id}")
     public String showOtherProfile(@PathVariable long id, Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Profile profile = profilesDao.getOne(id);
+        User profileOwner = profile.getOwner();
+        List<Post> otherUserPostList = postsDao.findAllByOwner(profileOwner);
+        model.addAttribute("noPostsFound", otherUserPostList.size() == 0);
         model.addAttribute("profile", profile);
         model.addAttribute("owner", profile.getOwner());
+        model.addAttribute("currentUserProfileId", profilesDao.findByOwner(currentUser).getId());
         model.addAttribute("profileId", id);
+        model.addAttribute("userPosts", otherUserPostList);
         return "users/otherUsersProfile";
     }
 

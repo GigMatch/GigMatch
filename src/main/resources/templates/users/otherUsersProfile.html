@@ -14,7 +14,7 @@
                     <li class="list-group-item"><a href="#">Messages(Maybe)</a></li>
                     <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>
                     <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>
-                    <li class="list-group-item"><a th:href="'/my-profile/' + ${profileId}">My Profile</a></li>
+                    <li class="list-group-item"><a th:href="'/my-profile/' + ${currentUserProfileId}">My Profile</a></li>
                 </ul>
             </div>
         </div>
@@ -61,31 +61,41 @@
                     <p class="card-text" th:text="${profile.genres}">Tell us what kind of music you play/like.</p>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    Their Posts
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Their Name</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-<!--                                <a href="#" class="btn btn-primary">Edit Post</a>-->
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Their Name</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-<!--                                <a href="#" class="btn btn-primary">Edit Post</a>-->
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+            <div th:if="${noPostsFound}">
+                You haven't created any posts yet.
             </div>
+            <div class="card mb-2" th:each="post : ${userPosts}">
+                <div class="card-body">
+                    <h5 th:text="${post.owner.username}"></h5>
+                    <p class="card-text" th:text="${post.body}"></p>
+<!--                    <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn btn-primary">Edit Post</a>-->
+                </div>
+            </div>
+<!--            <div class="card">-->
+<!--                <div class="card-header">-->
+<!--                    Their Posts-->
+<!--                </div>-->
+<!--                <ul class="list-group list-group-flush">-->
+<!--                    <li class="list-group-item">-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-body">-->
+<!--                                <h5 class="card-title">Their Name</h5>-->
+<!--                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
+<!--&lt;!&ndash;                                <a href="#" class="btn btn-primary">Edit Post</a>&ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li class="list-group-item">-->
+<!--                        <div class="card">-->
+<!--                            <div class="card-body">-->
+<!--                                <h5 class="card-title">Their Name</h5>-->
+<!--                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
+<!--&lt;!&ndash;                                <a href="#" class="btn btn-primary">Edit Post</a>&ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
         </div>
         <div class="col-md-3">
             <div class="card mb-3">
