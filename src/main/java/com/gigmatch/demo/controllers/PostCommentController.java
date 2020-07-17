@@ -32,7 +32,7 @@ public class PostCommentController {
     @GetMapping("/comments/children/{id}")
     @ResponseBody
     public List<PostComment> getChildren(@PathVariable long id){
-        return postCommentsRepository.findbyParent(postCommentsRepository.getOne(id));
+        return postCommentsRepository.findByParent(postCommentsRepository.getOne(id));
     }
 
 

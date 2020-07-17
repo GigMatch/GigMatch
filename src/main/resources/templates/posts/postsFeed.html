@@ -35,12 +35,14 @@
             </div>
         </div>
 
+
+
         <div id="comments">
             <h4>Comments</h4>
             <ul class="collection">
-                <li th:each="post_comment : ${post.comment}" class="collection-item avatar">
+                <li th:each="comment : ${posts.comments}" class="collection-item avatar">
                     <span class="title" th:text="${comment.user.username}"></span>
-                    <p th:text="${postcomments.content}"></p>
+                    <p th:text="${comment.content}"></p>
                     <p th:text="${comment.children}"></p>
                     <th:block th:if="comment.children != null" th:each="child : ${comment.children}">
                         <span class="title" th:text="${child.user.username}"></span>
