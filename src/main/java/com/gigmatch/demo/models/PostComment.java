@@ -1,5 +1,6 @@
 package com.gigmatch.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.sun.xml.bind.v2.TODO;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -20,24 +21,23 @@ public class PostComment {
     @CreatedDate
     private Date createDate;
 
-    //TODO: Verify relationship for the two below
+
     @ManyToOne
+    @JsonBackReference
     private Post post;
 
     @ManyToOne
-    private PostComment parent;
+    private PostComment postComment;
 
     @OneToOne
     private User owner;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column()
-    private Date createdAt;
+    @Column(name = "create_date")
+    private Date createDate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
-    @Transient
-    private List<PostComment> children;
+
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
@@ -45,16 +45,16 @@ public class PostComment {
     public PostComment() {
     }
 
-    public PostComment(Date createDate, Post post, User owner, String content) {
-        this.createDate = createDate;
+    public PostComment(Date createdAt, Post post, User owner, String content) {
+        this.createDate = createdAt;
         this.post = post;
         this.owner = owner;
         this.content = content;
     }
 
-    public PostComment(long id, Date createDate, Post post, User owner, String content) {
+    public PostComment(long id, Date createdAt, Post post, User owner, String content) {
         this.id = id;
-        this.createDate = createDate;
+        this.createDate = createdAt;
         this.post = post;
         this.owner = owner;
         this.content = content;
@@ -100,24 +100,8 @@ public class PostComment {
         this.content = content;
     }
 
-    public PostComment getParent() { return parent; }
 
-    public void setParent(PostComment parent) { this.parent = parent; }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
 
-    public void setCreatedAt (Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public List<PostComment> getChildren() {
-        return children;
-    }
-
-    public void setChildren(List<PostComment> children) {
-        this.children = children;
-    }
 
 }
