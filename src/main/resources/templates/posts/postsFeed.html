@@ -19,6 +19,7 @@
         </div>
         <div class="col-md-6">
             <div class="card mb-3">
+                <button type="button" class="btn btn-primary btn-lg btn-block" th:if="${profileId == null}">Create a profile.</button>
                 <div class="card-body">
                     Create a post or event.
                 </div>
@@ -28,9 +29,8 @@
             </div>
             <div class="card mb-2" th:each="post : ${posts}">
                 <div class="card-body">
-                    <h5 th:text="${post.owner.username}"></h5>
+                  <h5 th:text="${post.owner.username}"></h5>
                     <p class="card-text" th:text="${post.body}"></p>
-                    <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn btn-primary">Edit Post</a>
                 </div>
             </div>
         </div>

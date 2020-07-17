@@ -1,6 +1,7 @@
 package com.gigmatch.demo.controllers;
 
 import com.gigmatch.demo.daos.PostsRepository;
+import com.gigmatch.demo.daos.ProfilesRepository;
 import com.gigmatch.demo.daos.UsersRepository;
 import com.gigmatch.demo.models.Post;
 import com.gigmatch.demo.models.User;
@@ -14,20 +15,24 @@ import java.util.List;
 @Controller
 public class PostController {
 
-    private PostsRepository postDao;
+    private PostsRepository postsDao;
     private UsersRepository usersDao;
+    private ProfilesRepository profilesDao;
 
-    public PostController(PostsRepository postsRepository, UsersRepository usersRepository){
-        this.postDao = postsRepository;
+    public PostController(PostsRepository postsRepository, UsersRepository usersRepository, ProfilesRepository profilesDao){
+        this.postsDao = postsRepository;
         this.usersDao = usersRepository;
+        this.profilesDao = profilesDao;
     }
 
     @GetMapping("/feed/posts")
 //    @RequestMapping(value = "/ads", method = RequestMethod.GET)
     public String index(Model model) {
-        List<Post> postList = postDao.findAll();
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Post> postList = postsDao.findAll();
         model.addAttribute("noPostsFound", postList.size() == 0);
         model.addAttribute("posts", postList);
+        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         return "posts/postsFeed";
     }
 
@@ -47,7 +52,7 @@ public class PostController {
     public String save(@ModelAttribute Post postToBeSaved, Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         postToBeSaved.setOwner(currentUser);
-        Post savedPost = postDao.save(postToBeSaved);
+        Post savedPost = postsDao.save(postToBeSaved);
 
 //        return "redirect:/feed" + savedPost.getId();
         return "redirect:/feed/posts";
@@ -56,7 +61,7 @@ public class PostController {
     @GetMapping("/posts/{id}/edit")
     public String showEditForm(Model model, @PathVariable long id){
         // find an ad
-        Post postToEdit = postDao.getOne(id);
+        Post postToEdit = postsDao.getOne(id);
         model.addAttribute("post", postToEdit);
         return "posts/editAPost";
     }
@@ -66,19 +71,19 @@ public class PostController {
         User currentUser = usersDao.getOne(1L);
         postToEdit.setOwner(currentUser);
         // save the changes
-        postDao.save(postToEdit); // update ads set title = ? where id = ?
+        postsDao.save(postToEdit); // update ads set title = ? where id = ?
         return "redirect:/feed/posts";
     }
 
     @PostMapping("/posts/{id}/delete")
     public String destroy(@PathVariable long id){
-        postDao.deleteById(id);
+        postsDao.deleteById(id);
         return "redirect:/feed/posts";
     }
 
     @GetMapping("/search/posts")
     public String searchByBody(Model model, @RequestParam(name = "term") String term){
-        List<Post> postList = postDao.searchByBody(term);
+        List<Post> postList = postsDao.searchByBody(term);
         model.addAttribute("posts", postList);
         return "posts/postsFeed";
     }

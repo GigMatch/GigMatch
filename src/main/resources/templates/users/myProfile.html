@@ -12,11 +12,9 @@
                     <li class="list-group-item"><a href="/feed/posts">Home Feed</a></li>
                     <li class="list-group-item"><a href="#">Notifications</a></li>
                     <li class="list-group-item"><a href="#">Messages</a></li>
-                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>
-                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>
+<!--                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>-->
+<!--                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>-->
                     <li class="list-group-item"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Profile</a></li>
-                    <li class="list-group-item"><a href="/profile/create">Create Profile</a></li>
-
                 </ul>
             </div>
         </div>
@@ -24,16 +22,15 @@
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
                     <div class="col-md-4">
+                        <!--USE filestack here?-->
                         <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"
                              class="card-img m-2" alt="...">
                         <div class="ml-4"><a href="#">Upload Photo</a></div>
-                        <div class="ml-4">
-                            <button type="button" class="btn btn-primary btn-lg">Create Post</button>
-                        </div>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <h3 class="card-title" th:text="${profile.owner.first_name} + ' ' + ${profile.owner.last_name}">First Last</h3>
+                            <h4 class="card-title" th:text="${profile.owner.username}">First Last</h4>
                             <h4 th:text="${profile.profileType}">Profile Type</h4>
                         </div>
                         <div class="card-body">
@@ -67,43 +64,34 @@
                     <p class="card-text" th:text="${profile.genres}">Tell us what kind of music you play/like.</p>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    Your Posts
+            <div th:if="${noPostsFound}">
+                You haven't created any posts yet.
+            </div>
+            <div>
+                <a th:href="'/posts/create'" class="btn btn-primary">Create a post</a>
+            </div>
+            <div>
+                <a th:href="'/events/create'" class="btn btn-primary col-md-6">Create an event</a>
+            </div>
+            <div class="card mb-2" th:each="post : ${userPosts}">
+                <div class="card-body">
+                    <h5 th:text="${post.owner.username}"></h5>
+                    <p class="card-text" th:text="${post.body}"></p>
+                    <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn btn-primary">Edit Post</a>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title" th:text="${profile.owner.getUsername()}">Your Name</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Edit Post</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Your Name</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Edit Post</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card mb-3">
-                <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top" alt="...">
+                <div id="map"></div>
                 <div class="card-body">
-                    <p class="card-text">Map with center view of your city.</p>
+                    <p class="card-text" id="inputCity" th:text="${profile.city} + ', ' + ${profile.state}"></p>
                 </div>
             </div>
             <div class="card mb-3">
                 <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Your Calendar.</p>
+                    <p class="card-text">Your Calendar</p>
                 </div>
             </div>
         </div>
@@ -112,6 +100,33 @@
 
 </div>
 </div>
+
+<script th:replace="fragments/map-scripts-and-div :: jquery-script"></script>
+<script th:replace="fragments/map-scripts-and-div :: key-script"></script>
+<script th:replace="fragments/map-scripts-and-div :: mapbox-script"></script>
+<script th:replace="fragments/map-scripts-and-div :: geocode-script"></script>
+
+<script>
+
+
+    var accessToken = mapboxToken;
+    mapboxgl.accessToken = accessToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 10,
+        center: [-96.8057, 32.7787]
+    });
+
+    var city = $("#inputCity").val();
+
+
+    geocode(city, mapboxToken).then(function(result) {
+        console.log(result);
+        map.setCenter(result);
+        map.setZoom(10);
+    });
+</script>
 
 
 </body>
