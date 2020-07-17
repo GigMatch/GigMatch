@@ -35,16 +35,36 @@
             </div>
         </div>
 
-<!--        <div class="container" th:if="${posts}">-->
-<!--            <form th:action="@{/feed/posts}" th:method="POST" th:object="${}">-->
+        <div id="comments">
+            <h4>Comments</h4>
+            <ul class="collection">
+                <li th:each="post_comment : ${post.comment}" class="collection-item avatar">
+                    <span class="title" th:text="${comment.user.username}"></span>
+                    <p th:text="${postcomments.content}"></p>
+                    <p th:text="${comment.children}"></p>
+                    <th:block th:if="comment.children != null" th:each="child : ${comment.children}">
+                        <span class="title" th:text="${child.user.username}"></span>
+                        <blockquote th:text="child.body"></blockquote>
+                    </th:block>
+                </li>
+            </ul>
+        </div>
+
+<!--        <div class="container" th:if="${post}">-->
+<!--            <form th:action="@{/feed/posts}" th:method="POST" th:object="${posts}">-->
 <!--                comment body:-->
 <!--                <div>-->
-<!--                    <input type="hidden" name="postId" th:value="${}">-->
+<!--                    <input type="hidden" name="postId" th:value="${posts.id}">-->
 <!--                </div>-->
-<!--                <input th:field="*{}" />-->
+<!--                <input th:field="*{body}" />-->
 <!--                <br />-->
 <!--                <input type="submit" />-->
 <!--            </form>-->
+<!--        </div>-->
+
+
+<!--        <div th:each="postcomment: ${posts}">-->
+<!--            <h2>Comment: <span th:text="${postcomment}"></span> Created by: <span th:text="${postcomment.user.firstName}"></span></h2>-->
 <!--        </div>-->
 
         <!--        <div class="col-md-6">-->

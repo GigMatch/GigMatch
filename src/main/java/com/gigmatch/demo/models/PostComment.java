@@ -1,13 +1,16 @@
 package com.gigmatch.demo.models;
 
 import com.sun.xml.bind.v2.TODO;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "post_comments")
+
 public class PostComment {
 
     @Id
@@ -21,8 +24,20 @@ public class PostComment {
     @ManyToOne
     private Post post;
 
+    @ManyToOne
+    private PostComment parent;
+
     @OneToOne
     private User owner;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column()
+    private Date createdAt;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
+    @Transient
+    private List<PostComment> children;
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
@@ -84,4 +99,17 @@ public class PostComment {
     public void setContent(String content) {
         this.content = content;
     }
+
+    public PostComment getParent() { return parent; }
+
+    public void setParent(PostComment parent) { this.parent = parent; }
+
+    public List<PostComment> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<PostComment> children) {
+        this.children = children;
+    }
+
 }

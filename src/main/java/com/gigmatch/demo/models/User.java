@@ -1,6 +1,7 @@
 package com.gigmatch.demo.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -25,6 +26,10 @@ public class User {
 
     @Column(nullable = false, length = 255)
     private String password;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<PostComment> comments;
+
 
     public User() {}
 
