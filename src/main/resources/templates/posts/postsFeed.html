@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div th:if="${noPostsFound}">
-            No posts were found.
+                No posts were found.
             </div>
             <div class="card mb-2" th:each="post : ${posts}">
                 <div class="card-body">
@@ -32,51 +32,64 @@
                     <p class="card-text" th:text="${post.body}"></p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
-
             </div>
         </div>
 
-        <div class="col-md-6">
-            <div class="card mb-3">
-                <div class="card-body">
-                    Comments
-                </div>
-            </div>
-            <div th:if="${noCommentsFound}">
-                No comments were found.
-            </div>
-            <div class="card mb-2" th:each="comment : ${comments}" >
-                <div class="card-body">
-                    <h5 th:text="${comment.owner.getUsername()}"></h5>
-                    <p class="card-text" th:text="${comment.content}"></p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+<!--        <div class="container" th:if="${posts}">-->
+<!--            <form th:action="@{/feed/posts}" th:method="POST" th:object="${}">-->
+<!--                comment body:-->
+<!--                <div>-->
+<!--                    <input type="hidden" name="postId" th:value="${}">-->
+<!--                </div>-->
+<!--                <input th:field="*{}" />-->
+<!--                <br />-->
+<!--                <input type="submit" />-->
+<!--            </form>-->
+<!--        </div>-->
 
-            </div>
-        </div>
+        <!--        <div class="col-md-6">-->
+        <!--            <div class="card mb-3">-->
+        <!--                <div class="card-body">-->
+        <!--                    Comments-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div th:if="${noCommentsFound}">-->
+        <!--                No comments were found.-->
+        <!--            </div>-->
+        <!--            <div class="card mb-2" th:each="comment : ${comments}" >-->
+        <!--                <div class="card-body">-->
+        <!--                    <h5 th:text="${comment.owner.getUsername()}"></h5>-->
+        <!--                    <p class="card-text" th:text="${comment.content}"></p>-->
+        <!--                    <a href="#" class="btn btn-primary">Go somewhere</a>-->
+        <!--                </div>-->
 
-                <div class="card-body">
-                    <h6>Post a comment</h6>
-                    <br>
-                    <form th:action="@{/feed/post}" method="POST" th:object="${comment}">
-                    <div class="form-group">
-                        <label for="content"></label>
-                        <textarea id="content" name="content" class="form-control" type="text"></textarea>
-                    </div>
-                    <input id="btn" type="submit" class="btn btn-block btn-primary" value="comment">
-                    </form>
-                </div>
-            </div>
-        </div>
+        <!--            </div>-->
+        <!--        </div>-->
+
+        <!--                <div class="card-body">-->
+        <!--                    <h6>Post a comment</h6>-->
+        <!--                    <br>-->
+        <!--                    <form th:action="@{/feed/post}" method="POST" th:object="${comment}">-->
+        <!--                    <div class="form-group">-->
+        <!--                        <label for="content"></label>-->
+        <!--                        <textarea id="content" name="content" class="form-control" type="text"></textarea>-->
+        <!--                    </div>-->
+        <!--                    <input id="btn" type="submit" class="btn btn-block btn-primary" value="comment">-->
+        <!--                    </form>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
         <div class="col-md-3">
             <div class="card mb-3">
-                <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top" alt="...">
+                <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top"
+                     alt="...">
                 <div class="card-body">
                     <p class="card-text">Map with center view of your city.</p>
                 </div>
             </div>
             <div class="card mb-3">
-                <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif" class="card-img-top" alt="...">
+                <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif"
+                     class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-text">Your Calendar.</p>
                 </div>
