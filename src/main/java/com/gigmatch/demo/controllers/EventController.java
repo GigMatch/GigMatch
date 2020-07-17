@@ -1,6 +1,7 @@
 package com.gigmatch.demo.controllers;
 
 import com.gigmatch.demo.daos.EventsRepository;
+import com.gigmatch.demo.daos.ProfilesRepository;
 import com.gigmatch.demo.daos.UsersRepository;
 import com.gigmatch.demo.models.Event;
 import com.gigmatch.demo.models.Post;
@@ -16,18 +17,22 @@ import java.util.List;
 public class EventController {
     private EventsRepository eventsDao;
     private UsersRepository usersDao;
+    private ProfilesRepository profilesDao;
 
-    public EventController(EventsRepository eventsRepository, UsersRepository usersRepository){
+    public EventController(EventsRepository eventsRepository, UsersRepository usersRepository, ProfilesRepository profilesDao){
         this.eventsDao = eventsRepository;
         this.usersDao = usersRepository;
+        this.profilesDao = profilesDao;
     }
 
     //shows all events
     @GetMapping("/feed/events")
     public String index(Model model) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Event> eventList = eventsDao.findAll();
         model.addAttribute("noEventsFound", eventList.size() == 0);
         model.addAttribute("events", eventList);
+        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         return "events/eventsFeed";
     }
 
