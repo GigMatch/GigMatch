@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Nav</title>
+</head>
 <body>
+<!--<nav th:fragment="navbar" class="navbar navbar-dark navbar-expand-md" style="background-color: goldenrod">-->
+<!--    <div class="container-fluid">-->
+<!--        <a class="navbar-brand"-->
+<!--           href="/" alt="GigMatch logo">-->
+<!--            <img src="">-->
+<!--            GigMatch-->
+<!--        </a>-->
+
+<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"-->
+<!--                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--            <ul class="navbar-nav ml-auto">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link scroll-link" href="#">About</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link scroll-link" href="/sign-up">Sign Up</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="/login">Login</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
 
 <nav th:fragment="welcomeNavbar" class="navbar-homepage navbar navbar-dark fixed-top navbar-expand-md navbar-no-bg">
     <div class="container-fluid">
 
-        <a class="navbar-brand" href="/" alt="logo"><img src="https://i.ibb.co/0nkhFk6/logo-Gig2-cutout.png"
-                                                         class="img-responsive logo"></a>
+        <a class="navbar-brand" href="/" alt="logo"><img src="https://i.ibb.co/0nkhFk6/logo-Gig2-cutout.png" class="img-responsive logo"></a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,114 +47,83 @@
 
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link scroll-link welcome-link" href="/sign-up">Sign Up</a>
+                    <a class="nav-link scroll-link" href="/sign-up">Sign Up</a>
                 </li>
                 <li class="nav-item" sec:authorize="!isAuthenticated()">
-                    <a class="nav-link scroll-link welcome-link" href="/login">Login</a>
+                    <a class="nav-link scroll-link" href="/login">Login</a>
                 </li>
             </ul>
         </div>
     </div>
+
+</nav>
+
+<nav th:fragment="myProfileNav" class="navbar-homepage navbar navbar-light navbar-expand-md" style="background-color: goldenrod">
+    <ul class="d-flex justify-content-end">
+
+        <form action="/search/posts">
+            <input type="text" name="term" placeholder="Search posts">
+            <button class="btn">Search</button>
+        </form>
+
+        <!--        <img src="/static/imgs/official-logo.png" alt="GigMatch Logo">-->
+        <li class="nav-item flex-fill">
+            <a href="/">GigMatch</a>
+        </li>
+        <li class="nav-item mr-5 mt-1">
+            <a href="#"><i class="far fa-bell" style="color: white"></i></a>
+        </li>
+        <li class="nav-item mr-5 mt-1">
+            <a href="#"><i class="far fa-envelope" style="color: white"></i></a>
+        </li>
+        <li class="nav-item mr-5 mt-1">
+            <a href="#"><i class="far fa-user-circle" style="color: white"></i></a>
+        </li>
+        <li class="nav-item" sec:authorize="!isAuthenticated()">
+            <a class="nav-link scroll-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item" sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" th:method="post">
+                <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+<nav th:fragment="eventsFeed" class="navbar-homepage navbar navbar-light navbar-expand-md" style="background-color: goldenrod">
+    <ul class="d-flex justify-content-end">
+
+        <form action="/search/events">
+            <input type="text" name="term" placeholder="Search events">
+            <button class="btn">Search</button>
+        </form>
+
+        <!--        <img src="/static/imgs/official-logo.png" alt="GigMatch Logo">-->
+        <li class="nav-item flex-fill">
+            <a href="/">GigMatch</a>
+        </li>
+        <li class="nav-item mr-5 mt-1">
+            <a href="#"><i class="far fa-bell" style="color: white"></i></a>
+        </li>
+        <li class="nav-item mr-5 mt-1">
+            <a href="#"><i class="far fa-envelope" style="color: white"></i></a>
+        </li>
+        <li class="nav-item mr-5 mt-1">
+            <a href="#"><i class="far fa-user-circle" style="color: white"></i></a>
+        </li>
+        <li class="nav-item" sec:authorize="!isAuthenticated()">
+            <a class="nav-link scroll-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item" sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" th:method="post">
+                <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+            </form>
+        </li>
+    </ul>
 </nav>
 
 
-    <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light static-top" style="background-color: goldenrod">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="https://i.ibb.co/tDdYFGz/logo.jpg" class="img-responsive logo" alt="">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <form action="/search/posts" class="form-inline">
-                <input class="form-control mr-sm-2" type="text" name="term" placeholder="Search posts">
-                <button class="btn btn-outline-dark my-2 my-sm-0">Search</button>
-            </form>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto nav-font-icon">
-                    <li class="nav-item p-2">
-                        <a class="nav-link welcome-link" href="#"><i class="far fa-bell" style="color: #ffffff"></i></a>
-                    </li>
-                    <li class="nav-item p-2 nav-font-icon">
-                        <a class="nav-link welcome-link" href="#"><i class="far fa-envelope" style="color: white"></i></a>
-                    </li>
-                    <li class="nav-item p-2 nav-font-icon">
-                        <a class="nav-link welcome-link" href="#"><i class="far fa-user-circle" style="color: white"></i></a>
-                    </li>
-                    <li class="nav-item" sec:authorize="isAuthenticated()">
-                        <form th:action="@{/logout}" th:method="post">
-                            <button class="btn-link btn" style="margin-top: 8px; color: white">Logout</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-<!--<nav th:fragment="myProfileNav" class="navbar-homepage navbar navbar-light navbar-expand-md" style="background-color: goldenrod">-->
-<!--    <ul class="d-flex justify-content-end">-->
-
-<!--        <form action="/search/posts">-->
-<!--            <input type="text" name="term" placeholder="Search posts">-->
-<!--            <button class="btn">Search</button>-->
-<!--        </form>-->
-
-<!--        &lt;!&ndash;        <img src="/static/imgs/official-logo.png" alt="GigMatch Logo">&ndash;&gt;-->
-<!--        <li class="nav-item flex-fill">-->
-<!--            <a href="/">GigMatch</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item mr-5 mt-1">-->
-<!--            <a href="#"><i class="far fa-bell" style="color: white"></i></a>-->
-<!--        </li>-->
-<!--        <li class="nav-item mr-5 mt-1">-->
-<!--            <a href="#"><i class="far fa-envelope" style="color: white"></i></a>-->
-<!--        </li>-->
-<!--        <li class="nav-item mr-5 mt-1">-->
-<!--            <a href="#"><i class="far fa-user-circle" style="color: white"></i></a>-->
-<!--        </li>-->
-<!--        <li class="nav-item" sec:authorize="!isAuthenticated()">-->
-<!--            <a class="nav-link scroll-link" href="/login">Login</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item" sec:authorize="isAuthenticated()">-->
-<!--            <form th:action="@{/logout}" th:method="post">-->
-<!--                <button class="btn-link btn" style="margin-top: 8px">Logout</button>-->
-<!--            </form>-->
-<!--        </li>-->
-<!--    </ul>-->
-<!--</nav>-->
-
-<!--<nav th:fragment="eventsFeed" class="navbar-homepage navbar navbar-light navbar-expand-md" style="background-color: goldenrod">-->
-<!--    <ul class="d-flex justify-content-end">-->
-
-<!--        <form action="/search/events">-->
-<!--            <input type="text" name="term" placeholder="Search events">-->
-<!--            <button class="btn">Search</button>-->
-<!--        </form>-->
-
-<!--        &lt;!&ndash;        <img src="/static/imgs/official-logo.png" alt="GigMatch Logo">&ndash;&gt;-->
-<!--        <li class="nav-item flex-fill">-->
-<!--            <a href="/">GigMatch</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item mr-5 mt-1">-->
-<!--            <a href="#"><i class="far fa-bell" style="color: white"></i></a>-->
-<!--        </li>-->
-<!--        <li class="nav-item mr-5 mt-1">-->
-<!--            <a href="#"><i class="far fa-envelope" style="color: white"></i></a>-->
-<!--        </li>-->
-<!--        <li class="nav-item mr-5 mt-1">-->
-<!--            <a href="#"><i class="far fa-user-circle" style="color: white"></i></a>-->
-<!--        </li>-->
-<!--        <li class="nav-item" sec:authorize="!isAuthenticated()">-->
-<!--            <a class="nav-link scroll-link" href="/login">Login</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item" sec:authorize="isAuthenticated()">-->
-<!--            <form th:action="@{/logout}" th:method="post">-->
-<!--                <button class="btn-link btn" style="margin-top: 8px">Logout</button>-->
-<!--            </form>-->
-<!--        </li>-->
-<!--    </ul>-->
-<!--</nav>-->
 
 
 </body>
