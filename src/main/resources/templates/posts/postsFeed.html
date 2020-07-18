@@ -19,7 +19,9 @@
         </div>
         <div class="col-md-6">
             <div class="card mb-3">
-                <button type="button" class="btn btn-primary btn-lg btn-block" th:if="${profileId == null}">Create a profile.</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" th:if="${profileId == null}">Create a
+                    profile.
+                </button>
                 <div class="card-body">
                     Create a post or event.
                 </div>
@@ -29,83 +31,50 @@
             </div>
             <div class="card mb-2" th:each="post : ${posts}">
                 <div class="card-body">
-                  <h5 th:text="${post.owner.username}"></h5>
+                    <h5 th:text="${post.owner.username}"></h5>
                     <p class="card-text" th:text="${post.body}"></p>
                 </div>
             </div>
         </div>
 
-
-
-
-
-        <div class="container" th:if="${post}">
-            <form th:action="@{/feed/posts}" th:method="POST" th:object="${posts}">
-                comment body:
-                <div>
-                    <input type="hidden" name="postId" th:value="${posts.id}">
+        <div class="card-body">
+            <h6>Post a comment</h6>
+            <br>
+            <form th:action="@{/feed/post/post.id}" method="POST" th:object="${comment}">
+                <div class="form-group">
+                    <label for="content"></label>
+                    <textarea th:field="*{content}" id="content" name="content" class="form-control"
+                              type="text"></textarea>
                 </div>
-                <input th:field="*{body}" />
-                <br />
-                <input type="submit" />
+                <input id="btn" type="submit" class="btn btn-block btn-primary" value="comment">
             </form>
         </div>
+    </div>
 
 
-        <div th:each="postcomment: ${posts}">
-            <h2>Comment: <span th:text="${postcomment}"></span> Created by: <span th:text="${postcomment.user.firstName}"></span></h2>
-        </div>
+    <div th:each="postcomment: ${posts}">
+        <h2>Comment: <span th:text="${postcomment}"></span> Created by: <span th:text="${postcomment.user.firstName}"></span></h2>
+    </div>
 
-                <div class="col-md-6">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            Comments
-                        </div>
-                    </div>
-                    <div th:if="${noCommentsFound}">
-                        No comments were found.
-                    </div>
-                    <div class="card mb-2" th:each="comment : ${comments}" >
-                        <div class="card-body">
-                            <h5 th:text="${comment.owner.getUsername()}"></h5>
-                            <p class="card-text" th:text="${comment.content}"></p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
 
-                    </div>
-                </div>
-
-                        <div class="card-body">
-                            <h6>Post a comment</h6>
-                            <br>
-                            <form th:action="@{/feed/post/post.id}" method="POST" th:object="${comment}">
-                            <div class="form-group">
-                                <label for="content"></label>
-                                <textarea th:field="*{content}" id="content" name="content" class="form-control" type="text"></textarea>
-                            </div>
-                            <input id="btn" type="submit" class="btn btn-block btn-primary" value="comment">
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
-        <div class="col-md-3">
-            <div class="card mb-3">
-                <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top"
-                     alt="...">
-                <div class="card-body">
-                    <p class="card-text">Map with center view of your city.</p>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif"
-                     class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Your Calendar.</p>
-                </div>
-            </div>
+</div>
+<div class="col-md-3">
+    <div class="card mb-3">
+        <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top"
+             alt="...">
+        <div class="card-body">
+            <p class="card-text">Map with center view of your city.</p>
         </div>
     </div>
+    <div class="card mb-3">
+        <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif"
+             class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text">Your Calendar.</p>
+        </div>
+    </div>
+</div>
+</div>
 
 </div>
 </div>

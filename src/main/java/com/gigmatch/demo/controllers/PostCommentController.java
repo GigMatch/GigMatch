@@ -29,16 +29,16 @@ public class PostCommentController {
         this.usersDao = usersRepository;
         this.postsDao = postsRepository;
     }
-
-    @GetMapping("/feed/posts")
-    public String indexComment(Model model) {
-        List<PostComment> postCommentList = postCommentsDao.findAll();
-        model.addAttribute("noCommentsFound", postCommentList.size() == 0);
-        model.addAttribute("comments", postCommentList);
-        return "posts/postsFeed";
-
-    }
-
+//
+//    @GetMapping("/feed/posts")
+//    public String indexComment(Model model) {
+//        List<PostComment> postCommentList = postCommentsDao.findAll();
+//        model.addAttribute("noCommentsFound", postCommentList.size() == 0);
+//        model.addAttribute("comments", postCommentList);
+//        return "posts/postsFeed";
+//
+//    }
+//
 
     @GetMapping("/feed/posts")
     public String showCommentForm(Model viewModel){
