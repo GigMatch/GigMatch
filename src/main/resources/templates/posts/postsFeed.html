@@ -40,7 +40,7 @@
         <div class="card-body">
             <h6>Post a comment</h6>
             <br>
-            <form th:action="@{/feed/post/post.id}" method="POST" th:object="${comment}">
+            <form th:action="@{/feed/post}" method="POST" th:object="${comment}">
                 <div class="form-group">
                     <label for="content"></label>
                     <textarea th:field="*{content}" id="content" name="content" class="form-control"
