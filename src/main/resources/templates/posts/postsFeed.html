@@ -13,13 +13,14 @@
                     <li class="list-group-item"><a href="#">Messages</a></li>
                     <li class="list-group-item"><a href="/feed/posts">Posts</a></li>
                     <li class="list-group-item"><a href="/feed/events">Events</a></li>
-                    <li class="list-group-item"><a th:href="'/my-profile/' + ${profileId}">My Profile</a></li>
+                    <li class="list-group-item" th:if="${profileId == null}"><a th:href="'/profile/create'">Create Profile</a></li>
+                    <li class="list-group-item" th:if="${profileId != null}"><a th:href="'/my-profile/' + ${profileId}">My Profile</a></li>
                 </ul>
             </div>
         </div>
         <div class="col-md-6">
             <div class="card mb-3">
-                <button type="button" class="btn btn-primary btn-lg btn-block" th:if="${profileId == null}">Create a profile.</button>
+<!--                <button type="button" class="btn btn-primary btn-lg btn-block" th:if="${profileId == null}">Create a profile.</button>-->
                 <div class="card-body">
                     Create a post or event.
                 </div>
