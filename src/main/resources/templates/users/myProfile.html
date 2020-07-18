@@ -106,25 +106,19 @@
 <script th:replace="fragments/map-scripts-and-div :: mapbox-script"></script>
 <script th:replace="fragments/map-scripts-and-div :: geocode-script"></script>
 
-<script>
+<script th:inline="javascript">
 
+    var city = [[${profile.city}]];
 
-    var accessToken = mapboxToken;
-    mapboxgl.accessToken = accessToken;
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 10,
-        center: [-96.8057, 32.7787]
-    });
-
-    var city = $("#inputCity").val();
-
-
-    geocode(city, mapboxToken).then(function(result) {
+    geocode(city, mapboxToken).then(function (result) {
         console.log(result);
-        map.setCenter(result);
-        map.setZoom(10);
+        mapboxgl.accessToken = mapboxToken;
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            zoom: 12,
+            center: (result)
+        });
     });
 </script>
 
