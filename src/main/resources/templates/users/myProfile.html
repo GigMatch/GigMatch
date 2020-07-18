@@ -73,7 +73,7 @@
             <div>
                 <a th:href="'/events/create'" class="btn btn-primary col-md-6">Create an event</a>
             </div>
-            <div class="card mb-2" th:each="post : ${userPosts}">
+           <div class="card mb-2" th:each="post : ${userPosts}">
                 <div class="card-body">
                     <h5 th:text="${post.owner.username}"></h5>
                     <p class="card-text" th:text="${post.body}"></p>
@@ -83,7 +83,7 @@
         </div>
         <div class="col-md-3">
             <div class="card mb-3">
-                <div id="map"></div>
+                <div id="map" style="width: 100%; height:200px"></div>
                 <div class="card-body">
                     <p class="card-text" id="inputCity" th:text="${profile.city} + ', ' + ${profile.state}"></p>
                 </div>
