@@ -35,7 +35,7 @@ public class PostComment {
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
-    private Date createDate;
+    private Date createdAt;
 
 
 

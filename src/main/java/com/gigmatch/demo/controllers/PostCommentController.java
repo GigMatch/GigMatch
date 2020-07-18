@@ -47,10 +47,9 @@ public class PostCommentController {
     }
 
     @PostMapping("/feed/posts")
-    public String createComment(@ModelAttribute PostComment postCommentToBeSaved, @RequestParam(name = "postId") String postId) {
-        Post post = postsDao.getOne(Long.parseLong(postId));
+    public String createComment(@ModelAttribute PostComment postCommentToBeSaved)  {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        postCommentToBeSaved.setPost(post);
+//        postCommentToBeSaved.setPost(post);
         postCommentToBeSaved.setOwner(currentUser);
         Date currentDate = new Date();
         postCommentToBeSaved.setCreateDate(currentDate);
