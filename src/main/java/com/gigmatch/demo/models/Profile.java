@@ -30,9 +30,6 @@ public class Profile {
     private String interests;
 
     @Column(columnDefinition = "TEXT")
-    private String skills;
-
-    @Column(columnDefinition = "TEXT")
     private String genres;
 
     @OneToOne
@@ -47,7 +44,6 @@ public class Profile {
         this.profileType = profileType;
         this.bio = bio;
         this.interests = interests;
-        this.skills = skills;
         this.genres = genres;
         this.owner = owner;
     }
@@ -60,7 +56,6 @@ public class Profile {
         this.profileType = profileType;
         this.bio = bio;
         this.interests = interests;
-        this.skills = skills;
         this.genres = genres;
         this.owner = owner;
     }
@@ -119,14 +114,6 @@ public class Profile {
 
     public void setInterests(String interests) {
         this.interests = interests;
-    }
-
-    public String getSkills() {
-        return skills;
-    }
-
-    public void setSkills(String skills) {
-        this.skills = skills;
     }
 
     public String getGenres() {
