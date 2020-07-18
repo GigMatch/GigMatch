@@ -3,6 +3,11 @@ html {
     scroll-behavior: smooth;
 }
 
+/*Font Awesome*/
+.fa-user-alt {
+    font-size: 30px;
+}
+
 /*General Nav*/
 
 .gen-container {
