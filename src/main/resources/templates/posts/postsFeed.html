@@ -20,9 +20,8 @@
             </div>
             <div class="col-md-6">
                 <div class="card mb-3">
-                    <!--                <button type="button" class="btn btn-primary btn-lg btn-block">Create a profile.</button>-->
                     <div class="card-body">
-                        Create a post or event.
+                        <a th:href="'/posts/create'">Post a message, show your skills, or find a match for your gig.</a>
                     </div>
                 </div>
                 <div th:if="${noPostsFound}">
