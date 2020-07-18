@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Log In')"></head>
-<body onload="myFunction()">
+<body id="login-background" onload="myFunction()">
 
 <div id="loader">
     <span></span>
@@ -22,14 +22,14 @@
 </div>
 
 <div class="container box" id="myDiv" style="display: none">
-<h4 class="wordCarousel text-l">
+<h4 class="wordCarousel">
     <span><a href="/">You Need: </a></span>
-    <div class="div">
+    <div class="carousel-box">
         <!--        Use classes 2,3, or 4 to match the number of words -->
         <ul class="flip3">
-            <li>GigMatch</li>
-            <li>Gigs</li>
-            <li>Artist</li>
+            <li class="carousel-li" >GigMatch</li>
+            <li class="carousel-li">Gigs</li>
+            <li class="carousel-li">Artist</li>
         </ul>
     </div>
 </h4>
@@ -45,7 +45,7 @@
 </div>
 
 
-<div class="container" id="margin-l">
+<div class="container" id="form-margin">
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
@@ -54,11 +54,11 @@
                     <form name="username" class="form-signin" th:action="@{/login}" method="post">
                         <div class="form-label-group">
                             <input type="text" id="username" class="form-control" name="username"  placeholder="username" required autofocus/>
-                            <label for="username">Username</label>
+                            <label class="form-root" for="username">Username</label>
                         </div>
                         <div class="form-label-group">
                             <input type="password" id="password" class="form-control" placeholder="password" name="password" required/>
-                            <label for="password">Password</label>
+                            <label class="form-root" for="password">Password</label>
                         </div>
 
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Log In" type="submit">Log in</button>
