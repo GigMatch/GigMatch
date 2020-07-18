@@ -3,6 +3,18 @@ html {
     scroll-behavior: smooth;
 }
 
+/*General Nav*/
+
+.gen-container {
+    height: 34px;
+}
+
+.nav-search {
+    width: 484px;
+}
+
+
+
 /*Welcome Page*/
 
 /*Welcome nav*/
@@ -51,7 +63,7 @@ html {
 
 
 
-/*Logo for Nav*/
+/*Logo for Welcome Nav*/
 
 .logo {
     height: auto;
