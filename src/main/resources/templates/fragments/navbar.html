@@ -16,11 +16,11 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
 
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto" sec:authorize="!isAuthenticated()">
                 <li class="nav-item">
                     <a class="nav-link scroll-link welcome-link" href="/sign-up">Sign Up</a>
                 </li>
-                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                <li class="nav-item">
                     <a class="nav-link scroll-link welcome-link" href="/login">Login</a>
                 </li>
             </ul>
@@ -63,8 +63,21 @@
                 <li class="nav-item p-2 nav-font-icon">
                     <a class="nav-link" href="#"><i class="far fa-envelope" style="color: white"></i></a>
                 </li>
-                <li class="nav-item p-2 nav-font-icon">
-                    <a class="nav-link" href="#"><i class="fas fa-user-alt" style="color: white"></i></a>
+
+
+                <li class="nav-item p-2 nav-font-icon dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-alt"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">My Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Log Out</a>
+                    </div>
+                </li>
+
+
+
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" th:method="post">
