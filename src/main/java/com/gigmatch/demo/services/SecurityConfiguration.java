@@ -35,11 +35,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     //Using HTTP security OBJECT that's coming in saying on form
     // login the login page at /login where do you want them to go
-    // if they successfully login this is ads for DH, this is properly configured to ads.
+    // if they successfully login this is posts | events for DH, this
+    // is properly configured to posts or events.
     //permit all important
     //and
     //logout send user to logout page with logout appended to the query string
-    //and authorize request we require the following be authorized  / and /ads and permit all
+    //and authorize request we require the following be authorized  / and /welcomePage and permit all
     //in this instance if you see this then permit all?
     //last directive... these are the pages and authorize requests antMatchers if they try to
     //go to create or edit you have to make sure they are authenticated
@@ -61,12 +62,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
-//                .authorizeRequests()
-//                .antMatchers(
-//                        "/feed/create", // only authenticated users can create ads
-//                        "/feed/{id}/edit"// only authenticated users can edit ads
-//                )
-//                .authenticated()
+                .authorizeRequests()
+                .antMatchers(
+                        "/posts/create", // only authenticated users can create posts
+                        "/posts/{id}/edit", // only authenticated users can edit posts
+                        "/posts/{id}/delete", // only authenticated users can delete posts
+                        "/events/create", // only authenticated users can create events
+                        "/events/{id}/edit", // only authenticated users can edit events
+                        "/events/{id}/delete" // only authenticated users can delete events
+                )
+                .authenticated()
         ;
     }
 }
