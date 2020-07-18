@@ -29,34 +29,53 @@
 </nav>
 
 
-    <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light static-top" style="background-color: goldenrod">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="https://i.ibb.co/tDdYFGz/logo.jpg" class="img-responsive logo" alt="">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light static-top" style="background-color: goldenrod">
+    <div class="container gen-container">
+        <a class="navbar-brand" href="#">
+            <img src="https://i.ibb.co/Wgg1M4z/logo.jpg" class="img-responsive logo" alt="">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="input-group">
             <form action="/search/posts" class="form-inline">
-                <input class="form-control mr-sm-2" type="text" name="term" placeholder="Search posts">
-                <button class="btn btn-outline-dark my-2 my-sm-0">Search</button>
+                <input  type="text" name="term" class="form-control " placeholder="Search posts...">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
             </form>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto nav-font-icon">
-                    <li class="nav-item p-2">
-                        <a class="nav-link welcome-link" href="#"><i class="far fa-bell" style="color: #ffffff"></i></a>
-                    </li>
-                    <li class="nav-item p-2 nav-font-icon">
-                        <a class="nav-link welcome-link" href="#"><i class="far fa-envelope" style="color: white"></i></a>
-                    </li>
-                    <li class="nav-item p-2 nav-font-icon">
-                        <a class="nav-link welcome-link" href="#"><i class="far fa-user-circle" style="color: white"></i></a>
-                    </li>
-                </ul>
-            </div>
         </div>
-    </nav>
+
+<!--        <form action="/search/posts" class="form-inline">-->
+<!--            <input class="form-control mr-sm-2" type="text" name="term" placeholder="Search posts">-->
+<!--            <button class="btn btn-outline-dark my-2 my-sm-0">Search</button>-->
+<!--        </form>-->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto nav-font-icon">
+                <li class="nav-item p-2">
+                    <a class="nav-link" href="#"><i class="far fa-bell" style="color: #ffffff"></i></a>
+                </li>
+                <li class="nav-item p-2 nav-font-icon">
+                    <a class="nav-link" href="#"><i class="far fa-envelope" style="color: white"></i></a>
+                </li>
+                <li class="nav-item p-2 nav-font-icon">
+                    <a class="nav-link" href="#"><i class="far fa-user-circle"
+                                                                 style="color: white"></i></a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" th:method="post">
+                        <button class="btn-link btn" style="margin-top: 8px; color: white">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 <!--<nav th:fragment="myProfileNav" class="navbar-homepage navbar navbar-light navbar-expand-md" style="background-color: goldenrod">-->
 <!--    <ul class="d-flex justify-content-end">-->
