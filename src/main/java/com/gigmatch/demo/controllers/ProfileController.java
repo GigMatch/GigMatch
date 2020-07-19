@@ -103,15 +103,4 @@ public class ProfileController {
         profilesDao.save(profileToEdit);
         return "redirect:/my-profile/" + profileToEdit.getId();
     }
-
-
-
-
-
-
-
-
-
-
-
 }

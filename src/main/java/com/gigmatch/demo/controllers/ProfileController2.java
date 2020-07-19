@@ -1,0 +1,110 @@
+//package com.gigmatch.demo.controllers;
+//
+//import com.gigmatch.demo.daos.EventsRepository;
+//import com.gigmatch.demo.daos.PostsRepository;
+//import com.gigmatch.demo.daos.ProfilesRepository;
+//import com.gigmatch.demo.daos.UsersRepository;
+//import com.gigmatch.demo.models.Event;
+//import com.gigmatch.demo.models.Post;
+//import com.gigmatch.demo.models.Profile;
+//import com.gigmatch.demo.models.User;
+//import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.ui.Model;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.ModelAttribute;
+//import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PostMapping;
+//
+//import java.util.List;
+//
+//@Controller
+//public class ProfileController2 {
+//    private UsersRepository usersDao;
+//    private PasswordEncoder passwordEncoder;
+//    private ProfilesRepository profilesDao;
+//    private PostsRepository postsDao;
+//    private EventsRepository eventsDao;
+//
+//    public ProfileController(UsersRepository usersDao, PasswordEncoder passwordEncoder, ProfilesRepository profilesDao, PostsRepository postsDao, EventsRepository eventsDao) {
+//        this.usersDao = usersDao;
+//        this.passwordEncoder = passwordEncoder;
+//        this.profilesDao = profilesDao;
+//        this.postsDao = postsDao;
+//        this.eventsDao = eventsDao;
+//    }
+//
+//    // Reading current user profile
+//    @GetMapping("/my-profile/{id}")
+//    public String showMyProfile(@PathVariable long id, Model model){
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        Profile profile = profilesDao.getOne(id);
+//        model.addAttribute("profile", profile);
+//        model.addAttribute("owner", profile.getOwner());
+//        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
+//        //Lists User's posts
+//        List<Post> postList = postsDao.findAllByOwner(currentUser);
+//        model.addAttribute("noPostsFound", postList.size() == 0);
+//        model.addAttribute("userPosts", postList);
+//        //Lists User's events
+//        List<Event> eventList = eventsDao.findAllByOwner(currentUser);
+//        model.addAttribute("noEventsFound", eventList.size() == 0);
+//        model.addAttribute("userEvents", eventList);
+//        return "users/myProfile";
+//    }
+//
+//
+//    @GetMapping("/otherUsersProfile/{id}")
+//    public String showOtherProfile(@PathVariable long id, Model model){
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        Profile profile = profilesDao.getOne(id);
+//        User profileOwner = profile.getOwner();
+//        //View Posts on another User Profile page
+//        List<Post> otherUserPostList = postsDao.findAllByOwner(profileOwner);
+//        model.addAttribute("noPostsFound", otherUserPostList.size() == 0);
+//        model.addAttribute("profile", profile);
+//        model.addAttribute("owner", profile.getOwner());
+//        model.addAttribute("otherUserProfileId", profilesDao.findByOwner(profileOwner).getId());
+//        model.addAttribute("profileId", id);
+//        model.addAttribute("userPosts", otherUserPostList);
+//        //View Events on another User Profile page
+//        //write events code here after posts code is working above
+//        return "users/otherUsersProfile";
+//    }
+//
+//
+//    // Getting create form for profile
+//    @GetMapping("/profile/create")
+//    public String showCreateProfileForm(Model model) {
+//        model.addAttribute("profile", new Profile());
+//        return "posts/postsFeed";
+//    }
+//
+//    // Creating a profile for user
+//    @PostMapping("/profile/create")
+//    public String saveProfile(@ModelAttribute Profile userProfile) {
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        userProfile.setOwner(currentUser);
+//        Profile savedProfile = profilesDao.save(userProfile);
+//        return "redirect:/my-profile/" + savedProfile.getId();
+//    }
+//
+//    // Read current user profile update form
+//    @GetMapping("/profile/{id}/edit")
+//    public String showUpdateProfileForm(Model model, @PathVariable long id) {
+//        Profile profileToEdit = profilesDao.getOne(id);
+//        model.addAttribute("profile", profileToEdit);
+//        return "profiles/edit";
+//    }
+//
+//    // Update current user profile
+//    @PostMapping("/profile/{id}/edit")
+//    public String update(@ModelAttribute Profile profileToEdit){
+//        User currentUser = usersDao.getOne(1L);
+//        profileToEdit.setOwner(currentUser);
+//        profilesDao.save(profileToEdit);
+//        return "redirect:/my-profile/" + profileToEdit.getId();
+//    }
+//
+//}
