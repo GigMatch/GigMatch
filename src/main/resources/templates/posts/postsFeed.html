@@ -32,6 +32,13 @@
                         <h5 th:text="${post.owner.username}"></h5>
                         <p class="card-text" th:text="${post.body}"></p>
                     </div>
+                    <hr>
+
+<!--                    <form th:href="'/posts/' + ${post.id} + '/comment'">-->
+<!--                        <button type="submit" class="btn btn-primary mb-2">Add Comment</button>-->
+<!--                    </form>-->
+                    <a th:href="'/posts/' + ${post.id} + '/comment'">Add Comment</a>
+
                 </div>
             </div>
             <div class="col-md-3">

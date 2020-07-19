@@ -1,9 +1,11 @@
 package com.gigmatch.demo.controllers;
 
+import com.gigmatch.demo.daos.CommentsRepository;
 import com.gigmatch.demo.daos.PostsRepository;
 import com.gigmatch.demo.daos.ProfilesRepository;
 import com.gigmatch.demo.daos.UsersRepository;
 import com.gigmatch.demo.models.Post;
+import com.gigmatch.demo.models.PostComment;
 import com.gigmatch.demo.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -18,11 +20,13 @@ public class PostController {
     private PostsRepository postsDao;
     private UsersRepository usersDao;
     private ProfilesRepository profilesDao;
+    private CommentsRepository commentsDao;
 
-    public PostController(PostsRepository postsRepository, UsersRepository usersRepository, ProfilesRepository profilesDao){
-        this.postsDao = postsRepository;
-        this.usersDao = usersRepository;
+    public PostController(PostsRepository postsDao, UsersRepository usersDao, ProfilesRepository profilesDao, CommentsRepository commentsDao){
+        this.postsDao = postsDao;
+        this.usersDao = usersDao;
         this.profilesDao = profilesDao;
+        this.commentsDao = commentsDao;
     }
 
     @GetMapping("/feed/posts")
@@ -79,6 +83,7 @@ public class PostController {
         postsDao.save(postToEdit); // update ads set title = ? where id = ?
         return "redirect:/feed/posts";
     }
+
 
     @PostMapping("/posts/{id}/delete")
     public String destroy(@PathVariable long id){
