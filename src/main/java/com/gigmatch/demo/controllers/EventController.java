@@ -79,6 +79,8 @@ public class EventController {
 
     @GetMapping("/search/events")
     public String searchByDescription(Model model, @RequestParam(name = "term") String term){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         List<Event> eventList = eventsDao.searchByDescription(term);
         model.addAttribute("events", eventList);
         return "events/eventsFeed";

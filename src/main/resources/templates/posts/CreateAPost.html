@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head  th:replace="fragments/head :: head('Sign Up')">
-    <meta charset="UTF-8">
-    <title>Create A Post</title>
 </head>
 <body>
-
+<header th:replace="fragments/navbar :: navbar"></header>
 <div class="container">
     <h1>Create a new Ad</h1>
     <form th:action="@{/posts/create}" method="POST" th:object="${post}">
