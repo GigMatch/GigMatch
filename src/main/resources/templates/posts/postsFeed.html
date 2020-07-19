@@ -29,9 +29,7 @@
                 </div>
                 <div class="card mb-2" th:each="post : ${posts}">
                     <div class="card-body">
-                        <!-- Ask Douglas regarding the line below here. Is it ok to use authentication.principal.username to display username or use non-authentication method? -->
-                        <a th:href="'/profile/' + ${profileId}"><h5 th:text="${#authentication.principal.username}"></h5></a>
-                        <!--  <h5 th:text="${post.owner.username}"></h5>-->
+                        <a th:href="'/profile/' + ${profileId}"><h5 th:text="${post.owner.username}"></h5></a>
                         <p class="card-text" th:text="${post.body}"></p>
                     </div>
                 </div>
