@@ -29,6 +29,7 @@
                 </div>
                 <div class="card mb-2" th:each="post : ${posts}">
                     <div class="card-body">
+                        <!-- FIX PROFILE CONTROLLER TO VIEW OTHER USER"S PROFILES and verify the href: URL-->
                         <a th:href="'/profile/' + ${profileId}"><h5 th:text="${post.owner.username}"></h5></a>
                         <p class="card-text" th:text="${post.body}"></p>
                     </div>
