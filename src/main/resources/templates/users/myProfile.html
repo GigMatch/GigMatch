@@ -12,12 +12,14 @@
                     <li class="list-group-item"><a href="/feed/posts">Home Feed</a></li>
                     <li class="list-group-item"><a href="#">Notifications</a></li>
                     <li class="list-group-item"><a href="#">Messages</a></li>
-<!--                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>-->
-<!--                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>-->
-                    <li class="list-group-item"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Profile</a></li>
+                    <!--                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>-->
+                    <!--                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>-->
+                    <li class="list-group-item"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Profile</a>
+                    </li>
                 </ul>
             </div>
         </div>
+
         <div class="col-md-6">
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
@@ -25,11 +27,13 @@
                         <!--USE filestack here?-->
                         <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"
                              class="card-img m-2" alt="...">
-                        <div class="ml-4"><a href="#">Upload Photo</a></div>
+                        <div class="ml-4"><a href="#">Upload Photo</a>
+                        </div>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h3 class="card-title" th:text="${profile.owner.first_name} + ' ' + ${profile.owner.last_name}">First Last</h3>
+                            <h3 class="card-title"
+                                th:text="${profile.owner.first_name} + ' ' + ${profile.owner.last_name}">First Last</h3>
                             <h4 class="card-title" th:text="${profile.owner.username}">First Last</h4>
                             <h4 th:text="${profile.profileType}">Profile Type</h4>
                         </div>
@@ -65,11 +69,21 @@
             <div>
                 <a th:href="'/events/create'" class="btn btn-primary col-md-6">Create an event</a>
             </div>
-           <div class="card mb-2" th:each="post : ${userPosts}">
+            <div class="card mb-2" th:each="post : ${userPosts}">
                 <div class="card-body">
                     <h5 th:text="${post.owner.username}"></h5>
                     <p class="card-text" th:text="${post.body}"></p>
                     <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn btn-primary">Edit Post</a>
+                </div>
+            </div>
+            <div th:if="${noEventsFound}">
+                No events were found.
+            </div>
+            <div class="card mb-2" th:each="event : ${userEvents}">
+                <div class="card-body">
+                    <h5 th:text="${event.owner.username}"></h5>
+                    <p class="card-text" th:text="${event.description}"></p>
+                    <a th:href="'/events/' + ${event.id} + '/edit'" class="btn btn-primary">Edit Event</a>
                 </div>
             </div>
         </div>
@@ -81,17 +95,16 @@
                 </div>
             </div>
             <div class="card mb-3">
-                <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif" class="card-img-top" alt="...">
+                <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif"
+                     class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-text">Your Calendar</p>
                 </div>
             </div>
         </div>
     </div>
-
-
 </div>
-</div>
+
 
 <script th:replace="fragments/map-scripts-and-div :: jquery-script"></script>
 <script th:replace="fragments/map-scripts-and-div :: key-script"></script>

@@ -15,4 +15,5 @@ public interface EventsRepository extends JpaRepository<Event, Long> {
     List<Event> searchByDescription(@Param("term") String term);
 
     Event findByOwner(User owner);
+    List<Event> findAllByOwner(User owner);
 }

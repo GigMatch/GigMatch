@@ -1,8 +1,10 @@
 package com.gigmatch.demo.controllers;
 
+import com.gigmatch.demo.daos.EventsRepository;
 import com.gigmatch.demo.daos.PostsRepository;
 import com.gigmatch.demo.daos.ProfilesRepository;
 import com.gigmatch.demo.daos.UsersRepository;
+import com.gigmatch.demo.models.Event;
 import com.gigmatch.demo.models.Post;
 import com.gigmatch.demo.models.Profile;
 import com.gigmatch.demo.models.User;
@@ -23,12 +25,14 @@ public class ProfileController {
     private PasswordEncoder passwordEncoder;
     private ProfilesRepository profilesDao;
     private PostsRepository postsDao;
+    private EventsRepository eventsDao;
 
-    public ProfileController(UsersRepository usersDao, PasswordEncoder passwordEncoder, ProfilesRepository profilesDao, PostsRepository postsDao) {
+    public ProfileController(UsersRepository usersDao, PasswordEncoder passwordEncoder, ProfilesRepository profilesDao, PostsRepository postsDao, EventsRepository eventsDao) {
         this.usersDao = usersDao;
         this.passwordEncoder = passwordEncoder;
         this.profilesDao = profilesDao;
         this.postsDao = postsDao;
+        this.eventsDao = eventsDao;
     }
 
     // Reading current user profile
@@ -36,12 +40,17 @@ public class ProfileController {
     public String showMyProfile(@PathVariable long id, Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Profile profile = profilesDao.getOne(id);
-        List<Post> postList = postsDao.findAllByOwner(currentUser);
-        model.addAttribute("noPostsFound", postList.size() == 0);
         model.addAttribute("profile", profile);
         model.addAttribute("owner", profile.getOwner());
         model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
+        //Lists User's posts
+        List<Post> postList = postsDao.findAllByOwner(currentUser);
+        model.addAttribute("noPostsFound", postList.size() == 0);
         model.addAttribute("userPosts", postList);
+        //Lists User's events
+        List<Event> eventList = eventsDao.findAllByOwner(currentUser);
+        model.addAttribute("noEventsFound", eventList.size() == 0);
+        model.addAttribute("userEvents", eventList);
         return "users/myProfile";
     }
 
