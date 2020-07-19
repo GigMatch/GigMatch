@@ -1,84 +1,101 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: myProfileHead('My Profile')">
+<head th:replace="fragments/head :: head('Posts Feed')">
 <body>
-<header th:replace="fragments/navbar :: myProfileNav"></header>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="#">Notifications</a></li>
-                    <li class="list-group-item"><a href="#">Messages</a></li>
-                    <li class="list-group-item"><a href="/feed/posts">Posts</a></li>
-                    <li class="list-group-item"><a href="/feed/events">Events</a></li>
-                    <li class="list-group-item"><a th:href="'/my-profile/' + ${profileId}">My Profile</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card mb-3">
-                <button type="button" class="btn btn-primary btn-lg btn-block" th:if="${profileId == null}">Create a
-                    profile.
-                </button>
-                <div class="card-body">
-                    Create a post or event.
+<header th:replace="fragments/navbar :: navbar"></header>
+<div th:switch="${hasProfile}">
+    <div class="container" th:case="${true}">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="#">Notifications</a></li>
+                        <li class="list-group-item"><a href="#">Messages</a></li>
+                        <li class="list-group-item"><a href="/feed/posts">Posts</a></li>
+                        <li class="list-group-item"><a href="/feed/events">Events</a></li>
+                        <li class="list-group-item"><a th:href="'/my-profile/' + ${profileId}">My Profile</a></li>
+                    </ul>
                 </div>
             </div>
-            <div th:if="${noPostsFound}">
-                No posts were found.
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <a th:href="'/posts/create'">Post a message, show your skills, or find a match for your gig.</a>
+                    </div>
+                </div>
+                <div th:if="${noPostsFound}">
+                    No posts were found.
+                </div>
+                <div class="card mb-2" th:each="post : ${posts}">
+                    <div class="card-body">
+                        <h5 th:text="${post.owner.username}"></h5>
+                        <p class="card-text" th:text="${post.body}"></p>
+                    </div>
+                </div>
             </div>
-            <div class="card mb-2" th:each="post : ${posts}">
-                <div class="card-body">
-                    <h5 th:text="${post.owner.username}"></h5>
-                    <p class="card-text" th:text="${post.body}"></p>
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg"
+                         class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Map with center view of your city.</p>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif"
+                         class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Your Calendar.</p>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="card-body">
-            <h6>Post a comment</h6>
-            <br>
-            <form th:action="@{/feed/post}" method="POST" th:object="${comment}">
-                <div class="form-group">
-                    <label for="content"></label>
-                    <textarea th:field="*{content}" id="content" name="content" class="form-control"
-                              type="text"></textarea>
+    </div>
+    <div class="container" th:case="${false}">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Create a profile</h5>
+                        <form name="username" class="form-signin" th:action="@{/profile/create}" method="POST" th:object="${profile}" >
+                            <div class="form-label-group">
+                                <input type="text" id="city" class="form-control" name="city"  placeholder="city" required autofocus/>
+                                <label class="form-root" for="city">City</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input type="text" id="state" class="form-control" placeholder="state" name="state" required/>
+                                <label class="form-root" for="state">State</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="profileType">Profile Type</label>
+                                <select class="form-control" id="profileType" name="profileType">
+                                    <option>Band</option>
+                                    <option>Musician</option>
+                                    <option>Venue</option>
+                                    <option>Fan</option>
+                                </select>
+                            </div>
+                            <div class="form-label-group">
+                                <input type="text" id="bio" class="form-control" placeholder="bio" name="bio" required/>
+                                <label class="form-root" for="bio">Bio</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input type="text" id="interests" class="form-control" placeholder="interests" name="interests" required/>
+                                <label class="form-root" for="interests">Interest</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input type="text" id="genres" class="form-control" placeholder="genres" name="genres" required/>
+                                <label class="form-root" for="genres">Genres</label>
+                            </div>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Create profile" type="submit">Create profile</button>
+                            <hr class="my-4">
+                        </form>
+                    </div>
                 </div>
-                <input id="btn" type="submit" class="btn btn-block btn-primary" value="comment">
-            </form>
-        </div>
-    </div>
-
-
-    <div th:each="postcomment: ${posts}">
-        <h2>Comment: <span th:text="${postcomment}"></span> Created by: <span th:text="${postcomment.user.firstName}"></span></h2>
-    </div>
-
-
-</div>
-<div class="col-md-3">
-    <div class="card mb-3">
-        <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top"
-             alt="...">
-        <div class="card-body">
-            <p class="card-text">Map with center view of your city.</p>
-        </div>
-    </div>
-    <div class="card mb-3">
-        <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif"
-             class="card-img-top" alt="...">
-        <div class="card-body">
-            <p class="card-text">Your Calendar.</p>
+            </div>
         </div>
     </div>
 </div>
 </div>
-
-</div>
-</div>
-
-
 </body>
 </html>

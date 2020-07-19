@@ -1,57 +1,57 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head('Create Profile')">
-</head>
-<body>
-<header th:replace="fragments/navbar :: myProfileNav"></header>
-<h1 class="text-center">Create Profile</h1><br>
-<br>
-<br>
-<div class="form-page">
-    <div class="form">
-        <form th:action="@{/profile/create}" method="POST" th:object="${profile}">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:replace="fragments/head :: head('Create Profile')">-->
+<!--</head>-->
+<!--<body>-->
+<!--<header th:replace="fragments/navbar :: navbar"></header>-->
+<!--<h1 class="text-center">Create Profile</h1><br>-->
+<!--<br>-->
+<!--<br>-->
+<!--<div class="form-page">-->
+<!--    <div class="form">-->
+<!--        <form th:action="@{/profile/create}" method="POST" th:object="${profile}">-->
 
-            <!--USE filestack here?-->
-            <label for="profilePhoto">Profile Photo</label>
-            <!--            <input id="profilePhoto" th:field="*{profilePhoto}"/>-->
-            <input id="profilePhoto"  type="text" name="profilePhoto" placeholder="Profile Photo"/>
+<!--            &lt;!&ndash;USE filestack here?&ndash;&gt;-->
+<!--            <label for="profilePhoto">Profile Photo</label>-->
+<!--            &lt;!&ndash;            <input id="profilePhoto" th:field="*{profilePhoto}"/>&ndash;&gt;-->
+<!--            <input id="profilePhoto"  type="text" name="profilePhoto" placeholder="Profile Photo"/>-->
 
-            <label for="city">City</label>
-            <!--            <input id="city" th:field="*{city}"/>-->
-            <input id="city"  type="text" name="city" placeholder="City"/>
+<!--            <label for="city">City</label>-->
+<!--            &lt;!&ndash;            <input id="city" th:field="*{city}"/>&ndash;&gt;-->
+<!--            <input id="city"  type="text" name="city" placeholder="City"/>-->
 
-            <label for="state">State</label>
-            <!--            <input id="state" th:field="*{state}"/>-->
-            <input id="state"  type="text" name="state" placeholder="State"/>
+<!--            <label for="state">State</label>-->
+<!--            &lt;!&ndash;            <input id="state" th:field="*{state}"/>&ndash;&gt;-->
+<!--            <input id="state"  type="text" name="state" placeholder="State"/>-->
 
-            <label for="profileType">Profile Type</label>
-            <!--            <input id="profileType" th:field="*{profileType}"/>-->
-            <input id="profileType"  type="text" name="profileType" placeholder="Profile type"/>
+<!--            <label for="profileType">Profile Type</label>-->
+<!--            &lt;!&ndash;            <input id="profileType" th:field="*{profileType}"/>&ndash;&gt;-->
+<!--            <input id="profileType"  type="text" name="profileType" placeholder="Profile type"/>-->
 
-            <label for="bio">Bio</label>
-            <!--            <input id="bio" th:field="*{bio}"/>-->
-            <input id="bio"  type="text" name="bio" placeholder="About/Bio"/>
+<!--            <label for="bio">Bio</label>-->
+<!--            &lt;!&ndash;            <input id="bio" th:field="*{bio}"/>&ndash;&gt;-->
+<!--            <input id="bio"  type="text" name="bio" placeholder="About/Bio"/>-->
 
-            <label for="interests">Interests</label>
-            <!--            <input id="interests" th:field="*{interests}"/>-->
-            <input id="interests"  type="text" name="interests" placeholder="Interests"/>
+<!--            <label for="interests">Interests</label>-->
+<!--            &lt;!&ndash;            <input id="interests" th:field="*{interests}"/>&ndash;&gt;-->
+<!--            <input id="interests"  type="text" name="interests" placeholder="Interests"/>-->
 
-            <label for="skills">Skills</label>
-            <!--            <input id="skills" th:field="*{skills}"/>-->
-            <input id="skills"  type="text" name="skills" placeholder="Skills"/>
+<!--            <label for="skills">Skills</label>-->
+<!--            &lt;!&ndash;            <input id="skills" th:field="*{skills}"/>&ndash;&gt;-->
+<!--            <input id="skills"  type="text" name="skills" placeholder="Skills"/>-->
 
-            <label for="genres">Genres</label>
-            <!--            <input id="genres" th:field="*{genres}"/>-->
-            <input id="genres"  type="text" name="genres" placeholder="Genres"/>
+<!--            <label for="genres">Genres</label>-->
+<!--            &lt;!&ndash;            <input id="genres" th:field="*{genres}"/>&ndash;&gt;-->
+<!--            <input id="genres"  type="text" name="genres" placeholder="Genres"/>-->
 
-            <!--            <input value="Update Profile" type="submit"/>-->
-            <input type="submit" value="Create Profile" />
-        </form>
-    </div>
-</div>
-<footer th:replace="fragments/footer :: footer"></footer>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-</body>
-</html>
+<!--            &lt;!&ndash;            <input value="Update Profile" type="submit"/>&ndash;&gt;-->
+<!--            <input type="submit" value="Create Profile" />-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<footer th:replace="fragments/footer :: footer"></footer>-->
+<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>-->
+<!--</body>-->
+<!--</html>-->

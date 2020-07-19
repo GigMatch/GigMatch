@@ -1,48 +1,107 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head('Sign Up')">
+<head th:replace="fragments/head :: head('Sign Up')"></head>
+<body id="login-background" onload="myFunction()">
 
-</head>
-<body>
+<div id="loader">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
 
-<header th:replace="fragments/navbar :: welcomeNavbar"></header>
+<div class="container box" id="myDiv" style="display: none">
+    <h4 class="wordCarousel">
+        <span><a href="/">You Need: </a></span>
+        <div class="carousel-box">
+            <!--        Use classes 2,3, or 4 to match the number of words -->
+            <ul class="flip3">
+                <li class="carousel-li" >GigMatch</li>
+                <li class="carousel-li">Gigs</li>
+                <li class="carousel-li">Artist</li>
+            </ul>
+        </div>
+    </h4>
+</div>
 
-<h1 class="text-center">Sign Up</h1><br>
-<h2 class="text-center">Create an account</h2>
-<br>
-<br>
 
-<div class="form-page">
-    <div class="form">
-        <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+<div th:if="${param.error}">
+    <p  class="text-left">Invalid Username and Password.</p>
+</div>
 
-            <label for="first_name">First Name</label>
-            <input id="first_name" th:field="*{first_name}"/>
+<div th:if="${param.logout}">
+    <p class="text-center">You have been logged out.</p>
+</div>
 
-            <label for="last_name">Last Name</label>
-            <input id="last_name" th:field="*{last_name}"/>
 
-            <label for="username">Username</label>
-            <input id="username" th:field="*{username}"/>
+<div class="container" id="form-margin">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Sign Up</h5>
+                    <form name="username" class="form-signin" th:action="@{/sign-up}" method="POST" th:object="${user}" >
+                        <div class="form-label-group">
+                            <input type="text" id="first_name" class="form-control" name="first_name"  placeholder="first" required autofocus/>
+                            <label class="form-root" for="first_name">First Name</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="text" id="last_name" class="form-control" placeholder="last" name="last_name" required/>
+                            <label class="form-root" for="last_name">Last Name</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="text" id="username" class="form-control" placeholder="username" name="username" required/>
+                            <label class="form-root" for="username">Username</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="text" id="email" class="form-control" placeholder="email" name="email" required/>
+                            <label class="form-root" for="email">Email</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="password" id="password" class="form-control" placeholder="password" name="password" required/>
+                            <label class="form-root" for="password">Password</label>
+                        </div>
 
-            <label for="email">Email</label>
-            <input id="email" th:field="*{email}"/>
 
-            <label for="password">Password</label>
-            <input id="password" type="password" th:field="*{password}"/>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Sign Up" type="submit">Sign Up</button>
+                        <hr class="my-4">
 
-            <input value="Sign me up!" type="submit"/>
-        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <footer th:replace="fragments/footer :: footer"></footer>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script>
+    var myVar;
+    function myFunction() {
+        myVar = setTimeout(showPage, 2500);
+    }
+
+    function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("myDiv").style.display = "block";
+    }
+</script>
 </body>
 </html>
+
+
+
 
 
 

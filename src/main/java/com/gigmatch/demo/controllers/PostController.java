@@ -32,7 +32,12 @@ public class PostController {
         List<Post> postList = postsDao.findAll();
         model.addAttribute("noPostsFound", postList.size() == 0);
         model.addAttribute("posts", postList);
-        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
+        if(profilesDao.findByOwner(currentUser) == null) {
+            model.addAttribute("hasProfile", false);
+        } else {
+            model.addAttribute("hasProfile", true);
+            model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
+        }
         return "posts/postsFeed";
     }
 

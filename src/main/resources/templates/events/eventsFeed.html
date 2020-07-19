@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: myProfileHead('My Profile')">
+<head th:replace="fragments/head :: head('Events Feed')">
 <body>
-<header th:replace="fragments/navbar :: eventsFeed"></header>
+<header th:replace="fragments/navbar :: navbar"></header>
 
 <div class="container">
     <div class="row">
@@ -20,7 +20,7 @@
         <div class="col-md-6">
             <div class="card mb-3">
                 <div class="card-body">
-                    Create a post or event.
+                    <a th:href="'/events/create'">Let people know when your next gig, concert, jam session, band practice, or virtual concert online link.</a>
                 </div>
             </div>
             <div th:if="${noEventsFound}">
@@ -34,7 +34,6 @@
 <!--                    <p class="card-text" th:text="${event.state}"></p>-->
 <!--                    <p class="card-text" th:text="${event.zipcode}"></p>-->
                     <p class="card-text" th:text="${event.description}"></p>
-                    <a th:href="'/events/' + ${event.id} + '/edit'" class="btn btn-primary">Edit Event</a>
                 </div>
             </div>
         </div>

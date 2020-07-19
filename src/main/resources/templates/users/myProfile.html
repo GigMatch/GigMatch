@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: myProfileHead('My Profile')">
+<head th:replace="fragments/head :: head('My Profile')">
 <body>
-<header th:replace="fragments/navbar :: myProfileNav"></header>
+<header th:replace="fragments/navbar :: navbar"></header>
 
 <div class="container">
     <div class="row">
@@ -50,14 +50,6 @@
             </div>
             <div class="card mb-3">
                 <div class="card-header">
-                    <h4>Skills</h4>
-                </div>
-                <div class="card-body">
-                    <p class="card-text" th:text="${profile.skills}">Tell us what you can do maybe drop some links.</p>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-header">
                     <h4>Genres</h4>
                 </div>
                 <div class="card-body">
@@ -73,7 +65,7 @@
             <div>
                 <a th:href="'/events/create'" class="btn btn-primary col-md-6">Create an event</a>
             </div>
-            <div class="card mb-2" th:each="post : ${userPosts}">
+           <div class="card mb-2" th:each="post : ${userPosts}">
                 <div class="card-body">
                     <h5 th:text="${post.owner.username}"></h5>
                     <p class="card-text" th:text="${post.body}"></p>
@@ -83,7 +75,7 @@
         </div>
         <div class="col-md-3">
             <div class="card mb-3">
-                <div id="map"></div>
+                <div id="map" style="width: 100%; height:200px"></div>
                 <div class="card-body">
                     <p class="card-text" id="inputCity" th:text="${profile.city} + ', ' + ${profile.state}"></p>
                 </div>
@@ -106,25 +98,19 @@
 <script th:replace="fragments/map-scripts-and-div :: mapbox-script"></script>
 <script th:replace="fragments/map-scripts-and-div :: geocode-script"></script>
 
-<script>
+<script th:inline="javascript">
 
+    var city = [[${profile.city}]];
 
-    var accessToken = mapboxToken;
-    mapboxgl.accessToken = accessToken;
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 10,
-        center: [-96.8057, 32.7787]
-    });
-
-    var city = $("#inputCity").val();
-
-
-    geocode(city, mapboxToken).then(function(result) {
+    geocode(city, mapboxToken).then(function (result) {
         console.log(result);
-        map.setCenter(result);
-        map.setZoom(10);
+        mapboxgl.accessToken = mapboxToken;
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            zoom: 12,
+            center: (result)
+        });
     });
 </script>
 

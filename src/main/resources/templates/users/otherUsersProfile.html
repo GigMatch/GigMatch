@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: myProfileHead('User Profile')">
+<head th:replace="fragments/head :: head('Profile')">
 <body>
-<header th:replace="fragments/navbar :: myProfileNav"></header>
+<header th:replace="fragments/navbar :: navbar"></header>
 
 <div class="container">
     <div class="row">
@@ -11,9 +11,9 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><a href="/feed/posts">Home Feed</a></li>
                     <li class="list-group-item"><a href="#">Notifications</a></li>
-                    <li class="list-group-item"><a href="#">Messages(Maybe)</a></li>
-                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>
-                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>
+                    <li class="list-group-item"><a href="#">Messages</a></li>
+<!--                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>-->
+<!--                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>-->
                     <li class="list-group-item"><a th:href="'/my-profile/' + ${currentUserProfileId}">My Profile</a></li>
                 </ul>
             </div>
@@ -43,14 +43,6 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text" th:text="${profile.interests}">Tell us what you're into...</p>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-header">
-                    <h4>Skills</h4>
-                </div>
-                <div class="card-body">
-                    <p class="card-text" th:text="${profile.skills}">Tell us what you can do maybe drop some links.</p>
                 </div>
             </div>
             <div class="card mb-3">
