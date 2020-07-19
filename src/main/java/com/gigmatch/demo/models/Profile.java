@@ -37,7 +37,7 @@ public class Profile {
 
     public Profile() { }
 
-    public Profile(String profilePhoto, String city, String state, String profileType, String bio, String interests, String skills, String genres, User owner) {
+    public Profile(String profilePhoto, String city, String state, String profileType, String bio, String interests, String genres, User owner) {
         this.profilePhoto = profilePhoto;
         this.city = city;
         this.state = state;
@@ -48,7 +48,7 @@ public class Profile {
         this.owner = owner;
     }
 
-    public Profile(long id, String profilePhoto, String city, String state, String profileType, String bio, String interests, String skills, String genres, User owner) {
+    public Profile(long id, String profilePhoto, String city, String state, String profileType, String bio, String interests, String genres, User owner) {
         this.id = id;
         this.profilePhoto = profilePhoto;
         this.city = city;
