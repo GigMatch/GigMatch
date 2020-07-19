@@ -82,6 +82,7 @@
             <div class="card mb-2" th:each="event : ${userEvents}">
                 <div class="card-body">
                     <h5 th:text="${event.owner.username}"></h5>
+                    <p class="card-text" th:text="${event.streetAddress} + ' ' + ${event.city} + ', ' +  ${event.state} + ' ' + ${event.zipcode}"></p>
                     <p class="card-text" th:text="${event.description}"></p>
                     <a th:href="'/events/' + ${event.id} + '/edit'" class="btn btn-primary">Edit Event</a>
                 </div>
