@@ -66,7 +66,7 @@ public class ProfileController {
     @GetMapping("/profile/create")
     public String showCreateProfileForm(Model model) {
         model.addAttribute("profile", new Profile());
-        return "profiles/create";
+        return "posts/postsFeed";
     }
 
     // Creating a profile for user
