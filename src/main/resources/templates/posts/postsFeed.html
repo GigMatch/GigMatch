@@ -3,7 +3,6 @@
 <head th:replace="fragments/head :: head('Posts Feed')">
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
-
 <div th:switch="${hasProfile}">
     <div class="container" th:case="${true}">
         <div class="row">
@@ -51,7 +50,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <div class="container" th:case="${false}">
         <div class="row">
@@ -91,7 +89,6 @@
                             </div>
                             <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Create profile" type="submit">Create profile</button>
                             <hr class="my-4">
-
                         </form>
                     </div>
                 </div>
@@ -100,6 +97,5 @@
     </div>
 </div>
 </div>
-
 </body>
 </html>

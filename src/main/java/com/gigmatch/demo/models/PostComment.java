@@ -1,13 +1,17 @@
 package com.gigmatch.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.sun.xml.bind.v2.TODO;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "post_comments")
+
 public class PostComment {
 
     @Id
@@ -17,12 +21,23 @@ public class PostComment {
     @CreatedDate
     private Date createDate;
 
-    //TODO: Verify relationship for the two below
+
     @ManyToOne
+    @JsonBackReference
     private Post post;
+
+    @ManyToOne
+    private PostComment postComment;
 
     @OneToOne
     private User owner;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "create_date")
+    private Date createdAt;
+
+
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
@@ -30,16 +45,16 @@ public class PostComment {
     public PostComment() {
     }
 
-    public PostComment(Date createDate, Post post, User owner, String content) {
-        this.createDate = createDate;
+    public PostComment(Date createdAt, Post post, User owner, String content) {
+        this.createDate = createdAt;
         this.post = post;
         this.owner = owner;
         this.content = content;
     }
 
-    public PostComment(long id, Date createDate, Post post, User owner, String content) {
+    public PostComment(long id, Date createdAt, Post post, User owner, String content) {
         this.id = id;
-        this.createDate = createDate;
+        this.createDate = createdAt;
         this.post = post;
         this.owner = owner;
         this.content = content;
@@ -84,4 +99,9 @@ public class PostComment {
     public void setContent(String content) {
         this.content = content;
     }
+
+
+
+
+
 }
