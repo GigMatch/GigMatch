@@ -454,7 +454,7 @@ body {
  .card-text {
     margin: 0 0 20px 0;
     text-transform: none;
-    color: rgba(254, 82, 76, 1);
+    color: goldenrod;
     font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 600;
     letter-spacing: 1px;
@@ -544,7 +544,7 @@ a:hover{
 .team-member figure:hover figcaption {
     visibility: visible;
     color: #fff;
-    background: rgba(230, 78, 62, 0.9);
+    background: rgba(218, 165, 32, 0.43);
     /* Primary color, can be changed via colors.css */
 
     height: 100%;
