@@ -93,6 +93,8 @@ public class PostController {
 
     @GetMapping("/search/posts")
     public String searchByBody(Model model, @RequestParam(name = "term") String term){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         List<Post> postList = postsDao.searchByBody(term);
         model.addAttribute("posts", postList);
         return "posts/postsFeed";
