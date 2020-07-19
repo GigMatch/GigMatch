@@ -42,6 +42,7 @@ public class ProfileController {
         model.addAttribute("owner", profile.getOwner());
         model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         model.addAttribute("userPosts", postList);
+        model.addAttribute("hasProfile", true);
         return "users/myProfile";
     }
 
@@ -58,6 +59,7 @@ public class ProfileController {
         model.addAttribute("currentUserProfileId", profilesDao.findByOwner(currentUser).getId());
         model.addAttribute("profileId", id);
         model.addAttribute("userPosts", otherUserPostList);
+        model.addAttribute("hasProfile", true);
         return "users/otherUsersProfile";
     }
 

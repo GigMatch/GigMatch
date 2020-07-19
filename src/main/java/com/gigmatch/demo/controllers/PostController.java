@@ -58,7 +58,7 @@ public class PostController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         postToBeSaved.setOwner(currentUser);
         Post savedPost = postsDao.save(postToBeSaved);
-
+        model.addAttribute("hasProfile", true);
 //        return "redirect:/feed" + savedPost.getId();
         return "redirect:/feed/posts";
     }
@@ -88,8 +88,11 @@ public class PostController {
 
     @GetMapping("/search/posts")
     public String searchByBody(Model model, @RequestParam(name = "term") String term){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Post> postList = postsDao.searchByBody(term);
         model.addAttribute("posts", postList);
+        model.addAttribute("hasProfile", true);
+        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         return "posts/postsFeed";
     }
 }

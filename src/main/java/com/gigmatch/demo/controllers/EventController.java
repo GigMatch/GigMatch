@@ -33,6 +33,7 @@ public class EventController {
         model.addAttribute("noEventsFound", eventList.size() == 0);
         model.addAttribute("events", eventList);
         model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
+        model.addAttribute("hasProfile", true);
         return "events/eventsFeed";
     }
 
@@ -45,10 +46,11 @@ public class EventController {
 
     //saves the event made
     @PostMapping("/events/create")
-    public String save(@ModelAttribute Event eventToBeSaved) {
+    public String save(@ModelAttribute Event eventToBeSaved, Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         eventToBeSaved.setOwner(currentUser);
         Event savedEvent = eventsDao.save(eventToBeSaved);
+        model.addAttribute("hasProfile", true);
         return "redirect:/feed/events";
     }
 
@@ -79,8 +81,11 @@ public class EventController {
 
     @GetMapping("/search/events")
     public String searchByDescription(Model model, @RequestParam(name = "term") String term){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Event> eventList = eventsDao.searchByDescription(term);
         model.addAttribute("events", eventList);
+        model.addAttribute("hasProfile", true);
+        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         return "events/eventsFeed";
     }
 }
