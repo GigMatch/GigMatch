@@ -90,10 +90,12 @@ public class ProfileController {
 
     // Update current user profile
     @PostMapping("/profile/{id}/edit")
-    public String update(@ModelAttribute Profile profileToEdit){
+    public String update(@ModelAttribute Profile profileToEdit, Model model){
         User currentUser = usersDao.getOne(1L);
         profileToEdit.setOwner(currentUser);
         profilesDao.save(profileToEdit);
+        model.addAttribute("hasProfile", true);
+        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         return "redirect:/my-profile/" + profileToEdit.getId();
     }
 
