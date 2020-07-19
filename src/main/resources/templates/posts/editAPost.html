@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Edit Post')">
-    <meta charset="UTF-8">
-    <title>Edit A Post</title>
 </head>
-<header th:replace="fragments/navbar :: navbar"></header>
-
 <body>
-
-
+<header th:replace="fragments/navbar :: navbar"></header>
 <div class="container">
     <h1>Update Your Post</h1>
     <form th:action="${'/posts/' + post.id + '/edit'}" method="POST" th:object="${post}">

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Profile')">
+</head>
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
 
@@ -12,8 +13,6 @@
                     <li class="list-group-item"><a href="/feed/posts">Home Feed</a></li>
                     <li class="list-group-item"><a href="#">Notifications</a></li>
                     <li class="list-group-item"><a href="#">Messages</a></li>
-<!--                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>-->
-<!--                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>-->
                     <li class="list-group-item"><a th:href="'/my-profile/' + ${currentUserProfileId}">My Profile</a></li>
                 </ul>
             </div>
@@ -72,8 +71,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 </div>
 
