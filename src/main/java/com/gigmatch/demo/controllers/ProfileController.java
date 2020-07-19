@@ -83,8 +83,11 @@ public class ProfileController {
     // Read current user profile update form
     @GetMapping("/profile/{id}/edit")
     public String showUpdateProfileForm(Model model, @PathVariable long id) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Profile profileToEdit = profilesDao.getOne(id);
         model.addAttribute("profile", profileToEdit);
+        model.addAttribute("hasProfile", true);
+        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         return "profiles/edit";
     }
 
