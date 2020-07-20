@@ -97,11 +97,9 @@ public class PostController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         List<Post> resultList = postsDao.searchByBody(term);
-
-        model.addAttribute("noResultsFound", resultList.size() == 0);
         model.addAttribute("results", resultList);
+        model.addAttribute("noResultsFound", resultList.size() == 0);
 
-        System.out.println("TESTING SEARCH");
-        return "posts/postsFeed";
+        return "posts/searchResults";
     }
 }
