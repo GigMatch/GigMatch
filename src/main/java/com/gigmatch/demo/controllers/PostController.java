@@ -116,20 +116,22 @@ public class PostController {
         return "posts/searchResults";
     }
 
-//    Post Reactions
-//    @PostMapping("/posts/{id}")
-//    public String postReactions(Model model, @PathVariable long id){
-//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
-//        model.addAttribute("userId", currentUser.getId());
-//
-//        Post post = postsDao.getOne(id);
-//        model.addAttribute("postToReact", post);
-//        post.getUserReactions().add(currentUser);
-//        return "posts/showPost";
-//    }
-
-
-
-
+    //Post Reactions
+    @PostMapping("/posts/{id}/reactions")
+    public String postReactions(Model model, @PathVariable long id){
+        //Getting current USER OBJECT, all properties
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        //Getting the "RIGHT" post id
+        Post post = postsDao.getOne(id);
+        //Get the current reactions list from that post
+        List<User> reactionsList = post.getUserReactions();
+        //Add user's reaction to the reaction List
+        reactionsList.add(currentUser);
+        //Overriding the reactions List by adding the current user's reaction to the list
+        post.setUserReactions(reactionsList);
+        //Save the Post back to database
+        postsDao.save(post);
+        //returning the view to this feed
+        return "posts/postsFeed";
+    }
 }

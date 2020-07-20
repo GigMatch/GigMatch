@@ -49,7 +49,7 @@
                     <!--                    </form>-->
 
 
-            <!--DOUGLAS : POST REACTIONS TO VERIFY IF DATABASE IS CONNECTING TO THIS &ndash;&gt;-->
+            <!--DOUGLAS : POST REACTIONS TO VERIFY IF DATABASE IS CONNECTING TO THIS-->
 <!--                    <div>-->
 <!--                        <a th:text="${post.userReactions.size()}"></a>-->
 <!--                    </div>-->
@@ -84,8 +84,15 @@
                         <p class="card-text" th:text="${post.body}">
                         </p>
                     </div>
+            <!--DOUGLAS POST REACTION TO CONNECT TO DATABASE-->
+                    <div>
+                        <a th:text="${post.userReactions.size()}"></a>
+                    </div>
+                    <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >
+                        <input type="submit" value="Like">
+                    </form>
                     <div class="card-footer">
-                        <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+<!--                        <a th:href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
                         <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link"><i class="fa fa-comment"></i> Comment</a>
                         <a th:href="'/posts/' + ${post.id}">See Post</a>
                     </div>
