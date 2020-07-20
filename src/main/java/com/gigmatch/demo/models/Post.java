@@ -26,6 +26,9 @@ public class Post {
     @OneToOne
     private User owner;
 
+//    @ManyToMany
+//    List<>;
+
     public Post() {
     }
 
