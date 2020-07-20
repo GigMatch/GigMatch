@@ -38,11 +38,20 @@
                     <!--                    <form th:href="'/posts/' + ${post.id} + '/comment'">-->
                     <!--                        <button type="submit" class="btn btn-primary mb-2">Add Comment</button>-->
                     <!--                    </form>-->
+
+
+                <!-- POST REACTIONS TO VERIFY IF DATABASE IS CONNECTING TO THIS -->
+                    <div>
+                        <a th:text="${post.userReactions.size()}"></a>
+                    </div>
+
+
+                <!-- COMMENTS-->
                     <a th:href="'/posts/' + ${post.id} + '/comment'">Add Comment</a>
+
                     <hr>
                     <a th:href="'/posts/' + ${post.id}">See Post</a>
                 </div>
-
         </div>
             <div class="col-md-3">
                 <div class="card mb-3">

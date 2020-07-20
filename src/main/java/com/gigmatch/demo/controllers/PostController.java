@@ -50,6 +50,7 @@ public class PostController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post post = postsDao.getOne(id);
         List<PostComment> comments = commentsDao.findAllByPost(post);
+
         User postOwner = post.getOwner();
         model.addAttribute("postOwner", postOwner);
         model.addAttribute("post", post);
@@ -114,4 +115,21 @@ public class PostController {
 
         return "posts/searchResults";
     }
+
+//    Post Reactions
+//    @PostMapping("/posts/{id}")
+//    public String postReactions(Model model, @PathVariable long id){
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
+//        model.addAttribute("userId", currentUser.getId());
+//
+//        Post post = postsDao.getOne(id);
+//        model.addAttribute("postToReact", post);
+//        post.getUserReactions().add(currentUser);
+//        return "posts/showPost";
+//    }
+
+
+
+
 }
