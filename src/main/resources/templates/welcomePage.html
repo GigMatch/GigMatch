@@ -8,93 +8,202 @@
 <header th:replace="fragments/navbar :: welcomeNavbar"></header>
 
 
-<!--<div class="top-content top">-->
-<!--<h1 class="welcome"> Welcome to GigMatch</h1>-->
-<!--    <button><a href="#about">About GigMatch</a></button>-->
-<!--    <button><a href="#founders">About Founders</a></button>-->
-<!--    <button><a href="/sign-up">Sign Up</a></button>-->
-<!--</div>-->
-
-
-<!-- Top content -->
+<!-- Top content-->
 <div class="top-content top">
     <div class="container container-home">
         <div class="row pageBox">
-            <div class="col-md-8 offset-md-2 text">
+            <div class="col-md-8 offset-md-2 col-sm-12 text">
                 <h1>Welcome To GigMatch</h1>
                 <div class="top-big-link wow fadeInUp">
-                    <a class="btn btn-primary btn-link-2 scroll-link" href="/">Learn more</a>
+                    <a class="btn btn-primary btn-link-2 scroll-link" href="/">About Us</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 <!--About GigMatch card-->
-<div class="card mb-3">
-    <div class="row no-gutters">
-        <div class="col-md-4">
-            <img src="https://www.devmusical.in/assets/1565689920066-Gibson,%20Guitar%20Pick,%20Wedge%20Style%20-Medium%20APRGG-73M.jpg" class="card-img" alt="...">
+
+<!-- /.row -->
+<div class="row no-gutters">
+    <div class="col-md-4 col-sm-12">
+        <img src="https://i.ibb.co/x7W1PPx/logs.jpg"
+             class="card-img" alt="...">
+    </div>
+    <div class="col-md-7 col-sm-12">
+        <div class="card-body ">
+            <h3 class="card-title text-center about-text ">About GigMatch</h3>
+            <p class="text-center about-text ">GigMatch is a virtual platform for connections between musicians and venues in
+                real time across multiple
+                cities. Musicians can connect with other musicians to help fill a spot for their next gig or
+                find that
+                special venue in need of musical talent. Allows a streamlined approach to seeking talent and a
+                space for
+                music to be shared and discussed.</p>
+            <a href="/sign-up" class="btn btn-secondary d-flex justify-content-center" style="background-color:goldenrod ">Join Us</a>
         </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h3 class="card-title">About GigMatch</h3>
-                <p class="card-text">GigMatch is a virtual platform for connections between musicians and venues in
-                    real time across multiple
-                    cities. Musicians can connect with other musicians to help fill a spot for their next gig or
-                    find that
-                    special venue in need of musical talent. Allows a streamlined approach to seeking talent and a
-                    space for
-                    music to be shared and discussed.</p>
-                <a href="/sign-up" class="btn btn-secondary">Join Us</a>
+    </div>
+</div>
+
+<!--About Cont.-->
+
+<div class="services-container section-container" id="skills">
+    <div class="container">
+        <div class="row">
+            <div class="col services section-description wow fadeIn">
+                <h2 class="tex-centered">Why GigMatch?</h2>
+                <div class="divider-1 wow fadeInUp"><span></span></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-12 services-box wow fadeInUp">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="services-box-icon">
+                            <i class="fas fa-map-pin"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Accessibility</h3>
+                        <p>
+                            Find a musician or venue wherever you are located. Simply update your address and have instant access to those in that area!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12 services-box wow fadeInDown">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="services-box-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Focused</h3>
+                        <p>
+                            Avoid the clutter and noise and focus on you. Get your message out to those who will respond.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12 services-box wow fadeInUp">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="services-box-icon">
+                            <i class="fas fa-share-square"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Share</h3>
+                        <p>
+                            People are interested in you! Share what you are up to or even the gigs you will be at or participating in!
+                        </p>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 
-<!--About Founders cards-->
+<!-- Our team Section -->
+<section id="team" class="team content-section">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h1 class="card-text" style="font-family: Cambria">Our Team</h1>
+                <h5 class="caption gray card-text" style="font-family:Cambria" >Meet the people who make awesome stuffs</h5>
+            </div><!-- /.col-md-12 -->
 
-<div id="founders" class="container">
-    <div class="row row-cols-1 row-cols-md-2">
-        <div class="col mb-4">
-            <div class="card">
-                <img
-                        src="https://play-guitars.com/wp-content/uploads/2019/06/which-is-the-easiest-guitar-to-learn-for-beginners.png" class="card-img-top" alt="playing a guitar">
-                <div class="card-body">
-                    <h5 class="card-title">Ry Ance Sutton</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card">
-                <img src="https://db4sgowjqfwig.cloudfront.net/campaigns/209638/assets/982117/misty-mountains.jpeg?1561382542" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Esai Flores</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card">
-                <img src="https://cutewallpaper.org/21/aesthetic-ocean-background/Ocean-Tumblr-Aesthetic-Wallpapers-Top-Free-Ocean-Tumblr-.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Roshan Jacob</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card">
-                <img src="https://fsb.zobj.net/crop.php?r=z7pHwkTo_D86MyTJBc-Yolw8W6-5ugkCX5_JLdDqCh4rjGr2w8dmvCVqQIAJgnRN2BDri5PkGf9ijrcCTQYNZ9OVfWYspDXhwTgbfUA2amZU3oMqFZ6rCRlh4oDh6_IFEe0VBV_RMvc-Rlvr" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Evelyn Acosta</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
+            <div class="container">
+                <div class="row">
 
-</div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="team-member">
+                            <figure>
+                                <img src="https://i.ibb.co/yRzYQgL/card.jpg" alt="" class="img-fluid">
+                                <figcaption>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae asperiores
+                                        mollitia.</p>
+                                    <ul>
+                                        <li><a href=""><i class="fa fa-facebook fa-2x"></i></a></li>
+                                        <li><a href=""><i class="fa fa-twitter fa-2x"></i></a></li>
+                                        <li><a href=""><i class="fa fa-linkedin fa-2x"></i></a></li>
+                                    </ul>
+                                </figcaption>
+                            </figure>
+                            <h4 class="card-text">Esai Flores</h4>
+                            <p>Web Developer</p>
+                        </div><!-- /.team-member-->
+                    </div><!-- /.col-md-4 -->
+
+                    <div class="col-md-6 col-sm-12">
+                        <div class="team-member">
+                            <figure>
+                                <img src="https://i.ibb.co/syyNZgp/Ry.jpg" alt="" class="img-fluid">
+                                <figcaption>
+                                    <p>Neque minima ea, a praesentium saepe nihil maxime quod esse numquam explicabo
+                                        eligendi.</p>
+                                    <ul>
+                                        <li><a href=""><i class="fa fa-facebook fa-2x"></i></a></li>
+                                        <li><a href=""><i class="fa fa-twitter fa-2x"></i></a></li>
+                                        <li><a href=""><i class="fa fa-linkedin fa-2x"></i></a></li>
+                                    </ul>
+                                </figcaption>
+                            </figure>
+                            <h4 class="card-text">Ry Sutton</h4>
+                            <p>Web Developer</p>
+                        </div><!-- /.team-member-->
+                    </div><!-- /.col-md-4 -->
+
+                    <div class="col-md-6 col-sm-12">
+                        <div class="team-member">
+                            <figure>
+                                <img src="https://i.ibb.co/hMtnrt8/roshan.png" alt="" class="img-fluid">
+                                <figcaption>
+                                    <p>Temporibus dolor, quisquam consectetur molestias, veniam voluptatum. Beatae alias
+                                        omnis totam.</p>
+                                    <ul>
+                                        <li><a href=""><i class="fa fa-facebook fa-2x"></i></a></li>
+                                        <li><a href=""><i class="fa fa-twitter fa-2x"></i></a></li>
+                                        <li><a href=""><i class="fa fa-linkedin fa-2x"></i></a></li>
+                                    </ul>
+                                </figcaption>
+                            </figure>
+                            <h4 class="card-text">Roshan Jacob</h4>
+                            <p>Web Developer</p>
+                        </div><!-- /.team-member-->
+                    </div><!-- /.col-md-4 -->
+
+                    <div class="col-md-6 col-sm-12">
+                        <div class="team-member">
+                            <figure>
+                                <img src="https://i.ibb.co/YPRGtwT/Evelyn.jpg" alt="" class="img-fluid">
+                                <figcaption>
+                                    <p>Temporibus dolor, quisquam consectetur molestias, veniam voluptatum. Beatae alias
+                                        omnis totam.</p>
+                                    <ul>
+                                        <li><a href=""><i class="fa fa-facebook fa-2x"></i></a></li>
+                                        <li><a href=""><i class="fa fa-twitter fa-2x"></i></a></li>
+                                        <li><a href=""><i class="fa fa-linkedin fa-2x"></i></a></li>
+                                    </ul>
+                                </figcaption>
+                            </figure>
+                            <h4 class="card-text">Evelyn Acosta</h4>
+                            <p>Web Developer</p>
+                        </div><!-- /.team-member-->
+                    </div><!-- /.col-md-4 -->
+
+
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.our-team -->
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
