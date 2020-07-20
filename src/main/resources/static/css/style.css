@@ -16,10 +16,15 @@ body {
     flex: 1 0 auto;
 }
 
-#sticky-footer {
-    flex-shrink: 0;
+footer p {
+    padding-top: 40px;
+    text-align: center;
+    color: white;
 }
 
+footer img {
+    width: 24px;
+}
 /*Font Awesome*/
 .fa-user-alt {
     font-size: 30px;
@@ -267,6 +272,12 @@ body {
 
 .nav-font-icon {
 
+}
+
+.login-link a:link,
+.login-link a:active,
+.login-link a:visited{
+    color:rgba(255,255,255,1);
 }
 
 /*Word carousel*/
@@ -654,7 +665,7 @@ body {
 .team-member figure:hover figcaption {
     visibility: visible;
     color: #fff;
-    background: rgba(218, 165, 32, 0.43);
+    background: rgba(218, 165, 32, 0.6);
     /* Primary color, can be changed via colors.css */
 
     height: 100%;
