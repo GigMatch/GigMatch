@@ -30,7 +30,7 @@ public class Post {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "users_posts",
+            name = "post_user",
             joinColumns = {@JoinColumn(name = "post_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )
