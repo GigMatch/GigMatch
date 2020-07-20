@@ -29,10 +29,10 @@ public class EventController {
     @GetMapping("/feed/events")
     public String index(Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         List<Event> eventList = eventsDao.findAll();
         model.addAttribute("noEventsFound", eventList.size() == 0);
         model.addAttribute("events", eventList);
-        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         return "events/eventsFeed";
     }
 
@@ -61,22 +61,25 @@ public class EventController {
         return "events/editAnEvent";
     }
 
-    //allows event to be edited
+    //saves event to be edited
     @PostMapping("/events/{id}/edit")
-    public String update(@ModelAttribute Event eventToEdit){
-        User currentUser = usersDao.getOne(1L);
+    public String update(@ModelAttribute Event eventToEdit, Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         eventToEdit.setOwner(currentUser);
         // save the changes
         eventsDao.save(eventToEdit); // update ads set title = ? where id = ?
         return "redirect:/feed/events";
     }
 
+    //deletes event
     @PostMapping("/events/{id}/delete")
     public String destroy(@PathVariable long id){
         eventsDao.deleteById(id);
         return "redirect:/feed/events";
     }
 
+    //searches events by description, city, or zip code
     @GetMapping("/search/events")
     public String searchByDescription(Model model, @RequestParam(name = "term") String term){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

@@ -35,6 +35,7 @@
 <!--                    <p class="card-text" th:text="${event.state}"></p>-->
 <!--                    <p class="card-text" th:text="${event.zipcode}"></p>-->
                     <p class="card-text" th:text="${event.description}"></p>
+                    <a th:href="'/events/' + ${event.id} + '/edit'" class="btn btn-primary">Edit Event</a>
                 </div>
             </div>
         </div>

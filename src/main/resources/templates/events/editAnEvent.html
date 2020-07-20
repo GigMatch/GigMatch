@@ -5,7 +5,7 @@
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
 <div class="container">
-    <h1>Create a new Event</h1>
+    <h1>Update Event Details</h1>
     <form th:action="${'/events/' + event.id + '/edit'}" method="POST" th:object="${event}">
         <div class="form-group">
             <label for="streetAddress">Street Address</label>
@@ -27,11 +27,13 @@
             <label for="description">Description</label>
             <textarea id="description" name="description" class="form-control" type="text"></textarea>
         </div>
-        <input id="btn" type="submit" class="btn btn-block btn-primary" value="Edit this event">
+        <input id="btn" type="submit" class="btn btn-block btn-primary" value="Update Event Details">
     </form>
 
+
+    <!--Delete Event-->
     <form th:action="${'/events/' + event.id + '/delete'}" method="post">
-        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-danger">Delete Event</button>
     </form>
 </div>
 
