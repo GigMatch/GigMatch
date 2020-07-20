@@ -21,6 +21,7 @@
 
 
         <div class="col-md-6">
+            <h1>Events</h1>
             <div class="card mb-3">
                 <div class="card-body">
                     <a th:href="'/events/create'">Let people know when your next gig, concert, jam session, band practice, or virtual concert online link.</a>
@@ -28,14 +29,14 @@
             </div>
 
 
-            <div>
-                <ul>
-                    <li class="list-group-item"><a href="/feed/events">Upcoming Events</a></li>
-                    <li class="list-group-item"><a href="/feed/myEvents">My Events</a></li>
-                </ul>
-            </div>
+            <nav class="nav">
+                <div>
+                    <a class="nav-link" href="/feed/events">Upcoming Events</a>
+                    <a class="nav-link" href="/feed/myEvents">My Events</a>
+                </div>
+            </nav>
 
-
+        <!-- No Events Found-->
             <div th:if="${noEventsFound}">
                 No events were found.
             </div>
@@ -44,7 +45,7 @@
                     <h5 th:text="${event.owner.getUsername()}"></h5>
                     <p class="card-text" th:text="${event.streetAddress} + ' ' + ${event.city} + ', ' +  ${event.state} + ' ' + ${event.zipcode}"></p>
                     <p class="card-text" th:text="${event.description}"></p>
-<!--                    <a th:href="'/events/' + ${event.id} + '/edit'" class="btn btn-primary">Edit Event</a>-->
+                <!-- <a th:href="'/events/' + ${event.id} + '/edit'" class="btn btn-primary">Edit Event</a>-->
                 </div>
             </div>
         </div>
