@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Posts Feed')">
+</head>
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
 
@@ -40,6 +41,25 @@
                     <a th:href="'/posts/' + ${post.id} + '/comment'">Add Comment</a>
 
                 </div>
+
+                <div th:if="${noResultsFound}">
+                    No posts were found.
+                </div>
+                <div class="card mb-2" th:each="post : ${results}">
+                    <div class="card-body">
+                        <h5 th:text="${post.owner.username}"></h5>
+                        <p class="card-text" th:text="${post.body}"></p>
+                    </div>
+                    <hr>
+
+                    <!--                    <form th:href="'/posts/' + ${post.id} + '/comment'">-->
+                    <!--                        <button type="submit" class="btn btn-primary mb-2">Add Comment</button>-->
+                    <!--                    </form>-->
+                    <a th:href="'/posts/' + ${post.id} + '/comment'">Add Comment</a>
+
+                </div>
+
+
             </div>
             <div class="col-md-3">
                 <div class="card mb-3">
@@ -105,7 +125,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
 </body>

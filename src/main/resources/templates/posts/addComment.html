@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Add Comment')">
-
+</head>
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
 <form th:action="${'/posts/' + post.id + '/comment'}" method="POST" th:object="${comment}">

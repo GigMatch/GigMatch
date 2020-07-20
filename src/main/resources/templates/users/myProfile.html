@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('My Profile')">
+</head>
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
 
@@ -56,15 +57,18 @@
                     <p class="card-text" th:text="${profile.genres}">Tell us what kind of music you play/like.</p>
                 </div>
             </div>
+
+
+        <!--No Posts Found-->
             <div th:if="${noPostsFound}">
                 You haven't created any posts yet.
             </div>
             <div>
                 <a th:href="'/posts/create'" class="btn btn-primary">Create a post</a>
             </div>
-            <div>
-                <a th:href="'/events/create'" class="btn btn-primary col-md-6">Create an event</a>
-            </div>
+
+            <br>
+
            <div class="card mb-2" th:each="post : ${userPosts}">
                 <div class="card-body">
                     <h5 th:text="${post.owner.username}"></h5>
@@ -73,6 +77,12 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
+        <!-- Mapbox API-->
         <div class="col-md-3">
             <div class="card mb-3">
                 <div id="map" style="width: 100%; height:200px"></div>
@@ -80,6 +90,9 @@
                     <p class="card-text" id="inputCity" th:text="${profile.city} + ', ' + ${profile.state}"></p>
                 </div>
             </div>
+
+
+        <!-- Calendar-->
             <div class="card mb-3">
                 <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -88,10 +101,8 @@
             </div>
         </div>
     </div>
-
-
 </div>
-</div>
+
 
 <script th:replace="fragments/map-scripts-and-div :: jquery-script"></script>
 <script th:replace="fragments/map-scripts-and-div :: key-script"></script>
