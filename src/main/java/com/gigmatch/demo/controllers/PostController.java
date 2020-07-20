@@ -45,11 +45,19 @@ public class PostController {
         return "posts/postsFeed";
     }
 
-//    @GetMapping("/sign-up")
-//    public String showSignupForm(Model model){
-//        model.addAttribute("user", new User());
-//        return "users/sign-up";
-//    }
+    @GetMapping("posts/{id}")
+    public String showOne(@PathVariable long id, Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Post post = postsDao.getOne(id);
+        List<PostComment> comments = commentsDao.findAllByPost(post);
+        User postOwner = post.getOwner();
+        model.addAttribute("postOwner", postOwner);
+        model.addAttribute("post", post);
+        model.addAttribute("profile", profilesDao.findByOwner(currentUser));
+        model.addAttribute("myProfileId", profilesDao.findByOwner(currentUser).getId());
+        model.addAttribute("comments", comments);
+        return "posts/showPost";
+    }
 
     @GetMapping("/posts/create")
     public String showForm(Model viewModel){
@@ -88,7 +96,11 @@ public class PostController {
 
     @PostMapping("/posts/{id}/delete")
     public String destroy(@PathVariable long id){
+        Post postToDelete = postsDao.getOne(id);
+        List<PostComment> comments = commentsDao.findAllByPost(postToDelete);
+        commentsDao.deleteAll(comments);
         postsDao.deleteById(id);
+
         return "redirect:/feed/posts";
     }
 
