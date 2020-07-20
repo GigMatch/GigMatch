@@ -561,7 +561,7 @@ body {
 /*    background-color: #fff;*/
 /*}*/
 
- .card-text {
+ .welcome-card-text {
     margin: 0 0 20px 0;
     text-transform: none;
     color: goldenrod;
@@ -571,13 +571,13 @@ body {
     line-height: 1.5;
 }
 
-a:link,
-a:active,
-a:visited{
-    color: rgb(0, 0, 0);
+.about-us-link a:link,
+.about-us-link a:active,
+.about-us-link a:visited{
+    color:rgba(255,255,255,1);
 }
 
-a:hover{
+.about-us-link a:hover{
     color:rgba(255,255,255,0.6);
 }
 
