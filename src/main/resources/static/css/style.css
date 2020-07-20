@@ -545,11 +545,6 @@ body {
 
 /*calendar styling*/
 
-/*body, *{*/
-/*    padding:0px;*/
-/*    margin:0px;*/
-/*    box-sizing: border-box;*/
-/*}*/
 .calendar
 {
     background-color: white;
@@ -562,7 +557,7 @@ body {
     display: none;
     position: absolute;
     background-color: #fff;
-    color: #1caff6;
+    color: goldenrod;
     text-align: center;
     font-size: 12pt;
     padding-top: 5px;
@@ -600,20 +595,20 @@ body {
 .calendar .calendar-btn
 {
     float: left;
-    background-color: #24aeff;
+    background-color: gray;
     color: white;
     text-align: center;
     font-size: 12pt;
     padding-top: 5px;
     padding-bottom: 5px;
     position: relative;
-    width: 20%;
+    width: 25%;
     cursor: pointer;
     transition: .5s background-color;
 }
 
 .calendar .calendar-btn:hover{
-    background-color:#1f71a1;
+    background-color: goldenrod;
 }
 
 .calendar .year-btn
@@ -641,7 +636,7 @@ body {
 
 .calendar .calendar-dates .days .day.selected
 {
-    background-color: #1caff6;
+    background-color: dimgray;
     color: white;
     cursor:pointer;
     opacity: .5;
