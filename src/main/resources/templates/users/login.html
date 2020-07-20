@@ -22,22 +22,22 @@
 </div>
 
 <div class="container box" id="myDiv" style="display: none">
-<h4 class="wordCarousel">
-    <span><a href="/">You Need: </a></span>
-    <div class="carousel-box">
-        <!--        Use classes 2,3, or 4 to match the number of words -->
-        <ul class="flip3">
-            <li class="carousel-li" >GigMatch</li>
-            <li class="carousel-li">Gigs</li>
-            <li class="carousel-li">Artist</li>
-        </ul>
-    </div>
-</h4>
+    <h4 class="wordCarousel">
+        <span><a href="/">You Need: </a></span>
+        <div class="carousel-box">
+            <!--        Use classes 2,3, or 4 to match the number of words -->
+            <ul class="flip3">
+                <li class="carousel-li">GigMatch</li>
+                <li class="carousel-li">Gigs</li>
+                <li class="carousel-li">Artist</li>
+            </ul>
+        </div>
+    </h4>
 </div>
 
 
 <div th:if="${param.error}">
-    <p  class="text-left">Invalid Username or Password.</p>
+    <p class="text-left">Invalid Username or Password.</p>
 </div>
 
 <div th:if="${param.logout}">
@@ -53,15 +53,23 @@
                     <h5 class="card-title text-center">Log In</h5>
                     <form name="username" class="form-signin" th:action="@{/login}" method="post">
                         <div class="form-label-group">
-                            <input type="text" id="username" class="form-control" name="username"  placeholder="username" required="" autofocus oninvalid="this.setCustomValidity('Please Enter A Valid Username')" oninput="setCustomValidity('')"/>
+                            <input type="text" id="username" class="form-control" name="username" placeholder="username"
+                                   required="" autofocus
+                                   oninvalid="this.setCustomValidity('Please Enter A Valid Username')"
+                                   oninput="setCustomValidity('')"/>
                             <label class="form-root" for="username">Username</label>
                         </div>
                         <div class="form-label-group">
-                            <input type="password" id="password" class="form-control" placeholder="password" name="password" required="" oninvalid="this.setCustomValidity('Please Enter A Valid Password')" oninput="setCustomValidity('')"/>
+                            <input type="password" id="password" class="form-control" placeholder="password"
+                                   name="password" required=""
+                                   oninvalid="this.setCustomValidity('Please Enter A Valid Password')"
+                                   oninput="setCustomValidity('')"/>
                             <label class="form-root" for="password">Password</label>
                         </div>
 
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Log In" type="submit">Log in</button>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Log In"
+                                type="submit">Log in
+                        </button>
                         <hr class="my-4">
 
                     </form>
@@ -75,6 +83,7 @@
 
 <script>
     var myVar;
+
     function myFunction() {
         myVar = setTimeout(showPage, 2500);
     }
