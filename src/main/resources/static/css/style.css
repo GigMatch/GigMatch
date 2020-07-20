@@ -859,7 +859,15 @@ margin-top: 40px;
     transition: all 0.4s ease-in-out;
 }
 
+/*Test*/
 
+.gedf-wrapper {
+    margin-top: 0.97rem;
+}
+
+.card {
+    margin-bottom: 20px;
+}
 
 
 /*Media Queries*/
