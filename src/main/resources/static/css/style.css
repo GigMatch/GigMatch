@@ -2,6 +2,22 @@
 /*General*/
 html {
     scroll-behavior: smooth;
+    height: 100%;
+}
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+}
+
+#page-content {
+    flex: 1 0 auto;
+}
+
+#sticky-footer {
+    flex-shrink: 0;
 }
 
 /*Font Awesome*/
@@ -23,15 +39,102 @@ html {
 
 /*Welcome Page*/
 
+.about-text {
+    font-family: Palatino;
+}
+
+.no-gutters {
+    margin-bottom: 60px;
+    margin-top: 50px;
+}
+
+/*about cont*/
+
+
+.section-container {
+    margin: 0 auto;
+    padding-bottom: 70px;
+    font-family: Palatino;
+    background-color: #f9f9fa;
+
+}
+
+.section-container-gray-bg {
+    background: #f8f8f8;
+}
+
+.section-container-image-bg,
+.section-container-image-bg h2,
+.section-container-image-bg h3 {
+    color: #fff;
+}
+
+.section-container-image-bg .divider-1 span {
+    border-color: #fff;
+}
+
+.section-description {
+    margin-top: 60px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.section-description p {
+    margin-top: 20px;
+    padding: 0 120px;
+}
+.section-container-image-bg .section-description p {
+    opacity: 0.8;
+}
+
+.section-bottom-button {
+    padding-top: 60px;
+}
+
+
+.services-box {
+    padding-top: 30px;
+    text-align: left;
+}
+
+.services-box .services-box-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    font-size: 40px;
+    color: #fff;
+    line-height: 80px;
+    text-align: center;
+    border-radius: 28px;
+    background: #9b59b6; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffb24b 0%, #9b59b6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb24b), color-stop(100%,#9b59b6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffb24b 0%,#9b59b6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffb24b 0%,#9b59b6 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffb24b 0%,#9b59b6 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #a0810e 0%, #eec308 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb24b', endColorstr='#9b59b6',GradientType=0 ); /* IE6-9 */
+}
+
+.services-box h3 {
+    margin-top: 0;
+    padding: 0 0 10px 0;
+}
+
+
+
 /*Welcome nav*/
 .welcome-link {
     margin-bottom: 19px;
 }
 
+
+
 .navbar-dark {
     background:transparent !important;
     transition:0.75s ease;
     font-family: "";
+    text-align: center;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -57,7 +160,7 @@ html {
     color: #fff;
     border-radius: 4px;
     transition: all .3s;
-    margin-left: 226px;
+    margin-left: 253px;
     margin-bottom: 30px;
 
 }
@@ -85,6 +188,12 @@ html {
     background-color: rgba(13, 13, 13, 0.71);
     outline: white solid 2px;
     animation: myanim 3s infinite;
+    margin-top: 10px;
+
+    font-size: 38px;
+    font-weight: 300;
+    color: #555;
+    line-height: 50px;
 }
 
 .img-fluid {
@@ -98,7 +207,7 @@ html {
     }
 }
 .container-home {
-    width: 893px;
+    /*width: 893px;*/
 }
 /*Top portion with image*/
 
@@ -133,7 +242,7 @@ html {
     color: #ffffff;
     font-family: "Yesteryear";
     text-align: center;
-    font-size: 80px;
+
 }
 
 .top-content .description {
@@ -165,7 +274,7 @@ html {
 .wordCarousel {
     font-size: 36px;
     font-weight: 100;
-    margin-left: 90px;
+    margin-left: 11px;
     margin-bottom: 0;
     margin-top: 49px;
     color: white;
@@ -182,6 +291,7 @@ html {
     margin-bottom: 45px;
     display: block;
     font-size: 45px;
+    margin-left: 21px;
 }
 
 .carousel-box {
@@ -240,7 +350,7 @@ html {
 
     background-image: url("../imgs/hand-metal-music-musician-33779.jpg");
     /* Set a specific height */
-    min-height: auto;
+    min-height: 600px;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -444,12 +554,12 @@ html {
 /*    height: 100%;*/
 /*}*/
 
-body {
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 300;
-    color: #999;
-    background-color: #fff;
-}
+/*body {*/
+/*    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+/*    font-weight: 300;*/
+/*    color: #999;*/
+/*    background-color: #fff;*/
+/*}*/
 
  .card-text {
     margin: 0 0 20px 0;
@@ -583,30 +693,116 @@ a:hover{
 }
 
 
+
+
 /*Media Queries*/
-@media (max-width: 576px) {
+@media (max-width: 767px) {
+
+
+/*    Log In*/
+
+
+    /*Log IN Form*/
+
+    #form-margin {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+.wordCarousel {
+    text-align: start;
+    margin-left: 22px;
+}
+
+    .carousel-li {
+        font-family: Yesteryear;
+        color: goldenrod;
+        font-weight: 700;
+        padding: 0 10px;
+        height: 45px;
+        margin-bottom: 45px;
+        display: block;
+        font-size: 45px;
+        margin-left: 0px;
+    }
+
+#login-background {
+    background-image: url("../imgs/mobile-mic.jpeg") ;
+}
 
 
 
+    /*    Gen NAv*/
+
+.navbar-dark {
+    background: #000000 !important;
+}
 
     /*Welcome page*/
 
-    .container-home {
+    .top {
+        background-image: url("../imgs/mobo.webp");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
         width: 100%;
-    }
+        height: auto;
+        min-height: 500px;
+        background-attachment: scroll;
 
-    .container {
-        padding-left: 0;
     }
 
     .btn-link-2 {
-        margin-left: 97px;
+        margin-left: 133px;
     }
+
+    .container-home {
+        width: 100%;
+        padding-left: 0 !important;
+    }
+
+    .container {
+
+    }
+
 
     /*Welcome Nav*/
 
     .logo {
         margin-left: 20px;
+        height: auto;
+        padding-right: 15px;
+        padding-left: 0px;
     }
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    .services-box .services-box-icon { width: 60px; height: 60px; font-size: 32px; line-height: 60px; border-radius: 22px; }
+
+    .about-us-box-text { padding-right: 0; }
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .navbar-expand-md .navbar-nav .nav-link { padding-left: 0.6rem; padding-right: 0.6rem; }
+
+    .top-content { padding: 180px 0; }
+
+    .section-description p { padding: 0; }
+
+    .services-box .services-box-icon { width: 50px; height: 50px; font-size: 26px; line-height: 50px; border-radius: 18px; }
+
+    .about-us-box { margin-top: 80px; }
+    .about-us-box:last-child { margin-top: 50px; }
+    .about-us-box-text { padding-right: 0; text-align: center; }
+
+    .more-services-box .more-services-box-icon { width: 50px; height: 50px; font-size: 26px; line-height: 50px; border-radius: 18px; }
+
+    .portfolio-box h3:hover i { padding-left: 10px; }
+
+    .blog-box h3:hover i { padding-left: 10px; }
 
 }
