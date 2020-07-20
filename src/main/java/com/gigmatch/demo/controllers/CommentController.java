@@ -27,10 +27,8 @@ public class CommentController {
     @GetMapping("/posts/{id}/comment")
     public String showCommentForm(Model model, @PathVariable long id){
         Post postToComment = postsDao.getOne(id);
-        PostComment newComment = new PostComment();
-//        model.addAttribute("post", postToComment);
-        model.addAttribute("comment", newComment);
         model.addAttribute("post", postToComment);
+        model.addAttribute("comment", new PostComment());
         return "posts/addComment";
     }
 
@@ -42,4 +40,5 @@ public class CommentController {
         commentsDao.save(comment);
         return "redirect:/feed/posts";
     }
+
 }

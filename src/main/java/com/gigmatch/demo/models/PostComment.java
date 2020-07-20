@@ -17,7 +17,6 @@ public class PostComment {
     @CreatedDate
     private Date createDate;
 
-    //TODO: Verify relationship for the two below
     @ManyToOne
     private Post post;
 

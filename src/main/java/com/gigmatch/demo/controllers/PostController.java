@@ -30,7 +30,6 @@ public class PostController {
     }
 
     @GetMapping("/feed/posts")
-//    @RequestMapping(value = "/ads", method = RequestMethod.GET)
     public String index(Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Post> postList = postsDao.findAll();
@@ -45,11 +44,21 @@ public class PostController {
         return "posts/postsFeed";
     }
 
-//    @GetMapping("/sign-up")
-//    public String showSignupForm(Model model){
-//        model.addAttribute("user", new User());
-//        return "users/sign-up";
-//    }
+
+    @GetMapping("posts/{id}")
+    public String showOne(@PathVariable long id, Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Post post = postsDao.getOne(id);
+        List<PostComment> comments = commentsDao.findAllByPost(post);
+        User postOwner = post.getOwner();
+        model.addAttribute("postOwner", postOwner);
+        model.addAttribute("post", post);
+        model.addAttribute("profile", profilesDao.findByOwner(currentUser));
+        model.addAttribute("myProfileId", profilesDao.findByOwner(currentUser).getId());
+        model.addAttribute("comments", comments);
+        return "posts/show";
+    }
+
 
     @GetMapping("/posts/create")
     public String showForm(Model viewModel){
@@ -58,12 +67,10 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String save(@ModelAttribute Post postToBeSaved, Model model) {
+    public String save(@ModelAttribute Post post) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        postToBeSaved.setOwner(currentUser);
-        Post savedPost = postsDao.save(postToBeSaved);
-
-//        return "redirect:/feed" + savedPost.getId();
+        post.setOwner(currentUser);
+        postsDao.save(post);
         return "redirect:/feed/posts";
     }
 

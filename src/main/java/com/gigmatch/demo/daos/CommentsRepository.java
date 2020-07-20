@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface CommentsRepository extends JpaRepository <PostComment, Long>{
 
+    List<PostComment> findAllByPost(Post post);
+
 }
