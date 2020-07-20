@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Show Post')">
+</head>
+<body>
+<header th:replace="fragments/navbar :: navbar"></header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="/feed/posts">Home Feed</a></li>
+                    <li class="list-group-item"><a href="#">Notifications</a></li>
+                    <li class="list-group-item"><a href="#">Messages</a></li>
+                    <li class="list-group-item"><a th:href="'/my-profile/' + ${myProfileId}">My Profile</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-2">
+                <div class="card-body">
+                    <h5 th:text="${post.owner.username}"></h5>
+                    <p class="card-text" th:text="${post.body}"></p>
+                </div>
+                <hr>
+                <a th:href="'/posts/' + ${post.id} + '/comment'">Add Comment</a>
+                <hr>
+                <div class="card-body" th:each="comment : ${comments}">
+                    <h6 th:text="${comment.owner.username}"></h6>
+                    <p class="card-text" th:text="${comment.content}"></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <div id="map" style="width: 100%; height:200px"></div>
+                <div class="card-body">
+                    <p class="card-text" id="inputCity" th:text="${profile.city} + ', ' + ${profile.state}"></p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Your Calendar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+<script th:replace="fragments/map-scripts-and-div :: jquery-script"></script>
+<script th:replace="fragments/map-scripts-and-div :: key-script"></script>
+<script th:replace="fragments/map-scripts-and-div :: mapbox-script"></script>
+<script th:replace="fragments/map-scripts-and-div :: geocode-script"></script>
+
+<script th:inline="javascript">
+
+    var city = [[${profile.city}]];
+
+    geocode(city, mapboxToken).then(function (result) {
+        console.log(result);
+        mapboxgl.accessToken = mapboxToken;
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            zoom: 12,
+            center: (result)
+        });
+    });
+</script>
+
+
+</body>
+</html>

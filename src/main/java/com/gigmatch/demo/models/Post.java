@@ -27,6 +27,7 @@ public class Post {
     @OneToOne
     private User owner;
 
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_posts",
@@ -36,22 +37,27 @@ public class Post {
     private List<User> users;
 
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    private List<PostComment> comments;
+
     public Post() {
     }
 
-    public Post(String img, String body, Date dateTime, User owner) {
+    public Post(String img, String body, Date dateTime, User owner, List<PostComment> comments) {
         this.img = img;
         this.body = body;
         this.dateTime = dateTime;
         this.owner = owner;
+        this.comments = comments;
     }
 
-    public Post(long id, String img, String body, Date dateTime, User owner) {
+    public Post(long id, String img, String body, Date dateTime, User owner, List<PostComment> comments) {
         this.id = id;
         this.img = img;
         this.body = body;
         this.dateTime = dateTime;
         this.owner = owner;
+        this.comments = comments;
     }
 
     public long getId() {
@@ -92,5 +98,13 @@ public class Post {
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public List<PostComment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<PostComment> comments) {
+        this.comments = comments;
     }
 }
