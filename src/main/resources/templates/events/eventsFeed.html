@@ -37,18 +37,53 @@
             </nav>
 
         <!-- No Events Found-->
-            <div th:if="${noEventsFound}">
-                No events were found.
-            </div>
-            <div class="card mb-2" th:each="event : ${events}">
-                <div class="card-body">
-                    <h5 th:text="${event.owner.getUsername()}"></h5>
-                    <p class="card-text" th:text="${event.streetAddress} + ' ' + ${event.city} + ', ' +  ${event.state} + ' ' + ${event.zipcode}"></p>
-                    <p class="card-text" th:text="${event.description}"></p>
-                <!-- <a th:href="'/events/' + ${event.id} + '/edit'" class="btn btn-primary">Edit Event</a>-->
+<!--            <div th:if="${noEventsFound}">-->
+<!--                No events were found.-->
+<!--            </div>-->
+<!--            <div class="card mb-2" th:each="event : ${events}">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 th:text="${event.owner.getUsername()}"></h5>-->
+<!--                    <p class="card-text" th:text="${event.streetAddress} + ' ' + ${event.city} + ', ' +  ${event.state} + ' ' + ${event.zipcode}"></p>-->
+<!--                    <p class="card-text" th:text="${event.description}"></p>-->
+<!--                &lt;!&ndash; <a th:href="'/events/' + ${event.id} + '/edit'" class="btn btn-primary">Edit Event</a>&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        -->
+
+        <!--                user posts-->
+
+        <!--- \\\\\\\Post-->
+        <div class="card gedf-card" th:each="event : ${events}">
+            <div class="card-header" >
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="mr-2">
+                            <img class="rounded-circle" width="45" src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png" alt="">
+                        </div>
+                        <div class="ml-2">
+                            <div class="h5 m-0" th:text="${event.owner.getUsername()}"></div>
+                            <div class="h7 text-muted" th:text="${event.streetAddress}"></div>
+                            <div class="h7 text-muted" th:text="${event.city} + ', ' + ${event.state}"></div>
+                            <div class="h7 text-muted" th:text="${event.zipcode}"></div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="card-body ">
+
+
+                <p class="card-text" th:text="${event.description}"></p>
+            </div>
+            <div class="card-footer">
+                <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+                <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+            </div>
         </div>
+        </div>
+        <!--                user posts-->
 
 
 <!--INSERT MAPBOX API HERE-->
@@ -62,6 +97,7 @@
 
 
 
+
     <!--INSERT CALENDAR HERE-->
                 <div class="card mb-3">
                     <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif" class="card-img-top" alt="...">
@@ -71,9 +107,8 @@
                  </div>
 
              </div>
-
-         </div>
     </div>
+</div>
 
 
 </body>

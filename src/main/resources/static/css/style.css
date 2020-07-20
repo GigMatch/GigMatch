@@ -5,7 +5,7 @@ html {
     height: 100%;
 }
 body {
-    height: 100%;
+    height: max-content;
     margin: 0;
     padding: 0;
     position: relative;
@@ -16,8 +16,163 @@ body {
     flex: 1 0 auto;
 }
 
-#sticky-footer {
-    flex-shrink: 0;
+/*Footer*/
+
+.footer-section {
+    background: #151414;
+    position: relative;
+}
+.footer-cta {
+    border-bottom: 1px solid #373636;
+}
+.single-cta i {
+    color: #ff5e14;
+    font-size: 30px;
+    float: left;
+    margin-top: 8px;
+}
+.cta-text {
+    padding-left: 15px;
+    display: inline-block;
+}
+.cta-text h4 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+.cta-text span {
+    color: #757575;
+    font-size: 15px;
+}
+.footer-content {
+    position: relative;
+    z-index: 2;
+}
+.footer-pattern img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 330px;
+    background-size: cover;
+    background-position: 100% 100%;
+}
+.footer-logo {
+    margin-bottom: 30px;
+}
+.footer-logo img {
+    max-width: 200px;
+}
+.footer-text p {
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: #7e7e7e;
+    line-height: 28px;
+}
+.footer-social-icon span {
+    color: #fff;
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 20px;
+}
+.footer-social-icon a {
+    color: #fff;
+    font-size: 16px;
+    margin-right: 15px;
+}
+.footer-social-icon i {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 38px;
+    border-radius: 50%;
+}
+.facebook-bg{
+    background: #3B5998;
+}
+.twitter-bg{
+    background: #55ACEE;
+}
+.google-bg{
+    background: #DD4B39;
+}
+.footer-widget-heading h3 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    position: relative;
+}
+.footer-widget-heading h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    height: 2px;
+    width: 50px;
+    background: #ff5e14;
+}
+.footer-widget ul li {
+    display: inline-block;
+    float: left;
+    width: 50%;
+    margin-bottom: 12px;
+}
+.footer-widget ul li a:hover{
+    color: #ff5e14;
+}
+.footer-widget ul li a {
+    color: #878787;
+    text-transform: capitalize;
+}
+.subscribe-form {
+    position: relative;
+    overflow: hidden;
+}
+.subscribe-form input {
+    width: 100%;
+    padding: 14px 28px;
+    background: #2E2E2E;
+    border: 1px solid #2E2E2E;
+    color: #fff;
+}
+.subscribe-form button {
+    position: absolute;
+    right: 0;
+    background: #ff5e14;
+    padding: 13px 20px;
+    border: 1px solid #ff5e14;
+    top: 0;
+}
+.subscribe-form button i {
+    color: #fff;
+    font-size: 22px;
+    transform: rotate(-6deg);
+}
+.copyright-area{
+    background: #202020;
+    padding: 25px 0;
+}
+.copyright-text p {
+    margin: 0;
+    font-size: 14px;
+    color: #878787;
+}
+.copyright-text p a{
+    color: goldenrod;
+}
+.footer-menu li {
+    display: inline-block;
+    margin-left: 20px;
+}
+.footer-menu li:hover a{
+    color: goldenrod;
+}
+.footer-menu li a {
+    font-size: 14px;
+    color: #878787;
 }
 
 /*Font Awesome*/
@@ -141,7 +296,7 @@ body {
     margin-bottom: 0;
 }
 .navbar-dark.scrolled {
-    background: rgba(0, 0, 0, 0.7) !important;
+    background: goldenrod !important;
 
 }
 
@@ -269,6 +424,12 @@ body {
 
 }
 
+.login-link a:link,
+.login-link a:active,
+.login-link a:visited{
+    color:rgba(255,255,255,1);
+}
+
 /*Word carousel*/
 
 .wordCarousel {
@@ -344,6 +505,12 @@ body {
 #form-margin {
     margin-left: -279px;
     margin-right: 90px;
+}
+
+#form-margin-log {
+    margin-left: -279px;
+    margin-right: 90px;
+margin-top: 40px;
 }
 
 #login-background {
@@ -654,7 +821,7 @@ body {
 .team-member figure:hover figcaption {
     visibility: visible;
     color: #fff;
-    background: rgba(218, 165, 32, 0.43);
+    background: rgba(218, 165, 32, 0.6);
     /* Primary color, can be changed via colors.css */
 
     height: 100%;
@@ -692,7 +859,15 @@ body {
     transition: all 0.4s ease-in-out;
 }
 
+/*Test*/
 
+.gedf-wrapper {
+    margin-top: 0.97rem;
+}
+
+.card {
+    margin-bottom: 20px;
+}
 
 
 /*Media Queries*/
@@ -707,6 +882,12 @@ body {
     #form-margin {
         margin-left: 0 !important;
         margin-right: 0 !important;
+    }
+
+    #form-margin-log {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-top: 0 !important;
     }
 
 .wordCarousel {
