@@ -89,20 +89,9 @@ public class ProfileController {
     // Update current user profile
     @PostMapping("/profile/{id}/edit")
     public String update(@ModelAttribute Profile profileToEdit){
-        User currentUser = usersDao.getOne(1L);
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         profileToEdit.setOwner(currentUser);
         profilesDao.save(profileToEdit);
         return "redirect:/my-profile/" + profileToEdit.getId();
     }
-
-
-
-
-
-
-
-
-
-
-
 }

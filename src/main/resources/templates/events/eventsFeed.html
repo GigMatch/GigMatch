@@ -18,6 +18,8 @@
                 </ul>
             </div>
         </div>
+
+
         <div class="col-md-6">
             <div class="card mb-3">
                 <div class="card-body">
@@ -31,32 +33,36 @@
                 <div class="card-body">
                     <h5 th:text="${event.owner.getUsername()}"></h5>
                     <p class="card-text" th:text="${event.streetAddress} + ' ' + ${event.city} + ', ' +  ${event.state} + ' ' + ${event.zipcode}"></p>
-<!--                    <p class="card-text" th:text="${event.city}"></p>-->
-<!--                    <p class="card-text" th:text="${event.state}"></p>-->
-<!--                    <p class="card-text" th:text="${event.zipcode}"></p>-->
                     <p class="card-text" th:text="${event.description}"></p>
                     <a th:href="'/events/' + ${event.id} + '/edit'" class="btn btn-primary">Edit Event</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card mb-3">
-                <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Map with center view of your city.</p>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Your Calendar.</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-</div>
-</div>
+
+<!--INSERT MAPBOX API HERE-->
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Map with center view of your city.</p>
+                    </div>
+                </div>
+
+
+
+    <!--INSERT CALENDAR HERE-->
+                <div class="card mb-3">
+                    <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Your Calendar.</p>
+                    </div>
+                 </div>
+
+             </div>
+
+         </div>
+    </div>
 
 
 </body>
