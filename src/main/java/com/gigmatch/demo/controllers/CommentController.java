@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class CommentController {
 
@@ -27,10 +29,8 @@ public class CommentController {
     @GetMapping("/posts/{id}/comment")
     public String showCommentForm(Model model, @PathVariable long id){
         Post postToComment = postsDao.getOne(id);
-        PostComment newComment = new PostComment();
-//        model.addAttribute("post", postToComment);
-        model.addAttribute("comment", newComment);
         model.addAttribute("post", postToComment);
+        model.addAttribute("comment", new PostComment());
         return "posts/addComment";
     }
 
@@ -38,8 +38,12 @@ public class CommentController {
     public String addComment(@ModelAttribute PostComment comment, @ModelAttribute Post post){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         comment.setOwner(currentUser);
+        List<PostComment> comments = commentsDao.findAllByPost(post);
         comment.setPost(post);
-        commentsDao.save(comment);
+        comments.add(comment);
+        commentsDao.saveAll(comments);
+//        comments.add(comment);
         return "redirect:/feed/posts";
     }
+
 }

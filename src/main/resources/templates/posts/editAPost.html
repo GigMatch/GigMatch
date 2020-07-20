@@ -5,14 +5,14 @@
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
 <div class="container">
-    <h1>Update Your Post</h1>
+    <h1>Update Post</h1>
     <form th:action="${'/posts/' + post.id + '/edit'}" method="POST" th:object="${post}">
 <div class="form-group">
 
     <label for="body">body</label>
-    <textarea id="body" name="body" class="form-control" type="text"></textarea>
+    <input id="body" th:field="*{body}" type="text">
 </div>
-<input id="btn" type="submit" class="btn btn-block btn-primary" value="edit a Post">
+        <button class="btn btn-primary">Update</button>
 </form>
     <form th:action="${'/posts/' + post.id + '/delete'}" method="post">
         <button class="btn btn-danger">Delete</button>
