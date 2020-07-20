@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -26,8 +27,14 @@ public class Post {
     @OneToOne
     private User owner;
 
-//    @ManyToMany
-//    List<>;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_posts",
+            joinColumns = {@JoinColumn(name = "post_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    )
+    private List<User> users;
+
 
     public Post() {
     }

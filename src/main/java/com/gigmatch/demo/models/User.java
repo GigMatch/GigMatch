@@ -1,6 +1,7 @@
 package com.gigmatch.demo.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -26,23 +27,30 @@ public class User {
     @Column(nullable = false, length = 255)
     private String password;
 
+
+    @ManyToMany(mappedBy = "users")
+    private List<Post> posts;
+
+
     public User() {}
 
-    public User(String first_name, String last_name, String email, String username, String password) {
+    public User(String first_name, String last_name, String email, String username, String password, List<Post> posts) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
         this.username = username;
         this.password = password;
+        this.posts = posts;
     }
 
-    public User(long id, String first_name, String last_name, String email, String username, String password) {
+    public User(long id, String first_name, String last_name, String email, String username, String password, List<Post> posts) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
         this.username = username;
         this.password = password;
+        this.posts = posts;
     }
 
     public User(User copy) {
@@ -52,6 +60,7 @@ public class User {
         this.password = copy.password;
         this.last_name = copy.last_name;
         this.first_name = copy.first_name;
+        this.posts = copy.posts;
     }
 
 
@@ -102,4 +111,14 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 }
+
+
