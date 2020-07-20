@@ -76,8 +76,9 @@ public class PostController {
     }
 
     @PostMapping("/posts/{id}/edit")
-    public String update(@ModelAttribute Post postToEdit){
-        User currentUser = usersDao.getOne(1L);
+    public String update(@ModelAttribute Post postToEdit, Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         postToEdit.setOwner(currentUser);
         // save the changes
         postsDao.save(postToEdit); // update ads set title = ? where id = ?
@@ -95,8 +96,12 @@ public class PostController {
     public String searchByBody(Model model, @RequestParam(name = "term") String term){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
-        List<Post> postList = postsDao.searchByBody(term);
-        model.addAttribute("posts", postList);
+        List<Post> resultList = postsDao.searchByBody(term);
+
+        model.addAttribute("noResultsFound", resultList.size() == 0);
+        model.addAttribute("results", resultList);
+
+        System.out.println("TESTING SEARCH");
         return "posts/postsFeed";
     }
 }
