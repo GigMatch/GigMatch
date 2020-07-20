@@ -58,6 +58,7 @@
                 </div>
             </div>
 
+
         <!--No Posts Found-->
             <div th:if="${noPostsFound}">
                 You haven't created any posts yet.
@@ -67,15 +68,6 @@
             </div>
 
             <br>
-
-        <!--No Events Found-->
-<!--            <div th:if="${noEventsFound}">-->
-<!--                No events were found.-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <a th:href="'/events/create'" class="btn btn-primary">Create an event</a>-->
-<!--            </div>-->
-
 
            <div class="card mb-2" th:each="post : ${userPosts}">
                 <div class="card-body">

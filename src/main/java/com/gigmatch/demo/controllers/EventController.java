@@ -5,6 +5,7 @@ import com.gigmatch.demo.daos.ProfilesRepository;
 import com.gigmatch.demo.daos.UsersRepository;
 import com.gigmatch.demo.models.Event;
 import com.gigmatch.demo.models.Post;
+import com.gigmatch.demo.models.Profile;
 import com.gigmatch.demo.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -88,4 +89,18 @@ public class EventController {
         model.addAttribute("events", eventList);
         return "events/eventsFeed";
     }
+
+
+
+    // Reading current user My Events Feed
+    @GetMapping("/feed/myEvents")
+    public String showMyEvents(Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
+        List<Event> eventList = eventsDao.findAllByOwner(currentUser);
+//        model.addAttribute("noPostsFound", postList.size() == 0);
+        model.addAttribute("userEvents", eventList);
+        return "events/myEventsFeed";
+    }
+
 }
