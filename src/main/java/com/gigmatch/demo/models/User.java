@@ -28,7 +28,7 @@ public class User {
     private String password;
 
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(mappedBy = "userReactions")
     private List<Post> posts;
 
 

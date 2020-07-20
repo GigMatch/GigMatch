@@ -30,11 +30,11 @@ public class Post {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "post_user",
+            name = "posts_users",
             joinColumns = {@JoinColumn(name = "post_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )
-    private List<User> users;
+    private List<User> userReactions;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
@@ -43,20 +43,24 @@ public class Post {
     public Post() {
     }
 
-    public Post(String img, String body, Date dateTime, User owner, List<PostComment> comments) {
+    public Post(String img, String body, Date dateTime, User owner, List<User> userReactions, List<PostComment> comments) {
         this.img = img;
         this.body = body;
         this.dateTime = dateTime;
         this.owner = owner;
+        this.userReactions = userReactions;
         this.comments = comments;
     }
 
-    public Post(long id, String img, String body, Date dateTime, User owner, List<PostComment> comments) {
+
+
+    public Post(long id, String img, String body, Date dateTime, User owner, List<User> userReactions, List<PostComment> comments) {
         this.id = id;
         this.img = img;
         this.body = body;
         this.dateTime = dateTime;
         this.owner = owner;
+        this.userReactions = userReactions;
         this.comments = comments;
     }
 
@@ -106,5 +110,13 @@ public class Post {
 
     public void setComments(List<PostComment> comments) {
         this.comments = comments;
+    }
+
+    public List<User> getUserReactions() {
+        return userReactions;
+    }
+
+    public void setUserReactions(List<User> userReactions) {
+        this.userReactions = userReactions;
     }
 }
