@@ -4,10 +4,10 @@
 </head>
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
-<form th:action="${'/posts/' + post.id + '/comment'}" method="POST" th:object="${comment}">
+<form th:action="${'/posts/' + post.id + '/comment'}" method="POST">
 <div class="form-group mx-sm-3 mb-2">
     <label for="content" class="sr-only">Comment</label>
-    <input id="content" th:field="*{content}">
+    <input id="content" name="comment">
 </div>
 <button type="submit" class="btn btn-primary mb-2">Comment</button>
 </form>
