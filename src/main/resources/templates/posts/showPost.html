@@ -20,7 +20,7 @@
         <div class="col-md-6">
             <div class="card mb-2">
                 <div class="card-body">
-                    <h5 th:text="${post.owner.username}"></h5>
+                    <a th:href="'/profile/' + ${postOwnerProfileId}"><h5 th:text="${post.owner.username}"></h5></a>
                     <p class="card-text" th:text="${post.body}"></p>
                 </div>
                 <hr>
