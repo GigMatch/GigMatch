@@ -35,7 +35,10 @@
                 </div>
             </nav>
 
-
+            <!-- No Events Found-->
+            <div th:if="${noEventsFound}">
+                No events were found.
+            </div>
             <div class="card mb-2" th:each="event : ${userEvents}">
                 <div class="card-body">
                     <h5 th:text="${event.owner.username}"></h5>

@@ -81,11 +81,12 @@
 <!--            </div>-->
 <!--        </div>-->
 
-<!--        -->
 
-        <!--                user posts-->
 
-        <!--- \\\\\\\Post-->
+<!-- No Events Found-->
+    <div th:if="${noEventsFound}">
+        No events were found.
+    </div>
         <div class="card gedf-card" th:each="event : ${events}">
             <div class="card-header" >
                 <div class="d-flex justify-content-between align-items-center">
