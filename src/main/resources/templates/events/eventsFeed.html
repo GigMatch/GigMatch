@@ -186,6 +186,14 @@
     var selectedDays = new Array();
     var mousedown = false;
     var mousemove = false;
+    // var today = new Date();
+    // var dd = (today.getDate()).padStart(2, '0');
+    // var mm = (today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    // var yyyy = today.getFullYear();
+    // var currentDay = dd + mm + yyyy;
+    // console.log("current day" + currentDay);
+
+
 
     function loadCalendarMonths() {
         for (var i = 0; i < months.length; i++) {
@@ -241,15 +249,23 @@
             d.classList.add("day");
             d.classList.add("blank");
             document.getElementById("calendarDays").appendChild(d);
+            // if(num() === currentDay){
+            //     currentDay.className.add("today");
+            // }
         }
 
         for (var i = 0; i < num; i++) {
+            var todaysDate = new Date().getDate();
             var tmp = i + 1;
             var d = document.createElement("div");
             d.id = "calendarday_" + tmp;
             d.className = "day";
             d.innerHTML = tmp;
             d.dataset.day = tmp;
+            //possibly where the function should go.
+            if(tmp === todaysDate){
+                d.className = "day today";
+            }
 
             d.addEventListener('click', function(){
                 this.classList.toggle('selected');
@@ -295,6 +311,9 @@
         var d = new Date(year, month+1, 0);
         return d.getDate();
     }
+
+    console.log(daysInMonth().toString());
+    //without toString it return a NaN
 
 
     window.addEventListener('load', function () {

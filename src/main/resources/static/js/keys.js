@@ -2,4 +2,3 @@ const mapboxToken = 'pk.eyJ1IjoicnlhbmNlc3V0dG9uIiwiYSI6ImNrY2ttcnE5NDAwZmoycW81
 
 
 // roshan
-const filestack = 'AJA44be7cSVOOmUpH2rc3z';
