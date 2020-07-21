@@ -74,6 +74,27 @@
 <!--                    <a th:href="'/posts/' + ${post.id}">See Post</a>-->
 <!--                </div>-->
 
+
+                    <!--                    <form th:href="'/posts/' + ${post.id} + '/comment'">-->
+                    <!--                        <button type="submit" class="btn btn-primary mb-2">Add Comment</button>-->
+                    <!--                    </form>-->
+
+
+            <!--DOUGLAS : POST REACTIONS TO VERIFY IF DATABASE IS CONNECTING TO THIS-->
+<!--                    <div>-->
+<!--                        <a th:text="${post.userReactions.size()}"></a>-->
+<!--                    </div>-->
+
+
+<!--                &lt;!&ndash; COMMENTS&ndash;&gt;-->
+<!--                    <a th:href="'/posts/' + ${post.id} + '/comment'">Add Comment</a>-->
+
+<!--                    <hr>-->
+<!--                    <a th:href="'/posts/' + ${post.id}">See Post</a>-->
+<!--                </div>-->
+
+            <!--MASTER BELOW-->
+
 <!--                user posts-->
 
                 <!--- \\\\\\\Post-->
@@ -94,13 +115,27 @@
                         <p class="card-text" th:text="${post.body}">
                         </p>
                     </div>
+
+             <!--POST REACTION TO CONNECT TO DATABASE&ndash;&gt;-->
+                    <!--<div>-->
+                    <!--<a th:text="${post.userReactions.size()}"></a>-->
+                    <!--</div>-->
+                    <!--<form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >-->
+                    <!--<input type="submit" value="Like">-->
+                    <!--</form>-->
+
+            <!--POST REACTION TO CONNECT TO DATABASE-->
                     <div class="card-footer">
-                        <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+                        <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >
+                            <button type="submit" th:text="${post.userReactions.size()}" class=" fa fa-gittip card-link " value=" Like "><i> Like</i></button>
+                        </form>
+                        <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
                         <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link"><i class="fa fa-comment"></i> Comment</a>
                         <a th:href="'/posts/' + ${post.id}">See Post</a>
                     </div>
                 </div>
-<!--                user posts-->
+
+
 
         </div>
             <div class="col-md-3">
