@@ -50,10 +50,21 @@
                                       placeholder="message..." th:rows="3" required autofocus></textarea>
                             <label class="form-root" for="body"></label>
                         </div>
+
+
+                        <!--Update Profile Photo -->
+                        <!--Filestack-->
+                        <label for="upload"></label>
+                        <button type="button" id="upload" name="upload">Add photo or video
+                        </button>
+                        <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{img}" type="hidden">
+
+
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Sign Up"
                                 type="submit">create your post
                         </button>
                         <hr class="my-4">
+
 
                     </form>
                 </div>
