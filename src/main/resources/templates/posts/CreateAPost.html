@@ -1,26 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head  th:replace="fragments/head :: head('Sign Up')">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments/head :: head('Sign Up')">
 </head>
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
-<div class="container">
-    <h1>Create a new Ad</h1>
+<!--<div class="container">-->
+<!--    <h1>Create a new Ad</h1>-->
 
-    <form th:action="@{/posts/create}" method="POST" th:object="${post}">
-        <label for="image">Image</label>
-        <input type="text" id="image" name="img">
-        <label for="upload"></label>
-        <button type="button" id="upload" name="upload">Upload an image</button>
+<!--    <form th:action="@{/posts/create}" method="POST" th:object="${post}">-->
+<!--        <label for="image">Image</label>-->
+<!--        <input type="text" id="image" name="img">-->
+<!--        <label for="upload"></label>-->
+<!--        <button type="button" id="upload" name="upload">Upload an image</button>-->
 
-        <input id="stashFilestackURL" name="stashFilestackURL" value="replaceme" th:field="*{img}" type="hidden">
+<!--        <input id="stashFilestackURL" name="stashFilestackURL" value="replaceme" th:field="*{img}" type="hidden">-->
 
-        <div class="form-group">
-            <label for="body">body</label>
-            <textarea id="body" name="body" class="form-control" type="text"></textarea>
+<!--        <div class="form-group">-->
+<!--            <label for="body">body</label>-->
+<!--            <textarea id="body" name="body" class="form-control" type="text"></textarea>-->
+<!--        </div>-->
+<!--        <input id="btn" type="submit" class="btn btn-block btn-primary" value="create a Post">-->
+<!--    </form>-->
+<!--</div>-->
+
+
+<div class="container" id="form-margin">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5" id="create">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Create A Post</h5>
+                    <form name="username" class="form-signin" th:action="@{/posts/create}" method="POST"
+                          th:object="${post}">
+                        <div class="form-label-group">
+                            <textarea type="text" id="body" class="form-control form-rounded" name="body"
+                                      placeholder="message..." th:rows="3" required autofocus></textarea>
+                            <label class="form-root" for="body"></label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Sign Up"
+                                type="submit">Sign Up
+                        </button>
+                        <hr class="my-4">
+
+                    </form>
+                </div>
+            </div>
         </div>
-        <input id="btn" type="submit" class="btn btn-block btn-primary" value="create a Post">
-    </form>
+    </div>
 </div>
 
 <script
@@ -44,7 +70,7 @@
         // }
 
         onUploadDone:
-            function(res) {
+            function (res) {
                 $("#stashFilestackURL").val(res.filesUploaded[0].url);
             }
     }
