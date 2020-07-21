@@ -7,6 +7,7 @@ import com.gigmatch.demo.daos.UsersRepository;
 import com.gigmatch.demo.models.Post;
 import com.gigmatch.demo.models.PostComment;
 import com.gigmatch.demo.models.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,9 @@ import java.util.List;
 
 @Controller
 public class PostController {
+
+    @Value("${filestack.api.key}")
+    private String apiKey;
 
     private PostsRepository postsDao;
     private UsersRepository usersDao;
@@ -61,8 +65,9 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    public String showForm(Model viewModel){
-        viewModel.addAttribute("post", new Post());
+    public String showForm(Model model){
+        model.addAttribute("post", new Post());
+        model.addAttribute("apiKey", apiKey);
         return "posts/CreateAPost";
     }
 
@@ -81,6 +86,7 @@ public class PostController {
         // find an ad
         Post postToEdit = postsDao.getOne(id);
         model.addAttribute("post", postToEdit);
+        model.addAttribute("apiKey", apiKey);
         return "posts/editAPost";
     }
 
