@@ -8,25 +8,62 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="/feed/posts">Home Feed</a></li>
-                    <li class="list-group-item"><a href="#">Notifications</a></li>
-                    <li class="list-group-item"><a href="#">Messages</a></li>
-<!--                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>-->
-<!--                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>-->
-                    <li class="list-group-item"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Profile</a></li>
-                </ul>
-            </div>
+<!--            <div class="card">-->
+<!--                <ul class="list-group list-group-flush">-->
+<!--                    <li class="list-group-item"><a href="/feed/posts">Home Feed</a></li>-->
+<!--                    <li class="list-group-item"><a href="#">Notifications</a></li>-->
+<!--                    <li class="list-group-item"><a href="#">Messages</a></li>-->
+<!--&lt;!&ndash;                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>&ndash;&gt;-->
+<!--                    <li class="list-group-item"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Profile</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
         </div>
+        <div class="sidebar-container">
+
+            <ul class="sidebar-navigation">
+                <li class="header"></li>
+                <li>
+                    <a href="/feed/posts">
+                        <i class="fa fa-home" aria-hidden="true"></i>Posts
+                    </a>
+                </li>
+                <li>
+                    <a href="/feed/events">
+                        <i class="fa fa-tachometer" aria-hidden="true"></i>Events
+                    </a>
+                </li>
+                <li>
+                    <a th:href="'/my-profile/' + ${profileId}">
+                        <i class="fa fa-users" aria-hidden="true"></i>My Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-cog" aria-hidden="true"></i> Notifcations
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i> Messages
+                    </a>
+                </li>
+                <li>
+                    <a th:href="'/profile/' + ${profileId} + '/edit'">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i> Update Profile
+                    </a>
+                </li>
+            </ul>
+        </div>
+
         <div class="col-md-6">
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
                     <div class="col-md-4">
                         <!--USE filestack here?-->
-                        <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"
+                        <img th:src="${profile.getProfilePhoto()}"
                              class="card-img m-2" alt="...">
-                        <div class="ml-4"><a href="#">Upload Photo</a></div>
+                        <div class="ml-4"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Photo</a></div>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -41,6 +78,17 @@
                     </div>
                 </div>
             </div>
+<!--            Test-->
+
+
+
+
+
+
+            <!--            Test-->
+
+
+
             <div class="card mb-3">
                 <div class="card-header">
                     <h4>Interests</h4>
@@ -69,18 +117,47 @@
 
             <br>
 
-           <div class="card mb-2" th:each="post : ${userPosts}">
-                <div class="card-body">
-                    <h5 th:text="${post.owner.username}"></h5>
-                    <p class="card-text" th:text="${post.body}"></p>
-                    <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn btn-primary">Edit Post</a>
+<!--           <div class="card mb-2" th:each="post : ${userPosts}">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 th:text="${post.owner.username}"></h5>-->
+<!--                    <p class="card-text" th:text="${post.body}"></p>-->
+<!--                    <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn btn-primary">Edit Post</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <!--                user posts-->
+
+        <!--- \\\\\\\Post-->
+        <div class="card gedf-card" th:each="post : ${userPosts}">
+            <div class="card-header" >
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="mr-2">
+                            <img class="rounded-circle" width="45" src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png" alt="">
+                        </div>
+                        <div class="ml-2">
+                            <div class="h5 m-0" th:text="${post.owner.username}"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="card-body ">
+                <p class="card-text" th:text="${post.body}">
+                </p>
+                <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn btn-primary">Edit Post</a>
+
+            </div>
+            <div class="card-footer">
+                <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+                <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+            </div>
         </div>
+        <!--                user posts-->
 
 
 
-
+</div>
 
         <!-- Mapbox API-->
         <div class="col-md-3">

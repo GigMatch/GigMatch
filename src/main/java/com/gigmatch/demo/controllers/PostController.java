@@ -7,6 +7,7 @@ import com.gigmatch.demo.daos.UsersRepository;
 import com.gigmatch.demo.models.Post;
 import com.gigmatch.demo.models.PostComment;
 import com.gigmatch.demo.models.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,9 @@ import java.util.List;
 
 @Controller
 public class PostController {
+
+    @Value("${filestack.api.key}")
+    private String apiKey;
 
     private PostsRepository postsDao;
     private UsersRepository usersDao;
@@ -50,6 +54,7 @@ public class PostController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post post = postsDao.getOne(id);
         List<PostComment> comments = commentsDao.findAllByPost(post);
+
         User postOwner = post.getOwner();
         model.addAttribute("postOwner", postOwner);
         model.addAttribute("post", post);
@@ -60,8 +65,9 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    public String showForm(Model viewModel){
-        viewModel.addAttribute("post", new Post());
+    public String showForm(Model model){
+        model.addAttribute("post", new Post());
+        model.addAttribute("apiKey", apiKey);
         return "posts/CreateAPost";
     }
 
@@ -80,6 +86,7 @@ public class PostController {
         // find an ad
         Post postToEdit = postsDao.getOne(id);
         model.addAttribute("post", postToEdit);
+        model.addAttribute("apiKey", apiKey);
         return "posts/editAPost";
     }
 
@@ -113,5 +120,24 @@ public class PostController {
         model.addAttribute("noResultsFound", resultList.size() == 0);
 
         return "posts/searchResults";
+    }
+
+    //Post Reactions
+    @PostMapping("/posts/{id}/reactions")
+    public String postReactions(Model model, @PathVariable long id){
+        //Getting current USER OBJECT, all properties
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        //Getting the "RIGHT" post id
+        Post post = postsDao.getOne(id);
+        //Get the current reactions list from that post
+        List<User> reactionsList = post.getUserReactions();
+        //Add user's reaction to the reaction List
+        reactionsList.add(currentUser);
+        //Overriding the reactions List by adding the current user's reaction to the list
+        post.setUserReactions(reactionsList);
+        //Save the Post back to database
+        postsDao.save(post);
+        //returning the view to this feed
+        return "redirect:/feed/posts";
     }
 }

@@ -6,6 +6,7 @@ import com.gigmatch.demo.daos.UsersRepository;
 import com.gigmatch.demo.models.Post;
 import com.gigmatch.demo.models.Profile;
 import com.gigmatch.demo.models.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,10 @@ import java.util.List;
 
 @Controller
 public class ProfileController {
+
+    @Value("${filestack.api.key}")
+    private String apiKey;
+
     private UsersRepository usersDao;
     private PasswordEncoder passwordEncoder;
     private ProfilesRepository profilesDao;
@@ -75,6 +80,7 @@ public class ProfileController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userProfile.setOwner(currentUser);
         Profile savedProfile = profilesDao.save(userProfile);
+
         return "redirect:/my-profile/" + savedProfile.getId();
     }
 
@@ -83,15 +89,18 @@ public class ProfileController {
     public String showUpdateProfileForm(Model model, @PathVariable long id) {
         Profile profileToEdit = profilesDao.getOne(id);
         model.addAttribute("profile", profileToEdit);
+        model.addAttribute("apiKey", apiKey);
         return "profiles/edit";
     }
 
     // Update current user profile
     @PostMapping("/profile/{id}/edit")
-    public String update(@ModelAttribute Profile profileToEdit){
+    public String update(@ModelAttribute Profile profileToEdit, Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         profileToEdit.setOwner(currentUser);
         profilesDao.save(profileToEdit);
+        model.addAttribute("apiKey", apiKey);
+        model.addAttribute("profileId", profileToEdit.getId());
         return "redirect:/my-profile/" + profileToEdit.getId();
     }
 }

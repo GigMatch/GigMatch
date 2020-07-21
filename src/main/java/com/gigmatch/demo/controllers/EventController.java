@@ -85,9 +85,10 @@ public class EventController {
     public String searchByDescription(Model model, @RequestParam(name = "term") String term){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
-        List<Event> eventList = eventsDao.searchByDescription(term);
-        model.addAttribute("events", eventList);
-        return "events/eventsFeed";
+        List<Event> resultList = eventsDao.searchByDescription(term);
+        model.addAttribute("results", resultList);
+        model.addAttribute("noResultsFound", resultList.size() == 0);
+        return "events/searchEvents";
     }
 
 
@@ -98,7 +99,7 @@ public class EventController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         List<Event> eventList = eventsDao.findAllByOwner(currentUser);
-//        model.addAttribute("noPostsFound", postList.size() == 0);
+        model.addAttribute("noEventsFound", eventList.size() == 0);
         model.addAttribute("userEvents", eventList);
         return "events/myEventsFeed";
     }
