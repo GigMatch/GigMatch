@@ -104,4 +104,23 @@ public class EventController {
         return "events/myEventsFeed";
     }
 
+
+    @PostMapping("/events/{id}/interests")
+    public String eventInterests(Model model, @PathVariable long id){
+        //Getting current USER OBJECT, all properties
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        //Getting the "RIGHT" post id
+        Event event = eventsDao.getOne(id);
+        //Get the current reactions list from that post
+        List<User> interestsList = event.getEventInterests();
+        //Add user's reaction to the reaction List
+        interestsList.add(currentUser);
+        //Overriding the reactions List by adding the current user's reaction to the list
+        event.setEventInterests(interestsList);
+        //Save the Post back to database
+        eventsDao.save(event);
+        //returning the view to this feed
+        return "redirect:/feed/events";
+    }
+
 }
