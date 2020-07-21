@@ -15,7 +15,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String img;
 
     @Column(nullable = false, columnDefinition = "TEXT")
