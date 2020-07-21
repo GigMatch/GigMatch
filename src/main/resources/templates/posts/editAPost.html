@@ -8,18 +8,15 @@
     <h1>Update Post</h1>
     <form th:action="${'/posts/' + post.id + '/edit'}" method="POST" th:object="${post}">
         <div class="form-group">
-
-            <!--Update Image on Post -->
-            <!--Filestack-->
-            <label for="upload"></label>
-            <button type="button" id="upload" name="upload">Update an image
-            </button>
-            <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{img}" type="hidden">
-
-
             <label for="body">body</label>
             <input id="body" th:field="*{body}" type="text">
         </div>
+        <!--Update Image on Post -->
+        <!--Filestack-->
+        <label for="upload"></label>
+        <button type="button" id="upload" name="upload">Update an image
+        </button>
+        <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{img}" type="hidden">
                 <button class="btn btn-primary">Update</button>
         </form>
             <form th:action="${'/posts/' + post.id + '/delete'}" method="post">

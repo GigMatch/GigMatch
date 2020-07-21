@@ -119,11 +119,14 @@
                         <p class="card-text" th:text="${post.body}"></p>
                         <!--Image for Post-->
                         <!--Filestack-->
-                        <img th:if="${post.img} == ''" th:src="@{/img/logoGig.jpg}"
-                             class="card-img m-2" alt="placeholder">
-                        <img th:unless="${post.img} == ''"  th:src="${post.img}"
-                             class="card-img m-2" alt="image for post">
-                        <div class="ml-4"><a th:href="'/posts/' + ${post.id} + '/edit'">Update image</a></div>
+                        <div th:if="${post.img} == ''">
+                            <!--                    <img  th:src="@{/img/logoGig.jpg}"-->
+                            <!--                         class="card-img m-2" alt=" ">-->
+                        </div>
+                        <div th:unless="${post.img} == ''">
+                            <img th:src="${post.img}"
+                                 class="card-img m-2" alt="image for post">
+                        </div>
                     </div>
 
              <!--POST REACTION TO CONNECT TO DATABASE&ndash;&gt;-->
@@ -221,6 +224,33 @@
         </div>
     </div>
 
+
+<!--Filestack-->
+<script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
+
+<!--Filestack-->
+<script th:inline="javascript">
+    const options = {
+        onUploadDone:
+            function (res) {
+                $("#stashFilestackURL").val(res.filesUploaded[0].url);
+            }
+    }
+    let apiKey = [[${apiKey}]]
+    const client = filestack.init(apiKey);
+
+    $("#upload").click(function () {
+        client.picker(options).open()
+    });
+</script>
+
+
+
 <script>
     const input = document.getElementById("search-input");
     const searchBtn = document.getElementById("search-btn");
@@ -231,7 +261,7 @@
     };
 
     searchBtn.addEventListener("click", expand);
-
 </script>
+
 </body>
 </html>

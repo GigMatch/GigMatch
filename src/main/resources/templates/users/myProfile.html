@@ -63,10 +63,14 @@
 
                         <!--Profile Photo-->
                         <!--Filestack-->
-                        <img th:if="${profile.profilePhoto} == ''" th:src="@{/img/logoGig.jpg}"
-                             class="card-img m-2" alt="placeholder">
-                        <img th:unless="${profile.profilePhoto} == ''"  th:src="${profile.profilePhoto}"
+                        <div th:if="${profile.profilePhoto} == ''">
+<!--                            <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"-->
+<!--                                 class="card-img m-2" alt="...">-->
+                        </div>
+                        <div th:unless="${profile.profilePhoto} == ''">
+                        <img   th:src="${profile.profilePhoto}"
                              class="card-img m-2" alt="profile picture">
+                        </div>
                         <div class="ml-4"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Photo</a></div>
                     </div>
 
@@ -144,9 +148,21 @@
                 </div>
             </div>
             <div class="card-body ">
-                <p class="card-text" th:text="${post.body}">
-                </p>
+                <p class="card-text" th:text="${post.body}"></p>
+                    <!--Image for Post-->
+                    <!--Filestack-->
+                <div th:if="${post.img} == ''">
+<!--                    <img  th:src="@{/img/logoGig.jpg}"-->
+<!--                         class="card-img m-2" alt=" ">-->
+                </div>
+                <div th:unless="${post.img} == ''">
+                    <img th:src="${post.img}"
+                         class="card-img m-2" alt="image for post">
+                </div>
+
                 <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn btn-primary">Edit Post</a>
+
+
 
             </div>
             <div class="card-footer">
