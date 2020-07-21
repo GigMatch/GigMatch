@@ -30,6 +30,12 @@ public class PostComment {
     public PostComment() {
     }
 
+    public PostComment(Post post, User owner, String content) {
+        this.post = post;
+        this.owner = owner;
+        this.content = content;
+    }
+
     public PostComment(Date createDate, Post post, User owner, String content) {
         this.createDate = createDate;
         this.post = post;
