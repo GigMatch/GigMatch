@@ -1,3 +1,4 @@
+
 package com.gigmatch.demo.controllers;
 
 import com.gigmatch.demo.daos.CommentsRepository;
@@ -6,12 +7,10 @@ import com.gigmatch.demo.models.Post;
 import com.gigmatch.demo.models.PostComment;
 import com.gigmatch.demo.models.User;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,20 +29,22 @@ public class CommentController {
     public String showCommentForm(Model model, @PathVariable long id){
         Post postToComment = postsDao.getOne(id);
         model.addAttribute("post", postToComment);
-        model.addAttribute("comment", new PostComment());
         return "posts/addComment";
     }
 
     @PostMapping("/posts/{id}/comment")
-    public String addComment(@ModelAttribute PostComment comment, @ModelAttribute Post post){
+    public String addComment(@RequestParam(name = "comment") String comment, @PathVariable long id){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        comment.setOwner(currentUser);
-        List<PostComment> comments = commentsDao.findAllByPost(post);
-        comment.setPost(post);
-        comments.add(comment);
-        commentsDao.saveAll(comments);
-//        comments.add(comment);
+
+        Post post = postsDao.getOne(id);
+
+        PostComment postComment = new PostComment(post, currentUser, comment);
+
+        commentsDao.save(postComment);
+
         return "redirect:/feed/posts";
     }
 
 }
+
+
