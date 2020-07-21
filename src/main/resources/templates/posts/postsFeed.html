@@ -127,7 +127,7 @@
             <!--POST REACTION TO CONNECT TO DATABASE-->
                     <div class="card-footer">
                         <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >
-                            <button type="submit" th:text="${post.userReactions.size()}" class=" fa fa-gittip card-link " value=" Like "><i> Like</i></button>
+                            <button  type="submit" th:text="${post.userReactions.size()}" class=" fa fa-gittip card-link " value=" Like "><i onclick="myFunction(this)"> Like</i></button>
                         </form>
                         <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
                         <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link"><i class="fa fa-comment"></i> Comment</a>
@@ -221,6 +221,7 @@
     };
 
     searchBtn.addEventListener("click", expand);
+
 
 </script>
 </body>
