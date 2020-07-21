@@ -31,6 +31,9 @@ public class User {
     @ManyToMany(mappedBy = "userReactions")
     private List<Post> posts;
 
+    @ManyToMany(mappedBy = "eventInterests")
+    private List<Event> events;
+
 
     public User() {}
 
@@ -118,6 +121,14 @@ public class User {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 }
 

@@ -4,6 +4,7 @@ package com.gigmatch.demo.models;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "events")
@@ -31,6 +32,15 @@ public class Event {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "events_users",
+            joinColumns = {@JoinColumn(name = "event_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    )
+    private List<User> eventInterests;
+
+
     @OneToOne
     private User owner;
 
@@ -38,18 +48,19 @@ public class Event {
     }
 
     public Event(Date dateTime, String streetAddress, String city, String state, String zipcode, String description,
-                 User owner) {
+                 List<User> eventInterests, User owner) {
         this.dateTime = dateTime;
         this.streetAddress = streetAddress;
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;
         this.description = description;
+        this.eventInterests = eventInterests;
         this.owner = owner;
     }
 
     public Event(long id, Date dateTime, String streetAddress, String city, String state, String zipcode,
-                 String description, User owner) {
+                 String description, List<User> eventInterests, User owner) {
         this.id = id;
         this.dateTime = dateTime;
         this.streetAddress = streetAddress;
@@ -57,6 +68,7 @@ public class Event {
         this.state = state;
         this.zipcode = zipcode;
         this.description = description;
+        this.eventInterests = eventInterests;
         this.owner = owner;
     }
 
@@ -123,4 +135,13 @@ public class Event {
     public void setOwner(User owner) {
         this.owner = owner;
     }
+
+    public List<User> getEventInterests() {
+        return eventInterests;
+    }
+
+    public void setEventInterests(List<User> eventInterests) {
+        this.eventInterests = eventInterests;
+    }
+
 }
