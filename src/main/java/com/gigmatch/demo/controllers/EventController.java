@@ -40,16 +40,20 @@ public class EventController {
     //creates an event
     @GetMapping("/events/create")
     public String showForm(Model viewModel){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         viewModel.addAttribute("event", new Event());
+        viewModel.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         return "events/CreateAnEvent";
     }
 
     //saves the event made
     @PostMapping("/events/create")
-    public String save(@ModelAttribute Event eventToBeSaved) {
+    public String save(@ModelAttribute Event eventToBeSaved, Model viewModel) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         eventToBeSaved.setOwner(currentUser);
         Event savedEvent = eventsDao.save(eventToBeSaved);
+        viewModel.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
+
         return "redirect:/feed/events";
     }
 

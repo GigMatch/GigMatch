@@ -1,34 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
-<head th:replace="fragments/head :: head('Sign Up')">
+<head th:replace="fragments/head :: head('Create Post')">
 </head>
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-<!--<div class="container">-->
-<!--    <h1>Create a new Ad</h1>-->
-
-<!--    <form th:action="@{/posts/create}" method="POST" th:object="${post}">-->
-<!--        <label for="image">Image</label>-->
-<!--        <input type="text" id="image" name="img">-->
-<!--        <label for="upload"></label>-->
-<!--        <button type="button" id="upload" name="upload">Upload an image</button>-->
-
-<!--        <input id="stashFilestackURL" name="stashFilestackURL" value="replaceme" th:field="*{img}" type="hidden">-->
-
-<!--        <div class="form-group">-->
-<!--            <label for="body">body</label>-->
-<!--            <textarea id="body" name="body" class="form-control" type="text"></textarea>-->
-<!--        </div>-->
-<!--        <input id="btn" type="submit" class="btn btn-block btn-primary" value="create a Post">-->
-<!--    </form>-->
-<!--</div>-->
-        </div>
 <div class="sidebar-container">
-
     <ul class="sidebar-navigation">
         <li class="header"></li>
         <li>
@@ -42,7 +19,7 @@
             </a>
         </li>
         <li>
-            <a th:href="'/my-profile/' + ${profileId}">
+            <a th:href="'/my-profile/' + ${myProfileId}">
                 <i class="fa fa-users" aria-hidden="true"></i>My Profile
             </a>
         </li>

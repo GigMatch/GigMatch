@@ -66,8 +66,11 @@ public class PostController {
 
     @GetMapping("/posts/create")
     public String showForm(Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("post", new Post());
         model.addAttribute("apiKey", apiKey);
+        model.addAttribute("myProfileId", profilesDao.findByOwner(currentUser).getId());
+
         return "posts/CreateAPost";
     }
 
@@ -76,6 +79,7 @@ public class PostController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         postToBeSaved.setOwner(currentUser);
         Post savedPost = postsDao.save(postToBeSaved);
+        model.addAttribute("myProfileId", profilesDao.findByOwner(currentUser).getId());
 
 //        return "redirect:/feed" + savedPost.getId();
         return "redirect:/feed/posts";
