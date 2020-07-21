@@ -84,6 +84,15 @@
                         <p class="card-text" th:text="${post.body}">
                         </p>
                     </div>
+
+             <!--POST REACTION TO CONNECT TO DATABASE&ndash;&gt;-->
+                    <!--<div>-->
+                    <!--<a th:text="${post.userReactions.size()}"></a>-->
+                    <!--</div>-->
+                    <!--<form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >-->
+                    <!--<input type="submit" value="Like">-->
+                    <!--</form>-->
+
             <!--POST REACTION TO CONNECT TO DATABASE-->
                     <div class="card-footer">
                         <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >
