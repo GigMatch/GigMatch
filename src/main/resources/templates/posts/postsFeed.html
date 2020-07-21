@@ -92,7 +92,7 @@
                         <input type="submit" value="Like">
                     </form>
                     <div class="card-footer">
-<!--                        <a th:href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
+<!--                        <a th:action="'/posts/'+ ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
                         <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link"><i class="fa fa-comment"></i> Comment</a>
                         <a th:href="'/posts/' + ${post.id}">See Post</a>
                     </div>

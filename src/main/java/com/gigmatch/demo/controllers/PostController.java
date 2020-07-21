@@ -132,6 +132,6 @@ public class PostController {
         //Save the Post back to database
         postsDao.save(post);
         //returning the view to this feed
-        return "posts/postsFeed";
+        return "redirect:/feed/posts";
     }
 }
