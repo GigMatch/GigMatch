@@ -8,16 +8,47 @@
 <div th:switch="${hasProfile}">
     <div class="container" th:case="${true}">
         <div class="row">
-            <div class="col-md-3">
-                <div class="card">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><a href="#">Notifications</a></li>
-                        <li class="list-group-item"><a href="#">Messages</a></li>
-                        <li class="list-group-item"><a href="/feed/posts">Posts</a></li>
-                        <li class="list-group-item"><a href="/feed/events">Events</a></li>
-                        <li class="list-group-item"><a th:href="'/my-profile/' + ${profileId}">My Profile</a></li>
-                    </ul>
-                </div>
+            <div class="col-md-3" id="mob">
+<!--                <div class="card">-->
+<!--                    <ul class="list-group list-group-flush">-->
+<!--                        <li class="list-group-item"><a href="#">Notifications</a></li>-->
+<!--                        <li class="list-group-item"><a href="#">Messages</a></li>-->
+<!--                        <li class="list-group-item"><a href="/feed/posts">Posts</a></li>-->
+<!--                        <li class="list-group-item"><a href="/feed/events">Events</a></li>-->
+<!--                        <li class="list-group-item"><a th:href="'/my-profile/' + ${profileId}">My Profile</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+            </div>
+            <div class="sidebar-container">
+
+                <ul class="sidebar-navigation">
+                    <li class="header"></li>
+                    <li>
+                        <a href="/feed/posts">
+                            <i class="fa fa-home" aria-hidden="true"></i>Posts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/feed/events">
+                            <i class="fa fa-tachometer" aria-hidden="true"></i>Events
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="'/my-profile/' + ${profileId}">
+                            <i class="fa fa-users" aria-hidden="true"></i>My Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-cog" aria-hidden="true"></i> Notifcations
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i> Messages
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div class="col-md-6">
                 <div class="card mb-3">
@@ -43,6 +74,27 @@
 <!--                    <a th:href="'/posts/' + ${post.id}">See Post</a>-->
 <!--                </div>-->
 
+
+                    <!--                    <form th:href="'/posts/' + ${post.id} + '/comment'">-->
+                    <!--                        <button type="submit" class="btn btn-primary mb-2">Add Comment</button>-->
+                    <!--                    </form>-->
+
+
+            <!--DOUGLAS : POST REACTIONS TO VERIFY IF DATABASE IS CONNECTING TO THIS-->
+<!--                    <div>-->
+<!--                        <a th:text="${post.userReactions.size()}"></a>-->
+<!--                    </div>-->
+
+
+<!--                &lt;!&ndash; COMMENTS&ndash;&gt;-->
+<!--                    <a th:href="'/posts/' + ${post.id} + '/comment'">Add Comment</a>-->
+
+<!--                    <hr>-->
+<!--                    <a th:href="'/posts/' + ${post.id}">See Post</a>-->
+<!--                </div>-->
+
+            <!--MASTER BELOW-->
+
 <!--                user posts-->
 
                 <!--- \\\\\\\Post-->
@@ -63,13 +115,27 @@
                         <p class="card-text" th:text="${post.body}">
                         </p>
                     </div>
+
+             <!--POST REACTION TO CONNECT TO DATABASE&ndash;&gt;-->
+                    <!--<div>-->
+                    <!--<a th:text="${post.userReactions.size()}"></a>-->
+                    <!--</div>-->
+                    <!--<form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >-->
+                    <!--<input type="submit" value="Like">-->
+                    <!--</form>-->
+
+            <!--POST REACTION TO CONNECT TO DATABASE-->
                     <div class="card-footer">
-                        <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+                        <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >
+                            <button type="submit" th:text="${post.userReactions.size()}" class=" fa fa-gittip card-link " value=" Like "><i> Like</i></button>
+                        </form>
+                        <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
                         <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link"><i class="fa fa-comment"></i> Comment</a>
                         <a th:href="'/posts/' + ${post.id}">See Post</a>
                     </div>
                 </div>
-<!--                user posts-->
+
+
 
         </div>
             <div class="col-md-3">
@@ -145,5 +211,17 @@
         </div>
     </div>
 
+<script>
+    const input = document.getElementById("search-input");
+    const searchBtn = document.getElementById("search-btn");
+
+    const expand = () => {
+        searchBtn.classList.toggle("close");
+        input.classList.toggle("square");
+    };
+
+    searchBtn.addEventListener("click", expand);
+
+</script>
 </body>
 </html>

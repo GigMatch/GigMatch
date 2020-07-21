@@ -8,17 +8,54 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="/feed/posts">Home Feed</a></li>
-                    <li class="list-group-item"><a href="#">Notifications</a></li>
-                    <li class="list-group-item"><a href="#">Messages</a></li>
-<!--                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>-->
-<!--                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>-->
-                    <li class="list-group-item"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Profile</a></li>
-                </ul>
-            </div>
+<!--            <div class="card">-->
+<!--                <ul class="list-group list-group-flush">-->
+<!--                    <li class="list-group-item"><a href="/feed/posts">Home Feed</a></li>-->
+<!--                    <li class="list-group-item"><a href="#">Notifications</a></li>-->
+<!--                    <li class="list-group-item"><a href="#">Messages</a></li>-->
+<!--&lt;!&ndash;                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>&ndash;&gt;-->
+<!--                    <li class="list-group-item"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Profile</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
         </div>
+        <div class="sidebar-container">
+
+            <ul class="sidebar-navigation">
+                <li class="header"></li>
+                <li>
+                    <a href="/feed/posts">
+                        <i class="fa fa-home" aria-hidden="true"></i>Posts
+                    </a>
+                </li>
+                <li>
+                    <a href="/feed/events">
+                        <i class="fa fa-tachometer" aria-hidden="true"></i>Events
+                    </a>
+                </li>
+                <li>
+                    <a th:href="'/my-profile/' + ${profileId}">
+                        <i class="fa fa-users" aria-hidden="true"></i>My Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-cog" aria-hidden="true"></i> Notifcations
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i> Messages
+                    </a>
+                </li>
+                <li>
+                    <a th:href="'/profile/' + ${profileId} + '/edit'">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i> Update Profile
+                    </a>
+                </li>
+            </ul>
+        </div>
+
         <div class="col-md-6">
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
