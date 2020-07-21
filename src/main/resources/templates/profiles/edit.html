@@ -11,12 +11,15 @@
     <div class="form">
         <form th:action="${'/profile/' + profile.id + '/edit'}" method="POST" th:object="${profile}">
 
-            <label for="image">Image</label>
-            <input type="text" id="image" name="profilePhoto">
-            <label for="upload"></label>
-            <button type="button" id="upload" name="upload">Upload an image</button>
 
-            <input id="stashFilestackURL" name="stashFilestackURL" value="replaceme" th:field="*{profilePhoto}" type="hidden">
+            <!--Update Profile Photo -->
+            <!--Filestack-->
+            <label for="upload"></label>
+            <button type="button" id="upload" name="upload">Update an image
+            </button>
+            <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{profilePhoto}" type="hidden">
+
+
 
             <label for="city">City</label>
             <input id="city" th:field="*{city}"/>
@@ -52,30 +55,31 @@
     </div>
 </div>
 
+
+
+<!--Filestack-->
+<script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 
-<script th:inline="javascript">
-    /*<![CDATA[*/
-    var apiKey = [[${apiKey}]];
-    // alert("Your api key is " + apiKey);
-    const options = {
-        // onUploadDone:
-        //     function (res){
-        // console.log(res.filesUploaded[0].url);
-        //     alert("Log fired");
-        //     alert("Log fired " + res.filesUploaded[0].url);
-        // }
 
+<!--Filestack-->
+<script th:inline="javascript">
+    const options = {
         onUploadDone:
-            function(res) {
+            function (res) {
                 $("#stashFilestackURL").val(res.filesUploaded[0].url);
             }
     }
+    let apiKey = [[${apiKey}]]
     const client = filestack.init(apiKey);
+
     $("#upload").click(function () {
         client.picker(options).open()
     });
-    /*]]>*/
 </script>
+
 </body>
 </html>

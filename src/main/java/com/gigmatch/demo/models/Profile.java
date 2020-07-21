@@ -11,7 +11,7 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String profilePhoto;
 
     @Column(nullable = false)

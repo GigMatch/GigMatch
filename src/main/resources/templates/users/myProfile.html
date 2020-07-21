@@ -60,11 +60,19 @@
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <!--USE filestack here?-->
-                        <img th:src="${profile.getProfilePhoto()}"
-                             class="card-img m-2" alt="...">
+
+                        <!--Profile Photo-->
+                        <!--Filestack-->
+                        <img th:if="${profile.profilePhoto} == ''" th:src="@{/img/logoGig.jpg}"
+                             class="card-img m-2" alt="placeholder">
+                        <img th:unless="${profile.profilePhoto} == ''"  th:src="${profile.profilePhoto}"
+                             class="card-img m-2" alt="profile picture">
                         <div class="ml-4"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Photo</a></div>
                     </div>
+
+
+
+
                     <div class="col-md-8">
                         <div class="card-body">
                             <h3 class="card-title" th:text="${profile.owner.first_name} + ' ' + ${profile.owner.last_name}">First Last</h3>
@@ -78,14 +86,7 @@
                     </div>
                 </div>
             </div>
-<!--            Test-->
 
-
-
-
-
-
-            <!--            Test-->
 
 
 
@@ -202,6 +203,31 @@
     });
 </script>
 
+
+
+<!--Filestack-->
+<script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
+
+<!--Filestack-->
+<script th:inline="javascript">
+    const options = {
+        onUploadDone:
+            function (res) {
+                $("#stashFilestackURL").val(res.filesUploaded[0].url);
+            }
+    }
+    let apiKey = [[${apiKey}]]
+    const client = filestack.init(apiKey);
+
+    $("#upload").click(function () {
+        client.picker(options).open()
+    });
+</script>
 
 </body>
 </html>
