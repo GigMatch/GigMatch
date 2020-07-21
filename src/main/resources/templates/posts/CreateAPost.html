@@ -5,6 +5,7 @@
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
 
+
 <div class="sidebar-container">
     <ul class="sidebar-navigation">
         <li class="header"></li>
@@ -59,38 +60,41 @@
             </div>
         </div>
     </div>
+
 </div>
 
+<!--            &lt;!&ndash;Image for Post&ndash;&gt;-->
+<!--            &lt;!&ndash;Filestack&ndash;&gt;-->
+<!--            <img th:if="${post.img} == ''" th:src="@{/img/logoGig.jpg}"-->
+<!--                 class="card-img m-2" alt="placeholder">-->
+<!--            <img th:unless="${post.img} == ''"  th:src="${post.img}"-->
+<!--                 class="card-img m-2" alt="image for post">-->
+<!--            <div class="ml-4"><a th:href="'/posts/' + ${post.id} + '/edit'">Update image</a></div>-->
+
+
+
+<!--Filestack-->
 <script
         src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
         crossorigin="anonymous"></script>
-
-
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 
-<script th:inline="javascript">
-    /*<![CDATA[*/
-    var apiKey = [[${apiKey}]];
-    // alert("Your api key is " + apiKey);
-    const options = {
-        // onUploadDone:
-        //     function (res){
-        // console.log(res.filesUploaded[0].url);
-        //     alert("Log fired");
-        //     alert("Log fired " + res.filesUploaded[0].url);
-        // }
 
+<!--Filestack-->
+<script th:inline="javascript">
+    const options = {
         onUploadDone:
             function (res) {
                 $("#stashFilestackURL").val(res.filesUploaded[0].url);
             }
     }
+    let apiKey = [[${apiKey}]]
     const client = filestack.init(apiKey);
+
     $("#upload").click(function () {
         client.picker(options).open()
     });
-    /*]]>*/
 </script>
 
 </body>

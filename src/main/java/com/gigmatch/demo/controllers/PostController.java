@@ -57,6 +57,7 @@ public class PostController {
 
         User postOwner = post.getOwner();
         model.addAttribute("postOwner", postOwner);
+        model.addAttribute("postOwnerProfileId", profilesDao.findByOwner(postOwner).getId());
         model.addAttribute("post", post);
         model.addAttribute("profile", profilesDao.findByOwner(currentUser));
         model.addAttribute("myProfileId", profilesDao.findByOwner(currentUser).getId());
@@ -99,6 +100,7 @@ public class PostController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         postToEdit.setOwner(currentUser);
+        // model.addAttribute("apiKey", apiKey);
         // save the changes
         postsDao.save(postToEdit); // update ads set title = ? where id = ?
         return "redirect:/feed/posts";
