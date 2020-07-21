@@ -57,6 +57,7 @@ public class PostController {
 
         User postOwner = post.getOwner();
         model.addAttribute("postOwner", postOwner);
+        model.addAttribute("postOwnerProfileId", profilesDao.findByOwner(postOwner).getId());
         model.addAttribute("post", post);
         model.addAttribute("profile", profilesDao.findByOwner(currentUser));
         model.addAttribute("myProfileId", profilesDao.findByOwner(currentUser).getId());
