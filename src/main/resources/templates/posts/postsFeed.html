@@ -138,13 +138,13 @@
                     <!--</form>-->
 
             <!--POST REACTION TO CONNECT TO DATABASE-->
-                    <div class="card-footer">
+                    <div class="card-footer d-flex justify-content-between">
                         <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >
                             <button  type="submit" th:text="${post.userReactions.size()}" class=" fa fa-gittip card-link " value=" Like "><i onclick="myFunction(this)"> Like</i></button>
                         </form>
                         <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
-                        <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                        <a th:href="'/posts/' + ${post.id}">See Post</a>
+                        <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link "><i class="fa fa-comment"></i> Comment</a>
+                        <a th:href="'/posts/' + ${post.id}" class="ml-5">See Comments</a>
                     </div>
                 </div>
 
@@ -197,8 +197,8 @@
                                     </select>
                                 </div>
                                 <div class="form-label-group">
-                                    <input type="text" id="bio" class="form-control" placeholder="bio" name="bio"
-                                           required/>
+                                    <textarea type="text" id="bio" class="form-control" placeholder="bio" name="bio"
+                                              th:rows="4" required></textarea>
                                     <label class="form-root" for="bio">Bio</label>
                                 </div>
                                 <div class="form-label-group">

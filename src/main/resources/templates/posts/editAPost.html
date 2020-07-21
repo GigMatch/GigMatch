@@ -1,28 +1,90 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head('Edit Post')">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments/head :: head('Update Post')">
 </head>
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
-<div class="container">
-    <h1>Update Post</h1>
-    <form th:action="${'/posts/' + post.id + '/edit'}" method="POST" th:object="${post}">
-        <div class="form-group">
-            <label for="body">body</label>
-            <input id="body" th:field="*{body}" type="text">
+
+
+<div class="sidebar-container">
+    <ul class="sidebar-navigation">
+        <li class="header"></li>
+        <li>
+            <a href="/feed/posts">
+                <i class="fa fa-home" aria-hidden="true"></i>Posts
+            </a>
+        </li>
+        <li>
+            <a href="/feed/events">
+                <i class="fa fa-tachometer" aria-hidden="true"></i>Events
+            </a>
+        </li>
+        <li>
+            <a th:href="'/my-profile/' + ${profileId}">
+            <i class="fa fa-users" aria-hidden="true"></i>My Profile
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-cog" aria-hidden="true"></i> Notifcations
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-info-circle" aria-hidden="true"></i> Messages
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="container" id="form-margin">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-6 mx-auto create-m">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Update A Post</h5>
+                    <form th:action="${'/posts/' + post.id + '/edit'}" method="POST" th:object="${post}">
+                        <div class="form-label-group">
+                            <textarea th:field="*{body}" type="text" id="body" class="form-control form-rounded" name="body"
+                                      th:rows="3" required autofocus></textarea>
+                            <label class="form-root" for="body"></label>
+                        </div>
+
+
+                        <!--Update Profile Photo -->
+                        <!--Filestack-->
+                        <label for="upload"></label>
+                        <button type="button" id="upload" name="upload">Update photo or video
+                        </button>
+                        <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{img}" type="hidden">
+
+
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Update post"
+                                type="submit">update your post
+                        </button>
+
+
+
+                    </form>
+                    <hr class="my-4">
+                    <form th:action="${'/posts/' + post.id + '/delete'}" method="post">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <!--Update Image on Post -->
-        <!--Filestack-->
-        <label for="upload"></label>
-        <button type="button" id="upload" name="upload">Update an image
-        </button>
-        <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{img}" type="hidden">
-                <button class="btn btn-primary">Update</button>
-        </form>
-            <form th:action="${'/posts/' + post.id + '/delete'}" method="post">
-                <button class="btn btn-danger">Delete</button>
-            </form>
-        </div>
+    </div>
+
+</div>
+
+<!--            &lt;!&ndash;Image for Post&ndash;&gt;-->
+<!--            &lt;!&ndash;Filestack&ndash;&gt;-->
+<!--            <img th:if="${post.img} == ''" th:src="@{/img/logoGig.jpg}"-->
+<!--                 class="card-img m-2" alt="placeholder">-->
+<!--            <img th:unless="${post.img} == ''"  th:src="${post.img}"-->
+<!--                 class="card-img m-2" alt="image for post">-->
+<!--            <div class="ml-4"><a th:href="'/posts/' + ${post.id} + '/edit'">Update image</a></div>-->
+
 
 
 <!--Filestack-->

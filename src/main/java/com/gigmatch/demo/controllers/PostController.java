@@ -89,9 +89,12 @@ public class PostController {
     @GetMapping("/posts/{id}/edit")
     public String showEditForm(Model model, @PathVariable long id){
         // find an ad
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post postToEdit = postsDao.getOne(id);
         model.addAttribute("post", postToEdit);
         model.addAttribute("apiKey", apiKey);
+        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
+
         return "posts/editAPost";
     }
 

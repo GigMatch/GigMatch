@@ -134,42 +134,57 @@
         <!--                user posts-->
 
         <!--- \\\\\\\Post-->
-        <div class="card gedf-card" th:each="post : ${userPosts}">
-            <div class="card-header" >
-                <div class="d-flex justify-content-between align-items-center">
+            <!--- \\\\\\\Post-->
+            <div class="card gedf-card" th:each="post : ${userPosts}">
+                <div class="card-header" >
                     <div class="d-flex justify-content-between align-items-center">
-                        <div class="mr-2">
-                            <img class="rounded-circle" width="45" src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png" alt="">
-                        </div>
-                        <div class="ml-2">
-                            <div class="h5 m-0" th:text="${post.owner.username}"></div>
+                        <div class="d-flex justify-content-between align-items-center">
+
+
+
+                            <div class="mr-2">
+                                <img class="rounded-circle" width="45" src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png" alt="">
+                            </div>
+
+                            <div class="ml-2">
+                                <div class="h5 m-0" th:text="${post.owner.username}"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-body ">
-                <p class="card-text" th:text="${post.body}"></p>
+                <div class="card-body ">
+                    <p class="card-text" th:text="${post.body}"></p>
                     <!--Image for Post-->
                     <!--Filestack-->
-                <div th:if="${post.img} == ''">
-<!--                    <img  th:src="@{/img/logoGig.jpg}"-->
-<!--                         class="card-img m-2" alt=" ">-->
+                    <div th:if="${post.img} == ''">
+                        <!--                    <img  th:src="@{/img/logoGig.jpg}"-->
+                        <!--                         class="card-img m-2" alt=" ">-->
+                    </div>
+                    <div th:unless="${post.img} == ''">
+                        <img th:src="${post.img}"
+                             class="card-img m-2" alt="image for post">
+                    </div>
                 </div>
-                <div th:unless="${post.img} == ''">
-                    <img th:src="${post.img}"
-                         class="card-img m-2" alt="image for post">
+
+                <!--POST REACTION TO CONNECT TO DATABASE&ndash;&gt;-->
+                <!--<div>-->
+                <!--<a th:text="${post.userReactions.size()}"></a>-->
+                <!--</div>-->
+                <!--<form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >-->
+                <!--<input type="submit" value="Like">-->
+                <!--</form>-->
+
+                <!--POST REACTION TO CONNECT TO DATABASE-->
+                <div class="card-footer d-flex justify-content-between">
+                    <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >
+                        <button  type="submit" th:text="${post.userReactions.size()}" class=" fa fa-gittip card-link " value=" Like "><i onclick="myFunction(this)"> Like</i></button>
+                    </form>
+                    <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
+                    <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link "><i class="fa fa-comment"></i>Comment</a>
+                    <a th:href="'/posts/' + ${post.id}" class="ml-5">See Comments</a>
+                    <a th:href="'/posts/' + ${post.id} + '/edit'">Edit Post</a>
                 </div>
-
-                <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn btn-primary">Edit Post</a>
-
-
-
             </div>
-            <div class="card-footer">
-                <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-            </div>
-        </div>
         <!--                user posts-->
 
 
