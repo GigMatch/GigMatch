@@ -1,27 +1,65 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head  th:replace="fragments/head :: head('Sign Up')">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments/head :: head('Create Post')">
 </head>
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
-<div class="container">
-    <h1>Create a new Ad</h1>
 
-    <form th:action="@{/posts/create}" method="POST" th:object="${post}">
-        <div class="form-group">
-            <label for="body">body</label>
-            <textarea id="body" name="body" class="form-control" type="text"></textarea>
+
+<div class="sidebar-container">
+    <ul class="sidebar-navigation">
+        <li class="header"></li>
+        <li>
+            <a href="/feed/posts">
+                <i class="fa fa-home" aria-hidden="true"></i>Posts
+            </a>
+        </li>
+        <li>
+            <a href="/feed/events">
+                <i class="fa fa-tachometer" aria-hidden="true"></i>Events
+            </a>
+        </li>
+        <li>
+            <a th:href="'/my-profile/' + ${myProfileId}">
+                <i class="fa fa-users" aria-hidden="true"></i>My Profile
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-cog" aria-hidden="true"></i> Notifcations
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-info-circle" aria-hidden="true"></i> Messages
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="container" id="form-margin">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-6 mx-auto create-m">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Create A Post</h5>
+                    <form name="username" class="form-signin" th:action="@{/posts/create}" method="POST"
+                          th:object="${post}">
+                        <div class="form-label-group">
+                            <textarea type="text" id="body" class="form-control form-rounded" name="body"
+                                      placeholder="message..." th:rows="3" required autofocus></textarea>
+                            <label class="form-root" for="body"></label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Sign Up"
+                                type="submit">create your post
+                        </button>
+                        <hr class="my-4">
+
+                    </form>
+                </div>
+            </div>
         </div>
-        <!--Upload Image on Post -->
-        <!--Filestack-->
-        <label for="upload"></label>
-        <button type="button" id="upload" name="upload">Upload an image
-        </button>
-        <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{img}" type="hidden">
-
-        <input id="btn" type="submit" class="btn btn-block btn-primary" value="create a Post">
-    </form>
-
+    </div>
 
 </div>
 

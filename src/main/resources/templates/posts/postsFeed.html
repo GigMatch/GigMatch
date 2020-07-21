@@ -50,7 +50,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-3">
                 <div class="card mb-3">
                     <div class="card-body">
                         <a th:href="'/posts/create'">Post a message, show your skills, or find a match for your gig.</a>
@@ -140,7 +140,7 @@
             <!--POST REACTION TO CONNECT TO DATABASE-->
                     <div class="card-footer">
                         <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >
-                            <button type="submit" th:text="${post.userReactions.size()}" class=" fa fa-gittip card-link " value=" Like "><i> Like</i></button>
+                            <button  type="submit" th:text="${post.userReactions.size()}" class=" fa fa-gittip card-link " value=" Like "><i onclick="myFunction(this)"> Like</i></button>
                         </form>
                         <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
                         <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link"><i class="fa fa-comment"></i> Comment</a>
@@ -151,7 +151,7 @@
 
 
         </div>
-            <div class="col-md-3">
+            <div class="col-md-3 mt-3">
                 <div class="card mb-3">
                     <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg"
                          class="card-img-top" alt="...">
@@ -261,6 +261,7 @@
     };
 
     searchBtn.addEventListener("click", expand);
+
 </script>
 
 </body>

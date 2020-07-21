@@ -12,6 +12,15 @@ body {
 
 }
 
+.create-m {
+    margin-right: 0 !important;
+}
+
+
+.form-rounded {
+    border-radius: 1rem;
+}
+
 #page-content {
     flex: 1 0 auto;
 }
@@ -1125,6 +1134,8 @@ margin-top: 40px;
     .logo-gen {
         display: none;
     }
+
+
 
 
 
