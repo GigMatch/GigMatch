@@ -4,35 +4,105 @@
 </head>
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
-<div class="container">
-    <h1>Create a new Event</h1>
-    <form th:action="@{/events/create}" method="POST" th:object="${event}">
-        <div class="form-group">
-            <label for="streetAddress">Street Address</label>
-            <textarea id="streetAddress" name="streetAddress" class="form-control" type="text"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="city">City</label>
-            <textarea id="city" name="city" class="form-control" type="text"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="state">State</label>
-            <textarea id="state" name="state" class="form-control" type="text"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="zipcode">Zipcode</label>
-            <textarea id="zipcode" name="zipcode" class="form-control" type="text"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control" type="text"></textarea>
-        </div>
-        <input id="btn" type="submit" class="btn btn-block btn-primary" value="create an event">
-    </form>
+<!--<div class="container">-->
+<!--    <h1>Create a new Event</h1>-->
+<!--    <form th:action="@{/events/create}" method="POST" th:object="${event}">-->
+<!--        <div class="form-group">-->
+<!--            <label for="streetAddress">Street Address</label>-->
+<!--            <textarea id="streetAddress" name="streetAddress" class="form-control" type="text"></textarea>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="city">City</label>-->
+<!--            <textarea id="city" name="city" class="form-control" type="text"></textarea>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="state">State</label>-->
+<!--            <textarea id="state" name="state" class="form-control" type="text"></textarea>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="zipcode">Zipcode</label>-->
+<!--            <textarea id="zipcode" name="zipcode" class="form-control" type="text"></textarea>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="description">Description</label>-->
+<!--            <textarea id="description" name="description" class="form-control" type="text"></textarea>-->
+<!--        </div>-->
+<!--        <input id="btn" type="submit" class="btn btn-block btn-primary" value="create an event">-->
+<!--    </form>-->
+<!--</div>-->
+
+<div class="sidebar-container">
+
+    <ul class="sidebar-navigation">
+        <li class="header"></li>
+        <li>
+            <a href="/feed/posts">
+                <i class="fa fa-home" aria-hidden="true"></i>Posts
+            </a>
+        </li>
+        <li>
+            <a href="/feed/events">
+                <i class="fa fa-tachometer" aria-hidden="true"></i>Events
+            </a>
+        </li>
+        <li>
+            <a th:href="'/my-profile/' + ${profileId}">
+                <i class="fa fa-users" aria-hidden="true"></i>My Profile
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-cog" aria-hidden="true"></i> Notifcations
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-info-circle" aria-hidden="true"></i> Messages
+            </a>
+        </li>
+    </ul>
 </div>
 
 
+<div class="container" id="form-margin">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-6 mx-auto create-m">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Create A New Event</h5>
+                    <form th:action="@{/events/create}" method="POST" th:object="${event}" >
+                        <div class="form-label-group">
+                            <input type="text" id="streetAddress" class="form-control" name="streetAddress"  placeholder="street" required autofocus/>
+                            <label for="streetAddress">Street Address</label>
 
+                        </div>
+                        <div class="form-label-group">
+                            <input type="text" id="city" class="form-control" placeholder="city" name="city" required/>
+                            <label for="city">City</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="text" id="state" class="form-control" placeholder="state" name="state" required/>
+                            <label for="state">State</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="text" id="zipcode" class="form-control" placeholder="zipcode" name="zipcode" required/>
+                            <label for="zipcode">Zipcode</label>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="password" id="description" class="form-control" placeholder="description" name="description" required/>
+                            <label for="description">Description</label>
+                        </div>
+
+
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Sign Up" type="submit">Create Your Event</button>
+                        <hr class="my-4">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
