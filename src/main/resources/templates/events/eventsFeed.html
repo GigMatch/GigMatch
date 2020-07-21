@@ -186,14 +186,6 @@
     var selectedDays = new Array();
     var mousedown = false;
     var mousemove = false;
-    // var today = new Date();
-    // var dd = (today.getDate()).padStart(2, '0');
-    // var mm = (today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    // var yyyy = today.getFullYear();
-    // var currentDay = dd + mm + yyyy;
-    // console.log("current day" + currentDay);
-
-
 
     function loadCalendarMonths() {
         for (var i = 0; i < months.length; i++) {
@@ -249,9 +241,6 @@
             d.classList.add("day");
             d.classList.add("blank");
             document.getElementById("calendarDays").appendChild(d);
-            // if(num() === currentDay){
-            //     currentDay.className.add("today");
-            // }
         }
 
         for (var i = 0; i < num; i++) {
@@ -266,6 +255,11 @@
             if(tmp === todaysDate){
                 d.className = "day today";
             }
+
+            d.addEventListener('click', function(){
+                d = document.createElement("div");
+                d.innerHTML = $('#myModal').modal(options)
+            })
 
             d.addEventListener('click', function(){
                 this.classList.toggle('selected');
