@@ -36,14 +36,23 @@ public class CommentController {
     }
 
     @PostMapping("/posts/{id}/comment")
-    public String addComment(@ModelAttribute PostComment comment, @ModelAttribute Post post){
+    public String addComment(@ModelAttribute PostComment comment, @ModelAttribute Post postToComment, Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        model.addAttribute("post", postToComment);
+
+        List<PostComment> comments = commentsDao.findAllByPost(postToComment);
+
         comment.setOwner(currentUser);
-        List<PostComment> comments = commentsDao.findAllByPost(post);
-        comment.setPost(post);
+
+        comment.setPost(postToComment);
+
+        model.addAttribute("comments", comments);
+
         comments.add(comment);
+
         commentsDao.saveAll(comments);
-//        comments.add(comment);
+
         return "redirect:/feed/posts";
     }
 
