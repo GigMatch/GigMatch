@@ -80,7 +80,7 @@
                     <!--                    </form>-->
 
 
-            <!--DOUGLAS : POST REACTIONS TO VERIFY IF DATABASE IS CONNECTING TO THIS-->
+            <!--POST REACTIONS TO VERIFY IF DATABASE IS CONNECTING TO THIS-->
 <!--                    <div>-->
 <!--                        <a th:text="${post.userReactions.size()}"></a>-->
 <!--                    </div>-->
@@ -102,9 +102,13 @@
                     <div class="card-header" >
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
+
+
+
                                 <div class="mr-2">
                                     <img class="rounded-circle" width="45" src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png" alt="">
                                 </div>
+
                                 <div class="ml-2">
                                     <div class="h5 m-0" th:text="${post.owner.username}"></div>
                                 </div>
@@ -112,8 +116,17 @@
                         </div>
                     </div>
                     <div class="card-body ">
-                        <p class="card-text" th:text="${post.body}">
-                        </p>
+                        <p class="card-text" th:text="${post.body}"></p>
+                        <!--Image for Post-->
+                        <!--Filestack-->
+                        <div th:if="${post.img} == ''">
+                            <!--                    <img  th:src="@{/img/logoGig.jpg}"-->
+                            <!--                         class="card-img m-2" alt=" ">-->
+                        </div>
+                        <div th:unless="${post.img} == ''">
+                            <img th:src="${post.img}"
+                                 class="card-img m-2" alt="image for post">
+                        </div>
                     </div>
 
              <!--POST REACTION TO CONNECT TO DATABASE&ndash;&gt;-->
@@ -211,6 +224,33 @@
         </div>
     </div>
 
+
+<!--Filestack-->
+<script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
+
+<!--Filestack-->
+<script th:inline="javascript">
+    const options = {
+        onUploadDone:
+            function (res) {
+                $("#stashFilestackURL").val(res.filesUploaded[0].url);
+            }
+    }
+    let apiKey = [[${apiKey}]]
+    const client = filestack.init(apiKey);
+
+    $("#upload").click(function () {
+        client.picker(options).open()
+    });
+</script>
+
+
+
 <script>
     const input = document.getElementById("search-input");
     const searchBtn = document.getElementById("search-btn");
@@ -221,7 +261,7 @@
     };
 
     searchBtn.addEventListener("click", expand);
-
 </script>
+
 </body>
 </html>

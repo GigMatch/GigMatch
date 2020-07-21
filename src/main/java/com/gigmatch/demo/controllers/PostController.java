@@ -96,6 +96,7 @@ public class PostController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
         postToEdit.setOwner(currentUser);
+        // model.addAttribute("apiKey", apiKey);
         // save the changes
         postsDao.save(postToEdit); // update ads set title = ? where id = ?
         return "redirect:/feed/posts";
