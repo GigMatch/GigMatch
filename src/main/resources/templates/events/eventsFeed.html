@@ -113,12 +113,16 @@
                 <p class="card-text" th:text="${event.description}"></p>
             </div>
             <div class="card-footer">
-                <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+                <form th:method="Post" th:action="'/events/'+ ${event.id} + '/interests'" >
+                    <button type="submit" th:text="${event.eventInterests.size()}" class=" fa fa-gittip card-link " value=" Interested "><i> Interested</i></button>
+                </form>
+                <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
+<!--                <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link"><i class="fa fa-comment"></i> Comment</a>-->
+<!--                <a th:href="'/posts/' + ${post.id}">See Post</a>-->
             </div>
         </div>
         </div>
-        <!--                user posts-->
+
 
         <div class="col-md-3">
             <div class="card mb-3">
