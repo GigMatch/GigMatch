@@ -7,7 +7,13 @@
 <div class="container">
     <h1>Update Post</h1>
     <form th:action="${'/posts/' + post.id + '/edit'}" method="POST" th:object="${post}">
-<div class="form-group">
+        <div class="form-group">
+
+    <label for="image">Image</label>
+    <input type="text" id="image" name="img">
+    <label for="upload"></label>
+    <button type="button" id="upload" name="upload">Upload an image</button>
+    <input id="stashFilestackURL" name="stashFilestackURL" value="replaceme" th:field="*{img}" type="hidden">
 
     <label for="body">body</label>
     <input id="body" th:field="*{body}" type="text">
@@ -18,6 +24,39 @@
         <button class="btn btn-danger">Delete</button>
     </form>
 </div>
+
+
+<script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+
+
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var apiKey = [[${apiKey}]];
+    // alert("Your api key is " + apiKey);
+    const options = {
+        // onUploadDone:
+        //     function (res){
+        // console.log(res.filesUploaded[0].url);
+        //     alert("Log fired");
+        //     alert("Log fired " + res.filesUploaded[0].url);
+        // }
+
+        onUploadDone:
+            function(res) {
+                $("#stashFilestackURL").val(res.filesUploaded[0].url);
+            }
+    }
+    const client = filestack.init(apiKey);
+    $("#upload").click(function () {
+        client.picker(options).open()
+    });
+    /*]]>*/
+</script>
 
 </body>
 </html>
