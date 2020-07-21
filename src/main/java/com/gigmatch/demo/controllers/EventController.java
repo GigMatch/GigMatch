@@ -34,6 +34,7 @@ public class EventController {
         List<Event> eventList = eventsDao.findAll();
         model.addAttribute("noEventsFound", eventList.size() == 0);
         model.addAttribute("events", eventList);
+        model.addAttribute("profile", profilesDao.findByOwner(currentUser));
         return "events/eventsFeed";
     }
 
