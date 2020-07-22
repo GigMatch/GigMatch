@@ -25,6 +25,24 @@
                             </div>
 
                             <div class="form-label-group">
+                                <input th:field="*{owner.first_name}" id="first_name" type="text" class="form-control"
+                                       placeholder="first name" required/>
+                                <label for="first_name">first name</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input th:field="*{owner.last_name}" id="last_name" type="text" class="form-control"
+                                       placeholder="last name" required/>
+                                <label for="last_name">last name</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input th:field="*{owner.email}" id="email" type="text" class="form-control"
+                                       placeholder="email" required/>
+                                <label for="email">email</label>
+                            </div>
+
+                            <div class="form-label-group">
                                 <input th:field="*{city}" type="text" id="city" class="form-control" placeholder="city"
                                        required/>
                                 <label for="city">City</label>
