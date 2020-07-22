@@ -883,6 +883,10 @@ margin-top: 40px;
     float:right;
 }
 
+.today{
+    background-color: goldenrod;
+}
+
 .calendar .calendar-dates .days .day
 {
     float:left;
