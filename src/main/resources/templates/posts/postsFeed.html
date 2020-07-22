@@ -112,7 +112,8 @@
                                 </div>
 
                                 <div class="ml-2">
-                                    <div class="h5 m-0" th:text="${post.owner.username}"></div>
+                                    <a th:href="'/profile/' + ${ownerProfile.getId()}">
+                                        <div class="h5 m-0" th:text="${post.owner.username}"></div></a>
                                 </div>
                             </div>
                         </div>
@@ -270,6 +271,28 @@
             </div>
         </div>
     </div>
+    <div th:case="${true}">
+        <script th:replace="fragments/map-scripts-and-div :: jquery-script"></script>
+        <script th:replace="fragments/map-scripts-and-div :: key-script"></script>
+        <script th:replace="fragments/map-scripts-and-div :: mapbox-script"></script>
+        <script th:replace="fragments/map-scripts-and-div :: geocode-script"></script>
+
+        <script th:inline="javascript">
+
+            var city = [[${currentUserProfile.city}]];
+
+            geocode(city, mapboxToken).then(function (result) {
+                console.log(result);
+                mapboxgl.accessToken = mapboxToken;
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/streets-v9',
+                    zoom: 12,
+                    center: (result)
+                });
+            });
+        </script>
+    </div>
 </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -321,27 +344,6 @@
 
     </script>
 
-
-<script th:replace="fragments/map-scripts-and-div :: jquery-script"></script>
-<script th:replace="fragments/map-scripts-and-div :: key-script"></script>
-<script th:replace="fragments/map-scripts-and-div :: mapbox-script"></script>
-<script th:replace="fragments/map-scripts-and-div :: geocode-script"></script>
-
-<script th:inline="javascript">
-
-    var city = [[${currentUserProfile.city}]];
-
-    geocode(city, mapboxToken).then(function (result) {
-        console.log(result);
-        mapboxgl.accessToken = mapboxToken;
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v9',
-            zoom: 12,
-            center: (result)
-        });
-    });
-</script>
 
 </body>
 </html>
