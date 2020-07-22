@@ -81,7 +81,10 @@ public class EventController {
     //deletes event
     @PostMapping("/events/{id}/delete")
     public String destroy(@PathVariable long id){
-        eventsDao.deleteById(id);
+        Event eventToDelete = eventsDao.getOne(id);
+        List<User> eventInterest = eventToDelete.getEventInterests();
+        eventInterest.clear();
+        eventsDao.delete(eventToDelete);
         return "redirect:/feed/events";
     }
 
