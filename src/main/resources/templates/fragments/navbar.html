@@ -4,7 +4,8 @@
 <body>
 <nav th:fragment="welcomeNavbar" class="navbar navbar-dark fixed-top navbar-expand-md navbar-no-bg">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/" alt="logo"><img src="https://i.ibb.co/0nkhFk6/logo-Gig2-cutout.png" class="img-responsive logo"></a>
+        <a class="navbar-brand" href="/" alt="logo"><img src="https://i.ibb.co/0nkhFk6/logo-Gig2-cutout.png"
+                                                         class="img-responsive logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,7 +24,8 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link scroll-link welcome-link" href="/feed/posts">Need a musician or entertainment artist? Check out GigMatch</a>
+                    <a class="nav-link scroll-link welcome-link" href="/feed/posts">Need a musician or entertainment
+                        artist? Check out GigMatch</a>
                 </li>
             </ul>
         </div>
@@ -34,28 +36,33 @@
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: goldenrod">
     <div class="container gen-container">
         <a class="navbar-brand" href="/feed/posts">
-            <img src="https://i.ibb.co/Wgg1M4z/logo.jpg"  class="img-responsive logo logo-gen" alt="">
+            <img src="https://i.ibb.co/Wgg1M4z/logo.jpg" class="img-responsive logo logo-gen" alt="">
         </a>
 
-        <button class="navbar-toggler navbar-collapse" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#defaultNavbar1"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse" id="defaultNavbar1">
 
-        <div class="input-group">
-            <form class="form-inline my-2 my-lg-0" action="/search/posts">
-                <div class="bg-light rounded rounded-pill shadow-sm">
-                    <div class="input-group">
-                        <input type="text" name="term" placeholder="Search posts..." aria-describedby="button-addon1" id="form" class="form-control mr-sm-2 border-0 bg-light">
-                        <div class="input-group-append">
-                            <button id="button-addon1" type="submit" class="btn btn-link text-warning my-2 my-sm-0"><i class="fa fa-search"></i></button>
+            <div class="input-group">
+                <form class="form-inline my-2 my-lg-0" action="/search/posts">
+                    <div class="bg-light rounded rounded-pill shadow-sm">
+                        <div class="input-group">
+                            <input type="text" name="term" placeholder="Search posts..."
+                                   aria-describedby="button-addon1" id="form"
+                                   class="form-control mr-sm-2 border-0 bg-light">
+                            <div class="input-group-append">
+                                <button id="button-addon1" type="submit" class="btn btn-link text-warning my-2 my-sm-0">
+                                    <i class="fa fa-search"></i></button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarResponsive1">
-            <ul class="navbar-nav ml-auto nav-font-icon">
+                </form>
+            </div>
+
+
+            <ul class="navbar-nav  ml-auto nav-font-icon">
                 <li class="nav-item p-2">
                     <a class="nav-link" href="#"><i class="far fa-bell" style="color: #ffffff"></i></a>
                 </li>
@@ -64,8 +71,9 @@
                 </li>
 
 
-                <li class="nav-item p-2 nav-font-icon dropdown" sec:authorize="isAuthenticated()" >
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item p-2 nav-font-icon dropdown" sec:authorize="isAuthenticated()">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user-alt"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -87,10 +95,11 @@
 
 <!--Events Navbar exits for searching events-->
 
-<nav th:fragment="eventsNavbar" class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: goldenrod">
+<nav th:fragment="eventsNavbar" class="navbar navbar-expand-lg navbar-light sticky-top"
+     style="background-color: goldenrod">
     <div class="container gen-container">
         <a class="navbar-brand" href="/feed/posts">
-            <img src="https://i.ibb.co/Wgg1M4z/logo.jpg"  class="img-responsive logo" alt="">
+            <img src="https://i.ibb.co/Wgg1M4z/logo.jpg" class="img-responsive logo" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,7 +107,7 @@
         </button>
         <div class="input-group">
             <form action="/search/events" class="form-inline">
-                <input  type="text" name="term" class="form-control " placeholder="Search events...">
+                <input type="text" name="term" class="form-control " placeholder="Search events...">
                 <div class="input-group-append">
                     <button class="btn btn-secondary" type="submit">
                         <i class="fa fa-search"></i>
@@ -116,8 +125,9 @@
                 </li>
 
 
-                <li class="nav-item p-2 nav-font-icon dropdown" sec:authorize="isAuthenticated()" >
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item p-2 nav-font-icon dropdown" sec:authorize="isAuthenticated()">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user-alt"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">

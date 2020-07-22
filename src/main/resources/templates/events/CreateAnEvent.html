@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Create Event')">
 </head>
-<body>
+<body id="post-create">
 <header th:replace="fragments/navbar :: navbar"></header>
 
 
@@ -49,7 +49,6 @@
                         <div class="form-label-group">
                             <input type="text" id="streetAddress" class="form-control" name="streetAddress"  placeholder="street" required autofocus/>
                             <label for="streetAddress">Street Address</label>
-
                         </div>
                         <div class="form-label-group">
                             <input type="text" id="city" class="form-control" placeholder="city" name="city" required/>
@@ -64,13 +63,13 @@
                             <label for="zipcode">Zipcode</label>
                         </div>
                         <div class="form-label-group">
-                            <textarea type="text" id="description" class="form-control" placeholder="description" name="description" th:rows="4" required></textarea>
+                            <textarea type="text" id="description" class="form-control" placeholder="Description" name="description" th:rows="4" required></textarea>
                             <label for="description"></label>
                         </div>
 
 
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Sign Up" type="submit">Create Your Event</button>
-                        <hr class="my-4">
+<!--                        <hr class="my-4">-->
 
                     </form>
                 </div>

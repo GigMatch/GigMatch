@@ -1,21 +1,105 @@
-
 /*General*/
 html {
-    scroll-behavior: smooth;
     height: 100%;
+    scroll-behavior: smooth;
 }
 body {
-    height: max-content;
-    margin: 0;
-    padding: 0;
+    min-height: 100%;
+}
+
+.contact-form .form-field {
     position: relative;
+    margin: 32px 0;
+}
+.contact-form .input-text {
+    display: block;
+    width: 100%;
+    height: 36px;
+    border-width: 0 0 2px 0;
+    border-color: #5543ca;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+}
+.contact-form .input-text:focus {
+    outline: none;
+}
+.contact-form .input-text:focus + .label,
+.contact-form .input-text.not-empty + .label {
+    -webkit-transform: translateY(-24px);
+    transform: translateY(-24px);
+}
+.contact-form .label {
+    position: absolute;
+    left: 20px;
+    bottom: 11px;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #5543ca;
+    cursor: text;
+    transition: -webkit-transform .2s ease-in-out;
+    transition: transform .2s ease-in-out;
+    transition: transform .2s ease-in-out,
+    -webkit-transform .2s ease-in-out;
+}
+.contact-form .submit-btn {
+    display: inline-block;
+    background-color: #000;
+    background-image: linear-gradient(125deg,#a72879,#064497);
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 16px;
+    padding: 8px 16px;
+    border: none;
+    width:200px;
+    cursor: pointer;
+}
+
+
+.comment-wrapper .panel-body {
+    max-height:650px;
+    overflow:auto;
+}
+
+.comment-wrapper .media-list .media img {
+    width:64px;
+    height:64px;
+    border:2px solid #e5e7e8;
+}
+
+.comment-wrapper .media-list .media {
+    border-bottom:1px dashed #efefef;
+    margin-bottom:25px;
+}
+
+
+#post-create {
+
+    background-image: url("https://images.unsplash.com/photo-1461784229652-c9271a46d4c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
+}
+
+
+
+.btn-photo {
+    color: white;
+    background-color: goldenrod;
+}
+
+.container-home {
+
+    width: 281px;
 
 }
 
 .create-m {
-    margin-right: 0 !important;
+    margin-right: -238px !important;
 }
 
+.main-bg  {
+    background-color: #1a1a1a;
+}
 
 .form-rounded {
     border-radius: 1rem;
@@ -438,6 +522,10 @@ body {
 
 /*Container for main text*/
 
+.pageBox h1 {
+    animation: myanim 3s infinite;
+
+}
 .pageBox {
 
     background-color: rgba(13, 13, 13, 0.71);
@@ -495,7 +583,7 @@ body {
     margin-top: 25px;
     font-size: 50px;
     color: #ffffff;
-    font-family: "Yesteryear";
+    font-family: 'Yesteryear', cursive;
     text-align: center;
 
 }
@@ -544,7 +632,7 @@ body {
 }
 
 .carousel-li {
-    font-family: Yesteryear;
+    font-family: 'Yesteryear', cursive;
     color: #000000;
     font-weight: 700;
     padding: 0 10px;
@@ -945,18 +1033,6 @@ margin-top: 40px;
 @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css';
 @import 'https://fonts.googleapis.com/css?family=Raleway:100,600';
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:300';
-/*html,*/
-/*body {*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*}*/
-
-/*body {*/
-/*    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-/*    font-weight: 300;*/
-/*    color: #999;*/
-/*    background-color: #fff;*/
-/*}*/
 
  .welcome-card-text {
     margin: 0 0 20px 0;
@@ -1118,6 +1194,11 @@ margin-top: 40px;
 /*Media Queries*/
 @media (max-width: 767px) {
 
+    .navbar-collapse
+    {
+        background-color:#FA0;
+    }
+
     .sidebar-container {
         display: none;
     }
@@ -1161,7 +1242,7 @@ margin-top: 40px;
 }
 
     .carousel-li {
-        font-family: Yesteryear;
+        font-family: 'Yesteryear', cursive;
         color: goldenrod;
         font-weight: 700;
         padding: 0 10px;
@@ -1209,13 +1290,10 @@ margin-top: 40px;
     }
 
     .container-home {
-        width: 100%;
-        padding-left: 0 !important;
+        width: 281px;
     }
 
-    .container {
 
-    }
 
 
     /*Welcome Nav*/
