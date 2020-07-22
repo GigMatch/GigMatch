@@ -37,7 +37,7 @@
             <img src="https://i.ibb.co/Wgg1M4z/logo.jpg"  class="img-responsive logo logo-gen" alt="">
         </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        <button class="navbar-toggler navbar-collapse" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -70,7 +70,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <a class="dropdown-item" th:href="'/my-profile/' + ${profileId}">My Profile</a>
+                        <a class="dropdown-item nav-link" th:href="'/my-profile/' + ${profileId}">My Profile</a>
                         <div class="dropdown-divider"></div>
 
                         <form th:action="@{/logout}" th:method="post">

@@ -114,8 +114,10 @@ public class PostController {
     public String destroy(@PathVariable long id){
         Post postToDelete = postsDao.getOne(id);
         List<PostComment> comments = commentsDao.findAllByPost(postToDelete);
+        List<User> postReactions = postToDelete.getUserReactions();
+        postReactions.clear();
         commentsDao.deleteAll(comments);
-        postsDao.deleteById(id);
+        postsDao.delete(postToDelete);
 
         return "redirect:/feed/posts";
     }
