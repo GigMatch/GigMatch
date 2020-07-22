@@ -1194,6 +1194,11 @@ margin-top: 40px;
 /*Media Queries*/
 @media (max-width: 767px) {
 
+    .navbar-collapse
+    {
+        background-color:#FA0;
+    }
+
     .sidebar-container {
         display: none;
     }

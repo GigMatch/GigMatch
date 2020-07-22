@@ -166,26 +166,23 @@
                                                 <input id="content" name="comment">
                                             </div>
 
-                                        <br>
-                                        <button type="submit" class="btn btn-info pull-right">Comment</button>
-                                        <div class="clearfix"></div>
-                                        <hr>
-                                        <ul class="media-list">
-                                            <li class="media">
-                                                <a href="#" class="pull-left">
-                                                    <img src="" alt=""
-                                                         class="img-circle">
-                                                </a>
-                                                <div class="media-body">
-                                <span class="text-muted pull-right">
-                                </span>
-                                                    <strong class="text-success"></strong>
-                                                    <p>
-
-                                                    </p>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                            <br>
+                                            <button type="submit" class="btn btn-info pull-right">Comment</button>
+                                            <div class="clearfix"></div>
+                                            <hr>
+                                            <ul class="media-list">
+                                                <li class="media">
+                                                    <a href="#" class="pull-left">
+                                                        <img src="" alt=""
+                                                             class="img-circle">
+                                                    </a>
+                                                    <div class="media-body"><span class="text-muted pull-right"></span>
+                                                        <strong class="text-success"></strong>
+                                                        <p></p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -194,121 +191,132 @@
                 </div>
             </div>
 
-        </div>
+
+            <div class="col-md-3 mt-3">
+                <div class="card mb-3">
+                    <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg"
+                         class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Map with center view of your city.</p>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif"
+                         class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Your Calendar.</p>
+                    </div>
+                </div>
+            </div>
 
 
-    </div>
-    <div class="col-md-3 mt-3">
-        <div class="card mb-3">
-            <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg"
-                 class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text">Map with center view of your city.</p>
-            </div>
-        </div>
-        <div class="card mb-3">
-            <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif"
-                 class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text">Your Calendar.</p>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-<div class="container" th:case="${false}">
-    <div class="row">
-        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div class="card card-signin my-5">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Create a profile</h5>
-                    <form name="username" class="form-signin" th:action="@{/profile/create}" method="POST"
-                          th:object="${profile}">
-                        <div class="form-label-group">
-                            <input type="text" id="city" class="form-control" name="city" placeholder="city"
-                                   required autofocus/>
-                            <label class="form-root" for="city">City</label>
-                        </div>
-                        <div class="form-label-group">
-                            <input type="text" id="state" class="form-control" placeholder="state" name="state"
-                                   required/>
-                            <label class="form-root" for="state">State</label>
-                        </div>
-                        <div class="form-group">
-                            <label for="profileType">Profile Type</label>
-                            <select class="form-control" id="profileType" name="profileType">
-                                <option>Band</option>
-                                <option>Musician</option>
-                                <option>Venue</option>
-                                <option>Fan</option>
-                            </select>
-                        </div>
-                        <div class="form-label-group">
+            <div class="container" th:case="${false}">
+                <div class="row">
+                    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                        <div class="card card-signin my-5">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Create a profile</h5>
+                                <form name="username" class="form-signin" th:action="@{/profile/create}" method="POST"
+                                      th:object="${profile}">
+                                    <div class="form-label-group">
+                                        <input type="text" id="city" class="form-control" name="city" placeholder="city"
+                                               required autofocus/>
+                                        <label class="form-root" for="city">City</label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input type="text" id="state" class="form-control" placeholder="state"
+                                               name="state"
+                                               required/>
+                                        <label class="form-root" for="state">State</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="profileType">Profile Type</label>
+                                        <select class="form-control" id="profileType" name="profileType">
+                                            <option>Band</option>
+                                            <option>Musician</option>
+                                            <option>Venue</option>
+                                            <option>Fan</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-label-group">
                                     <textarea type="text" id="bio" class="form-control" placeholder="bio" name="bio"
                                               th:rows="4" required></textarea>
-                            <label class="form-root" for="bio">Bio</label>
-                        </div>
-                        <div class="form-label-group">
-                            <input type="text" id="interests" class="form-control" placeholder="interests"
-                                   name="interests" required/>
-                            <label class="form-root" for="interests">Interest</label>
-                        </div>
-                        <div class="form-label-group">
-                            <input type="text" id="genres" class="form-control" placeholder="genres"
-                                   name="genres" required/>
-                            <label class="form-root" for="genres">Genres</label>
-                        </div>
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn"
-                                value="Create profile" type="submit">Create profile
-                        </button>
-                        <hr class="my-4">
+                                        <label class="form-root" for="bio">Bio</label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input type="text" id="interests" class="form-control" placeholder="interests"
+                                               name="interests" required/>
+                                        <label class="form-root" for="interests">Interest</label>
+                                    </div>
+                                    <div class="form-label-group">
+                                        <input type="text" id="genres" class="form-control" placeholder="genres"
+                                               name="genres" required/>
+                                        <label class="form-root" for="genres">Genres</label>
+                                    </div>
+                                    <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn"
+                                            value="Create profile" type="submit">Create profile
+                                    </button>
+                                    <hr class="my-4">
 
-                    </form>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 
 
-<!--Filestack-->
-<script
-        src="https://code.jquery.com/jquery-3.5.1.js"
-        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-        crossorigin="anonymous"></script>
-<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+    <!--Filestack-->
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 
 
-<!--Filestack-->
-<script th:inline="javascript">
-    const options = {
-        onUploadDone:
-            function (res) {
-                $("#stashFilestackURL").val(res.filesUploaded[0].url);
-            }
-    }
-    let apiKey = [[${apiKey}]]
-    const client = filestack.init(apiKey);
+    <!--Filestack-->
+    <script th:inline="javascript">
+        const options = {
+            onUploadDone:
+                function (res) {
+                    $("#stashFilestackURL").val(res.filesUploaded[0].url);
+                }
+        }
+        let apiKey = [[${apiKey}]]
+        const client = filestack.init(apiKey);
 
-    $("#upload").click(function () {
-        client.picker(options).open()
-    });
-</script>
+        $("#upload").click(function () {
+            client.picker(options).open()
+        });
+    </script>
 
 
-<script>
-    const input = document.getElementById("search-input");
-    const searchBtn = document.getElementById("search-btn");
+    <script>
+        const input = document.getElementById("search-input");
+        const searchBtn = document.getElementById("search-btn");
 
-    const expand = () => {
-        searchBtn.classList.toggle("close");
-        input.classList.toggle("square");
-    };
+        const expand = () => {
+            searchBtn.classList.toggle("close");
+            input.classList.toggle("square");
+        };
 
-    searchBtn.addEventListener("click", expand);
+        searchBtn.addEventListener("click", expand);
 
-</script>
+    </script>
+
 
 </body>
 </html>
