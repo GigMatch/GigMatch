@@ -12,10 +12,10 @@ public class HomeController {
         return "welcomePage";
     }
 
-//    @GetMapping("/welcome")
-//    public String welcome(){
-//        return "welcomePage";
-//    }
+    @GetMapping("/about-us")
+    public String about(){
+        return "about-us";
+    }
 }
 
 

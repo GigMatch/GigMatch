@@ -111,7 +111,7 @@
             <div class="col-md-6 mt-3">
                 <div class="card mb-3">
                     <form action="/posts/create">
-                        <button  class="btn btn-lg btn-primary btn-block text-uppercase" id="btn1" value="create a post" type="submit">Create a Post</button>
+                        <button  class="btn btn-lg  btn-block text-uppercase" id="btn1" value="create a post" type="submit" style="background-color: goldenrod">Create a Post</button>
                     </form>
 <!--                    <div class="card-body">-->
 <!--                        <a th:href="'/posts/create'">Post a message, show your skills, or find a match for your gig.</a>-->
@@ -202,9 +202,9 @@
                     <!--POST REACTION TO CONNECT TO DATABASE-->
                     <div class="card-footer d-flex justify-content-between">
                         <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">
-                            <button type="submit" th:text="' Interested' + ' ' + ${ post.userReactions.size()}"
-                                    class="fas fa-thumbs-up card-link btn" style="background-color: goldenrod" value=" Like "><i onclick="myFunction(this)">
-                                Like</i>
+                            <button  type="submit"
+                                    class="fas fa-thumbs-up card-link btn" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">
+                                </i><span style="font-family: sans-serif" th:text="' Interested' + ' ' + ${ post.userReactions.size()}"></span>
                             </button>
 
                         </form>
