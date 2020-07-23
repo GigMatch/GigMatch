@@ -71,13 +71,12 @@
                 </li>
 
 
-                <li class="nav-item p-2 nav-font-icon dropdown" sec:authorize="isAuthenticated()">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="dropdown show nav-item p-2 nav-font-icon " sec:authorize="isAuthenticated()">
+                    <a class="dropdown-toggle nav-link" href="#" id="dropdownMenuLink" role="button"
+                       data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">
                         <i class="fas fa-user-alt"></i>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item nav-link" th:href="'/my-profile/' + ${profileId}">My Profile</a>
                         <div class="dropdown-divider"></div>
 
