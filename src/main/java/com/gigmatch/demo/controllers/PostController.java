@@ -45,7 +45,16 @@ public class PostController {
         } else {
             model.addAttribute("hasProfile", true);
             model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
-//            model.addAttribute("postOwnerProfile", profilesDao.findByOwner(pos))
+            model.addAttribute("currentUserProfile", profilesDao.findByOwner(currentUser));
+
+            for (Post post : postList) {
+                model.addAttribute("ownerProfile", profilesDao.findByOwner(post.getOwner()));
+                model.addAttribute("ownerCity", profilesDao.findByOwner(post.getOwner()).getCity());
+                model.addAttribute("postComments", post.getComments());
+//                List<User> userReactions = post.getUserReactions();
+//                model.addAttribute("userReactions", userReactions);
+            }
+
         }
         return "posts/postsFeed";
     }
@@ -130,6 +139,12 @@ public class PostController {
         List<Post> resultList = postsDao.searchByBody(term);
         model.addAttribute("results", resultList);
         model.addAttribute("noResultsFound", resultList.size() == 0);
+        model.addAttribute("currentUserProfileCity", profilesDao.findByOwner(currentUser).getCity());
+        model.addAttribute("currentUserProfileState", profilesDao.findByOwner(currentUser).getState());
+
+        for (Post post: resultList) {
+            model.addAttribute("ownerProfile", profilesDao.findByOwner(post.getOwner()));
+        }
 
         return "posts/searchResults";
     }
