@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Show Post')">
 </head>
-<body>
+<body class="main-bg">
 <header th:replace="fragments/navbar :: navbar"></header>
-
+<div class="main-bg">
 <div class="container">
     <div class="row">
         <div class="col-md-3">
@@ -147,6 +147,7 @@
 
 </div>
 </div>
+
 
 <script th:replace="fragments/map-scripts-and-div :: jquery-script"></script>
 <script th:replace="fragments/map-scripts-and-div :: key-script"></script>

@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Events Feed')">
 </head>
-<body>
+<body class="main-bg">
 <header th:replace="fragments/navbar :: eventsNavbar"></header>
-
-<div class="container">
+<div class="main-bg">
+<div class="container main-bg">
     <div class="row">
         <div class="col-md-3">
             <!--            <div class="card">-->
@@ -55,8 +55,7 @@
             <h1>Events</h1>
             <div class="card mb-3">
                 <div class="card-body">
-                    <a th:href="'/events/create'">Let people know when your next gig, concert, jam session, band
-                        practice, or virtual concert online link.</a>
+                    <a th:href="'/events/create'">Gig, Band Practice, Jam Session Happening?</a>
                 </div>
             </div>
 
@@ -172,6 +171,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 <!--Calendar-->

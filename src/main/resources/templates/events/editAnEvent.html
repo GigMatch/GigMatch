@@ -2,44 +2,119 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Edit Event')">
 </head>
-<body>
+<body id="post-create">
 <header th:replace="fragments/navbar :: navbar"></header>
 
-<div class="container">
-    <h1>Update Event Details</h1>
-    <div class="form">
 
-        <form th:action="${'/events/' + event.id + '/edit'}" method="POST" th:object="${event}">
+<div class="sidebar-container">
 
-                <label for="streetAddress">Street Address</label>
-                <input id="streetAddress" th:field="*{streetAddress}" type="text">
+    <ul class="sidebar-navigation">
+        <li class="header"></li>
+        <li>
+            <a href="/feed/posts">
+                <i class="fa fa-home" aria-hidden="true"></i>Posts
+            </a>
+        </li>
+        <li>
+            <a href="/feed/events">
+                <i class="fa fa-tachometer" aria-hidden="true"></i>Events
+            </a>
+        </li>
+        <li>
+            <a th:href="'/my-profile/' + ${profileId}">
+                <i class="fa fa-users" aria-hidden="true"></i>My Profile
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-cog" aria-hidden="true"></i> Notifcations
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-info-circle" aria-hidden="true"></i> Messages
+            </a>
+        </li>
+    </ul>
+</div>
 
 
-                <label for="city">City</label>
-                <input id="city" th:field="*{city}" type="text">
+<div class="container" id="form-margin">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-6 mx-auto create-m">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Update Your Event</h5>
+
+                    <form th:action="${'/events/' + event.id + '/edit'}" method="POST" th:object="${event}">
 
 
-                <label for="state">State</label>
-                <input id="state" th:field="*{state}" type="text">
+                        <div class="form-label-group">
+                            <input th:field="*{streetAddress}" type="text" id="streetAddress" class="form-control"
+                                   name="streetAddress" required autofocus/>
+                            <label for="streetAddress">Street Address</label>
+                        </div>
 
-                <label for="zipcode">Zipcode</label>
-                <input id="zipcode" th:field="*{zipcode}" type="text">
+                        <div class="form-label-group">
+                            <input th:field="*{city}" type="text" id="city" class="form-control" name="city" required/>
+                            <label for="city">City</label>
+                        </div>
 
-                <label for="description">Description</label>
-                <input id="description" th:field="*{description}" type="text">
+                        <div class="form-label-group">
+                            <input th:field="*{state}" type="text" id="state" class="form-control" name="state"
+                                   required/>
+                            <label for="state">State</label>
+                        </div>
 
-                <br>
+                        <div class="form-label-group">
+                            <input th:field="*{zipcode}" type="text" id="zipcode" class="form-control"
+                                   placeholder="zipcode" name="zipcode" required/>
+                            <label for="zipcode">Zipcode</label>
+                        </div>
 
-                <button class="btn btn-primary">Update Event Details</button>
-        </form>
+                        <div class="form-label-group">
+                            <textarea th:field="*{description}" type="text" id="description" class="form-control"
+                                      name="description" th:rows="4" required></textarea>
+                            <label for="description"></label>
+                        </div>
+
+                        <!--            <label for="streetAddress">Street Address</label>-->
+                        <!--            <input id="streetAddress" th:field="*{streetAddress}" type="text">-->
+
+                        <!--                <label for="city">City</label>-->
+                        <!--                <input id="city" th:field="*{city}" type="text">-->
 
 
-        <!--Delete Event-->
-        <form th:action="${'/events/' + event.id + '/delete'}" method="post">
-            <button class="btn btn-danger">Delete Event</button>
-        </form>
+                        <!--                <label for="state">State</label>-->
+                        <!--                <input id="state" th:field="*{state}" type="text">-->
+
+                        <!--                <label for="zipcode">Zipcode</label>-->
+                        <!--                <input id="zipcode" th:field="*{zipcode}" type="text">-->
+
+                        <!--                <label for="description">Description</label>-->
+                        <!--                <input id="description" th:field="*{description}" type="text">-->
+
+                        <!--                <br>-->
+
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="update event"
+                                type="submit">Update Your Event
+                        </button>
+                    </form>
+                    <hr class="my-4">
+                        <!--Delete Event-->
+                        <form th:action="${'/events/' + event.id + '/delete'}" method="post">
+                            <button class="btn btn-danger">Delete Event</button>
+                        </form>
+
+                        <!--            <button class="btn btn-primary">Update Event Details</button>-->
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
+
 
 
 </body>

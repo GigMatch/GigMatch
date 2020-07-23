@@ -45,6 +45,7 @@ public class PostController {
         } else {
             model.addAttribute("hasProfile", true);
             model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
+//            model.addAttribute("postOwnerProfile", profilesDao.findByOwner(pos))
         }
         return "posts/postsFeed";
     }
