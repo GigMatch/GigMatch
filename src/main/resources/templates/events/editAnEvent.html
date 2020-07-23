@@ -25,16 +25,16 @@
                 <i class="fa fa-users" aria-hidden="true"></i>My Profile
             </a>
         </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-cog" aria-hidden="true"></i> Notifcations
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-info-circle" aria-hidden="true"></i> Messages
-            </a>
-        </li>
+<!--        <li>-->
+<!--            <a href="#">-->
+<!--                <i class="fa fa-cog" aria-hidden="true"></i> Notifcations-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="#">-->
+<!--                <i class="fa fa-info-circle" aria-hidden="true"></i> Messages-->
+<!--            </a>-->
+<!--        </li>-->
     </ul>
 </div>
 
@@ -103,8 +103,10 @@
                     <hr class="my-4">
                         <!--Delete Event-->
                         <form th:action="${'/events/' + event.id + '/delete'}" method="post">
-                            <button class="btn btn-danger">Delete Event</button>
+                            <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                         </form>
+
+
 
                         <!--            <button class="btn btn-primary">Update Event Details</button>-->
                 </div>

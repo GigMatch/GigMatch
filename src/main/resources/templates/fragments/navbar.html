@@ -47,7 +47,7 @@
 
             <div class="input-group">
                 <form class="form-inline my-2 my-lg-0" action="/search/posts">
-                    <div class="bg-light rounded rounded-pill shadow-sm">
+                    <div class="bg-light rounded rounded-pill shadow-sm n">
                         <div class="input-group">
                             <input type="text" name="term" placeholder="Search posts..."
                                    aria-describedby="button-addon1" id="form"
@@ -63,27 +63,29 @@
 
 
             <ul class="navbar-nav  ml-auto nav-font-icon">
-                <li class="nav-item p-2">
-                    <a class="nav-link" href="#"><i class="far fa-bell" style="color: #ffffff"></i></a>
-                </li>
-                <li class="nav-item p-2 nav-font-icon">
-                    <a class="nav-link" href="#"><i class="far fa-envelope" style="color: white"></i></a>
-                </li>
 
 
-                <li class="nav-item p-2 nav-font-icon dropdown" sec:authorize="isAuthenticated()">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="dropdown show nav-item p-2 nav-font-icon " sec:authorize="isAuthenticated()">
+                    <a class="dropdown-toggle nav-link" href="#" id="dropdownMenuLink" role="button"
+                       data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">
                         <i class="fas fa-user-alt"></i>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item nav-link" th:href="'/my-profile/' + ${profileId}">My Profile</a>
                         <div class="dropdown-divider"></div>
+
+                        <form action="/feed/posts">
+                            <button class="btn-link btn">home</button>
+                        </form>
+
+                        <form action="/feed/events">
+                            <button class="btn-link btn">home</button>
+                        </form>
 
                         <form th:action="@{/logout}" th:method="post">
                             <button class="btn-link btn">Logout</button>
                         </form>
+
                     </div>
                 </li>
             </ul>
@@ -104,27 +106,28 @@
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="input-group">
-            <form action="/search/events" class="form-inline">
-                <input type="text" name="term" class="form-control " placeholder="Search events...">
-                <div class="input-group-append">
-                    <button class="btn btn-secondary" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto nav-font-icon">
-                <li class="nav-item p-2">
-                    <a class="nav-link" href="#"><i class="far fa-bell" style="color: #ffffff"></i></a>
-                </li>
-                <li class="nav-item p-2 nav-font-icon">
-                    <a class="nav-link" href="#"><i class="far fa-envelope" style="color: white"></i></a>
-                </li>
 
+        <div class="collapse navbar-collapse" id="defaultNavbar2">
 
-                <li class="nav-item p-2 nav-font-icon dropdown" sec:authorize="isAuthenticated()">
+            <div class="input-group">
+                <form class="form-inline my-2 my-lg-0" action="/search/posts">
+                    <div class="bg-light rounded rounded-pill shadow-sm">
+                        <div class="input-group">
+                            <input type="text" name="term" placeholder="Search posts..."
+                                   aria-describedby="button-addon1" id="form1"
+                                   class="form-control mr-sm-2 border-0 bg-light">
+                            <div class="input-group-append">
+                                <button id="button-addon2" type="submit" class="btn btn-link text-warning my-2 my-sm-0">
+                                    <i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <ul class="navbar-nav  ml-auto nav-font-icon">
+
+            <li class="nav-item p-2 nav-font-icon dropdown" sec:authorize="isAuthenticated()">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user-alt"></i>

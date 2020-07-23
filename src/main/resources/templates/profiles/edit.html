@@ -2,8 +2,40 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('Update Profile')">
 </head>
-<body>
+<body id="post-create">
 <header th:replace="fragments/navbar :: navbar"></header>
+
+<div>
+<div class="sidebar-container">
+    <ul class="sidebar-navigation">
+        <li class="header"></li>
+        <li>
+            <a href="/feed/posts">
+                <i class="fa fa-home" aria-hidden="true"></i>Posts
+            </a>
+        </li>
+        <li>
+            <a href="/feed/events">
+                <i class="fa fa-tachometer" aria-hidden="true"></i>Events
+            </a>
+        </li>
+        <li>
+            <a th:href="'/my-profile/' + ${myProfileId}">
+                <i class="fa fa-users" aria-hidden="true"></i>My Profile
+            </a>
+        </li>
+        <!--        <li>-->
+        <!--            <a href="#">-->
+        <!--                <i class="fa fa-cog" aria-hidden="true"></i> Notifcations-->
+        <!--            </a>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--            <a href="#">-->
+        <!--                <i class="fa fa-info-circle" aria-hidden="true"></i> Messages-->
+        <!--            </a>-->
+        <!--        </li>-->
+    </ul>
+</div>
 
 <div class="form-page">
     <div class="container" id="form-margin">
@@ -121,6 +153,7 @@
     <!--            &lt;!&ndash;            <input value="Update Profile" type="submit"/>&ndash;&gt;-->
     <!--            <input type="submit" value="Update Profile" />-->
 
+</div>
 </div>
 
 
