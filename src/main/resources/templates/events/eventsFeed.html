@@ -5,164 +5,166 @@
 <body class="main-bg">
 <header th:replace="fragments/navbar :: eventsNavbar"></header>
 <div class="main-bg">
-<div class="container main-bg">
-    <div class="row">
-        <div class="col-md-3">
-            <!--            <div class="card">-->
-            <!--                <ul class="list-group list-group-flush">-->
-            <!--                    <li class="list-group-item"><a href="#">Notifications</a></li>-->
-            <!--                    <li class="list-group-item"><a href="#">Messages</a></li>-->
-            <!--                    <li class="list-group-item"><a href="/feed/posts">Posts</a></li>-->
-            <!--                    <li class="list-group-item"><a href="/feed/events">Events</a></li>-->
-            <!--                    <li class="list-group-item"><a th:href="'/my-profile/' + ${profileId}">My Profile</a></li>-->
-            <!--                </ul>-->
-            <!--            </div>-->
-        </div>
-        <div class="sidebar-container">
+    <div class="container main-bg">
+        <div class="row">
+            <div class="col-md-3">
+                <!--            <div class="card">-->
+                <!--                <ul class="list-group list-group-flush">-->
+                <!--                    <li class="list-group-item"><a href="#">Notifications</a></li>-->
+                <!--                    <li class="list-group-item"><a href="#">Messages</a></li>-->
+                <!--                    <li class="list-group-item"><a href="/feed/posts">Posts</a></li>-->
+                <!--                    <li class="list-group-item"><a href="/feed/events">Events</a></li>-->
+                <!--                    <li class="list-group-item"><a th:href="'/my-profile/' + ${profileId}">My Profile</a></li>-->
+                <!--                </ul>-->
+                <!--            </div>-->
+            </div>
+            <div class="sidebar-container">
 
-            <ul class="sidebar-navigation">
-                <li class="header"></li>
-                <li>
-                    <a href="/feed/posts">
-                        <i class="fa fa-home" aria-hidden="true"></i>Posts
-                    </a>
-                </li>
-                <li>
-                    <a href="/feed/events">
-                        <i class="fa fa-tachometer" aria-hidden="true"></i>Events
-                    </a>
-                </li>
-                <li>
-                    <a th:href="'/my-profile/' + ${profileId}">
-                        <i class="fa fa-users" aria-hidden="true"></i>My Profile
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-cog" aria-hidden="true"></i> Notifcations
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-info-circle" aria-hidden="true"></i> Messages
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-
-        <div class="col-md-6 mt-3">
-            <h1>Events</h1>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <a th:href="'/events/create'">Gig, Band Practice, Jam Session Happening?</a>
-                </div>
+                <ul class="sidebar-navigation">
+                    <li class="header"></li>
+                    <li>
+                        <a href="/feed/posts">
+                            <i class="fa fa-home" aria-hidden="true"></i>Posts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/feed/events">
+                            <i class="fa fa-tachometer" aria-hidden="true"></i>Events
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="'/my-profile/' + ${profileId}">
+                            <i class="fa fa-users" aria-hidden="true"></i>My Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-cog" aria-hidden="true"></i> Notifcations
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i> Messages
+                        </a>
+                    </li>
+                </ul>
             </div>
 
 
-            <nav class="nav">
-                <div>
-                    <a class="nav-link" href="/feed/events">Upcoming Events</a>
-                    <a class="nav-link" href="/feed/myEvents">My Events</a>
-                </div>
-            </nav>
-
-
-            <!-- No Events Found-->
-            <!--            <div th:if="${noEventsFound}">-->
-            <!--                No events were found.-->
-            <!--            </div>-->
-            <!--            <div class="card mb-2" th:each="event : ${events}">-->
-            <!--                <div class="card-body">-->
-            <!--                    <h5 th:text="${event.owner.getUsername()}"></h5>-->
-            <!--                    <p class="card-text" th:text="${event.streetAddress} + ' ' + ${event.city} + ', ' +  ${event.state} + ' ' + ${event.zipcode}"></p>-->
-            <!--                    <p class="card-text" th:text="${event.description}"></p>-->
-            <!--                &lt;!&ndash; <a th:href="'/events/' + ${event.id} + '/edit'" class="btn btn-primary">Edit Event</a>&ndash;&gt;-->
-            <!--                </div>-->
-            <!--            </div>-->
-            <!--        </div>-->
-
-
-            <!-- No Events Found-->
-            <div th:if="${noEventsFound}">
-                No events were found.
-            </div>
-            <div class="card gedf-card" th:each="event : ${events}">
-                <div class="card-header">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="mr-2">
-                                <img class="rounded-circle" width="45"
-                                     src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png"
-                                     alt="">
-                            </div>
-                            <div class="ml-2">
-                                <div class="h5 m-0" th:text="${event.owner.getUsername()}"></div>
-                                <div class="h7 text-muted" th:text="${event.streetAddress}"></div>
-                                <div class="h7 text-muted" th:text="${event.city} + ', ' + ${event.state}"></div>
-                                <div class="h7 text-muted" th:text="${event.zipcode}"></div>
-
-                            </div>
-                        </div>
-
+            <div class="col-md-6 mt-3">
+                <h1>Events</h1>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <a th:href="'/events/create'">Gig, Band Practice, Jam Session Happening?</a>
                     </div>
                 </div>
-                <div class="card-body ">
 
 
-                    <p class="card-text" th:text="${event.description}"></p>
+                <nav class="nav">
+                    <div>
+                        <a class="nav-link" href="/feed/events">Upcoming Events</a>
+                        <a class="nav-link" href="/feed/myEvents">My Events</a>
+                    </div>
+                </nav>
+
+
+                <!-- No Events Found-->
+                <!--            <div th:if="${noEventsFound}">-->
+                <!--                No events were found.-->
+                <!--            </div>-->
+                <!--            <div class="card mb-2" th:each="event : ${events}">-->
+                <!--                <div class="card-body">-->
+                <!--                    <h5 th:text="${event.owner.getUsername()}"></h5>-->
+                <!--                    <p class="card-text" th:text="${event.streetAddress} + ' ' + ${event.city} + ', ' +  ${event.state} + ' ' + ${event.zipcode}"></p>-->
+                <!--                    <p class="card-text" th:text="${event.description}"></p>-->
+                <!--                &lt;!&ndash; <a th:href="'/events/' + ${event.id} + '/edit'" class="btn btn-primary">Edit Event</a>&ndash;&gt;-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--        </div>-->
+
+
+                <!-- No Events Found-->
+                <div th:if="${noEventsFound}">
+                    No events were found.
                 </div>
-                <div class="card-footer">
-                    <form th:method="Post" th:action="'/events/'+ ${event.id} + '/interests'">
-                        <button type="submit" th:text="${event.eventInterests.size()}" class=" fa fa-gittip card-link "
-                                value=" Interested "><i> Interested</i></button>
-                    </form>
-                    <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
-                    <!--                <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link"><i class="fa fa-comment"></i> Comment</a>-->
-                    <!--                <a th:href="'/posts/' + ${post.id}">See Post</a>-->
-                </div>
-            </div>
-        </div>
+                <div class="card gedf-card" th:each="event : ${events}">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="mr-2">
+                                    <img class="rounded-circle" width="45"
+                                         src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png"
+                                         alt="">
+                                </div>
+                                <div class="ml-2">
+                                    <div class="h5 m-0" th:text="${event.owner.getUsername()}"></div>
+                                    <div class="h7 text-muted" th:text="${event.streetAddress}"></div>
+                                    <div class="h7 text-muted" th:text="${event.city} + ', ' + ${event.state}"></div>
+                                    <div class="h7 text-muted" th:text="${event.zipcode}"></div>
 
-
-        <div class="col-md-3 mt-3">
-            <div class="card mb-3">
-                <div id="map" style="width: 100%; height:200px"></div>
-                <div class="card-body">
-                    <p class="card-text" id="inputCity" th:text="${profile.city} + ', ' + ${profile.state}"></p>
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <p class="card-text">Your Calendar.</p>
-                    <!--                    <div th:replace="fragment/calendar.html :: calendar"></div>-->
-                    <div class="calendar" id="calendar">
-                        <div class="calendar-btn month-btn" onclick="$('#months').toggle('fast')">
-                            <span id="curMonth"></span>
-                            <div id="months" class="months dropdown"></div>
-                        </div>
-
-                        <div class="calendar-btn year-btn" onclick="$('#years').toggle('fast')">
-                            <span id="curYear"></span>
-                            <div id="years" class="years dropdown"></div>
-                        </div>
-
-                        <div class="clear"></div>
-
-                        <div class="calendar-dates">
-                            <div class="days">
-                                <div class="day label">S</div>
-                                <div class="day label">M</div>
-                                <div class="day label">T</div>
-                                <div class="day label">W</div>
-                                <div class="day label">T</div>
-                                <div class="day label">F</div>
-                                <div class="day label">S</div>
-
-                                <div class="clear"></div>
+                                </div>
                             </div>
 
-                            <div id="calendarDays" class="days">
+                        </div>
+                    </div>
+                    <div class="card-body ">
+
+
+                        <p class="card-text" th:text="${event.description}"></p>
+                    </div>
+                    <div class="card-footer">
+                        <form th:method="Post" th:action="'/events/'+ ${event.id} + '/interests'">
+                            <button type="submit" th:text="${event.eventInterests.size()}"
+                                    class=" fa fa-gittip card-link "
+                                    value=" Interested "><i> Interested</i></button>
+                        </form>
+                        <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
+                        <!--                <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link"><i class="fa fa-comment"></i> Comment</a>-->
+                        <!--                <a th:href="'/posts/' + ${post.id}">See Post</a>-->
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-3 mt-3">
+                <div class="card mb-3">
+                    <div id="map" style="width: 100%; height:200px"></div>
+                    <div class="card-body">
+                        <p class="card-text" id="inputCity" th:text="${profile.city} + ', ' + ${profile.state}"></p>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <p class="card-text">Your Calendar.</p>
+                        <!--                    <div th:replace="fragment/calendar.html :: calendar"></div>-->
+                        <div class="calendar" id="calendar">
+                            <div class="calendar-btn month-btn" onclick="$('#months').toggle('fast')">
+                                <span id="curMonth"></span>
+                                <div id="months" class="months dropdown"></div>
+                            </div>
+
+                            <div class="calendar-btn year-btn" onclick="$('#years').toggle('fast')">
+                                <span id="curYear"></span>
+                                <div id="years" class="years dropdown"></div>
+                            </div>
+
+                            <div class="clear"></div>
+
+                            <div class="calendar-dates">
+                                <div class="days">
+                                    <div class="day label">S</div>
+                                    <div class="day label">M</div>
+                                    <div class="day label">T</div>
+                                    <div class="day label">W</div>
+                                    <div class="day label">T</div>
+                                    <div class="day label">F</div>
+                                    <div class="day label">S</div>
+
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div id="calendarDays" class="days">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -171,8 +173,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 <!--Calendar-->
@@ -251,7 +251,7 @@
             d.innerHTML = tmp;
             d.dataset.day = tmp;
             //highlights current date
-            if(tmp === todaysDate){
+            if (tmp === todaysDate) {
                 d.className = "day today";
             }
 
@@ -266,7 +266,7 @@
             });
 
             //event form for calendar to create events
-            d.addEventListener('click', function(){
+            d.addEventListener('click', function () {
                 document.createElement("div");
                 d.id = "eventForm";
                 d.className = "";
@@ -298,7 +298,7 @@
                     "  <div class=\"form-group\">\n" +
                     "    <label for=\"exampleFormControlTextarea1\">Example textarea</label>\n" +
                     "    <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"3\"></textarea>\n" +
-                    "  </div>\n" +"<button type=\"button\" class=\"btn btn-light\">Cancel</button>\n" +
+                    "  </div>\n" + "<button type=\"button\" class=\"btn btn-light\">Cancel</button>\n" +
                     "<button type=\"button\" class=\"btn btn-danger\">Delete</button>\n" +
                     "<button type=\"button\" class=\"btn btn-secondary\">Create Event</button>\n" +
                     "</form>"
