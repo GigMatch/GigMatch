@@ -22,34 +22,79 @@
         <div class="sidebar-container">
 
             <ul class="sidebar-navigation">
-                <li class="header"></li>
+                <li class="header">
+                    <img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt="">
+                </li>
                 <li>
                     <a href="/feed/posts">
-                        <i class="fa fa-home" aria-hidden="true"></i>Posts
+                        <i class="fa fa-home left-nav-icon" aria-hidden="true"></i>Posts
                     </a>
                 </li>
                 <li>
                     <a href="/feed/events">
-                        <i class="fa fa-tachometer" aria-hidden="true"></i>Events
+                        <i class="far fa-calendar-alt left-nav-icon " id="left-icon-padding-events" aria-hidden="true"></i>Events
                     </a>
                 </li>
                 <li>
                     <a th:href="'/my-profile/' + ${profileId}">
-                        <i class="fa fa-users" aria-hidden="true"></i>My Profile
+                        <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile" aria-hidden="true"></i>My Profile
                     </a>
                 </li>
-<!--                <li>-->
-<!--                    <a href="#">-->
-<!--                        <i class="fa fa-cog" aria-hidden="true"></i> Notifcations-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a href="#">-->
-<!--                        <i class="fa fa-info-circle" aria-hidden="true"></i> Messages-->
-<!--                    </a>-->
-<!--                </li>-->
+                <li>
+                    <form th:action="@{/logout}" th:method="post">
+                        <!--                            <a href="">-->
+                        <!--                                <i class="fas fa-sign-out-alt"></i>Logout-->
+                        <!--                            </a>-->
+                        <button class="btn-link btn logout-button">
+                            <i class="fas fa-sign-out-alt left-nav-icon"></i> Logout
+                        </button>
+                    </form>
+                </li>
+
+                <!--                    <li>-->
+                <!--                        <a href="#">-->
+                <!--                            <i class="fa fa-cog" aria-hidden="true"></i> Notifcations-->
+                <!--                        </a>-->
+                <!--                    </li>-->
+                <!--                    <li>-->
+                <!--                        <a href="#">-->
+                <!--                            <i class="fa fa-info-circle" aria-hidden="true"></i> Messages-->
+                <!--                        </a>-->
+                <!--                    </li>-->
             </ul>
         </div>
+
+<!--        <div class="sidebar-container">-->
+
+<!--            <ul class="sidebar-navigation">-->
+<!--                <li class="header"></li>-->
+<!--                <li>-->
+<!--                    <a href="/feed/posts">-->
+<!--                        <i class="fa fa-home" aria-hidden="true"></i>Posts-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a href="/feed/events">-->
+<!--                        <i class="fa fa-tachometer" aria-hidden="true"></i>Events-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a th:href="'/my-profile/' + ${profileId}">-->
+<!--                        <i class="fa fa-users" aria-hidden="true"></i>My Profile-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--&lt;!&ndash;                <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a href="#">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <i class="fa fa-cog" aria-hidden="true"></i> Notifcations&ndash;&gt;-->
+<!--&lt;!&ndash;                    </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a href="#">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <i class="fa fa-info-circle" aria-hidden="true"></i> Messages&ndash;&gt;-->
+<!--&lt;!&ndash;                    </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--            </ul>-->
+<!--        </div>-->
 
 
         <div class="col-md-6 mt-3">
