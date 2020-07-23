@@ -74,9 +74,18 @@
                         <a class="dropdown-item nav-link" th:href="'/my-profile/' + ${profileId}">My Profile</a>
                         <div class="dropdown-divider"></div>
 
+                        <form action="/feed/posts">
+                            <button class="btn-link btn">home</button>
+                        </form>
+
+                        <form action="/feed/events">
+                            <button class="btn-link btn">home</button>
+                        </form>
+
                         <form th:action="@{/logout}" th:method="post">
                             <button class="btn-link btn">Logout</button>
                         </form>
+
                     </div>
                 </li>
             </ul>
