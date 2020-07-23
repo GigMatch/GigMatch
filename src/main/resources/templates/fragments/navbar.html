@@ -33,7 +33,7 @@
 </nav>
 
 
-<nav th:fragment="navbar" class="navbar col-md-9 ml-auto navbar-expand-lg navbar-light sticky-top" style="background-color: #1a1a1a">
+<nav th:fragment="navbar" class="navbar col-md-9 ml-auto navbar-expand-lg navbar-light sticky-top" style="background-color: transparent">
     <div class="container gen-container">
 <!--        <a class="navbar-brand" href="/feed/posts">-->
 <!--            <img src="https://i.ibb.co/Wgg1M4z/logo.jpg" class="img-responsive logo logo-gen" alt="">-->
@@ -64,30 +64,31 @@
 
             <ul class="navbar-nav  ml-auto nav-font-icon">
 
+<!--                horizontal nav-->
 
-                <li class="dropdown show nav-item p-2 nav-font-icon " sec:authorize="isAuthenticated()">
-                    <a class="dropdown-toggle nav-link" href="#" id="dropdownMenuLink" role="button"
-                       data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">
-                        <i class="fas fa-user-alt"></i>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item nav-link" th:href="'/my-profile/' + ${profileId}">My Profile</a>
-                        <div class="dropdown-divider"></div>
+<!--                <li class="dropdown show nav-item p-2 nav-font-icon " sec:authorize="isAuthenticated()">-->
+<!--                    <a class="dropdown-toggle nav-link" href="#" id="dropdownMenuLink" role="button"-->
+<!--                       data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">-->
+<!--                        <i class="fas fa-user-alt"></i>-->
+<!--                    </a>-->
+<!--                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">-->
+<!--                        <a class="dropdown-item nav-link" th:href="'/my-profile/' + ${profileId}">My Profile</a>-->
+<!--                        <div class="dropdown-divider"></div>-->
 
-                        <form action="/feed/posts">
-                            <button class="btn-link btn">Home</button>
-                        </form>
+<!--                        <form action="/feed/posts">-->
+<!--                            <button class="btn-link btn">Home</button>-->
+<!--                        </form>-->
 
-                        <form action="/feed/events">
-                            <button class="btn-link btn">Events</button>
-                        </form>
+<!--                        <form action="/feed/events">-->
+<!--                            <button class="btn-link btn">Events</button>-->
+<!--                        </form>-->
 
-                        <form th:action="@{/logout}" th:method="post">
-                            <button class="btn-link btn">Logout</button>
-                        </form>
+<!--                        <form th:action="@{/logout}" th:method="post">-->
+<!--                            <button class="btn-link btn">Logout</button>-->
+<!--                        </form>-->
 
-                    </div>
-                </li>
+<!--                    </div>-->
+<!--                </li>-->
             </ul>
         </div>
     </div>
@@ -97,7 +98,7 @@
 <!--Events Navbar exits for searching events-->
 
 <nav th:fragment="eventsNavbar" class="navbar navbar-expand-lg navbar-light sticky-top"
-     style="background-color: goldenrod">
+     style="background-color: transparent">
     <div class="container gen-container">
         <a class="navbar-brand" href="/feed/posts">
             <img src="https://i.ibb.co/Wgg1M4z/logo.jpg" class="img-responsive logo" alt="">
