@@ -7,23 +7,13 @@
 <div class="main-bg">
 <div class="container ">
     <div class="row">
-        <div class="col-md-3">
-<!--            <div class="card">-->
-<!--                <ul class="list-group list-group-flush">-->
-<!--                    <li class="list-group-item"><a href="#">Notifications</a></li>-->
-<!--                    <li class="list-group-item"><a href="#">Messages</a></li>-->
-<!--                    <li class="list-group-item"><a href="/feed/posts">Posts</a></li>-->
-<!--                    <li class="list-group-item"><a href="/feed/events">Events</a></li>-->
-<!--                    <li class="list-group-item"><a th:href="'/my-profile/' + ${profileId}">My Profile</a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-        </div>
+        <div class="col-md-3"></div>
 
         <div class="sidebar-container">
 
             <ul class="sidebar-navigation">
                 <li class="header">
-                    <img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt="">
+                    <a href="/feed/posts"><img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt=""></a>
                 </li>
                 <li>
                     <a href="/feed/posts">
@@ -42,9 +32,6 @@
                 </li>
                 <li>
                     <form th:action="@{/logout}" th:method="post">
-                        <!--                            <a href="">-->
-                        <!--                                <i class="fas fa-sign-out-alt"></i>Logout-->
-                        <!--                            </a>-->
                         <button class="btn-link btn logout-button">
                             <i class="fas fa-sign-out-alt left-nav-icon"></i> Logout
                         </button>
@@ -63,67 +50,105 @@
                 <!--                    </li>-->
             </ul>
         </div>
-<!--        <div class="sidebar-container">-->
 
-<!--            <ul class="sidebar-navigation">-->
-<!--                <li class="header"></li>-->
-<!--                <li>-->
-<!--                    <a href="/feed/posts">-->
-<!--                        <i class="fa fa-home" aria-hidden="true"></i>Posts-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a href="/feed/events">-->
-<!--                        <i class="fa fa-tachometer" aria-hidden="true"></i>Events-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a th:href="'/my-profile/' + ${profileId}">-->
-<!--                        <i class="fa fa-users" aria-hidden="true"></i>My Profile-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--&lt;!&ndash;                <li>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <a href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <i class="fa fa-cog" aria-hidden="true"></i> Notifcations&ndash;&gt;-->
-<!--&lt;!&ndash;                    </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                </li>&ndash;&gt;-->
-<!--&lt;!&ndash;                <li>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <a href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <i class="fa fa-info-circle" aria-hidden="true"></i> Messages&ndash;&gt;-->
-<!--&lt;!&ndash;                    </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                </li>&ndash;&gt;-->
-<!--            </ul>-->
-<!--        </div>-->
 
-        <div class="col-md-6">
-            <h1>Events</h1>
+        <div class="col-md-6 mt-3">
             <div class="card mb-3">
-                <div class="card-body">
-                    <a th:href="'/events/create'">Let people know when your next gig, concert, jam session, band practice, or virtual concert online link.</a>
+                <form action="/events/create">
+                    <button  class="btn btn-lg btn-block text-uppercase" style="background-color: goldenrod" id="btn" value="Sign Up" type="submit">Create an Event</button>
+                </form>
+            </div>
+
+
+            <div class="container mb-4">
+                <div class="row">
+                    <form action="/feed/events" class="col-6">
+                        <button  class="btn btn-lg btn-block text-uppercase" style="background-color: goldenrod; border: 1px solid white; color: white" id="btn1" value="Upcoming Events" type="submit">Upcoming Events</button>
+                    </form>
+                    <form action="/feed/myEvents" class="col-6">
+                        <button  class="btn btn-lg  btn-block text-uppercase" style="background-color: goldenrod; border: 1px solid white; color: white;" id="btn2" value="My Events" type="submit">My Events</button>
+                    </form>
                 </div>
             </div>
 
 
-            <nav class="nav">
-                <div>
-                    <a class="nav-link" href="/feed/events">Upcoming Events</a>
-                    <a class="nav-link" href="/feed/myEvents">My Events</a>
-                </div>
-            </nav>
 
-            <!-- No Events Found-->
-            <div th:if="${noEventsFound}">
-                No events were found.
-            </div>
-            <div class="card mb-2" th:each="event : ${userEvents}">
-                <div class="card-body">
-                    <h5 th:text="${event.owner.username}"></h5>
-                    <p class="card-text" th:text="${event.streetAddress} + ' ' + ${event.city} + ', ' +  ${event.state} + ' ' + ${event.zipcode}"></p>
+
+            <div class="card gedf-card" th:each="event : ${userEvents}">
+                <div class="card-header" >
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="mr-2">
+                                <img class="rounded-circle" width="45" src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png" alt="">
+                            </div>
+                            <div class="ml-2">
+                                <div class="h5 m-0" th:text="${event.owner.getUsername()}"></div>
+                                <div class="h7 text-muted" th:text="${event.streetAddress}"></div>
+                                <div class="h7 text-muted" th:text="${event.city} + ', ' + ${event.state}"></div>
+                                <div class="h7 text-muted" th:text="${event.zipcode}"></div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-body ">
+
+
                     <p class="card-text" th:text="${event.description}"></p>
-                    <a th:href="'/events/' + ${event.id} + '/edit'" class="btn btn-primary">Edit Event</a>
                 </div>
+
+                <div class="card-footer d-flex justify-content-between">
+                    <form th:method="Post" th:action="'/events/'+ ${event.id} + '/interests'">
+                        <button  type="submit"
+                                 class="fas fa-thumbs-up card-link btn" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">
+                        </i><span style="font-family: sans-serif"  th:text="'Interested' + ' ' + ${event.eventInterests.size()}"></span>
+                        </button>
+
+                    </form>
+                    <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
+                    <form th:method="GET" th:action="'/events/' + ${event.id} + '/edit'"  class="ml-5">
+                        <button type="submit" style="background-color: goldenrod" value="Update event" class="btn">Update Event
+                        </button>
+                    </form>
+                    <!--                        <a th:href="'/posts/' + ${post.id}" class="ml-5">View Post</a>-->
+                </div>
+<!--                <div class="card-footer">-->
+
+<!--                    <form th:method="Post" th:action="'/events/'+ ${event.id} + '/interests'">-->
+<!--                        <button  type="submit"-->
+<!--                                 class="fas fa-thumbs-up card-link btn" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">-->
+<!--                        </i><span style="font-family: sans-serif"   th:text="${event.eventInterests.size()}"></span>-->
+<!--                        </button>-->
+
+<!--                    </form>-->
+<!--                    &lt;!&ndash;                <form th:method="Post" th:action="'/events/'+ ${event.id} + '/interests'" >&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <button type="submit" th:text="${event.eventInterests.size()}" class=" fa fa-gittip card-link " value=" Interested "><i> Interested</i></button>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                </form>&ndash;&gt;-->
+<!--                    &lt;!&ndash;<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link"><i class="fa fa-comment"></i> Comment</a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                <a th:href="'/posts/' + ${post.id}">See Post</a>&ndash;&gt;-->
+<!--                </div>-->
             </div>
+
         </div>
+
+
+
+
+<!--            &lt;!&ndash; No Events Found&ndash;&gt;-->
+<!--            <div th:if="${noEventsFound}">-->
+<!--                No events were found.-->
+<!--            </div>-->
+<!--            <div class="card mb-2" th:each="event : ${userEvents}">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 th:text="${event.owner.username}"></h5>-->
+<!--                    <p class="card-text" th:text="${event.streetAddress} + ' ' + ${event.city} + ', ' +  ${event.state} + ' ' + ${event.zipcode}"></p>-->
+<!--                    <p class="card-text" th:text="${event.description}"></p>-->
+<!--                    <a th:href="'/events/' + ${event.id} + '/edit'" class="btn btn-primary">Edit Event</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
 
         <!--INSERT MAPBOX API HERE-->

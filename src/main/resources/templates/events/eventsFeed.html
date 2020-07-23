@@ -162,9 +162,17 @@
                 <p class="card-text" th:text="${event.description}"></p>
             </div>
             <div class="card-footer">
-                <form th:method="Post" th:action="'/events/'+ ${event.id} + '/interests'" >
-                    <button type="submit" th:text="${event.eventInterests.size()}" class=" fa fa-gittip card-link " value=" Interested "><i> Interested</i></button>
+
+                <form th:method="Post" th:action="'/events/'+ ${event.id} + '/interests'">
+                    <button  type="submit"
+                             class="fas fa-thumbs-up card-link btn" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">
+                    </i><span style="font-family: sans-serif"   th:text="'Interested' + ' ' + ${event.eventInterests.size()}"></span>
+                    </button>
+
                 </form>
+<!--                <form th:method="Post" th:action="'/events/'+ ${event.id} + '/interests'" >-->
+<!--                    <button type="submit" th:text="${event.eventInterests.size()}" class=" fa fa-gittip card-link " value=" Interested "><i> Interested</i></button>-->
+<!--                </form>-->
                 <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
 <!--                <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link"><i class="fa fa-comment"></i> Comment</a>-->
 <!--                <a th:href="'/posts/' + ${post.id}">See Post</a>-->
