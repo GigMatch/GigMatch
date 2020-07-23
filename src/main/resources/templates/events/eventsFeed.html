@@ -37,26 +37,29 @@
                         <i class="fa fa-users" aria-hidden="true"></i>My Profile
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-cog" aria-hidden="true"></i> Notifcations
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-info-circle" aria-hidden="true"></i> Messages
-                    </a>
-                </li>
+<!--                <li>-->
+<!--                    <a href="#">-->
+<!--                        <i class="fa fa-cog" aria-hidden="true"></i> Notifcations-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a href="#">-->
+<!--                        <i class="fa fa-info-circle" aria-hidden="true"></i> Messages-->
+<!--                    </a>-->
+<!--                </li>-->
             </ul>
         </div>
 
 
         <div class="col-md-6 mt-3">
-            <h1>Events</h1>
+            <h1 style="color: goldenrod">Events</h1>
             <div class="card mb-3">
-                <div class="card-body">
-                    <a th:href="'/events/create'">Gig, Band Practice, Jam Session Happening?</a>
-                </div>
+                <form action="/events/create">
+                <button  class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Sign Up" type="submit">Create an Event</button>
+                </form>
+<!--                <div class="card-body">-->
+<!--                    <a th:href="'/events/create'">Gig, Band Practice, Jam Session Happening?</a>-->
+<!--                </div>-->
             </div>
 
 

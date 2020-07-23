@@ -7,6 +7,27 @@ body {
     min-height: 100%;
 }
 
+
+
+
+
+
+.test:focus {
+    box-shadow: none;
+}
+
+.test {
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+    padding-left: 0;
+}
+
+
+
+
+
+
 .contact-form .form-field {
     position: relative;
     margin: 32px 0;
@@ -1175,7 +1196,7 @@ margin-top: 40px;
 
 
 /*Test*/
-.shadow-sm {
+.n {
     width: 27rem;
 }
 
