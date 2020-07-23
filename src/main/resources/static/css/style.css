@@ -1016,6 +1016,10 @@ margin-top: 40px;
     font-weight:bold;
 }
 
+#eventForm{
+    width: 200px;
+}
+
 .clear{
     clear:both;
 }
