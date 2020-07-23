@@ -38,16 +38,16 @@
                             <i class="fa fa-users" aria-hidden="true"></i>My Profile
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-cog" aria-hidden="true"></i> Notifcations
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-info-circle" aria-hidden="true"></i> Messages
-                        </a>
-                    </li>
+<!--                    <li>-->
+<!--                        <a href="#">-->
+<!--                            <i class="fa fa-cog" aria-hidden="true"></i> Notifcations-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#">-->
+<!--                            <i class="fa fa-info-circle" aria-hidden="true"></i> Messages-->
+<!--                        </a>-->
+<!--                    </li>-->
                 </ul>
             </div>
             <div class="col-md-6 mt-3">
@@ -161,33 +161,35 @@
                         <div class="col-sm-12">
                             <div class="comment-wrapper">
                                 <div class="panel panel-info">
-                                    <div class="panel-heading mt-3">
-                                        Comment panel
-                                    </div>
+                                    <div class="panel-heading mt-3"></div>
                                     <div class="panel-body">
-                                        <form th:action="${'/posts/' + post.id + '/comment'}" method="POST">
-                                            <div class="form-group mx-sm-3 mb-2">
-                                                <label for="content" class="sr-only">Comment</label>
-                                                <input id="content" name="comment">
-                                            </div>
 
-                                            <br>
-                                            <button type="submit" class="btn btn-info pull-right">Comment</button>
-                                            <div class="clearfix"></div>
-                                            <hr>
-                                            <ul class="media-list">
-                                                <li class="media">
-                                                    <a href="#" class="pull-left">
-                                                        <img src="" alt=""
-                                                             class="img-circle">
-                                                    </a>
-                                                    <div class="media-body"><span class="text-muted pull-right"></span>
-                                                        <strong class="text-success"></strong>
-                                                        <p></p>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                        <form th:action="${'/posts/' + post.id + '/comment'}" method="POST">
+                                            <div class="row mb-4">
+                                                <div class="form-group col-md-9">
+                                                    <input id="content" type="text" name="comment" placeholder="Comment" class="form-control form-control-underlined test">
+                                                </div>
+                                                <br>
+                                                <div class="form-group col-md-3">
+                                                    <button type="submit" class="btn btn-success rounded-pill btn-block shadow-sm">Comment</button>
+                                                </div>
+                                            </div>
                                         </form>
+
+
+
+
+<!--                                        <form th:action="${'/posts/' + post.id + '/comment'}" method="POST">-->
+<!--                                            <div class="form-group mx-sm-3 mb-2">-->
+<!--                                                <label for="content" class="sr-only">Comment</label>-->
+<!--                                                <input id="content" name="comment">-->
+<!--                                            </div>-->
+
+<!--                                            <br>-->
+<!--                                            <button type="submit" class="btn btn-info pull-right">Comment</button>-->
+
+<!--                                            </ul>-->
+<!--                                        </form>-->
                                     </div>
                                 </div>
                             </div>
