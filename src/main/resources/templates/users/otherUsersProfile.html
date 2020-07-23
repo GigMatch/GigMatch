@@ -5,73 +5,111 @@
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="/feed/posts">Home Feed</a></li>
-                    <li class="list-group-item"><a href="#">Notifications</a></li>
-                    <li class="list-group-item"><a href="#">Messages</a></li>
-                    <li class="list-group-item"><a th:href="'/my-profile/' + ${currentUserProfileId}">My Profile</a></li>
+<div class="main-bg">
+    <div class="container main-bg">
+        <div class="row">
+            <div class="col-md-3">
+                <!--            <div class="card">-->
+                <!--                <ul class="list-group list-group-flush">-->
+                <!--                    <li class="list-group-item"><a href="#">Notifications</a></li>-->
+                <!--                    <li class="list-group-item"><a href="#">Messages</a></li>-->
+                <!--                    <li class="list-group-item"><a href="/feed/posts">Posts</a></li>-->
+                <!--                    <li class="list-group-item"><a href="/feed/events">Events</a></li>-->
+                <!--                    <li class="list-group-item"><a th:href="'/my-profile/' + ${profileId}">My Profile</a></li>-->
+                <!--                </ul>-->
+                <!--            </div>-->
+            </div>
+            <div class="sidebar-container">
+
+                <ul class="sidebar-navigation">
+                    <li class="header"></li>
+                    <li>
+                        <a href="/feed/posts">
+                            <i class="fa fa-home" aria-hidden="true"></i>Posts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/feed/events">
+                            <i class="fa fa-tachometer" aria-hidden="true"></i>Events
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="'/my-profile/' + ${profileId}">
+                            <i class="fa fa-users" aria-hidden="true"></i>My Profile
+                        </a>
+                    </li>
+                    <!--                <li>-->
+                    <!--                    <a href="#">-->
+                    <!--                        <i class="fa fa-cog" aria-hidden="true"></i> Notifcations-->
+                    <!--                    </a>-->
+                    <!--                </li>-->
+                    <!--                <li>-->
+                    <!--                    <a href="#">-->
+                    <!--                        <i class="fa fa-info-circle" aria-hidden="true"></i> Messages-->
+                    <!--                    </a>-->
+                    <!--                </li>-->
                 </ul>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"
-                             class="card-img m-2" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h3 class="card-title" th:text="${profile.owner.getFirst_name()} + ' ' + ${profile.owner.getLast_name()}">First Last</h3>
-                            <h4 th:text="${profile.profileType}">Profile Type</h4>
+
+
+            <div class="col-md-6">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"
+                                 class="card-img m-2" alt="...">
                         </div>
-                        <div class="card-body">
-                            <h3 class="card-title">About/Bio</h3>
-                            <p class="card-text" th:text="${profile.bio}"> Tell us about yourself...</p>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h3 class="card-title"
+                                    th:text="${profile.owner.getFirst_name()} + ' ' + ${profile.owner.getLast_name()}">
+                                    First Last</h3>
+                                <h4 th:text="${profile.profileType}">Profile Type</h4>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">About/Bio</h3>
+                                <p class="card-text" th:text="${profile.bio}"> Tell us about yourself...</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-header">
-                    <h4>Interests</h4>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h4>Interests</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text" th:text="${profile.interests}">Tell us what you're into...</p>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p class="card-text" th:text="${profile.interests}">Tell us what you're into...</p>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h4>Genres</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text" th:text="${profile.genres}">Tell us what kind of music you play/like.</p>
+                    </div>
+                </div>
+                <div th:if="${noPostsFound}">
+                    You haven't created any posts yet.
+                </div>
+                <div class="card mb-2" th:each="post : ${userPosts}">
+                    <div class="card-body">
+                        <h5 th:text="${post.owner.username}"></h5>
+                        <p class="card-text" th:text="${post.body}"></p>
+                    </div>
                 </div>
             </div>
-            <div class="card mb-3">
-                <div class="card-header">
-                    <h4>Genres</h4>
-                </div>
-                <div class="card-body">
-                    <p class="card-text" th:text="${profile.genres}">Tell us what kind of music you play/like.</p>
-                </div>
-            </div>
-            <div th:if="${noPostsFound}">
-                You haven't created any posts yet.
-            </div>
-            <div class="card mb-2" th:each="post : ${userPosts}">
-                <div class="card-body">
-                    <h5 th:text="${post.owner.username}"></h5>
-                    <p class="card-text" th:text="${post.body}"></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card mb-3">
-                <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text" th:text="${profile.city} + ', ' + ${profile.state}"></p>
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg"
+                         class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text" th:text="${profile.city} + ', ' + ${profile.state}"></p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 
