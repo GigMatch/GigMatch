@@ -33,11 +33,11 @@
 </nav>
 
 
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: goldenrod">
+<nav th:fragment="navbar" class="navbar col-md-9 ml-auto navbar-expand-lg navbar-light sticky-top" style="background-color: #1a1a1a">
     <div class="container gen-container">
-        <a class="navbar-brand" href="/feed/posts">
-            <img src="https://i.ibb.co/Wgg1M4z/logo.jpg" class="img-responsive logo logo-gen" alt="">
-        </a>
+<!--        <a class="navbar-brand" href="/feed/posts">-->
+<!--            <img src="https://i.ibb.co/Wgg1M4z/logo.jpg" class="img-responsive logo logo-gen" alt="">-->
+<!--        </a>-->
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#defaultNavbar1"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +45,7 @@
         </button>
         <div class="collapse navbar-collapse" id="defaultNavbar1">
 
-            <div class="input-group">
+            <div class="input-group search"  >
                 <form class="form-inline my-2 my-lg-0" action="/search/posts">
                     <div class="bg-light rounded rounded-pill shadow-sm n">
                         <div class="input-group">
