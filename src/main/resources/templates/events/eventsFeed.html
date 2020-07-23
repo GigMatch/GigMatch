@@ -22,7 +22,7 @@
 
             <ul class="sidebar-navigation">
                 <li class="header">
-                    <img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt="">
+                    <a href="/feed/posts"><img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt=""></a>
                 </li>
                 <li>
                     <a href="/feed/posts">
@@ -96,10 +96,9 @@
 
 
         <div class="col-md-6 mt-3">
-            <h1 style="color: goldenrod">Events</h1>
             <div class="card mb-3">
                 <form action="/events/create">
-                <button  class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Sign Up" type="submit">Create an Event</button>
+                <button  class="btn btn-lg btn-block text-uppercase" style="background-color: goldenrod" id="btn" value="Sign Up" type="submit">Create an Event</button>
                 </form>
 <!--                <div class="card-body">-->
 <!--                    <a th:href="'/events/create'">Gig, Band Practice, Jam Session Happening?</a>-->
@@ -107,12 +106,16 @@
             </div>
 
 
-            <nav class="nav">
-                <div>
-                    <a class="nav-link" href="/feed/events">Upcoming Events</a>
-                    <a class="nav-link" href="/feed/myEvents">My Events</a>
+            <div class="container mb-4">
+                <div class="row">
+                    <form action="/feed/events" class="col-6">
+                        <button  class="btn btn-lg btn-block text-uppercase" style="background-color: goldenrod; border: 1px solid white; color: white" id="btn1" value="Upcoming Events" type="submit">Upcoming Events</button>
+                    </form>
+                    <form action="/feed/myEvents" class="col-6">
+                        <button  class="btn btn-lg  btn-block text-uppercase" style="background-color: goldenrod; border: 1px solid white; color: white;" id="btn2" value="My Events" type="submit">My Events</button>
+                    </form>
                 </div>
-            </nav>
+            </div>
           
          
         <!-- No Events Found-->

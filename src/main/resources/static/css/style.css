@@ -104,7 +104,7 @@ body {
 
 .comment-wrapper .panel-body {
     max-height:650px;
-    overflow:auto;
+    padding-left: 8px;
 }
 
 .comment-wrapper .media-list .media img {
