@@ -50,11 +50,9 @@ public class PostController {
             for (Post post : postList) {
                 model.addAttribute("ownerProfile", profilesDao.findByOwner(post.getOwner()));
                 model.addAttribute("ownerCity", profilesDao.findByOwner(post.getOwner()).getCity());
-                List<User> userReactions = post.getUserReactions();
-                for (User user : userReactions) {
-                    String usernameReacted = user.getUsername();
-                    model.addAttribute("username", usernameReacted);
-                }
+                model.addAttribute("postComments", post.getComments());
+//                List<User> userReactions = post.getUserReactions();
+//                model.addAttribute("userReactions", userReactions);
             }
 
         }
@@ -141,6 +139,8 @@ public class PostController {
         List<Post> resultList = postsDao.searchByBody(term);
         model.addAttribute("results", resultList);
         model.addAttribute("noResultsFound", resultList.size() == 0);
+        model.addAttribute("currentUserProfileCity", profilesDao.findByOwner(currentUser).getCity());
+        model.addAttribute("currentUserProfileState", profilesDao.findByOwner(currentUser).getState());
 
         for (Post post: resultList) {
             model.addAttribute("ownerProfile", profilesDao.findByOwner(post.getOwner()));
