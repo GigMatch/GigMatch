@@ -8,6 +8,10 @@ body {
     background-color: #1a1a1a;
 }
 
+.about-margin {
+    margin-top: 160px;
+}
+
 .fa-sign-out-alt {
     padding-right: 8px;
 }
@@ -1150,7 +1154,7 @@ margin-top: 40px;
 }
 
 .team-member figcaption {
-    padding: 50px;
+    /*padding: 50px;*/
     color: transparent;
     background-color: transparent;
     position: absolute;
