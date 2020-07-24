@@ -87,9 +87,11 @@ public class ProfileController {
     // Read current user profile update form
     @GetMapping("/profile/{id}/edit")
     public String showUpdateProfileForm(Model model, @PathVariable long id) {
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Profile profileToEdit = profilesDao.getOne(id);
         model.addAttribute("profile", profileToEdit);
         model.addAttribute("apiKey", apiKey);
+        model.addAttribute("myProfileId", profilesDao.findByOwner(currentUser).getId());
         return "profiles/edit";
     }
 
@@ -101,6 +103,7 @@ public class ProfileController {
         profilesDao.save(profileToEdit);
         model.addAttribute("apiKey", apiKey);
         model.addAttribute("profileId", profileToEdit.getId());
+        model.addAttribute("myProfileId", profilesDao.findByOwner(currentUser).getId());
         return "redirect:/my-profile/" + profileToEdit.getId();
     }
 }

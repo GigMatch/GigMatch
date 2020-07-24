@@ -9,7 +9,7 @@
 
     <ul class="sidebar-navigation">
         <li class="header">
-            <img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt="">
+            <a href="/feed/posts"><img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt=""></a>
         </li>
         <li>
             <a href="/feed/posts">
@@ -111,6 +111,8 @@
 
 
                     </form>
+
+                    <hr>
 
                     <form th:action="${'/posts/' + post.id + '/delete'}" method="post">
                         <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>

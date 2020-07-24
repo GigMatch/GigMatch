@@ -24,7 +24,7 @@
 
                 <ul class="sidebar-navigation">
                     <li class="header">
-                        <img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt="">
+                        <a href="/feed/posts"><img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt=""></a>
                     </li>
                     <li>
                         <a href="/feed/posts">
@@ -97,11 +97,11 @@
 <!--            </div>-->
 
 
-            <div class="col-md-6">
+            <div class="col-md-6 mt-3">
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"
+                            <img th:src="${profile.getProfilePhoto()}"
                                  class="card-img m-2" alt="...">
                         </div>
                         <div class="col-md-8">
@@ -144,7 +144,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3  mt-3">
                 <div class="card mb-3">
                     <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg"
                          class="card-img-top" alt="...">
