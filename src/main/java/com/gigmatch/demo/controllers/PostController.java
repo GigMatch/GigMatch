@@ -62,6 +62,7 @@ public class PostController {
 
         User postOwner = post.getOwner();
         model.addAttribute("postOwner", postOwner);
+        model.addAttribute("postOwnerProfile", profilesDao.findByOwner(postOwner));
         model.addAttribute("postOwnerProfileId", profilesDao.findByOwner(postOwner).getId());
         model.addAttribute("post", post);
         model.addAttribute("profile", profilesDao.findByOwner(currentUser));
@@ -136,10 +137,14 @@ public class PostController {
         model.addAttribute("noResultsFound", resultList.size() == 0);
         model.addAttribute("currentUserProfileCity", profilesDao.findByOwner(currentUser).getCity());
         model.addAttribute("currentUserProfileState", profilesDao.findByOwner(currentUser).getState());
+        List<Profile> profiles = profilesDao.findAll();
+        model.addAttribute("profiles", profiles);
+        model.addAttribute("apiKey", apiKey);
 
-        for (Post post: resultList) {
-            model.addAttribute("ownerProfile", profilesDao.findByOwner(post.getOwner()));
-        }
+
+//        for (Post post: resultList) {
+//            model.addAttribute("ownerProfile", profilesDao.findByOwner(post.getOwner()));
+//        }
 
         return "posts/searchResults";
     }
