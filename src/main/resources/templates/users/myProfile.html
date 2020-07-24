@@ -109,10 +109,25 @@
 
                         <!--Profile Photo-->
                         <!--Filestack-->
-                        <div th:if="${profile.profilePhoto} == ''">
+                        <div th:if="${profile.profilePhoto} == null">
 <!--                            <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"-->
 <!--                                 class="card-img m-2" alt="...">-->
+                            <form th:method="GET" th:action="'/profile/' + ${profileId} + '/edit'" class="ml-5">
+                                <button type="submit" style="background-color: goldenrod" value="Edit Post" class="btn">Add Photo
+                                </button>
+                            </form>
+
                         </div>
+                        <div th:if="${profile.profilePhoto} == ''">
+                            <!--                            <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"-->
+                            <!--                                 class="card-img m-2" alt="...">-->
+                            <form th:method="GET" th:action="'/profile/' + ${profileId} + '/edit'" class="ml-5">
+                                <button type="submit" style="background-color: goldenrod" value="Edit Post" class="btn">Add Photo
+                                </button>
+                            </form>
+
+                        </div>
+
                         <div th:unless="${profile.profilePhoto} == ''">
                         <img   th:src="${profile.profilePhoto}"
                              class="card-img m-2" alt="profile picture">
@@ -126,9 +141,9 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h3 class="card-title" th:text="${profile.owner.first_name} + ' ' + ${profile.owner.last_name}">First Last</h3>
-                            <h4 class="card-title" th:text="${profile.owner.username}">First Last</h4>
-                            <h4 class="card-title" th:text="${profile.owner.email}">Email</h4>
-                            <h4 th:text="${profile.profileType}">Profile Type</h4>
+                            <p class="card-title" th:text="${profile.owner.username}">Username</p>
+                            <p class="card-title" th:text="${profile.owner.email}">Email</p>
+                            <h3 th:text="${profile.profileType}">Profile Type</h3>
                         </div>
                     </div>
                 </div>
