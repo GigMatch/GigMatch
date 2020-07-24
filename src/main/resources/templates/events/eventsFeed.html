@@ -270,38 +270,35 @@
                 document.createElement("div");
                 d.id = "eventForm";
                 d.className = "";
-                d.innerHTML = "<form>\n" +
-                    "  <div class=\"form-group collapse\">\n" +
-                    "    <label for=\"exampleFormControlInput1\">Email address</label>\n" +
-                    "    <input type=\"email\" class=\"form-control\" id=\"exampleFormControlInput1\" placeholder=\"name@example.com\">\n" +
+                d.innerHTML =
+                    "<button type=\"button\" class=\"btn btn-primary mt-2\" data-toggle=\"modal\" data-target=\"#exampleModal\" data-whatever=\"@mdo\">Open modal for @mdo</button>\n" + "<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n" +
+                    "  <div class=\"modal-dialog\">\n" +
+                    "    <div class=\"modal-content\">\n" +
+                    "      <div class=\"modal-header\">\n" +
+                    "        <h5 class=\"modal-title\" id=\"exampleModalLabel\">New message</h5>\n" +
+                    "        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n" +
+                    "          <span aria-hidden=\"true\">&times;</span>\n" +
+                    "        </button>\n" +
+                    "      </div>\n" +
+                    "      <div class=\"modal-body\">\n" +
+                    "        <form>\n" +
+                    "          <div class=\"form-group\">\n" +
+                    "            <label for=\"recipient-name\" class=\"col-form-label\">Recipient:</label>\n" +
+                    "            <input type=\"text\" class=\"form-control\" id=\"recipient-name\">\n" +
+                    "          </div>\n" +
+                    "          <div class=\"form-group\">\n" +
+                    "            <label for=\"message-text\" class=\"col-form-label\">Message:</label>\n" +
+                    "            <textarea class=\"form-control\" id=\"message-text\"></textarea>\n" +
+                    "          </div>\n" +
+                    "        </form>\n" +
+                    "      </div>\n" +
+                    "      <div class=\"modal-footer\">\n" +
+                    "        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n" +
+                    "        <button type=\"button\" class=\"btn btn-primary\">Send message</button>\n" +
+                    "      </div>\n" +
+                    "    </div>\n" +
                     "  </div>\n" +
-                    "  <div class=\"form-group\">\n" +
-                    "    <label for=\"exampleFormControlSelect1\">Example select</label>\n" +
-                    "    <select class=\"form-control\" id=\"exampleFormControlSelect1\">\n" +
-                    "      <option>1</option>\n" +
-                    "      <option>2</option>\n" +
-                    "      <option>3</option>\n" +
-                    "      <option>4</option>\n" +
-                    "      <option>5</option>\n" +
-                    "    </select>\n" +
-                    "  </div>\n" +
-                    "  <div class=\"form-group\">\n" +
-                    "    <label for=\"exampleFormControlSelect2\">Example multiple select</label>\n" +
-                    "    <select multiple class=\"form-control\" id=\"exampleFormControlSelect2\">\n" +
-                    "      <option>1</option>\n" +
-                    "      <option>2</option>\n" +
-                    "      <option>3</option>\n" +
-                    "      <option>4</option>\n" +
-                    "      <option>5</option>\n" +
-                    "    </select>\n" +
-                    "  </div>\n" +
-                    "  <div class=\"form-group\">\n" +
-                    "    <label for=\"exampleFormControlTextarea1\">Example textarea</label>\n" +
-                    "    <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"3\"></textarea>\n" +
-                    "  </div>\n" + "<button type=\"button\" class=\"btn btn-light\">Cancel</button>\n" +
-                    "<button type=\"button\" class=\"btn btn-danger\">Delete</button>\n" +
-                    "<button type=\"button\" class=\"btn btn-secondary\">Create Event</button>\n" +
-                    "</form>"
+                    "</div>\n"
             })
 
             d.addEventListener('mousemove', function (e) {
