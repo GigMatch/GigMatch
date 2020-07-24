@@ -161,7 +161,6 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <hr>
                                     <div class="card-body" th:each="comment : ${comments}">
                                         <h6 th:text="${comment.owner.username}"></h6>
                                         <p class="card-text" th:text="${comment.content}"></p>

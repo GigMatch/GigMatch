@@ -165,9 +165,15 @@
                             <div class="d-flex justify-content-between align-items-center">
 
 
-                                <div class="mr-2">
-                                    <img class="rounded-circle" width="45"
-                                         src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png" alt="">
+<!--                                <div class="mr-2">-->
+<!--                                    <img class="rounded-circle" width="45"-->
+<!--                                         src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png" alt="">-->
+<!--                                </div>-->
+                                <div th:each="profile : ${profiles}" class="mr-2">
+                                    <div th:if="${post.owner.id == profile.getOwner().id} ">
+                                        <img  th:src="${profile.profilePhoto}"
+                                              class="rounded-circle" width="45" alt="profile picture">
+                                    </div>
                                 </div>
 
                                 <div class="ml-2">

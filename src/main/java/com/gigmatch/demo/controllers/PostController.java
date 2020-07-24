@@ -6,6 +6,7 @@ import com.gigmatch.demo.daos.ProfilesRepository;
 import com.gigmatch.demo.daos.UsersRepository;
 import com.gigmatch.demo.models.Post;
 import com.gigmatch.demo.models.PostComment;
+import com.gigmatch.demo.models.Profile;
 import com.gigmatch.demo.models.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -44,16 +45,10 @@ public class PostController {
             model.addAttribute("hasProfile", false);
         } else {
             model.addAttribute("hasProfile", true);
-            model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
             model.addAttribute("currentUserProfile", profilesDao.findByOwner(currentUser));
-
-//            for (Post post : postList) {
-//                model.addAttribute("ownerProfile", profilesDao.findByOwner(post.getOwner()));
-//                model.addAttribute("ownerCity", profilesDao.findByOwner(post.getOwner()).getCity());
-//                model.addAttribute("postComments", post.getComments());
-////                List<User> userReactions = post.getUserReactions();
-////                model.addAttribute("userReactions", userReactions);
-//            }
+            List<Profile> profiles = profilesDao.findAll();
+            model.addAttribute("profiles", profiles);
+            model.addAttribute("apiKey", apiKey);
 
         }
         return "posts/postsFeed";
