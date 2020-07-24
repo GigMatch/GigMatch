@@ -269,13 +269,13 @@
             d.addEventListener('click', function () {
                 document.createElement("div");
                 d.id = "eventForm";
-                d.className = "";
+                d.className = "eventForm";
                 d.innerHTML =
-                    "<button type=\"button\" class=\"btn btn-primary mt-2\" data-toggle=\"modal\" data-target=\"#exampleModal\" data-whatever=\"@mdo\">Open modal for @mdo</button>\n" + "<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n" +
+                    "<button type=\"button\" class=\"btn btn-primary mt-2\" style='background-color: goldenrod; border: none; margin-left: 38px;' data-toggle=\"modal\" data-target=\"#exampleModal\" data-whatever=\"@mdo\">Add an Event</button>\n" + "<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n" +
                     "  <div class=\"modal-dialog\">\n" +
                     "    <div class=\"modal-content\">\n" +
                     "      <div class=\"modal-header\">\n" +
-                    "        <h5 class=\"modal-title\" id=\"exampleModalLabel\">New message</h5>\n" +
+                    "        <h5 class=\"modal-title\" id=\"exampleModalLabel\">New Event</h5>\n" +
                     "        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n" +
                     "          <span aria-hidden=\"true\">&times;</span>\n" +
                     "        </button>\n" +
@@ -283,22 +283,26 @@
                     "      <div class=\"modal-body\">\n" +
                     "        <form>\n" +
                     "          <div class=\"form-group\">\n" +
-                    "            <label for=\"recipient-name\" class=\"col-form-label\">Recipient:</label>\n" +
+                    "            <label for=\"recipient-name\" class=\"col-form-label\">Title:</label>\n" +
                     "            <input type=\"text\" class=\"form-control\" id=\"recipient-name\">\n" +
                     "          </div>\n" +
                     "          <div class=\"form-group\">\n" +
-                    "            <label for=\"message-text\" class=\"col-form-label\">Message:</label>\n" +
+                    "            <label for=\"message-text\" class=\"col-form-label\">Event Description: </label>\n" +
                     "            <textarea class=\"form-control\" id=\"message-text\"></textarea>\n" +
                     "          </div>\n" +
                     "        </form>\n" +
                     "      </div>\n" +
                     "      <div class=\"modal-footer\">\n" +
                     "        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n" +
-                    "        <button type=\"button\" class=\"btn btn-primary\">Send message</button>\n" +
+                    "        <button type=\"button\" class=\"btn\" style='background-color: goldenrod;'>Create Event</button>\n" +
                     "      </div>\n" +
                     "    </div>\n" +
                     "  </div>\n" +
                     "</div>\n"
+            })
+
+            $("#eventForm").click(function(){
+                $(".eventForm").toggle();
             })
 
             d.addEventListener('mousemove', function (e) {
