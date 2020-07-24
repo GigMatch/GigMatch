@@ -135,7 +135,7 @@
                 </div>
                 <div class="card mb-3">
                     <div class="card-body">
-                        <p class="card-text">Your Calendar.</p>
+<!--                        <p class="card-text">Your Calendar.</p>-->
                         <!--                    <div th:replace="fragment/calendar.html :: calendar"></div>-->
                         <div class="calendar" id="calendar">
                             <div class="calendar-btn month-btn" onclick="$('#months').toggle('fast')">
@@ -271,7 +271,7 @@
                 d.id = "eventForm";
                 d.className = "eventForm";
                 d.innerHTML =
-                    "<button type=\"button\" class=\"btn btn-primary mt-2\" style='background-color: goldenrod; border: none; margin-left: 38px;' data-toggle=\"modal\" data-target=\"#exampleModal\" data-whatever=\"@mdo\">Add an Event</button>\n" + "<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n" +
+                    "<button type=\"button\" class=\"btn mt-2\" style='background-color: goldenrod; border: none; margin-left: 38px;' data-toggle=\"modal\" data-target=\"#exampleModal\">Add an Event</button>\n" + "<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n" +
                     "  <div class=\"modal-dialog\">\n" +
                     "    <div class=\"modal-content\">\n" +
                     "      <div class=\"modal-header\">\n" +
@@ -283,17 +283,17 @@
                     "      <div class=\"modal-body\">\n" +
                     "        <form>\n" +
                     "          <div class=\"form-group\">\n" +
-                    "            <label for=\"recipient-name\" class=\"col-form-label\">Title:</label>\n" +
-                    "            <input type=\"text\" class=\"form-control\" id=\"recipient-name\">\n" +
+                    "            <label for=\"title\" class=\"col-form-label\">Title:</label>\n" +
+                    "            <input type=\"text\" class=\"form-control\" id=\"title\">\n" +
                     "          </div>\n" +
                     "          <div class=\"form-group\">\n" +
-                    "            <label for=\"message-text\" class=\"col-form-label\">Event Description: </label>\n" +
-                    "            <textarea class=\"form-control\" id=\"message-text\"></textarea>\n" +
+                    "            <label for=\"description\" class=\"col-form-label\">Event Description: </label>\n" +
+                    "            <textarea class=\"form-control\" id=\"description\"></textarea>\n" +
                     "          </div>\n" +
                     "        </form>\n" +
                     "      </div>\n" +
                     "      <div class=\"modal-footer\">\n" +
-                    "        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n" +
+                    "        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cancel</button>\n" +
                     "        <button type=\"button\" class=\"btn\" style='background-color: goldenrod;'>Create Event</button>\n" +
                     "      </div>\n" +
                     "    </div>\n" +
