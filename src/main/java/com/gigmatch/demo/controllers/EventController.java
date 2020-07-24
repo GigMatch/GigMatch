@@ -61,9 +61,12 @@ public class EventController {
     //finds event to edit
     @GetMapping("/events/{id}/edit")
     public String showEditForm(Model model, @PathVariable long id){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         // find an event
         Event eventToEdit = eventsDao.getOne(id);
         model.addAttribute("event", eventToEdit);
+        model.addAttribute("myProfileId", profilesDao.findByOwner(currentUser).getId());
         return "events/editAnEvent";
     }
 
@@ -71,7 +74,7 @@ public class EventController {
     @PostMapping("/events/{id}/edit")
     public String update(@ModelAttribute Event eventToEdit, Model model){
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
+        model.addAttribute("myProfileId", profilesDao.findByOwner(currentUser).getId());
         eventToEdit.setOwner(currentUser);
         // save the changes
         eventsDao.save(eventToEdit); // update ads set title = ? where id = ?
@@ -96,6 +99,7 @@ public class EventController {
         List<Event> resultList = eventsDao.searchByDescription(term);
         model.addAttribute("results", resultList);
         model.addAttribute("noResultsFound", resultList.size() == 0);
+        model.addAttribute("currentUserProfile", profilesDao.findByOwner(currentUser));
         return "events/searchEvents";
     }
 
@@ -109,6 +113,7 @@ public class EventController {
         List<Event> eventList = eventsDao.findAllByOwner(currentUser);
         model.addAttribute("noEventsFound", eventList.size() == 0);
         model.addAttribute("userEvents", eventList);
+        model.addAttribute("profile", profilesDao.findByOwner(currentUser));
         return "events/myEventsFeed";
     }
 

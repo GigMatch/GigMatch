@@ -23,7 +23,7 @@
 
             <ul class="sidebar-navigation">
                 <li class="header">
-                    <img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt="">
+                    <a href="/feed/posts"><img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt=""></a>
                 </li>
                 <li>
                     <a href="/feed/posts">
@@ -98,20 +98,23 @@
 
 
         <div class="col-md-6 mt-3">
-            <h1>Events</h1>
             <div class="card mb-3">
-                <div class="card-body">
-                    <a th:href="'/events/create'">Let people know when your next gig, concert, jam session, band practice, or virtual concert online link.</a>
-                </div>
+                <form action="/events/create">
+                    <button  class="btn btn-lg btn-block text-uppercase" style="background-color: goldenrod" id="btn" value="Sign Up" type="submit">Create an Event</button>
+                </form>
             </div>
 
 
-            <nav class="nav">
-                <div>
-                    <a class="nav-link" href="/feed/events">Upcoming Events</a>
-                    <a class="nav-link" href="/feed/myEvents">My Events</a>
+            <div class="container mb-4">
+                <div class="row">
+                    <form action="/feed/events" class="col-6">
+                        <button  class="btn btn-lg btn-block text-uppercase" style="background-color: goldenrod; border: 1px solid white; color: white" id="btn1" value="Upcoming Events" type="submit">Upcoming Events</button>
+                    </form>
+                    <form action="/feed/myEvents" class="col-6">
+                        <button  class="btn btn-lg  btn-block text-uppercase" style="background-color: goldenrod; border: 1px solid white; color: white;" id="btn2" value="My Events" type="submit">My Events</button>
+                    </form>
                 </div>
-            </nav>
+            </div>
 
             <!-- No Events Found-->
             <!--            <div th:if="${noEventsFound}">-->
@@ -155,9 +158,14 @@
 
                     <p class="card-text" th:text="${event.description}"></p>
                 </div>
-                <div class="card-footer">
-                    <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                    <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+                <div class="card-footer d-flex justify-content-between">
+                    <form th:method="Post" th:action="'/events/'+ ${event.id} + '/interests'">
+                        <button  type="submit"
+                                 class="fas fa-thumbs-up card-link btn" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">
+                        </i><span style="font-family: sans-serif"  th:text="'Interested' + ' ' + ${event.eventInterests.size()}"></span>
+                        </button>
+
+                    </form>
                 </div>
             </div>
         </div>
@@ -167,9 +175,9 @@
         <!--INSERT MAPBOX API HERE-->
         <div class="col-md-3 mt-3">
             <div class="card mb-3">
-                <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top" alt="...">
+                <div id="map" style="width: 100%; height:200px"></div>
                 <div class="card-body">
-                    <p class="card-text">Map with center view of your city.</p>
+                    <p class="card-text" id="inputCity" th:text="${currentUserProfile.city} + ', ' + ${currentUserProfile.state}"></p>
                 </div>
             </div>
 
@@ -189,5 +197,25 @@
 </div>
 </div>
 
+<script th:replace="fragments/map-scripts-and-div :: jquery-script"></script>
+<script th:replace="fragments/map-scripts-and-div :: key-script"></script>
+<script th:replace="fragments/map-scripts-and-div :: mapbox-script"></script>
+<script th:replace="fragments/map-scripts-and-div :: geocode-script"></script>
+
+<script th:inline="javascript">
+
+    var city = [[${currentUserProfile.city}]];
+
+    geocode(city, mapboxToken).then(function (result) {
+        console.log(result);
+        mapboxgl.accessToken = mapboxToken;
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            zoom: 12,
+            center: (result)
+        });
+    });
+</script>
 </body>
 </html>>

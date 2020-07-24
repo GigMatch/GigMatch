@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li>
-                <a th:href="'/my-profile/' + ${profileId}">
+                <a th:href="'/my-profile/' + ${myProfileId}">
                     <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile" aria-hidden="true"></i>My Profile
                 </a>
             </li>
@@ -110,7 +110,7 @@
                         </button>
                         <hr class="my-4">
                         <label for="upload"></label>
-                        <button class="btn btn-lg btn-photo btn-block text-uppercase" id="upload" name="upload" type="button"><i class="fas fa-upload mr-2"></i> Add a photo or video</button>
+                        <button class="btn btn-lg btn-photo btn-block text-uppercase" id="upload" name="upload" type="button"><i class="fas fa-upload mr-2"></i>Add a photo</button>
                         <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{img}" type="hidden">
 
 
