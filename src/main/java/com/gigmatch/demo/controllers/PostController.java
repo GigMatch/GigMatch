@@ -38,7 +38,7 @@ public class PostController {
 //    @RequestMapping(value = "/ads", method = RequestMethod.GET)
     public String index(Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<Post> postList = postsDao.findAll();
+        List<Post> postList = postsDao.postsInReverse();
         model.addAttribute("noPostsFound", postList.size() == 0);
         model.addAttribute("posts", postList);
         if(profilesDao.findByOwner(currentUser) == null) {
