@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li>
-                        <a th:href="'/my-profile/' + ${profileId}">
+                        <a th:href="'/my-profile/' + ${currentUserProfile.getId()}">
                             <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile" aria-hidden="true"></i>My Profile
                         </a>
                     </li>
@@ -171,7 +171,7 @@
                                 </div>
 
                                 <div class="ml-2">
-                                    <a th:href="'/profile/' + ${ownerProfile.getId()}">
+<!--                                    <a th:href="'/profile/' + ${ownerProfile.getId()}">-->
                                         <div class="h5 m-0" th:text="${post.owner.username}"></div></a>
                                 </div>
                             </div>

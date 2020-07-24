@@ -47,13 +47,13 @@ public class PostController {
             model.addAttribute("profileId", profilesDao.findByOwner(currentUser).getId());
             model.addAttribute("currentUserProfile", profilesDao.findByOwner(currentUser));
 
-            for (Post post : postList) {
-                model.addAttribute("ownerProfile", profilesDao.findByOwner(post.getOwner()));
-                model.addAttribute("ownerCity", profilesDao.findByOwner(post.getOwner()).getCity());
-                model.addAttribute("postComments", post.getComments());
-//                List<User> userReactions = post.getUserReactions();
-//                model.addAttribute("userReactions", userReactions);
-            }
+//            for (Post post : postList) {
+//                model.addAttribute("ownerProfile", profilesDao.findByOwner(post.getOwner()));
+//                model.addAttribute("ownerCity", profilesDao.findByOwner(post.getOwner()).getCity());
+//                model.addAttribute("postComments", post.getComments());
+////                List<User> userReactions = post.getUserReactions();
+////                model.addAttribute("userReactions", userReactions);
+//            }
 
         }
         return "posts/postsFeed";
