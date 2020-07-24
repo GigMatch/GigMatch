@@ -35,6 +35,8 @@ public class EventController {
         model.addAttribute("noEventsFound", eventList.size() == 0);
         model.addAttribute("events", eventList);
         model.addAttribute("profile", profilesDao.findByOwner(currentUser));
+        List<Profile> profiles = profilesDao.findAll();
+        model.addAttribute("profiles", profiles);
         return "events/eventsFeed";
     }
 
@@ -67,6 +69,7 @@ public class EventController {
         Event eventToEdit = eventsDao.getOne(id);
         model.addAttribute("event", eventToEdit);
         model.addAttribute("myProfileId", profilesDao.findByOwner(currentUser).getId());
+
         return "events/editAnEvent";
     }
 
@@ -100,6 +103,8 @@ public class EventController {
         model.addAttribute("results", resultList);
         model.addAttribute("noResultsFound", resultList.size() == 0);
         model.addAttribute("currentUserProfile", profilesDao.findByOwner(currentUser));
+        List<Profile> profiles = profilesDao.findAll();
+        model.addAttribute("profiles", profiles);
         return "events/searchEvents";
     }
 
@@ -114,6 +119,8 @@ public class EventController {
         model.addAttribute("noEventsFound", eventList.size() == 0);
         model.addAttribute("userEvents", eventList);
         model.addAttribute("profile", profilesDao.findByOwner(currentUser));
+        List<Profile> profiles = profilesDao.findAll();
+        model.addAttribute("profiles", profiles);
         return "events/myEventsFeed";
     }
 
