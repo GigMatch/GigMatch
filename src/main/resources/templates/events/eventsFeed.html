@@ -294,16 +294,20 @@
                     "      </div>\n" +
                     "      <div class=\"modal-footer\">\n" +
                     "        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cancel</button>\n" +
-                    "        <button type=\"button\" class=\"btn\" style='background-color: goldenrod;'>Create Event</button>\n" +
+                    "        <button type=\"submit\" class=\"btn\" style='background-color: goldenrod;'>Create Event</button>\n" +
                     "      </div>\n" +
                     "    </div>\n" +
                     "  </div>\n" +
                     "</div>\n"
             })
 
-            $("#eventForm").click(function(){
-                $(".eventForm").toggle();
-            })
+            // $("").click(function(){
+            //     $(".eventForm").toggle();
+            // })
+
+            $( "#eventForm" ).click(function() {
+                $( ".day" ).submit();
+            });
 
             d.addEventListener('mousemove', function (e) {
                 e.preventDefault();
