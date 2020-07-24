@@ -1237,9 +1237,17 @@ margin-top: 40px;
 /*Media Queries*/
 @media (max-width: 767px) {
 
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
     .navbar-collapse
     {
-        background-color:#FA0;
+        background-color:goldenrod;
+        color: black;
     }
 
     .sidebar-container {

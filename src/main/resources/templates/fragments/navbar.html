@@ -36,11 +36,12 @@
 </nav>
 
 
-<nav th:fragment="navbar" class="navbar col-md-9 ml-auto navbar-expand-lg navbar-light" style="background-color: transparent">
+<nav th:fragment="navbar" class="navbar col-md-9 ml-auto navbar-expand-lg navbar-light"
+     style="background-color: transparent">
     <div class="container gen-container">
-<!--        <a class="navbar-brand" href="/feed/posts">-->
-<!--            <img src="https://i.ibb.co/Wgg1M4z/logo.jpg" class="img-responsive logo logo-gen" alt="">-->
-<!--        </a>-->
+        <!--        <a class="navbar-brand" href="/feed/posts">-->
+        <!--            <img src="https://i.ibb.co/Wgg1M4z/logo.jpg" class="img-responsive logo logo-gen" alt="">-->
+        <!--        </a>-->
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#defaultNavbar3"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +49,7 @@
         </button>
         <div class="collapse navbar-collapse" id="defaultNavbar3">
 
-            <div class="input-group search"  >
+            <div class="input-group search">
                 <form class="form-inline my-2 my-lg-0" action="/search/posts">
                     <div class="bg-light rounded rounded-pill shadow-sm n">
                         <div class="input-group">
@@ -64,43 +65,55 @@
                 </form>
             </div>
 
+            <ul class="navbar-nav ml-auto nav-font-icon d-md-none">
 
-            <ul class="navbar-nav  ml-auto nav-font-icon">
+                <!--                horizontal nav-->
 
-<!--                horizontal nav-->
+                <!--                <li class="dropdown show nav-item p-2 nav-font-icon " sec:authorize="isAuthenticated()">-->
+                <!--                    <a class="dropdown-toggle nav-link" href="#" id="dropdownMenuLink" role="button"-->
+                <!--                       data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">-->
+                <!--                        <i class="fas fa-user-alt"></i>-->
+                <!--                    </a>-->
+                <!--                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">-->
+                <!--                        <a class="dropdown-item nav-link" th:href="'/my-profile/' + ${profileId}">My Profile</a>-->
+                <!--                        <div class="dropdown-divider"></div>-->
 
-<!--                <li class="dropdown show nav-item p-2 nav-font-icon " sec:authorize="isAuthenticated()">-->
-<!--                    <a class="dropdown-toggle nav-link" href="#" id="dropdownMenuLink" role="button"-->
-<!--                       data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">-->
-<!--                        <i class="fas fa-user-alt"></i>-->
-<!--                    </a>-->
-<!--                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">-->
-<!--                        <a class="dropdown-item nav-link" th:href="'/my-profile/' + ${profileId}">My Profile</a>-->
-<!--                        <div class="dropdown-divider"></div>-->
+                <!--                        <form action="/feed/posts">-->
+                <!--                            <button class="btn-link btn">Home</button>-->
+                <!--                        </form>-->
 
-<!--                        <form action="/feed/posts">-->
-<!--                            <button class="btn-link btn">Home</button>-->
-<!--                        </form>-->
+                <!--                        <form action="/feed/events">-->
+                <!--                            <button class="btn-link btn">Events</button>-->
+                <!--                        </form>-->
 
-<!--                        <form action="/feed/events">-->
-<!--                            <button class="btn-link btn">Events</button>-->
-<!--                        </form>-->
+                <!--                        <form th:action="@{/logout}" th:method="post">-->
+                <!--                            <button class="btn-link btn">Logout</button>-->
+                <!--                        </form>-->
 
-<!--                        <form th:action="@{/logout}" th:method="post">-->
-<!--                            <button class="btn-link btn">Logout</button>-->
-<!--                        </form>-->
 
-<!--                    </div>-->
-<!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link scroll-link welcome-link" href="/feed/posts">Posts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link welcome-link" href="/feed/events">Events</a>
+                </li>
+                <form th:action="@{/logout}" th:method="post">
+                    <button class="btn-link btn">Logout</button>
+                </form>
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link scroll-link welcome-link" th:href="@{/logout}">Logout</a>-->
+                <!--                </li>-->
             </ul>
         </div>
     </div>
+
 </nav>
 
 
 <!--Events Navbar exits for searching events-->
 
-<nav th:fragment="eventsNavbar" class="navbar col-md-9 ml-auto navbar-expand-lg navbar-light" style="background-color: transparent">
+<nav th:fragment="eventsNavbar" class="navbar col-md-9 ml-auto navbar-expand-lg navbar-light"
+     style="background-color: transparent">
     <div class="container gen-container">
         <!--        <a class="navbar-brand" href="/feed/posts">-->
         <!--            <img src="https://i.ibb.co/Wgg1M4z/logo.jpg" class="img-responsive logo logo-gen" alt="">-->
@@ -112,7 +125,7 @@
         </button>
         <div class="collapse navbar-collapse" id="defaultNavbar">
 
-            <div class="input-group search"  >
+            <div class="input-group search">
                 <form class="form-inline my-2 my-lg-0" action="/search/events">
                     <div class="bg-light rounded rounded-pill shadow-sm n">
                         <div class="input-group">
@@ -129,7 +142,7 @@
             </div>
 
 
-            <ul class="navbar-nav  ml-auto nav-font-icon">
+            <ul class="navbar-nav ml-auto nav-font-icon d-md-none">
 
                 <!--                horizontal nav-->
 
@@ -156,6 +169,17 @@
 
                 <!--                    </div>-->
                 <!--                </li>-->
+
+                <li class="nav-item">
+                    <a class="nav-link scroll-link welcome-link" href="/feed/posts">Posts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link welcome-link" href="/feed/events">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link welcome-link" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
             </ul>
         </div>
     </div>
