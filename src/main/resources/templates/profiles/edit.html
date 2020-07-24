@@ -10,7 +10,7 @@
 
         <ul class="sidebar-navigation">
             <li class="header">
-                <img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt="">
+                <a href="/feed/posts"><img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt=""></a>
             </li>
             <li>
                 <a href="/feed/posts">
@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li>
-                <a th:href="'/my-profile/' + ${profileId}">
+                <a th:href="'/my-profile/' + ${myProfileId}">
                     <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile" aria-hidden="true"></i>My Profile
                 </a>
             </li>
@@ -90,16 +90,6 @@
                         <h5 class="card-title text-center">Update Profile</h5>
                         <form th:action="${'/profile/' + profile.id + '/edit'}" method="POST" th:object="${profile}">
 
-                            <!--Update Profile Photo -->
-                            <!--Filestack-->
-                            <div class="form-label-group">
-                                <label for="upload"></label>
-                                <button type="button" id="upload" name="upload">Update profile photo
-                                </button>
-                                <input id="stashFilestackURL" name="stashFilestackURL" value="replace"
-                                       th:field="*{profilePhoto}" type="hidden">
-                            </div>
-
                             <div class="form-label-group">
                                 <input th:field="*{owner.first_name}" id="first_name" type="text" class="form-control"
                                        placeholder="first name" required/>
@@ -158,6 +148,14 @@
                                     value="Update Profile" type="submit">Update Profile
                             </button>
                             <hr class="my-4">
+                            <!--Update Profile Photo -->
+                            <!--Filestack-->
+                            <div class="form-label-group">
+                                <label for="upload"></label>
+                                <button type="button" class="btn btn-lg btn-block text-uppercase" id="upload" name="upload" style="background-color: goldenrod">Update photo
+                                </button>
+                                <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{profilePhoto}" type="hidden">
+                            </div>
 
                         </form>
                     </div>

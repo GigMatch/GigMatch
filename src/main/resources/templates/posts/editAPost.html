@@ -9,7 +9,7 @@
 
     <ul class="sidebar-navigation">
         <li class="header">
-            <img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt="">
+            <a href="/feed/posts"><img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt=""></a>
         </li>
         <li>
             <a href="/feed/posts">
@@ -86,7 +86,7 @@
         <div class="col-sm-9 col-md-7 col-lg-6 mx-auto create-m">
             <div class="card card-signin my-5">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Update A Post</h5>
+                    <h5 class="card-title text-center">Update post</h5>
                     <form th:action="${'/posts/' + post.id + '/edit'}" method="POST" th:object="${post}">
                         <div class="form-label-group">
                             <textarea th:field="*{body}" type="text" id="body" class="form-control form-rounded" name="body"
@@ -94,14 +94,14 @@
                             <label class="form-root" for="body"></label>
                         </div>
 
-
                         <!--Update Profile Photo -->
                         <!--Filestack-->
                         <label for="upload"></label>
-                        <button type="button" id="upload" name="upload">Update photo or video
+                        <button type="button" class="btn btn-lg btn-block text-uppercase" id="upload" name="upload" style="background-color: goldenrod">Update photo
                         </button>
                         <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{img}" type="hidden">
 
+                        <hr>
 
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Update post"
                                 type="submit">update your post
@@ -109,7 +109,10 @@
 
 
 
+
                     </form>
+
+                    <hr>
 
                     <form th:action="${'/posts/' + post.id + '/delete'}" method="post">
                         <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>

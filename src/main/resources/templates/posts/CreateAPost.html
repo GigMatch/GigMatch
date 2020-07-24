@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li>
-                <a th:href="'/my-profile/' + ${profileId}">
+                <a th:href="'/my-profile/' + ${myProfileId}">
                     <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile" aria-hidden="true"></i>My Profile
                 </a>
             </li>
@@ -87,7 +87,7 @@
         <div class="col-sm-9 col-md-7 col-lg-7 mx-auto create-m">
             <div class="card card-signin my-5">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Create A Post</h5>
+                    <h5 class="card-title text-center">Create a post</h5>
                     <form name="username" class="form-signin" th:action="@{/posts/create}" method="POST"
                           th:object="${post}">
                         <div class="form-label-group">
@@ -110,7 +110,7 @@
                         </button>
                         <hr class="my-4">
                         <label for="upload"></label>
-                        <button class="btn btn-lg btn-photo btn-block text-uppercase" id="upload" name="upload" type="button"><i class="fas fa-upload mr-2"></i> Add a photo or video</button>
+                        <button class="btn btn-lg btn-photo btn-block text-uppercase" id="upload" name="upload" type="button"><i class="fas fa-upload mr-2"></i>Add a photo</button>
                         <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{img}" type="hidden">
 
 

@@ -42,7 +42,8 @@ public class CommentController {
 
         commentsDao.save(postComment);
 
-        return "redirect:/feed/posts";
+//        return "redirect:/feed/posts";
+        return "redirect:/posts/{id}";
     }
 
 }

@@ -24,7 +24,7 @@
 
                 <ul class="sidebar-navigation">
                     <li class="header">
-                        <img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt="">
+                        <a href="/feed/posts"><img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt=""></a>
                     </li>
                     <li>
                         <a href="/feed/posts">
@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li>
-                        <a th:href="'/my-profile/' + ${profileId}">
+                        <a th:href="'/my-profile/' + ${currentUserProfileId}">
                             <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile" aria-hidden="true"></i>My Profile
                         </a>
                     </li>
@@ -97,25 +97,40 @@
 <!--            </div>-->
 
 
-            <div class="col-md-6">
+            <div class="col-md-6 mt-3">
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"
-                                 class="card-img m-2" alt="...">
+                            <div th:if="${profile.profilePhoto} == ''">
+                                <!--                            <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"-->
+                                <!--                                 class="card-img m-2" alt="...">-->
+                            </div>
+                            <div th:unless="${profile.profilePhoto} == ''">
+                                <img   th:src="${profile.profilePhoto}"
+                                       class="card-img m-2" alt="profile picture">
+                            </div>
                         </div>
+
+
+
+
+
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h3 class="card-title"
-                                    th:text="${profile.owner.getFirst_name()} + ' ' + ${profile.owner.getLast_name()}">
-                                    First Last</h3>
+                                <h3 class="card-title" th:text="${profile.owner.first_name} + ' ' + ${profile.owner.last_name}">First Last</h3>
+                                <h4 class="card-title" th:text="${profile.owner.username}">First Last</h4>
+                                <h4 class="card-title" th:text="${profile.owner.email}">Email</h4>
                                 <h4 th:text="${profile.profileType}">Profile Type</h4>
                             </div>
-                            <div class="card-body">
-                                <h3 class="card-title">About/Bio</h3>
-                                <p class="card-text" th:text="${profile.bio}"> Tell us about yourself...</p>
-                            </div>
                         </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h4>Bio</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text" th:text="${profile.bio}">Tell us about yourself...</p>
                     </div>
                 </div>
                 <div class="card mb-3">
@@ -137,19 +152,103 @@
                 <div th:if="${noPostsFound}">
                     You haven't created any posts yet.
                 </div>
-                <div class="card mb-2" th:each="post : ${userPosts}">
-                    <div class="card-body">
-                        <h5 th:text="${post.owner.username}"></h5>
+                <div class="card gedf-card" th:each="post : ${userPosts}">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+
+
+                                <div class="mr-2">
+                                    <img class="rounded-circle" width="45"
+                                         th:src="${profile.getProfilePhoto()}" alt="">
+                                </div>
+
+                                <div class="ml-2">
+                                    <div class="h5 m-0" th:text="${post.owner.username}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body ">
                         <p class="card-text" th:text="${post.body}"></p>
+                        <!--Image for Post-->
+                        <!--Filestack-->
+                        <div th:if="${post.img} == ''">
+                            <!--                    <img  th:src="@{/img/logoGig.jpg}"-->
+                            <!--                         class="card-img m-2" alt=" ">-->
+                        </div>
+                        <div th:unless="${post.img} == ''">
+                            <img th:src="${post.img}"
+                                 class="card-img" alt="image for post" style="max-height: 300px">
+                        </div>
+                    </div>
+
+                    <!--POST REACTION TO CONNECT TO DATABASE&ndash;&gt;-->
+                    <!--<div>-->
+                    <!--<a th:text="${post.userReactions.size()}"></a>-->
+                    <!--</div>-->
+                    <!--<form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >-->
+                    <!--<input type="submit" value="Like">-->
+                    <!--</form>-->
+
+                    <!--POST REACTION TO CONNECT TO DATABASE-->
+                    <div class="card-footer d-flex justify-content-between">
+                        <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">
+                            <button  type="submit"
+                                     class="fas fa-thumbs-up card-link btn" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">
+                            </i><span style="font-family: sans-serif" th:text="' Interested' + ' ' + ${post.userReactions.size()}"></span>
+                            </button>
+
+                        </form>
+                        <!--                        <a th:href="'/posts/' + ${post.id}" class="ml-5">View Post</a>-->
+                    </div>
+
+
+                    <div class="row bootstrap snippets">
+                        <div class="col-sm-12">
+                            <div class="comment-wrapper">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading mt-3"></div>
+                                    <div class="panel-body">
+
+                                        <form th:action="${'/posts/' + post.id + '/comment'}" method="POST">
+                                            <div class="row mb-4">
+                                                <div class="form-group col-md-9">
+                                                    <input id="content" type="text" name="comment" placeholder="Comment" class="form-control form-control-underlined test">
+                                                </div>
+                                                <br>
+                                                <div class="form-group col-md-3">
+                                                    <button type="submit" class="btn btn-light rounded-pill btn-block shadow-sm">Comment</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+
+
+
+                                        <!--                                        <form th:action="${'/posts/' + post.id + '/comment'}" method="POST">-->
+                                        <!--                                            <div class="form-group mx-sm-3 mb-2">-->
+                                        <!--                                                <label for="content" class="sr-only">Comment</label>-->
+                                        <!--                                                <input id="content" name="comment">-->
+                                        <!--                                            </div>-->
+
+                                        <!--                                            <br>-->
+                                        <!--                                            <button type="submit" class="btn btn-info pull-right">Comment</button>-->
+
+                                        <!--                                            </ul>-->
+                                        <!--                                        </form>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3  mt-3">
                 <div class="card mb-3">
-                    <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg"
-                         class="card-img-top" alt="...">
+                    <div id="map" style="width: 100%; height:200px"></div>
                     <div class="card-body">
-                        <p class="card-text" th:text="${profile.city} + ', ' + ${profile.state}"></p>
+                        <p class="card-text" id="inputCity" th:text="${profile.city} + ', ' + ${profile.state}"></p>
                     </div>
                 </div>
             </div>
@@ -157,6 +256,25 @@
     </div>
 </div>
 
+<script th:replace="fragments/map-scripts-and-div :: jquery-script"></script>
+<script th:replace="fragments/map-scripts-and-div :: key-script"></script>
+<script th:replace="fragments/map-scripts-and-div :: mapbox-script"></script>
+<script th:replace="fragments/map-scripts-and-div :: geocode-script"></script>
 
+<script th:inline="javascript">
+
+    var city = [[${profile.city}]];
+
+    geocode(city, mapboxToken).then(function (result) {
+        console.log(result);
+        mapboxgl.accessToken = mapboxToken;
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            zoom: 12,
+            center: (result)
+        });
+    });
+</script>
 </body>
 </html>
