@@ -8,9 +8,7 @@ body {
     background-color: #1a1a1a;
 }
 
-.sticky-footer{
-    flex-shrink: none;
-}
+
 
 /*#footer {*/
 /*    position: fixed;*/
@@ -226,6 +224,7 @@ body {
 }
 
 .sidebar-navigation li::before {
+    background-color: #1a1a1a;
     position: absolute;
     content: '';
     height: 100%;
@@ -233,8 +232,8 @@ body {
     top: 0;
     -webkit-transition: width 0.2s ease-in;
     transition: width 0.2s ease-in;
-    width: 3px;
     z-index: -1;
+    width: 0px;
     color: white;
 }
 
