@@ -94,9 +94,13 @@
                         <div class="d-flex justify-content-between align-items-center">
 
 
+<!--                            <div>-->
+<!--                                <img class="rounded-circle" width="45"-->
+<!--                                     th:src="${postOwnerProfile.getProfilePhoto()}" alt="">-->
+<!--                            </div>-->
                             <div>
-                                <img class="rounded-circle" width="45"
-                                     th:src="${postOwnerProfile.getProfilePhoto()}" alt="">
+                                <img th:if="${postOwnerProfile.profilePhoto} != null" th:src="${postOwnerProfile.profilePhoto}"
+                                     style="border-radius: 50%; width: 45px; height: 45px" alt="profile picture">
                             </div>
 
                             <div class="ml-2">
