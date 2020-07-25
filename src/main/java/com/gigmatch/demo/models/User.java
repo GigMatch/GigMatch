@@ -1,6 +1,7 @@
 package com.gigmatch.demo.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 
@@ -18,7 +19,8 @@ public class User {
     @Column(nullable = false, length = 100)
     private String last_name;
 
-    @Column(nullable = false, length = 255, unique = true)
+    @Pattern(regexp = "([a-zA-Z0-9_.]+@[a-zA-Z0-9]+.[a-zA-Z]{2,3}[.] {0,1}[a-zA-Z]+)", message="email must be valid email address" )
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false, length = 255, unique = true)
