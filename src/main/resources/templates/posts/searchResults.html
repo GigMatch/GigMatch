@@ -98,7 +98,7 @@
             <div class="card mb-3" style="background-color: #1a1a1a">
                     <a th:href="@{/posts/create}" class="btn btn-lg  btn-block text-uppercase rounded-pill" id="btn1" type="submit" style="background-color: goldenrod">Create a Post</a>
             </div>
-            <div th:if="${noResultsFound}">
+            <div th:if="${noResultsFound}" style="color: goldenrod">
                 No results were found.
             </div>
             <!--- \\\\\\\Post-->

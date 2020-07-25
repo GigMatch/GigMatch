@@ -8,8 +8,19 @@ body {
     background-color: #1a1a1a;
 }
 
+.sticky-footer{
+    flex-shrink: none;
+}
+
+/*#footer {*/
+/*    position: fixed;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*}*/
+
 .about-margin {
-    margin-top: 160px;
+    margin-top: 150px;
 }
 
 .fa-sign-out-alt {
@@ -138,6 +149,8 @@ body {
 .container-home {
 
     width: 281px;
+    margin-left: 109px;
+
 
 }
 
@@ -213,7 +226,6 @@ body {
 }
 
 .sidebar-navigation li::before {
-    background-color: rgb(0, 0, 0);
     position: absolute;
     content: '';
     height: 100%;
@@ -249,7 +261,7 @@ body {
 
 .footer-section {
     background: #151414;
-    position: relative;
+    position: absolute;
 }
 .footer-cta {
     border-bottom: 1px solid #373636;
@@ -571,19 +583,26 @@ body {
 
 .pageBox h1 {
     animation: myanim 3s infinite;
+    color: goldenrod;
 
 }
 .pageBox {
 
-    background-color: rgba(13, 13, 13, 0.71);
-    outline: white solid 2px;
     animation: myanim 3s infinite;
     margin-top: 10px;
+    -webkit-text-stroke: 2px #ffffff;
+    color: goldenrod;
 
     font-size: 38px;
     font-weight: 300;
     color: #555;
     line-height: 50px;
+}
+
+.img-chev {
+    width: 30px;
+    height: auto;
+    margin-bottom: 40px;
 }
 
 .img-fluid {
@@ -602,11 +621,11 @@ body {
 /*Top portion with image*/
 
 .top {
-    background-image: url("../imgs/homePage.jpg");
+    background-image: url("../imgs/hand-metal-music-musician-33779.jpg");
 
 
     /* Set a specific height */
-    min-height: 750px;
+    min-height: 730px;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -627,11 +646,12 @@ body {
 }
 
 .top-content .text h1 {
-    margin-top: 25px;
-    font-size: 50px;
-    color: #ffffff;
+    margin-top: -50px;
+    font-size: 108px;
+    color: goldenrod;
     font-family: 'Yesteryear', cursive;
     text-align: center;
+    display: flex;
 
 }
 
@@ -740,19 +760,21 @@ body {
 #form-margin {
     margin-left: -279px;
     margin-right: 90px;
+    min-height: calc(90vh - 50px);
+
 }
 
 #form-margin-log {
     margin-left: -279px;
     margin-right: 90px;
-margin-top: 40px;
+    min-height: calc(90vh - 50px);
 }
 
 #login-background {
 
     background-image: url("../imgs/man-playing-saxophone-756507.jpg");
     /* Set a specific height */
-    min-height: 600px;
+    min-height: 300px;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -1283,6 +1305,7 @@ nav {
     #form-margin {
         margin-left: 0 !important;
         margin-right: 0 !important;
+
     }
 
     #form-margin-log {
@@ -1346,6 +1369,7 @@ nav {
 
     .container-home {
         width: 281px;
+        margin-left: 109px;
     }
 
 

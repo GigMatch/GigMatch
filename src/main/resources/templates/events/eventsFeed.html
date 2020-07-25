@@ -139,7 +139,7 @@
 
 
 <!-- No Events Found-->
-    <div th:if="${noEventsFound}">
+    <div th:if="${noEventsFound}" style="color: goldenrod">
         No events were found.
     </div>
         <div class="card gedf-card" th:each="event : ${events}">
