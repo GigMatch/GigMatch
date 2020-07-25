@@ -26,7 +26,9 @@ public class User {
     @Column(nullable = false, length = 255, unique = true)
     private String username;
 
-    @Column(nullable = false, length = 255)
+    //minimum 8 characters in length: one upper case letter, one lower case letter, one digit
+    @Pattern(regexp="^(?=.*?[A-Z])(?=.*?[0-9]).{8,}$",message="Password length must be at least 8 characters with one uppercase letter and one digit")
+    @Column(nullable = false)
     private String password;
 
 
