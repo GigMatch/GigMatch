@@ -69,7 +69,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/posts/{id}/delete", // only authenticated users can delete posts
                         "/events/create", // only authenticated users can create events
                         "/events/{id}/edit", // only authenticated users can edit events
-                        "/events/{id}/delete" // only authenticated users can delete events
+                        "/events/{id}/delete", // only authenticated users can delete events
+                        "/feed/events",
+                        "/my-profile/{id}",
+                        "/profile/{id}/edit",
+                        "/feed/myEvents"
                 )
                 .authenticated()
         ;
