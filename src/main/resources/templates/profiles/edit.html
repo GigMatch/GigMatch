@@ -120,7 +120,7 @@
                             </div>
                             <div class="form-label-group">
                                 <label for="profileType"></label>
-                                <select class="form-control" id="profileType" name="profileType">
+                                <select class="form-control" style="border-radius: 1rem" id="profileType" name="profileType">
                                     <option>Band</option>
                                     <option>Musician</option>
                                     <option>Venue</option>
@@ -128,8 +128,8 @@
                                 </select>
                             </div>
                             <div class="form-label-group">
-                                <textarea th:field="*{bio}" type="text" id="bio" class="form-control" placeholder="bio"
-                                          name="description" th:rows="4" required></textarea>
+                                <textarea th:field="*{bio}" id="bio" class="form-control" placeholder="bio"
+                                          name="description" th:rows="4" style="border-radius: 1rem" required></textarea>
                                 <label for="bio"></label>
                             </div>
                             <div class="form-label-group">
@@ -152,7 +152,7 @@
                             <!--Filestack-->
                             <div class="form-label-group">
                                 <label for="upload"></label>
-                                <button type="button" class="btn btn-lg btn-block text-uppercase" id="upload" name="upload" style="background-color: goldenrod">Update photo
+                                <button type="button" class="btn btn-lg btn-block text-uppercase" id="upload"  th:id="btn" name="upload" style="background-color: goldenrod">Update photo
                                 </button>
                                 <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{profilePhoto}" type="hidden">
                             </div>
