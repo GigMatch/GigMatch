@@ -8,6 +8,16 @@ body {
     background-color: #1a1a1a;
 }
 
+.sticky-footer{
+    flex-shrink: none;
+}
+
+/*#footer {*/
+/*    position: fixed;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*}*/
 
 .about-margin {
     margin-top: 150px;
@@ -250,7 +260,7 @@ body {
 
 .footer-section {
     background: #151414;
-    position: relative;
+    position: absolute;
 }
 .footer-cta {
     border-bottom: 1px solid #373636;
@@ -747,19 +757,21 @@ body {
 #form-margin {
     margin-left: -279px;
     margin-right: 90px;
+    min-height: calc(90vh - 50px);
+
 }
 
 #form-margin-log {
     margin-left: -279px;
     margin-right: 90px;
-margin-top: 40px;
+    min-height: calc(90vh - 50px);
 }
 
 #login-background {
 
     background-image: url("../imgs/man-playing-saxophone-756507.jpg");
     /* Set a specific height */
-    min-height: 600px;
+    min-height: 300px;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -1290,6 +1302,7 @@ nav {
     #form-margin {
         margin-left: 0 !important;
         margin-right: 0 !important;
+
     }
 
     #form-margin-log {
