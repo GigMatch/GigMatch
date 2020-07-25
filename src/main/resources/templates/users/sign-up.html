@@ -37,11 +37,20 @@
 
 
 <div th:if="${param.error}">
-    <p  class="text-left">Invalid Username and Password.</p>
-</div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Oops, there was an error!</strong> You should check in on some of those fields below.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div></div>
 
 <div th:if="${param.logout}">
-    <p class="text-center">You have been logged out.</p>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Hope you found some Gigs!</strong> You have now been logged out.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 </div>
 
 
@@ -65,7 +74,7 @@
                             <label class="form-root" for="username">Username</label>
                         </div>
                         <div class="form-label-group">
-                            <input type="text" id="email" class="form-control" placeholder="email" name="email" required/>
+                            <input type="email" id="email" class="form-control" placeholder="email" name="email"required/>
                             <label class="form-root" for="email">Email</label>
                         </div>
                         <div class="form-label-group">
