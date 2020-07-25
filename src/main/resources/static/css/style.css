@@ -8,9 +8,7 @@ body {
     background-color: #1a1a1a;
 }
 
-.sticky-footer{
-    flex-shrink: none;
-}
+
 
 /*#footer {*/
 /*    position: fixed;*/
