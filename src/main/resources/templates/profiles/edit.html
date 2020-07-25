@@ -120,7 +120,7 @@
                             </div>
                             <div class="form-label-group">
                                 <label for="profileType"></label>
-                                <select class="form-control" id="profileType" name="profileType">
+                                <select class="form-control" style="border-radius: 1rem" id="profileType" name="profileType">
                                     <option>Band</option>
                                     <option>Musician</option>
                                     <option>Venue</option>
@@ -128,9 +128,8 @@
                                 </select>
                             </div>
                             <div class="form-label-group">
-                                <textarea th:field="*{bio}" type="text" id="bio" class="form-control" placeholder="bio"
-                                          name="description" th:rows="4" required></textarea>
-                                <label for="bio"></label>
+                                <textarea th:field="*{bio}" id="bio" class="form-control" placeholder="bio"
+                                          name="description" th:rows="4" style="border-radius: 1rem" required></textarea>
                             </div>
                             <div class="form-label-group">
                                 <input th:field="*{interests}" id="interests" type="text" class="form-control"
@@ -144,7 +143,7 @@
                             </div>
 
 
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn"
+                            <button class="btn btn-lg btn-block text-uppercase" style="background-color: #1a1a1a; color: white" id="btn"
                                     value="Update Profile" type="submit">Update Profile
                             </button>
                             <hr class="my-4">
@@ -152,7 +151,7 @@
                             <!--Filestack-->
                             <div class="form-label-group">
                                 <label for="upload"></label>
-                                <button type="button" class="btn btn-lg btn-block text-uppercase" id="upload" name="upload" style="background-color: goldenrod">Update photo
+                                <button type="button" class="btn btn-lg btn-block text-uppercase" id="upload"  th:id="btn" name="upload" style="background-color: goldenrod">Update photo
                                 </button>
                                 <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{profilePhoto}" type="hidden">
                             </div>
