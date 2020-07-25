@@ -109,10 +109,10 @@
 <!--                </ul>-->
 <!--            </div>-->
             <div class="col-md-6 mt-3">
-                <div class="card mb-3">
-                    <form action="/posts/create">
-                        <button  class="btn btn-lg  btn-block text-uppercase" id="btn1" value="create a post" type="submit" style="background-color: goldenrod">Create a Post</button>
-                    </form>
+                <div class="card mb-3" style="background-color: #1a1a1a">
+<!--                    <form action="/posts/create">-->
+                        <a th:href="@{/posts/create}" class="btn btn-lg  btn-block text-uppercase rounded-pill" id="btn1" type="submit" style="background-color: goldenrod">Create a Post</a>
+<!--                    </form>-->
 <!--                    <div class="card-body">-->
 <!--                        <a th:href="'/posts/create'">Post a message, show your skills, or find a match for your gig.</a>-->
 <!--                    </div>-->
@@ -169,16 +169,16 @@
 <!--                                    <img class="rounded-circle" width="45"-->
 <!--                                         src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png" alt="">-->
 <!--                                </div>-->
-                                <div th:each="profile : ${profiles}" class="mr-2">
+                                <div th:each="profile : ${profiles}">
                                     <div th:if="${post.owner.id == profile.getOwner().id} ">
-                                        <img  th:src="${profile.profilePhoto}"
-                                              class="rounded-circle" width="45" alt="profile picture">
+                                        <img th:if="${profile.profilePhoto} != null" th:src="${profile.profilePhoto}"
+                                              style="border-radius: 50%; width: 45px; height: 45px" alt="profile picture">
+
                                     </div>
                                 </div>
 
                                 <div class="ml-2">
-<!--                                    <a th:href="'/profile/' + ${ownerProfile.getId()}">-->
-                                        <div class="h5 m-0" th:text="${post.owner.username}"></div></a>
+                                        <div class="h5 m-0" th:text="${post.owner.username}"></div>
                                 </div>
                             </div>
                         </div>
@@ -209,16 +209,15 @@
                     <div class="card-footer d-flex justify-content-between">
                         <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">
                             <button  type="submit"
-                                    class="fas fa-thumbs-up card-link btn" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">
+                                    class="fas fa-thumbs-up card-link btn rounded-pill" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">
                                 </i><span style="font-family: sans-serif" th:text="' Interested' + ' ' + ${ post.userReactions.size()}"></span>
                             </button>
 
                         </form>
                         <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
-                        <form th:method="GET" th:action="'/posts/' + ${post.id}" class="ml-5">
-                        <button type="submit" style="background-color: goldenrod" value="View Post" class="btn">View Post
-                        </button>
-                        </form>
+                        <a th:href="'/posts/' + ${post.id}" type="submit" style="background-color: goldenrod" class="btn rounded-pill">View Post
+                        </a>
+
 <!--                        <a th:href="'/posts/' + ${post.id}" class="ml-5">View Post</a>-->
                     </div>
 
@@ -241,6 +240,11 @@
                                                 </div>
                                             </div>
                                         </form>
+                                        <div class="card-body" th:each="comment : ${post.getComments()}">
+                                            <h6 th:text="${comment.owner.username}"></h6>
+                                            <p class="card-text" th:text="${comment.content}"></p>
+                                            <hr>
+                                        </div>
 
 
 
