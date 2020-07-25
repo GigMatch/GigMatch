@@ -8,7 +8,24 @@ body {
     background-color: #1a1a1a;
 }
 
+#btn {
+    font-size: 80%;
+    border-radius: 5rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    padding: 1rem;
+    transition: all 0.2s;
+}
 
+.btn-size {
+    font-size: 80%;
+    border-radius: 5rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    padding: 1rem;
+    transition: all 0.2s;
+
+}
 
 /*#footer {*/
 /*    position: fixed;*/
