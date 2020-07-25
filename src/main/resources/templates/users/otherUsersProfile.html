@@ -101,13 +101,8 @@
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <div th:if="${profile.profilePhoto} == ''">
-                                <!--                            <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"-->
-                                <!--                                 class="card-img m-2" alt="...">-->
-                            </div>
-                            <div th:unless="${profile.profilePhoto} == ''">
-                                <img   th:src="${profile.profilePhoto}"
-                                       class="card-img m-2" alt="profile picture">
+                            <div class="wrapper profile-img pl-2">
+                                <img id="all-image" class="image--cover all-image-cover" th:src="*{profile.profilePhoto}" style="border-radius: 50%; width: 200px; height: 200px" />
                             </div>
                         </div>
 
@@ -117,11 +112,13 @@
 
                         <div class="col-md-8">
                             <div class="card-body">
+                                <div class="pl-3">
                                 <h3 class="card-title" th:text="${profile.owner.first_name} + ' ' + ${profile.owner.last_name}">First Last</h3>
                                 <h4 class="card-title" th:text="${profile.owner.username}">First Last</h4>
                                 <h4 class="card-title" th:text="${profile.owner.email}">Email</h4>
                                 <h4 th:text="${profile.profileType}">Profile Type</h4>
-                            </div>
+                                </div>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -158,9 +155,9 @@
                             <div class="d-flex justify-content-between align-items-center">
 
 
-                                <div class="mr-2">
-                                    <img class="rounded-circle" width="45"
-                                         th:src="${profile.getProfilePhoto()}" alt="">
+                                <div>
+                                    <img th:if="${profile.profilePhoto} != null" th:src="${profile.profilePhoto}"
+                                         style="border-radius: 50%; width: 45px; height: 45px" alt="profile picture">
                                 </div>
 
                                 <div class="ml-2">

@@ -94,9 +94,13 @@
                         <div class="d-flex justify-content-between align-items-center">
 
 
-                            <div class="mr-2">
-                                <img class="rounded-circle" width="45"
-                                     th:src="${postOwnerProfile.getProfilePhoto()}" alt="">
+<!--                            <div>-->
+<!--                                <img class="rounded-circle" width="45"-->
+<!--                                     th:src="${postOwnerProfile.getProfilePhoto()}" alt="">-->
+<!--                            </div>-->
+                            <div>
+                                <img th:if="${postOwnerProfile.profilePhoto} != null" th:src="${postOwnerProfile.profilePhoto}"
+                                     style="border-radius: 50%; width: 45px; height: 45px" alt="profile picture">
                             </div>
 
                             <div class="ml-2">
@@ -132,7 +136,7 @@
                 <div class="card-footer d-flex justify-content-between">
                     <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">
                         <button  type="submit"
-                                 class="fas fa-thumbs-up card-link btn" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">
+                                 class="fas fa-thumbs-up card-link btn rounded-pill" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">
                         </i><span style="font-family: sans-serif" th:text="' Interested' + ' ' + ${ post.userReactions.size()}"></span>
                         </button>
 
