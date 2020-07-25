@@ -206,10 +206,8 @@
                     </div>
                 </div>
                 <div class="card mb-3">
-<!--                    <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif"-->
-<!--                         class="card-img-top" alt="...">-->
+
                     <div class="card-body">
-<!--                        <p class="card-text">Your Calendar.</p>-->
                         <div class="calendar" id="calendar">
                             <div class="calendar-btn month-btn" onclick="$('#months').toggle('fast')">
                                 <span id="curMonth"></span>
@@ -241,6 +239,43 @@
                             </div>
                         </div>
                     </div>
+<!--                    Add an event button -->
+                    <button type="button" id="modal" class="btn mt-2" style='background-color: goldenrod; border:
+                        none;
+                        width: 255px;' data-toggle="modal" data-target="#eventForm">Add an Event
+                    </button>
+<!--                    event form -->
+                    <div class="modal fade" id="eventForm" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="newEvent">New Event</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="eventTitle" class="col-form-label">Recipient:</label>
+                                            <input type="text" class="form-control" id="eventTitle">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="eventDescription" class="col-form-label">Message:</label>
+                                            <textarea class="form-control" id="eventDescription"></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Send
+                                        message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -443,45 +478,6 @@
                     selectedDays.splice(selectedDays.indexOf(this.dataset.day), 1);
             });
 
-            //event form for calendar to create events
-            d.addEventListener('click', function () {
-                document.createElement("div");
-                d.id = "eventForm";
-                d.className = "eventForm";
-                d.innerHTML =
-                    "<button type=\"button\" class=\"btn btn-primary mt-2\" style='background-color: goldenrod; border: none; margin-left: 38px;' data-toggle=\"modal\" data-target=\"#exampleModal\" data-whatever=\"@mdo\">Add an Event</button>\n" + "<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n" +
-                    "  <div class=\"modal-dialog\">\n" +
-                    "    <div class=\"modal-content\">\n" +
-                    "      <div class=\"modal-header\">\n" +
-                    "        <h5 class=\"modal-title\" id=\"exampleModalLabel\">New Event</h5>\n" +
-                    "        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n" +
-                    "          <span aria-hidden=\"true\">&times;</span>\n" +
-                    "        </button>\n" +
-                    "      </div>\n" +
-                    "      <div class=\"modal-body\">\n" +
-                    "        <form>\n" +
-                    "          <div class=\"form-group\">\n" +
-                    "            <label for=\"recipient-name\" class=\"col-form-label\">Title:</label>\n" +
-                    "            <input type=\"text\" class=\"form-control\" id=\"recipient-name\">\n" +
-                    "          </div>\n" +
-                    "          <div class=\"form-group\">\n" +
-                    "            <label for=\"message-text\" class=\"col-form-label\">Event Description: </label>\n" +
-                    "            <textarea class=\"form-control\" id=\"message-text\"></textarea>\n" +
-                    "          </div>\n" +
-                    "        </form>\n" +
-                    "      </div>\n" +
-                    "      <div class=\"modal-footer\">\n" +
-                    "        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n" +
-                    "        <button type=\"button\" class=\"btn\" style='background-color: goldenrod;'>Create Event</button>\n" +
-                    "      </div>\n" +
-                    "    </div>\n" +
-                    "  </div>\n" +
-                    "</div>\n"
-            })
-
-            $("#eventForm").click(function(){
-                $(".eventForm").toggle();
-            })
 
             d.addEventListener('mousemove', function (e) {
                 e.preventDefault();

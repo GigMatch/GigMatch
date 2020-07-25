@@ -135,8 +135,6 @@
                 </div>
                 <div class="mb-3">
                     <div>
-<!--                        <p class="card-text">Your Calendar.</p>-->
-                        <!--                    <div th:replace="fragment/calendar.html :: calendar"></div>-->
                         <div class="calendar" id="calendar">
                             <div class="calendar-btn month-btn" onclick="$('#months').toggle('fast')">
                                 <span id="curMonth"></span>
@@ -167,6 +165,45 @@
                                 </div>
                             </div>
                         </div>
+                        <!--                        Add an event button-->
+                        <button type="button" id="modal" class="btn mt-2" style='background-color: goldenrod; border:
+                        none;
+                        width: 214px;' data-toggle="modal" data-target="#eventForm">Add an Event
+                        </button>
+
+                        <!--                        event form-->
+
+                        <div class="modal fade" id="eventForm" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Message:</label>
+                                                <textarea class="form-control" id="message-text"></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" th:action="post" class="btn btn-primary">Send
+                                            message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -265,49 +302,11 @@
                     selectedDays.splice(selectedDays.indexOf(this.dataset.day), 1);
             });
 
-            //event form for calendar to create events
-            d.addEventListener('click', function () {
-                document.createElement("div");
-                d.id = "eventForm";
-                d.className = "eventForm";
-                d.innerHTML =
-                    "<button type=\"button\" class=\"btn mt-2\" style='background-color: goldenrod; border: none; margin-left: 38px;' data-toggle=\"modal\" data-target=\"#exampleModal\">Add an Event</button>\n" + "<div class=\"modal fade\" tabindex=\"-1\"  aria-hidden=\"true\">\n" +
-                    "  <div class=\"modal-dialog\">\n" +
-                    "    <div class=\"modal-content\">\n" +
-                    "      <div class=\"modal-header\">\n" +
-                    "        <h5 class=\"modal-title\" id=\"exampleModalLabel\">New Event</h5>\n" +
-                    "        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n" +
-                    "          <span aria-hidden=\"true\">&times;</span>\n" +
-                    "        </button>\n" +
-                    "      </div>\n" +
-                    "      <div class=\"modal-body\">\n" +
-                    "        <form>\n" +
-                    "          <div class=\"form-group\">\n" +
-                    "            <label for=\"title\" class=\"col-form-label\" contenteditable='true'>Title:</label>\n" +
-                    "            <input type=\"text\" class=\"form-control\" id=\"title\">\n" +
-                    "          </div>\n" +
-                    "          <div class=\"form-group\">\n" +
-                    "            <label for=\"description\" class=\"col-form-label\" contenteditable='true'>Event Description: </label>\n" +
-                    "            <textarea class=\"form-control\" id=\"description\"></textarea>\n" +
-                    "          </div>\n" +
-                    "        </form>\n" +
-                    "      </div>\n" +
-                    "      <div class=\"modal-footer\">\n" +
-                    "        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cancel</button>\n" +
-                    "        <button type=\"submit\" class=\"btn\" style='background-color: goldenrod;'>Create Event</button>\n" +
-                    "      </div>\n" +
-                    "    </div>\n" +
-                    "  </div>\n" +
-                    "</div>\n"
-            })
+            // $("#formSubmit").click(function () {
+            //     $("#calendarDays").submit();
+            //     $('#eventForm').modal('hide');
+            // });
 
-            // $("").click(function(){
-            //     $(".eventForm").toggle();
-            // })
-
-            $( "#eventForm" ).click(function() {
-                $( "#calendarDays" ).submit();
-            });
 
             d.addEventListener('mousemove', function (e) {
                 e.preventDefault();

@@ -5,243 +5,284 @@
 <body>
 <header th:replace="fragments/navbar :: navbar"></header>
 <div class="main-bg">
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-<!--            <div class="card">-->
-<!--                <ul class="list-group list-group-flush">-->
-<!--                    <li class="list-group-item"><a href="/feed/posts">Home Feed</a></li>-->
-<!--                    <li class="list-group-item"><a href="#">Notifications</a></li>-->
-<!--                    <li class="list-group-item"><a href="#">Messages</a></li>-->
-<!--&lt;!&ndash;                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>&ndash;&gt;-->
-<!--                    <li class="list-group-item"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Profile</a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-        </div>
-        <div class="sidebar-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <!--            <div class="card">-->
+                <!--                <ul class="list-group list-group-flush">-->
+                <!--                    <li class="list-group-item"><a href="/feed/posts">Home Feed</a></li>-->
+                <!--                    <li class="list-group-item"><a href="#">Notifications</a></li>-->
+                <!--                    <li class="list-group-item"><a href="#">Messages</a></li>-->
+                <!--&lt;!&ndash;                    <li class="list-group-item"><a href="#">Recommendations(Maybe)</a></li>&ndash;&gt;-->
+                <!--&lt;!&ndash;                    <li class="list-group-item"><a href="#">Connections(Maybe)</a></li>&ndash;&gt;-->
+                <!--                    <li class="list-group-item"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Profile</a></li>-->
+                <!--                </ul>-->
+                <!--            </div>-->
+            </div>
+            <div class="sidebar-container">
 
-            <ul class="sidebar-navigation">
-                <li class="header"></li>
-                <li>
-                    <a href="/feed/posts">
-                        <i class="fa fa-home" aria-hidden="true"></i>Posts
-                    </a>
-                </li>
-                <li>
-                    <a href="/feed/events">
-                        <i class="fa fa-tachometer" aria-hidden="true"></i>Events
-                    </a>
-                </li>
-                <li>
-                    <a th:href="'/my-profile/' + ${profileId}">
-                        <i class="fa fa-users" aria-hidden="true"></i>My Profile
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-cog" aria-hidden="true"></i> Notifcations
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-info-circle" aria-hidden="true"></i> Messages
-                    </a>
-                </li>
-                <li>
-                    <a th:href="'/profile/' + ${profileId} + '/edit'">
-                        <i class="fa fa-info-circle" aria-hidden="true"></i> Update Profile
-                    </a>
-                </li>
-            </ul>
-        </div>
+                <ul class="sidebar-navigation">
+                    <li class="header"></li>
+                    <li>
+                        <a href="/feed/posts">
+                            <i class="fa fa-home" aria-hidden="true"></i>Posts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/feed/events">
+                            <i class="fa fa-tachometer" aria-hidden="true"></i>Events
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="'/my-profile/' + ${profileId}">
+                            <i class="fa fa-users" aria-hidden="true"></i>My Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-cog" aria-hidden="true"></i> Notifcations
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i> Messages
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="'/profile/' + ${profileId} + '/edit'">
+                            <i class="fa fa-info-circle" aria-hidden="true"></i> Update Profile
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-        <div class="col-md-6">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
+            <div class="col-md-6">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
 
-                        <!--Profile Photo-->
-                        <!--Filestack-->
-                        <div th:if="${profile.profilePhoto} == ''">
-<!--                            <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"-->
-<!--                                 class="card-img m-2" alt="...">-->
+                            <!--Profile Photo-->
+                            <!--Filestack-->
+                            <div th:if="${profile.profilePhoto} == ''">
+                                <!--                            <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"-->
+                                <!--                                 class="card-img m-2" alt="...">-->
+                            </div>
+                            <div th:unless="${profile.profilePhoto} == ''">
+                                <img th:src="${profile.profilePhoto}"
+                                     class="card-img m-2" alt="profile picture">
+                            </div>
+                            <div class="ml-4"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Photo</a></div>
                         </div>
-                        <div th:unless="${profile.profilePhoto} == ''">
-                        <img   th:src="${profile.profilePhoto}"
-                             class="card-img m-2" alt="profile picture">
+
+
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h3 class="card-title"
+                                    th:text="${profile.owner.first_name} + ' ' + ${profile.owner.last_name}">First
+                                    Last</h3>
+                                <h4 class="card-title" th:text="${profile.owner.username}">First Last</h4>
+                                <h4 class="card-title" th:text="${profile.owner.email}">Email</h4>
+                                <h4 th:text="${profile.profileType}">Profile Type</h4>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">About/Bio</h3>
+                                <p class="card-text" th:text="${profile.bio}">Tell us about yourself...</p>
+                            </div>
                         </div>
-                        <div class="ml-4"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Photo</a></div>
                     </div>
+                </div>
 
 
-
-
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h3 class="card-title" th:text="${profile.owner.first_name} + ' ' + ${profile.owner.last_name}">First Last</h3>
-                            <h4 class="card-title" th:text="${profile.owner.username}">First Last</h4>
-                            <h4 class="card-title" th:text="${profile.owner.email}">Email</h4>
-                            <h4 th:text="${profile.profileType}">Profile Type</h4>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">About/Bio</h3>
-                            <p class="card-text" th:text="${profile.bio}">Tell us about yourself...</p>
-                        </div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h4>Interests</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text" th:text="${profile.interests}">Tell us what you're into...</p>
                     </div>
                 </div>
-            </div>
-
-
-
-
-            <div class="card mb-3">
-                <div class="card-header">
-                    <h4>Interests</h4>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h4>Genres</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text" th:text="${profile.genres}">Tell us what kind of music you play/like.</p>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p class="card-text" th:text="${profile.interests}">Tell us what you're into...</p>
+
+
+                <!--No Posts Found-->
+                <div th:if="${noPostsFound}">
+                    You haven't created any posts yet.
                 </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-header">
-                    <h4>Genres</h4>
+                <div>
+                    <a th:href="'/posts/create'" class="btn btn-primary">Create a post</a>
                 </div>
-                <div class="card-body">
-                    <p class="card-text" th:text="${profile.genres}">Tell us what kind of music you play/like.</p>
-                </div>
-            </div>
 
+                <br>
 
-        <!--No Posts Found-->
-            <div th:if="${noPostsFound}">
-                You haven't created any posts yet.
-            </div>
-            <div>
-                <a th:href="'/posts/create'" class="btn btn-primary">Create a post</a>
-            </div>
+                <!--           <div class="card mb-2" th:each="post : ${userPosts}">-->
+                <!--                <div class="card-body">-->
+                <!--                    <h5 th:text="${post.owner.username}"></h5>-->
+                <!--                    <p class="card-text" th:text="${post.body}"></p>-->
+                <!--                    <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn btn-primary">Edit Post</a>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--        </div>-->
 
-            <br>
+                <!--                user posts-->
 
-<!--           <div class="card mb-2" th:each="post : ${userPosts}">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 th:text="${post.owner.username}"></h5>-->
-<!--                    <p class="card-text" th:text="${post.body}"></p>-->
-<!--                    <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn btn-primary">Edit Post</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-        <!--                user posts-->
-
-        <!--- \\\\\\\Post-->
-            <!--- \\\\\\\Post-->
-            <div class="card gedf-card" th:each="post : ${userPosts}">
-                <div class="card-header" >
-                    <div class="d-flex justify-content-between align-items-center">
+                <!--- \\\\\\\Post-->
+                <!--- \\\\\\\Post-->
+                <div class="card gedf-card" th:each="post : ${userPosts}">
+                    <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
 
 
+                                <div class="mr-2">
+                                    <img class="rounded-circle" width="45"
+                                         src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png"
+                                         alt="">
+                                </div>
 
-                            <div class="mr-2">
-                                <img class="rounded-circle" width="45" src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png" alt="">
-                            </div>
-
-                            <div class="ml-2">
-                                <div class="h5 m-0" th:text="${post.owner.username}"></div>
+                                <div class="ml-2">
+                                    <div class="h5 m-0" th:text="${post.owner.username}"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-body ">
-                    <p class="card-text" th:text="${post.body}"></p>
-                    <!--Image for Post-->
-                    <!--Filestack-->
-                    <div th:if="${post.img} == ''">
-                        <!--                    <img  th:src="@{/img/logoGig.jpg}"-->
-                        <!--                         class="card-img m-2" alt=" ">-->
+                    <div class="card-body ">
+                        <p class="card-text" th:text="${post.body}"></p>
+                        <!--Image for Post-->
+                        <!--Filestack-->
+                        <div th:if="${post.img} == ''">
+                            <!--                    <img  th:src="@{/img/logoGig.jpg}"-->
+                            <!--                         class="card-img m-2" alt=" ">-->
+                        </div>
+                        <div th:unless="${post.img} == ''">
+                            <img th:src="${post.img}"
+                                 class="card-img m-2" alt="image for post" style="max-height: 300px">
+                        </div>
                     </div>
-                    <div th:unless="${post.img} == ''">
-                        <img th:src="${post.img}"
-                             class="card-img m-2" alt="image for post" style="max-height: 300px">
+
+                    <!--POST REACTION TO CONNECT TO DATABASE&ndash;&gt;-->
+                    <!--<div>-->
+                    <!--<a th:text="${post.userReactions.size()}"></a>-->
+                    <!--</div>-->
+                    <!--<form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >-->
+                    <!--<input type="submit" value="Like">-->
+                    <!--</form>-->
+
+                    <!--POST REACTION TO CONNECT TO DATABASE-->
+                    <div class="card-footer d-flex justify-content-between">
+                        <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">
+                            <button type="submit" th:text="${post.userReactions.size()}"
+                                    class=" fa fa-gittip card-link " value=" Like "><i onclick="myFunction(this)">
+                                Like</i></button>
+                        </form>
+                        <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
+                        <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link "><i
+                                class="fa fa-comment"></i>Comment</a>
+                        <a th:href="'/posts/' + ${post.id}" class="ml-5">See Comments</a>
+                        <a th:href="'/posts/' + ${post.id} + '/edit'">Edit Post</a>
                     </div>
                 </div>
-
-                <!--POST REACTION TO CONNECT TO DATABASE&ndash;&gt;-->
-                <!--<div>-->
-                <!--<a th:text="${post.userReactions.size()}"></a>-->
-                <!--</div>-->
-                <!--<form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >-->
-                <!--<input type="submit" value="Like">-->
-                <!--</form>-->
-
-                <!--POST REACTION TO CONNECT TO DATABASE-->
-                <div class="card-footer d-flex justify-content-between">
-                    <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >
-                        <button  type="submit" th:text="${post.userReactions.size()}" class=" fa fa-gittip card-link " value=" Like "><i onclick="myFunction(this)"> Like</i></button>
-                    </form>
-                    <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
-                    <a th:href="'/posts/' + ${post.id} + '/comment'" class="card-link "><i class="fa fa-comment"></i>Comment</a>
-                    <a th:href="'/posts/' + ${post.id}" class="ml-5">See Comments</a>
-                    <a th:href="'/posts/' + ${post.id} + '/edit'">Edit Post</a>
-                </div>
-            </div>
-        <!--                user posts-->
+                <!--                user posts-->
 
 
-
-</div>
-
-        <!-- Mapbox API-->
-        <div class="col-md-3">
-            <div class="card mb-3">
-                <div id="map" style="width: 100%; height:200px"></div>
-                <div class="card-body">
-                    <p class="card-text" id="inputCity" th:text="${profile.city} + ', ' + ${profile.state}"></p>
-                </div>
             </div>
 
+            <!-- Mapbox API-->
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <div id="map" style="width: 100%; height:200px"></div>
+                    <div class="card-body">
+                        <p class="card-text" id="inputCity" th:text="${profile.city} + ', ' + ${profile.state}"></p>
+                    </div>
+                </div>
 
-        <!-- Calendar-->
-            <div class="card mb-3">
-<!--                <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif" class="card-img-top" alt="...">-->
-                <div class="card-body">
-<!--                    <p class="card-text">Your Calendar</p>-->
-                    <div class="calendar" id="calendar">
-                        <div class="calendar-btn month-btn" onclick="$('#months').toggle('fast')">
-                            <span id="curMonth"></span>
-                            <div id="months" class="months dropdown"></div>
-                        </div>
 
-                        <div class="calendar-btn year-btn" onclick="$('#years').toggle('fast')">
-                            <span id="curYear"></span>
-                            <div id="years" class="years dropdown"></div>
-                        </div>
-
-                        <div class="clear"></div>
-
-                        <div class="calendar-dates">
-                            <div class="days">
-                                <div class="day label">S</div>
-                                <div class="day label">M</div>
-                                <div class="day label">T</div>
-                                <div class="day label">W</div>
-                                <div class="day label">T</div>
-                                <div class="day label">F</div>
-                                <div class="day label">S</div>
-
-                                <div class="clear"></div>
+                <!-- Calendar-->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="calendar" id="calendar">
+                            <div class="calendar-btn month-btn" onclick="$('#months').toggle('fast')">
+                                <span id="curMonth"></span>
+                                <div id="months" class="months dropdown"></div>
                             </div>
 
-                            <div id="calendarDays" class="days">
+                            <div class="calendar-btn year-btn" onclick="$('#years').toggle('fast')">
+                                <span id="curYear"></span>
+                                <div id="years" class="years dropdown"></div>
+                            </div>
+
+                            <div class="clear"></div>
+
+                            <div class="calendar-dates">
+                                <div class="days">
+                                    <div class="day label">S</div>
+                                    <div class="day label">M</div>
+                                    <div class="day label">T</div>
+                                    <div class="day label">W</div>
+                                    <div class="day label">T</div>
+                                    <div class="day label">F</div>
+                                    <div class="day label">S</div>
+
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div id="calendarDays" class="days">
+                                </div>
                             </div>
                         </div>
                     </div>
+
+
+                    <!--                    Add an event button -->
+                    <button type="button" id="modal" class="btn mt-2" style='background-color: goldenrod; border:
+none;
+width: 255px;' data-toggle="modal" data-target="#eventForm">Add an Event
+                    </button>
+                    <!--                    event form -->
+                    <div class="modal fade" id="eventForm" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="newEvent">New Event</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="eventTitle" class="col-form-label">Recipient:</label>
+                                            <input type="text" class="form-control" id="eventTitle">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="eventDescription"
+                                                   class="col-form-label">Message:</label>
+                                            <textarea class="form-control" id="eventDescription"></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">Send
+                                        message
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 
@@ -265,7 +306,6 @@
         });
     });
 </script>
-
 
 
 <!--Filestack-->
@@ -382,43 +422,7 @@
                     selectedDays.splice(selectedDays.indexOf(this.dataset.day), 1);
             });
 
-            //event form for calendar to create events
-            d.addEventListener('click', function () {
-                document.createElement("div");
-                d.id = "eventForm";
-                d.className = "eventForm";
-                d.innerHTML =
-                    "<button type=\"button\" class=\"btn btn-primary mt-2\" style='background-color: goldenrod; border: none; margin-left: 38px;' data-toggle=\"modal\" data-target=\"#exampleModal\" data-whatever=\"@mdo\">Add an Event</button>\n" + "<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n" +
-                    "  <div class=\"modal-dialog\">\n" +
-                    "    <div class=\"modal-content\">\n" +
-                    "      <div class=\"modal-header\">\n" +
-                    "        <h5 class=\"modal-title\" id=\"exampleModalLabel\">New Event</h5>\n" +
-                    "        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n" +
-                    "          <span aria-hidden=\"true\">&times;</span>\n" +
-                    "        </button>\n" +
-                    "      </div>\n" +
-                    "      <div class=\"modal-body\">\n" +
-                    "        <form>\n" +
-                    "          <div class=\"form-group\">\n" +
-                    "            <label for=\"recipient-name\" class=\"col-form-label\">Title:</label>\n" +
-                    "            <input type=\"text\" class=\"form-control\" id=\"recipient-name\">\n" +
-                    "          </div>\n" +
-                    "          <div class=\"form-group\">\n" +
-                    "            <label for=\"message-text\" class=\"col-form-label\">Event Description: </label>\n" +
-                    "            <textarea class=\"form-control\" id=\"message-text\"></textarea>\n" +
-                    "          </div>\n" +
-                    "        </form>\n" +
-                    "      </div>\n" +
-                    "      <div class=\"modal-footer\">\n" +
-                    "        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n" +
-                    "        <button type=\"button\" class=\"btn\" style='background-color: goldenrod;'>Create Event</button>\n" +
-                    "      </div>\n" +
-                    "    </div>\n" +
-                    "  </div>\n" +
-                    "</div>\n"
-            })
-
-            $("#eventForm").click(function(){
+            $("#eventForm").click(function () {
                 $(".eventForm").toggle();
             })
 
