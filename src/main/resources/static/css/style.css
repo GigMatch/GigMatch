@@ -8,8 +8,9 @@ body {
     background-color: #1a1a1a;
 }
 
+
 .about-margin {
-    margin-top: 160px;
+    margin-top: 150px;
 }
 
 .fa-sign-out-alt {
@@ -584,6 +585,12 @@ body {
     font-weight: 300;
     color: #555;
     line-height: 50px;
+}
+
+.img-chev {
+    width: 30px;
+    height: auto;
+    margin-bottom: 40px;
 }
 
 .img-fluid {
