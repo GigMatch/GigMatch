@@ -133,6 +133,7 @@
                 <!--</form>-->
 
                 <!--POST REACTION TO CONNECT TO DATABASE-->
+                <!--if statement !isUserInterested from PostController showOne post-->
                 <div th:if="${!isUserInterested}">
                 <div class="card-footer d-flex justify-content-between">
                     <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">
