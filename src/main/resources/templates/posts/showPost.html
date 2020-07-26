@@ -133,16 +133,19 @@
                 <!--</form>-->
 
                 <!--POST REACTION TO CONNECT TO DATABASE-->
-                <div class="card-footer d-flex justify-content-between">
-                    <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">
-                        <button  type="submit"
-                                 class="fas fa-thumbs-up card-link btn rounded-pill" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">
-                        </i><span style="font-family: sans-serif" th:text="' Interested' + ' ' + ${ post.userReactions.size()}"></span>
-                        </button>
+                <!--if statement !isUserInterested from PostController showOne post-->
+                <div th:if="${!isUserInterested}">
+                    <div class="card-footer d-flex justify-content-between">
+                        <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">
+                            <button  type="submit"
+                                     class="fas fa-thumbs-up card-link btn rounded-pill" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">
+                            </i><span style="font-family: sans-serif" th:text="' Interested' + ' ' + ${ post.userReactions.size()}"></span>
+                            </button>
 
-                    </form>
-                    <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
-                    <!--                        <a th:href="'/posts/' + ${post.id}" class="ml-5">View Post</a>-->
+                        </form>
+                        <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
+                        <!--                        <a th:href="'/posts/' + ${post.id}" class="ml-5">View Post</a>-->
+                    </div>
                 </div>
 
 

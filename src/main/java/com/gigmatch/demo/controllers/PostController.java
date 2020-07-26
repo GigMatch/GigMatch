@@ -61,6 +61,21 @@ public class PostController {
         Post post = postsDao.getOne(id);
         List<PostComment> comments = commentsDao.findAllByPost(post);
 
+        //enhanced For Loop for Post Reactions Interested Feature
+        //grabbing the user reactions' array if it's equal 0
+        if(post.getUserReactions().size() == 0){
+            model.addAttribute("isUserInterested", false);
+        } else {
+            for (User userReaction : post.getUserReactions()){
+                if (userReaction.getId() == currentUser.getId()){
+                    model.addAttribute("isUserInterested", true);
+                    break;
+                } else {
+                    model.addAttribute("isUserInterested", false);
+                }
+            }
+        }
+
         User postOwner = post.getOwner();
         model.addAttribute("postOwner", postOwner);
         model.addAttribute("postOwnerProfile", profilesDao.findByOwner(postOwner));
