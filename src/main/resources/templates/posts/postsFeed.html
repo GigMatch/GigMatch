@@ -215,8 +215,7 @@
                         <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">
                             <button type="submit"
                                     class="fas fa-thumbs-up card-link btn rounded-pill"
-                                    style="background-color: goldenrod; "><i id="like-button-text"
-                                                                             onclick="myFunction(this)">
+                                    style="background-color: goldenrod; "><i id="like-button-text">
                             </i><span style="font-family: sans-serif"
                                       th:text="' Interested' + ' ' + ${ post.userReactions.size()}"></span>
                             </button>
