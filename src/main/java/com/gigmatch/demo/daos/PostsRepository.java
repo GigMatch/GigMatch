@@ -18,4 +18,9 @@ public interface PostsRepository extends JpaRepository<Post, Long> {
 
     List<Post> findAllByOwner(User owner);
 
+    // Get the list of posts in reverse order.
+    @Query("from Post p order by p.id desc")
+    List<Post> postsInReverse();
+
+
 }
