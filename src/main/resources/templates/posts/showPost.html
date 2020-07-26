@@ -133,6 +133,7 @@
                 <!--</form>-->
 
                 <!--POST REACTION TO CONNECT TO DATABASE-->
+                <div th:if="${!isUserInterested}">
                 <div class="card-footer d-flex justify-content-between">
                     <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">
                         <button  type="submit"
@@ -143,6 +144,7 @@
                     </form>
                     <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
                     <!--                        <a th:href="'/posts/' + ${post.id}" class="ml-5">View Post</a>-->
+                </div>
                 </div>
 
 
