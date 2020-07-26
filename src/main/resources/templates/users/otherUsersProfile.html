@@ -190,13 +190,14 @@
 
                     <!--POST REACTION TO CONNECT TO DATABASE-->
                     <div class="card-footer d-flex justify-content-between">
-                        <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">
-                            <button  type="submit"
-                                     class="fas fa-thumbs-up card-link btn" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">
-                            </i><span style="font-family: sans-serif" th:text="' Interested' + ' ' + ${post.userReactions.size()}"></span>
-                            </button>
+                        <p th:text="' Interested' + ' ' + ${ post.userReactions.size()}"></p>
+<!--                        <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">-->
+<!--                            <button  type="submit"-->
+<!--                                     class="fas fa-thumbs-up card-link btn" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">-->
+<!--                            </i><span style="font-family: sans-serif" th:text="' Interested' + ' ' + ${post.userReactions.size()}"></span>-->
+<!--                            </button>-->
 
-                        </form>
+<!--                        </form>-->
                         <!--                        <a th:href="'/posts/' + ${post.id}" class="ml-5">View Post</a>-->
                     </div>
 

@@ -61,6 +61,12 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Sign Up</h5>
                     <form name="username" class="form-signin" th:action="@{/sign-up}" method="POST" th:object="${user}" >
+
+                        <!--Reject Value if User already exists, Email already exists, or validation has errors-->
+                        <div th:if="${#fields.hasErrors('*')}">
+                            <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+                        </div>
+
                         <div class="form-label-group">
                             <input type="text" id="first_name" class="form-control" name="first_name"  placeholder="first" required autofocus/>
                             <label class="form-root" for="first_name">First Name</label>
