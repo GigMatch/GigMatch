@@ -1,6 +1,7 @@
 package com.gigmatch.demo.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 
@@ -18,13 +19,16 @@ public class User {
     @Column(nullable = false, length = 100)
     private String last_name;
 
-    @Column(nullable = false, length = 255, unique = true)
+    @Pattern(regexp = "([a-zA-Z0-9_.]+@[a-zA-Z0-9]+.[a-zA-Z]{2,3}[.] {0,1}[a-zA-Z]+)", message="email must be valid email address" )
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false, length = 255, unique = true)
     private String username;
 
-    @Column(nullable = false, length = 255)
+    //minimum 8 characters in length: one upper case letter, one lower case letter, one digit
+    @Pattern(regexp="^(?=.*?[A-Z])(?=.*?[0-9]).{8,}$",message="Password length must be at least 8 characters with one uppercase letter and one digit")
+    @Column(nullable = false)
     private String password;
 
 
