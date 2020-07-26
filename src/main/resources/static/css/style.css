@@ -61,6 +61,17 @@ li.timeline-item::before {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
+.btn-size {
+    font-size: 80%;
+    border-radius: 5rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    padding: 1rem;
+    transition: all 0.2s;
+
+}
+
+
 
 /*
 *
@@ -604,7 +615,7 @@ li.timeline-item::before {
 .navbar-dark {
     background:transparent !important;
     transition:0.75s ease;
-    font-family: "";
+    font-family: "sans-serif";
     text-align: center;
 }
 
