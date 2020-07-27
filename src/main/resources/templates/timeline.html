@@ -7,66 +7,6 @@
 
 <header th:replace="fragments/navbar :: welcomeNavbar"></header>
 
-<div class="container py-5">
-
-    <!-- For demo purpose -->
-    <div class="row text-center text-white mt-5 mb-5">
-        <div class="col-lg-8 mx-auto">
-            <h1 class="display-4">GigMatch Timeline</h1>
-        </div>
-    </div><!-- End -->
-
-
-    <div class="row">
-        <div class="col-lg-7 mx-auto">
-
-            <!-- Timeline -->
-            <ul class="timeline">
-                <li class="timeline-item bg-white rounded ml-3 p-4 shadow">
-                    <div class="timeline-arrow"></div>
-                    <h2 class="h5 mb-0">Day 1: Project planning</h2><span class="small text-gray"><i class="fa fa-clock-o mr-1"></i>7 July, 2020</span>
-                    <p class="text-small mt-2 font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
-                </li>
-                <li class="timeline-item bg-white rounded ml-3 p-4 shadow">
-                    <div class="timeline-arrow"></div>
-                    <h2 class="h5 mb-0">Day 3: Database design and creation</h2><span class="small text-gray"><i class="fa fa-clock-o mr-1"></i>9 July, 2020</span>
-                    <p class="text-small mt-2 font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper.</p>
-                    <p class="text-small mt-2 font-weight-light">Libero expedita explicabo eius fugiat quia aspernatur autem laudantium error architecto recusandae natus sapiente sit nam eaque, consectetur porro molestiae ipsam! Deleniti.</p>
-                </li>
-                <li class="timeline-item bg-white rounded ml-3 p-4 shadow">
-                    <div class="timeline-arrow"></div>
-                    <h2 class="h5 mb-0">Day 4: Development starts</h2><span class="small text-gray"><i class="fa fa-clock-o mr-1"></i>10 July, 2020</span>
-                    <p class="text-small mt-2 font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
-                </li>
-                <li class="timeline-item bg-white rounded ml-3 p-4 shadow">
-                    <div class="timeline-arrow"></div>
-                    <h2 class="h5 mb-0">Day 11: GigMatch is navigatable</h2><span class="small text-gray"><i class="fa fa-clock-o mr-1"></i>17 July, 2020</span>
-                    <p class="text-small mt-2 font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
-                    <p class="text-small mt-2 font-weight-light">Voluptatibus temporibus esse illum eum aspernatur, fugiat suscipit natus! Eum corporis illum nihil officiis tempore. Excepturi illo natus libero sit doloremque, laborum molestias rerum pariatur quam ipsam necessitatibus incidunt, explicabo.</p>
-                </li>
-                <li class="timeline-item bg-white rounded ml-3 p-4 shadow">
-                    <div class="timeline-arrow"></div>
-                    <h2 class="h5 mb-0">Day 15: GigMatch is full operational</h2><span class="small text-gray"><i class="fa fa-clock-o mr-1"></i>22 July, 2020</span>
-                    <p class="text-small mt-2 font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
-                </li>
-            </ul><!-- End -->
-
-        </div>
-    </div>
-</div>
-
-<script>
-    window.onscroll = function() {myFunction()};
-
-    function myFunction() {
-        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        var scrolled = (winScroll / height) * 100;
-        document.getElementById("myBar").style.width = scrolled + "%";
-    }
-
-</script>
-
 
 </body>
 </html>
