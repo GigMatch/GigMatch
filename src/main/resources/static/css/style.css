@@ -27,7 +27,7 @@ ul.timeline:before {
     height: 100%;
     z-index: 400;
     border-radius: 1rem;
-    background: #4caf50;
+    background: goldenrod;
 
 }
 
@@ -1377,6 +1377,10 @@ nav {
 
     .logo-gen {
         display: none;
+    }
+
+    .create-m {
+        margin-right: 0!important;
     }
 
 
