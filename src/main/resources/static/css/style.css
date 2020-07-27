@@ -61,20 +61,8 @@ li.timeline-item::before {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-.btn-size {
-    font-size: 80%;
-    border-radius: 5rem;
-    letter-spacing: .1rem;
-    font-weight: bold;
-    padding: 1rem;
-    transition: all 0.2s;
-
-}
 
 
-
-/*
-*
 
 #btn {
     font-size: 80%;
@@ -1347,6 +1335,20 @@ li.timeline-item::before {
 /*Media Queries*/
 @media (max-width: 767px) {
 
+
+    .navbar-light .navbar-nav .nav-link {
+        color: white;
+    }
+
+
+    html,body
+    {
+        overflow-x: hidden;
+    }
+
+
+
+
 nav {
     position: fixed;
     top: 0;
@@ -1356,8 +1358,8 @@ nav {
 }
     .navbar-collapse
     {
-        background-color:goldenrod;
-        color: black;
+        background-color: #1a1a1a;
+        color: white;
     }
 
     .sidebar-container {
@@ -1427,6 +1429,10 @@ nav {
     background: #000000 !important;
 }
 
+.navbar-light {
+    background: goldenrod !important
+}
+
 .sticky-top {
     background: rgba(0, 0, 0, 0.36) !important;
 }
@@ -1452,10 +1458,13 @@ nav {
     }
 
     .container-home {
-        width: 281px;
-        margin-left: 109px;
+        width: auto;
+        margin-left: 0px;
     }
 
+    #mobile-font {
+        font-size: 90px;
+    }
 
 
 
