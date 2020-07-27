@@ -212,16 +212,16 @@
 
                     <!--POST REACTION TO CONNECT TO DATABASE-->
                     <div class="card-footer d-flex justify-content-between">
-<!--                        <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">-->
-<!--                            <button type="submit"-->
-<!--                                    class="fas fa-thumbs-up card-link btn rounded-pill"-->
-<!--                                    style="background-color: goldenrod; "><i id="like-button-text"-->
-<!--                                                                             onclick="myFunction(this)">-->
-<!--                            </i><span style="font-family: sans-serif"-->
-                                <p th:text="' Interested' + ' ' + ${ post.userReactions.size()}"></p>
-<!--                            </button>-->
+                        <!--                        <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">-->
+                        <!--                            <button type="submit"-->
+                        <!--                                    class="fas fa-thumbs-up card-link btn rounded-pill"-->
+                        <!--                                    style="background-color: goldenrod; "><i id="like-button-text"-->
+                        <!--                                                                             onclick="myFunction(this)">-->
+                        <!--                            </i><span style="font-family: sans-serif"-->
+                        <p th:text="' Interested' + ' ' + ${ post.userReactions.size()}"></p>
+                        <!--                            </button>-->
 
-<!--                        </form>-->
+                        <!--                        </form>-->
                         <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
                         <a th:href="'/posts/' + ${post.id}" type="submit" style="background-color: goldenrod"
                            class="btn rounded-pill">View Post
@@ -289,10 +289,50 @@
                     </div>
                 </div>
                 <div class="card mb-3">
-                    <img src="https://promisedlandcsa.com/wp-content/uploads/2013/05/calendar_placeholder.gif"
-                         class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">Your Calendar.</p>
+                        <!-- Calendar-->
+                        <div class="card-body">
+                            <p class="card-text">Your Calendar.</p>
+                            <div class="calendar" id="calendar">
+                                <div class="calendar-btn month-btn" onclick="$('#months').toggle('fast')">
+                                    <span id="curMonth"></span>
+                                    <div id="months" class="months dropdown"></div>
+                                </div>
+
+                                <div class="calendar-btn year-btn" onclick="$('#years').toggle('fast')">
+                                    <span id="curYear"></span>
+                                    <div id="years" class="years dropdown"></div>
+                                </div>
+
+                                <div class="clear"></div>
+
+                                <div class="calendar-dates">
+                                    <div class="days">
+                                        <div class="day label">S</div>
+                                        <div class="day label">M</div>
+                                        <div class="day label">T</div>
+                                        <div class="day label">W</div>
+                                        <div class="day label">T</div>
+                                        <div class="day label">F</div>
+                                        <div class="day label">S</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+
+                                    <div id="calendarDays" class="days">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--                        Add an event button-->
+                            <button type="button" id="modal" class="btn mt-2" style='background-color: goldenrod; border:
+                        none;
+                        width: 214px;' data-toggle="modal" data-target="#post-create"
+                            ><a href="/events/create">Add an
+                                Event
+                            </a>
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -330,8 +370,8 @@
                                 </select>
                             </div>
                             <div class="form-label-group">
-                                    <input type="text"  id="bio" class="form-control" name="bio"  placeholder="bio"
-                                              th:rows="4" style="border-radius: 1rem" required/>
+                                <input type="text" id="bio" class="form-control" name="bio" placeholder="bio"
+                                       th:rows="4" style="border-radius: 1rem" required/>
                                 <label class="form-root" for="bio">Bio</label>
                             </div>
                             <div class="form-label-group">
@@ -416,6 +456,144 @@
             center: (result)
         });
     });
+</script>
+
+<!--Calendar with highlight-->
+<script>
+    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var startYear = 2000;
+    var endYear = 2020;
+    var month = 0;
+    var year = 0;
+    var selectedDays = new Array();
+    var mousedown = false;
+    var mousemove = false;
+
+    function loadCalendarMonths() {
+        for (var i = 0; i < months.length; i++) {
+            var doc = document.createElement("div");
+            doc.innerHTML = months[i];
+            doc.classList.add("dropdown-item");
+
+            doc.onclick = (function () {
+                var selectedMonth = i;
+                return function () {
+                    month = selectedMonth;
+                    document.getElementById("curMonth").innerHTML = months[month];
+                    loadCalendarDays();
+                    return month;
+                }
+            })();
+
+            document.getElementById("months").appendChild(doc);
+        }
+    }
+
+    function loadCalendarYears() {
+        document.getElementById("years").innerHTML = "";
+
+        for (var i = startYear; i <= endYear; i++) {
+            var doc = document.createElement("div");
+            doc.innerHTML = i;
+            doc.classList.add("dropdown-item");
+
+            doc.onclick = (function () {
+                var selectedYear = i;
+                return function () {
+                    year = selectedYear;
+                    document.getElementById("curYear").innerHTML = year;
+                    loadCalendarDays();
+                    return year;
+                }
+            })();
+
+            document.getElementById("years").appendChild(doc);
+        }
+    }
+
+    function loadCalendarDays() {
+        document.getElementById("calendarDays").innerHTML = "";
+
+        var tmpDate = new Date(year, month, 0);
+        var num = daysInMonth(month, year);
+        var dayofweek = tmpDate.getDay();       // find where to start calendar day of week
+
+        for (var i = 0; i <= dayofweek; i++) {
+            var d = document.createElement("div");
+            d.classList.add("day");
+            d.classList.add("blank");
+            document.getElementById("calendarDays").appendChild(d);
+        }
+
+        for (var i = 0; i < num; i++) {
+            var todaysDate = new Date().getDate();
+            var tmp = i + 1;
+            var d = document.createElement("div");
+            d.id = "calendarday_" + tmp;
+            d.className = "day";
+            d.innerHTML = tmp;
+            d.dataset.day = tmp;
+            //highlights current date
+            if (tmp === todaysDate) {
+                d.className = "day today";
+            }
+
+
+            d.addEventListener('click', function () {
+                this.classList.toggle('selected');
+
+                if (!selectedDays.includes(this.dataset.day))
+                    selectedDays.push(this.dataset.day);
+
+                else
+                    selectedDays.splice(selectedDays.indexOf(this.dataset.day), 1);
+            });
+
+            d.addEventListener('mousemove', function (e) {
+                e.preventDefault();
+                if (mousedown) {
+                    this.classList.add('selected');
+
+                    if (!selectedDays.includes(this.dataset.day))
+                        selectedDays.push(this.dataset.day);
+                }
+            });
+
+            d.addEventListener('mousedown', function (e) {
+                e.preventDefault();
+                mousedown = true;
+            });
+
+            d.addEventListener('mouseup', function (e) {
+                e.preventDefault();
+                mousedown = false;
+            });
+
+            document.getElementById("calendarDays").appendChild(d);
+        }
+
+        var clear = document.createElement("div");
+        clear.className = "clear";
+        document.getElementById("calendarDays").appendChild(clear);
+    }
+
+    function daysInMonth(month, year) {
+        var d = new Date(year, month + 1, 0);
+        return d.getDate();
+    }
+
+
+    window.addEventListener('load', function () {
+        var date = new Date();
+        month = date.getMonth();
+        year = date.getFullYear();
+        document.getElementById("curMonth").innerHTML = months[month];
+        document.getElementById("curYear").innerHTML = year;
+        loadCalendarMonths();
+        loadCalendarYears();
+        loadCalendarDays();
+    });
+
 </script>
 
 
