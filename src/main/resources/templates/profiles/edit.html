@@ -120,7 +120,7 @@
                             </div>
                             <div class="form-label-group">
                                 <label for="profileType"></label>
-                                <select class="form-control" id="profileType" name="profileType">
+                                <select class="form-control" style="border-radius: 1rem" id="profileType" name="profileType">
                                     <option>Band</option>
                                     <option>Musician</option>
                                     <option>Venue</option>
@@ -128,23 +128,22 @@
                                 </select>
                             </div>
                             <div class="form-label-group">
-                                <textarea th:field="*{bio}" type="text" id="bio" class="form-control" placeholder="bio"
-                                          name="description" th:rows="4" required></textarea>
-                                <label for="bio"></label>
+                                <textarea th:field="*{bio}" id="bio" class="form-control" placeholder="bio"
+                                          name="description" th:rows="4" style="border-radius: 1rem" required></textarea>
                             </div>
                             <div class="form-label-group">
                                 <input th:field="*{interests}" id="interests" type="text" class="form-control"
                                        placeholder="interests" required/>
-                                <label for="state">Interests</label>
+                                <label for="interests">Interests</label>
                             </div>
                             <div class="form-label-group">
                                 <input th:field="*{genres}" id="genres" type="text" class="form-control"
                                        placeholder="genres" required/>
-                                <label for="state">Genres</label>
+                                <label for="genres">Genres</label>
                             </div>
 
 
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn"
+                            <button class="btn btn-lg btn-block text-uppercase btn-size rounded-pill" style="background-color: #1a1a1a; color: white" id="btn"
                                     value="Update Profile" type="submit">Update Profile
                             </button>
                             <hr class="my-4">
@@ -152,7 +151,7 @@
                             <!--Filestack-->
                             <div class="form-label-group">
                                 <label for="upload"></label>
-                                <button type="button" class="btn btn-lg btn-block text-uppercase" id="upload" name="upload" style="background-color: goldenrod">Update photo
+                                <button type="button" class="btn btn-lg btn-block text-uppercase btn-size rounded-pill" id="upload" name="upload" style="background-color: goldenrod">Update photo
                                 </button>
                                 <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{profilePhoto}" type="hidden">
                             </div>

@@ -4,26 +4,32 @@
 <head th:fragment="head(title)">
     <meta charset="UTF-8">
     <title th:text="${title}"></title>
-    <!--    Responsive Tag-->
+    <!--Responsive Tag-->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<!--    Map Box API script and style sheet-->
+    <!--Map Box API script and style sheet-->
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
-    <!--   Font Awesome-->
+    <!--Font Awesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/ed0e4d571c.js" crossorigin="anonymous"></script>
-    <!--  Bootstrap-->
+    <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 <!--    &lt;!&ndash; Full Calender Library&ndash;&gt;-->
 <!--    <link rel="stylesheet" href="/lib/fullcalendar/fullcalendar.css" />-->
 <!--    <link rel="stylesheet" href="/lib/fullcalendar/fullcalendar.print.css" media="print" />-->
+
     <!--CSS-->
     <link href="/static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
     <link href="/static/css/media-queries.css" th:href="@{/css/media-queries.css}" rel="stylesheet" >
     <link href="https://fonts.googleapis.com/css2?family=Yesteryear&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+
+    <!--fav.icon-->
+    <link rel="shortcut icon" href="/imgs/GigMatchLogo.ico" type="image/x-icon" />
 
 
 </head>

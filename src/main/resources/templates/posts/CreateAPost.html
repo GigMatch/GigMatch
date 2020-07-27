@@ -11,7 +11,7 @@
 
         <ul class="sidebar-navigation">
             <li class="header">
-                <img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt="">
+                <a href="/feed/posts"><img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt=""></a>
             </li>
             <li>
                 <a href="/feed/posts">
@@ -91,9 +91,9 @@
                     <form name="username" class="form-signin" th:action="@{/posts/create}" method="POST"
                           th:object="${post}">
                         <div class="form-label-group">
-                            <textarea type="text" id="body" class="form-control form-rounded" name="body"
+                            <textarea id="body" class="form-control form-rounded" name="body"
                                       placeholder="message..." th:rows="3" required autofocus></textarea>
-                            <label class="form-root" for="body"></label>
+                            <label  for="body"></label>
                         </div>
 
 
@@ -105,7 +105,7 @@
 <!--                        <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{img}" type="hidden">-->
 
 
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn" value="Sign Up"
+                        <button class=" btn btn-lg btn-block text-uppercase" style="background-color: #1a1a1a; color: white; font-size: 80%" id="btn" value="Create post"
                                 type="submit">create your post
                         </button>
                         <hr class="my-4">

@@ -38,7 +38,8 @@ public class PostController {
 //    @RequestMapping(value = "/ads", method = RequestMethod.GET)
     public String index(Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<Post> postList = postsDao.findAll();
+        //List<Post> postList = postsDao.findAll();
+        List<Post> postList = postsDao.postsInReverse();  //Reverses posts in descending order for last created post to be displayed
         model.addAttribute("noPostsFound", postList.size() == 0);
         model.addAttribute("posts", postList);
         if(profilesDao.findByOwner(currentUser) == null) {
@@ -59,6 +60,21 @@ public class PostController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post post = postsDao.getOne(id);
         List<PostComment> comments = commentsDao.findAllByPost(post);
+
+        //enhanced For Loop for Post Reactions Interested Feature
+        //grabbing the user reactions' array if it's equal 0
+        if(post.getUserReactions().size() == 0){
+            model.addAttribute("isUserInterested", false);
+        } else {
+            for (User userReaction : post.getUserReactions()){
+                if (userReaction.getId() == currentUser.getId()){
+                    model.addAttribute("isUserInterested", true);
+                    break;
+                } else {
+                    model.addAttribute("isUserInterested", false);
+                }
+            }
+        }
 
         User postOwner = post.getOwner();
         model.addAttribute("postOwner", postOwner);

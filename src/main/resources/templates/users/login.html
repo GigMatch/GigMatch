@@ -3,6 +3,26 @@
 <head th:replace="fragments/head :: head('Log In')"></head>
 <body id="login-background" onload="myFunction()">
 
+<div th:if="${param.error}">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Oops, there was an error!</strong> You should check in on some of those fields below.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!--    <p class="text-left">Invalid Username or Password.</p>-->
+</div>
+
+<div th:if="${param.logout}">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Hope you found some Gigs!</strong> You have now been logged out.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<!--    <p class="text-center">You have been logged out.</p>-->
+</div>
+
 <div id="loader">
     <span></span>
     <span></span>
@@ -36,13 +56,9 @@
 </div>
 
 
-<div th:if="${param.error}">
-    <p class="text-left">Invalid Username or Password.</p>
-</div>
 
-<div th:if="${param.logout}">
-    <p class="text-center">You have been logged out.</p>
-</div>
+
+
 
 
 <div class="container" id="form-margin-log">

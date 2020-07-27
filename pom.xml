@@ -67,6 +67,13 @@
             <artifactId>spring-security-test</artifactId>
         </dependency>
 
+        <!-- validates username, email, errors-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+            <version>2.3.1.RELEASE</version>
+        </dependency>
+
     </dependencies>
 
     <build>

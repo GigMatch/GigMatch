@@ -109,30 +109,26 @@
 
                         <!--Profile Photo-->
                         <!--Filestack-->
-                        <div th:if="${profile.profilePhoto} == null">
-<!--                            <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"-->
-<!--                                 class="card-img m-2" alt="...">-->
-                            <form th:method="GET" th:action="'/profile/' + ${profileId} + '/edit'" class="ml-5">
-                                <button type="submit" style="background-color: goldenrod" value="Edit Post" class="btn">Add Photo
-                                </button>
-                            </form>
-
+                        <div class="wrapper profile-img pl-2">
+                            <img id="all-image" class="image--cover all-image-cover" th:src="*{profile.profilePhoto}" style="border-radius: 50%; width: 200px; height: 200px" />
                         </div>
-                        <div th:if="${profile.profilePhoto} == ''">
-                            <!--                            <img src="https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"-->
-                            <!--                                 class="card-img m-2" alt="...">-->
-                            <form th:method="GET" th:action="'/profile/' + ${profileId} + '/edit'" class="ml-5">
-                                <button type="submit" style="background-color: goldenrod" value="Edit Post" class="btn">Add Photo
-                                </button>
-                            </form>
+<!--                        <div th:if="${profile.profilePhoto} == null">-->
+<!--                                <a th:href="'/profile/' + ${profileId} + '/edit'" type="submit" style="background-color: goldenrod" class="btn ml-5">Add Photo-->
+<!--                                </a>-->
+<!--                        </div>-->
+<!--                        <div th:unless="${profile.profilePhoto} == null">-->
+<!--                            <img   th:src="*{profile.profilePhoto}"-->
+<!--                                   class="card-img m-2" alt="profile picture">-->
+<!--                        </div>-->
+<!--                        <div th:if="${profile.profilePhoto} == ''">-->
+<!--                            <a th:href="'/profile/' + ${profileId} + '/edit'" type="submit" style="background-color: goldenrod" class="btn ml-5">Add Photo-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div th:unless="${profile.profilePhoto} == ''">-->
+<!--                            <img   th:src="*{profile.profilePhoto}"-->
+<!--                                   class="card-img m-2" alt="profile picture">-->
+<!--                        </div>-->
 
-                        </div>
-
-                        <div th:unless="${profile.profilePhoto} == ''">
-                        <img   th:src="${profile.profilePhoto}"
-                             class="card-img m-2" alt="profile picture">
-                        </div>
-<!--                        <div class="ml-4"><a th:href="'/profile/' + ${profileId} + '/edit'">Update Photo</a></div>-->
                     </div>
 
 
@@ -140,10 +136,12 @@
 
                     <div class="col-md-8">
                         <div class="card-body">
+                            <div class="pl-3">
                             <h3 class="card-title" th:text="${profile.owner.first_name} + ' ' + ${profile.owner.last_name}">First Last</h3>
                             <p class="card-title" th:text="${profile.owner.username}">Username</p>
                             <p class="card-title" th:text="${profile.owner.email}">Email</p>
                             <h3 th:text="${profile.profileType}">Profile Type</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -191,9 +189,9 @@
                 You haven't created any posts yet.
             </div>
             <div>
-                <form action="/posts/create">
-                    <button  class="btn btn-lg  btn-block text-uppercase" id="btn1" value="create a post" type="submit" style="background-color: goldenrod">Create a Post</button>
-                </form>
+<!--                <form action="/posts/create">-->
+                    <a th:href="@{/posts/create}" class="btn btn-lg btn-size btn-block text-uppercase rounded-pill" id="btn" type="submit" style="background-color: goldenrod">Create a Post</a>
+<!--                </form>-->
             </div>
 
             <br>
@@ -217,9 +215,9 @@
                         <div class="d-flex justify-content-between align-items-center">
 
 
-                            <div class="mr-2">
-                                <img class="rounded-circle" width="45"
-                                     th:src="${profile.getProfilePhoto()}" alt="">
+                            <div>
+                                <img th:if="${profile.profilePhoto} != null" th:src="${profile.profilePhoto}"
+                                     style="border-radius: 50%; width: 45px; height: 45px" alt="profile picture">
                             </div>
 
                             <div class="ml-2">
@@ -252,18 +250,19 @@
 
                 <!--POST REACTION TO CONNECT TO DATABASE-->
                 <div class="card-footer d-flex justify-content-between">
-                    <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">
-                        <button  type="submit"
-                                 class="fas fa-thumbs-up card-link btn" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">
-                        </i><span style="font-family: sans-serif" th:text="' Interested' + ' ' + ${post.userReactions.size()}"></span>
-                        </button>
+<!--                    <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">-->
+<!--                        <button  type="submit"-->
+<!--                                 class="fas fa-thumbs-up card-link btn rounded-pill" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">-->
+<!--                        </i><span style="font-family: sans-serif" th:text="' Interested' + ' ' + ${post.userReactions.size()}"></span>-->
+<!--                        </button>-->
 
-                    </form>
+<!--                    </form>-->
                     <!--<a th:href="'/posts/' + ${post.id} + '/reactions'" class="card-link"><i class="fa fa-gittip"></i> Like</a>-->
-                    <form th:method="GET" th:action="'/posts/' + ${post.id} + '/edit'" class="ml-5">
-                        <button type="submit" style="background-color: goldenrod" value="Edit Post" class="btn">Edit Post
-                        </button>
-                    </form>
+<!--                    <form th:method="GET" th:action="'/posts/' + ${post.id} + '/edit'" class="ml-5">-->
+                        <p th:text="' Interested' + ' ' + ${ post.userReactions.size()}"></p>
+                        <a th:href="'/posts/' + ${post.id} + '/edit'" type="submit" style="background-color: goldenrod" value="Edit Post" class="btn ml-5 rounded-pill">Edit Post
+                        </a>
+<!--                    </form>-->
                     <!--                        <a th:href="'/posts/' + ${post.id}" class="ml-5">View Post</a>-->
                 </div>
 
@@ -286,6 +285,11 @@
                                             </div>
                                         </div>
                                     </form>
+                                    <div class="card-body" th:each="comment : ${post.getComments()}">
+                                        <h6 th:text="${comment.owner.username}"></h6>
+                                        <p class="card-text" th:text="${comment.content}"></p>
+                                        <hr>
+                                    </div>
 
 
 
