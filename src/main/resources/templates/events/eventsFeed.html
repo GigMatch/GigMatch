@@ -184,11 +184,12 @@
         </div>
 
 
-        <div class="col-md-3 mt-3">
+        <div class="col-md-3">
             <div class="card mb-3">
-                <div id="map" style="width: 100%; height:200px"></div>
+                <img src="https://liveatnolan.com/wp-content/uploads/2018/06/Placeholder-Map.jpg" class="card-img-top"
+                     alt="...">
                 <div class="card-body">
-                    <p class="card-text" id="inputCity" th:text="${profile.city} + ', ' + ${profile.state}"></p>
+                    <p class="card-text">Map with center view of your city.</p>
                 </div>
             </div>
             <div class="card mb-3">
@@ -227,6 +228,11 @@
                 </div>
             </div>
         </div>
+        <!--                        Add an event button-->
+        <button type="button" id="modal" class="btn mt-2" style='background-color: goldenrod; border:
+                        none;
+                        width: 214px;' data-toggle="modal" data-target="#eventForm">Add an Event
+        </button>
     </div>
 </div>
 </div>
