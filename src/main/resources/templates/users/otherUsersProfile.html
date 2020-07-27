@@ -114,9 +114,9 @@
                             <div class="card-body">
                                 <div class="pl-3">
                                 <h3 class="card-title" th:text="${profile.owner.first_name} + ' ' + ${profile.owner.last_name}">First Last</h3>
-                                <h4 class="card-title" th:text="${profile.owner.username}">First Last</h4>
-                                <h4 class="card-title" th:text="${profile.owner.email}">Email</h4>
-                                <h4 th:text="${profile.profileType}">Profile Type</h4>
+                                <p class="card-title" th:text="${profile.owner.username}">First Last</p>
+                                <p class="card-title" th:text="${profile.owner.email}">Email</p>
+                                <h3 th:text="${profile.profileType}">Profile Type</h3>
                                 </div>
                                 </div>
                         </div>
@@ -220,6 +220,11 @@
                                                 </div>
                                             </div>
                                         </form>
+                                        <div class="card-body" th:each="comment : ${post.getComments()}">
+                                            <h6 th:text="${comment.owner.username}"></h6>
+                                            <p class="card-text" th:text="${comment.content}"></p>
+                                            <hr>
+                                        </div>
 
 
 
