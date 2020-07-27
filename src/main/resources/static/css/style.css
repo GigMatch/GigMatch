@@ -1115,6 +1115,10 @@ li.timeline-item::before {
     transition: .5s background-color;
 }
 
+.today{
+    background-color: goldenrod;
+}
+
 .calendar .calendar-btn:hover{
     background-color: goldenrod;
 }

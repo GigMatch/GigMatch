@@ -230,14 +230,17 @@
                             </div>
                         </div>
                     </div>
+                    <!--                        Add an event button-->
+                    <button type="button" id="modal" class="btn mt-2" style='background-color: goldenrod; border:
+                        none;
+                        width: 214px;' data-toggle="modal" data-target="#post-create"
+                            ><a href="/events/create">Add an
+                        Event
+                    </a>
+                    </button>
                 </div>
             </div>
         </div>
-        <!--                        Add an event button-->
-        <button type="button" id="modal" class="btn mt-2" style='background-color: goldenrod; border:
-                        none;
-                        width: 214px;' data-toggle="modal" data-target="#eventForm">Add an Event
-        </button>
     </div>
 </div>
 </div>
@@ -318,12 +321,18 @@
         }
 
         for (var i = 0; i < num; i++) {
+            var todaysDate = new Date().getDate();
             var tmp = i + 1;
             var d = document.createElement("div");
             d.id = "calendarday_" + tmp;
             d.className = "day";
             d.innerHTML = tmp;
             d.dataset.day = tmp;
+            //highlights current date
+            if (tmp === todaysDate) {
+                d.className = "day today";
+            }
+
 
             d.addEventListener('click', function(){
                 this.classList.toggle('selected');
