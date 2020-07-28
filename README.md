@@ -1,5 +1,5 @@
 # GigMatch
-A Full stack web application that operates as a platform for connections between musicians and venues in real time across multiple cities. Musicians can connect with other musicians to help fill a spot for their next gig or find that special venue in need of musical talent. Allows a streamlined approach to seeking talent and a space for music to be shared and discussed. Gigmatch was built using the Filestack API for uploading images, Mapbox API for geolocation of users, as well as Java, SpringBoot, MySQL, CSS, HTML, Javascript, jQuery and Bootstrap. 
+A Full stack web application that operates as a platform for connections between musicians and venues in real time across multiple cities. Musicians can connect with other musicians to help fill a spot for their next gig or find that special venue in need of musical talent. Allows a streamlined approach to seeking talent and a space for music to be shared and discussed. Gigmatch was built using the Filestack API for uploading images, Mapbox API for geolocation of users, as well as Java, SpringBoot, MySQL, CSS, HTML, Javascript, jQuery and Bootstrap. Visit us at gigmatch.xyz - <a href = "https://gigmatch.xyz/">Link</a> - !
 
 * Implementing Bootstrap CSS
 * Spring Boot 2.3.x
