@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Error')">
 <head>
     <meta charset="UTF-8"/>
     <title th:text="'Ooops, ' + ${error}"></title>
@@ -13,14 +14,26 @@
         <h1>You don't have permission to view this page.</h1>
     </div>
 </th:block>
-<p>Watch a video instead</p>
-<iframe
-        width="420"
-        height="315"
-        src="https://www.youtube.com/embed/NN75im_us4k?autoplay=1"
-        frameborder="0"
-        allowfullscreen="allowfullscreen"
->
-</iframe>
+<<div class="sidebar-container">
+
+    <ul class="sidebar-navigation">
+        <li class="header">
+            <a href="/feed/posts"><img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid"
+                                       alt=""></a>
+        </li>
+        <li>
+            <a href="/feed/posts">
+                <i class="fa fa-home left-nav-icon" aria-hidden="true"></i>Posts
+            </a>
+        </li>
+        <li>
+            <a href="/feed/events">
+                <i class="far fa-calendar-alt left-nav-icon " id="left-icon-padding-events"
+                   aria-hidden="true"></i>Events
+            </a>
+        </li>
+    </ul>
+</div>
+<h2 class="error-page" id="oops" style="color: goldenrod">Oops, something went wrong. Please click a link to return to GigMatch</h2>
 </body>
 </html>
