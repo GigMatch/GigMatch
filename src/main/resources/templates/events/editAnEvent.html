@@ -23,64 +23,19 @@
         </li>
         <li>
             <a th:href="'/my-profile/' + ${myProfileId}">
-                <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile" aria-hidden="true"></i>My Profile
+                <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile" aria-hidden="true"></i>My
+                Profile
             </a>
         </li>
         <li>
             <form th:action="@{/logout}" th:method="post">
-                <!--                            <a href="">-->
-                <!--                                <i class="fas fa-sign-out-alt"></i>Logout-->
-                <!--                            </a>-->
                 <button class="btn-link btn logout-button">
                     <i class="fas fa-sign-out-alt left-nav-icon"></i> Logout
                 </button>
             </form>
         </li>
-
-        <!--                    <li>-->
-        <!--                        <a href="#">-->
-        <!--                            <i class="fa fa-cog" aria-hidden="true"></i> Notifcations-->
-        <!--                        </a>-->
-        <!--                    </li>-->
-        <!--                    <li>-->
-        <!--                        <a href="#">-->
-        <!--                            <i class="fa fa-info-circle" aria-hidden="true"></i> Messages-->
-        <!--                        </a>-->
-        <!--                    </li>-->
     </ul>
 </div>
-
-<!--<div class="sidebar-container">-->
-
-<!--    <ul class="sidebar-navigation">-->
-<!--        <li class="header"></li>-->
-<!--        <li>-->
-<!--            <a href="/feed/posts">-->
-<!--                <i class="fa fa-home" aria-hidden="true"></i>Posts-->
-<!--            </a>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <a href="/feed/events">-->
-<!--                <i class="fa fa-tachometer" aria-hidden="true"></i>Events-->
-<!--            </a>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <a th:href="'/my-profile/' + ${profileId}">-->
-<!--                <i class="fa fa-users" aria-hidden="true"></i>My Profile-->
-<!--            </a>-->
-<!--        </li>-->
-<!--&lt;!&ndash;        <li>&ndash;&gt;-->
-<!--&lt;!&ndash;            <a href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                <i class="fa fa-cog" aria-hidden="true"></i> Notifcations&ndash;&gt;-->
-<!--&lt;!&ndash;            </a>&ndash;&gt;-->
-<!--&lt;!&ndash;        </li>&ndash;&gt;-->
-<!--&lt;!&ndash;        <li>&ndash;&gt;-->
-<!--&lt;!&ndash;            <a href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                <i class="fa fa-info-circle" aria-hidden="true"></i> Messages&ndash;&gt;-->
-<!--&lt;!&ndash;            </a>&ndash;&gt;-->
-<!--&lt;!&ndash;        </li>&ndash;&gt;-->
-<!--    </ul>-->
-<!--</div>-->
 
 
 <div class="container" id="form-margin">
@@ -122,45 +77,21 @@
                             <label for="description"></label>
                         </div>
 
-                        <!--            <label for="streetAddress">Street Address</label>-->
-                        <!--            <input id="streetAddress" th:field="*{streetAddress}" type="text">-->
-
-                        <!--                <label for="city">City</label>-->
-                        <!--                <input id="city" th:field="*{city}" type="text">-->
-
-
-                        <!--                <label for="state">State</label>-->
-                        <!--                <input id="state" th:field="*{state}" type="text">-->
-
-                        <!--                <label for="zipcode">Zipcode</label>-->
-                        <!--                <input id="zipcode" th:field="*{zipcode}" type="text">-->
-
-                        <!--                <label for="description">Description</label>-->
-                        <!--                <input id="description" th:field="*{description}" type="text">-->
-
-                        <!--                <br>-->
-
-                        <button class="btn btn-lg  btn-block text-uppercase btn-size" style="background-color: #1a1a1a; color: white" id="btn" value="update event"
+                        <button class="btn btn-lg  btn-block text-uppercase btn-size"
+                                style="background-color: #1a1a1a; color: white" id="btn" value="update event"
                                 type="submit">Update Your Event
                         </button>
                     </form>
                     <hr class="my-4">
-                        <!--Delete Event-->
-                        <form th:action="${'/events/' + event.id + '/delete'}" method="post">
-                            <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                        </form>
-
-
-
-                        <!--            <button class="btn btn-primary">Update Event Details</button>-->
+                    <!--Delete Event-->
+                    <form th:action="${'/events/' + event.id + '/delete'}" method="post">
+                        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
 
 
 </body>

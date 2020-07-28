@@ -24,177 +24,112 @@
             </li>
             <li>
                 <a th:href="'/my-profile/' + ${myProfileId}">
-                    <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile" aria-hidden="true"></i>My Profile
+                    <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile" aria-hidden="true"></i>My
+                    Profile
                 </a>
             </li>
             <li>
                 <form th:action="@{/logout}" th:method="post">
-                    <!--                            <a href="">-->
-                    <!--                                <i class="fas fa-sign-out-alt"></i>Logout-->
-                    <!--                            </a>-->
                     <button class="btn-link btn logout-button">
                         <i class="fas fa-sign-out-alt left-nav-icon"></i> Logout
                     </button>
                 </form>
             </li>
-
-            <!--                    <li>-->
-            <!--                        <a href="#">-->
-            <!--                            <i class="fa fa-cog" aria-hidden="true"></i> Notifcations-->
-            <!--                        </a>-->
-            <!--                    </li>-->
-            <!--                    <li>-->
-            <!--                        <a href="#">-->
-            <!--                            <i class="fa fa-info-circle" aria-hidden="true"></i> Messages-->
-            <!--                        </a>-->
-            <!--                    </li>-->
         </ul>
     </div>
-<!--<div class="sidebar-container">-->
-<!--    <ul class="sidebar-navigation">-->
-<!--        <li class="header"></li>-->
-<!--        <li>-->
-<!--            <a href="/feed/posts">-->
-<!--                <i class="fa fa-home" aria-hidden="true"></i>Posts-->
-<!--            </a>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <a href="/feed/events">-->
-<!--                <i class="fa fa-tachometer" aria-hidden="true"></i>Events-->
-<!--            </a>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <a th:href="'/my-profile/' + ${myProfileId}">-->
-<!--                <i class="fa fa-users" aria-hidden="true"></i>My Profile-->
-<!--            </a>-->
-<!--        </li>-->
-<!--        &lt;!&ndash;        <li>&ndash;&gt;-->
-<!--        &lt;!&ndash;            <a href="#">&ndash;&gt;-->
-<!--        &lt;!&ndash;                <i class="fa fa-cog" aria-hidden="true"></i> Notifcations&ndash;&gt;-->
-<!--        &lt;!&ndash;            </a>&ndash;&gt;-->
-<!--        &lt;!&ndash;        </li>&ndash;&gt;-->
-<!--        &lt;!&ndash;        <li>&ndash;&gt;-->
-<!--        &lt;!&ndash;            <a href="#">&ndash;&gt;-->
-<!--        &lt;!&ndash;                <i class="fa fa-info-circle" aria-hidden="true"></i> Messages&ndash;&gt;-->
-<!--        &lt;!&ndash;            </a>&ndash;&gt;-->
-<!--        &lt;!&ndash;        </li>&ndash;&gt;-->
-<!--    </ul>-->
-<!--</div>-->
 
-<div class="form-page">
-    <div class="container" id="form-margin">
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-6 mx-auto create-m">
-                <div class="card card-signin my-5">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Update Profile</h5>
-                        <form th:action="${'/profile/' + profile.id + '/edit'}" method="POST" th:object="${profile}">
 
-                            <div class="form-label-group">
-                                <input th:field="*{owner.first_name}" id="first_name" type="text" class="form-control"
-                                       placeholder="first name" required/>
-                                <label for="first_name">first name</label>
-                            </div>
+    <div class="form-page">
+        <div class="container" id="form-margin">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-6 mx-auto create-m">
+                    <div class="card card-signin my-5">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Update Profile</h5>
+                            <form th:action="${'/profile/' + profile.id + '/edit'}" method="POST"
+                                  th:object="${profile}">
 
-                            <div class="form-label-group">
-                                <input th:field="*{owner.last_name}" id="last_name" type="text" class="form-control"
-                                       placeholder="last name" required/>
-                                <label for="last_name">last name</label>
-                            </div>
+                                <div class="form-label-group">
+                                    <input th:field="*{owner.first_name}" id="first_name" type="text"
+                                           class="form-control"
+                                           placeholder="first name" required/>
+                                    <label for="first_name">first name</label>
+                                </div>
 
-                            <div class="form-label-group">
-                                <input th:field="*{owner.email}" id="email" type="text" class="form-control"
-                                       placeholder="email" required/>
-                                <label for="email">email</label>
-                            </div>
+                                <div class="form-label-group">
+                                    <input th:field="*{owner.last_name}" id="last_name" type="text" class="form-control"
+                                           placeholder="last name" required/>
+                                    <label for="last_name">last name</label>
+                                </div>
 
-                            <div class="form-label-group">
-                                <input th:field="*{city}" type="text" id="city" class="form-control" placeholder="city"
-                                       required/>
-                                <label for="city">City</label>
-                            </div>
-                            <div class="form-label-group">
-                                <input th:field="*{state}" id="state" type="text" class="form-control"
-                                       placeholder="state" required/>
-                                <label for="state">State</label>
-                            </div>
-                            <div class="form-label-group">
-                                <label for="profileType"></label>
-                                <select class="form-control" style="border-radius: 1rem" id="profileType" name="profileType">
-                                    <option>Band</option>
-                                    <option>Musician</option>
-                                    <option>Venue</option>
-                                    <option>Fan</option>
-                                </select>
-                            </div>
-                            <div class="form-label-group">
+                                <div class="form-label-group">
+                                    <input th:field="*{owner.email}" id="email" type="text" class="form-control"
+                                           placeholder="email" required/>
+                                    <label for="email">email</label>
+                                </div>
+
+                                <div class="form-label-group">
+                                    <input th:field="*{city}" type="text" id="city" class="form-control"
+                                           placeholder="city"
+                                           required/>
+                                    <label for="city">City</label>
+                                </div>
+                                <div class="form-label-group">
+                                    <input th:field="*{state}" id="state" type="text" class="form-control"
+                                           placeholder="state" required/>
+                                    <label for="state">State</label>
+                                </div>
+                                <div class="form-label-group">
+                                    <label for="profileType"></label>
+                                    <select class="form-control" style="border-radius: 1rem" id="profileType"
+                                            name="profileType">
+                                        <option>Band</option>
+                                        <option>Musician</option>
+                                        <option>Venue</option>
+                                        <option>Fan</option>
+                                    </select>
+                                </div>
+                                <div class="form-label-group">
                                 <textarea th:field="*{bio}" id="bio" class="form-control" placeholder="bio"
-                                          name="description" th:rows="4" style="border-radius: 1rem" required></textarea>
-                            </div>
-                            <div class="form-label-group">
-                                <input th:field="*{interests}" id="interests" type="text" class="form-control"
-                                       placeholder="interests" required/>
-                                <label for="interests">Interests</label>
-                            </div>
-                            <div class="form-label-group">
-                                <input th:field="*{genres}" id="genres" type="text" class="form-control"
-                                       placeholder="genres" required/>
-                                <label for="genres">Genres</label>
-                            </div>
+                                          name="description" th:rows="4" style="border-radius: 1rem"
+                                          required></textarea>
+                                </div>
+                                <div class="form-label-group">
+                                    <input th:field="*{interests}" id="interests" type="text" class="form-control"
+                                           placeholder="interests" required/>
+                                    <label for="interests">Interests</label>
+                                </div>
+                                <div class="form-label-group">
+                                    <input th:field="*{genres}" id="genres" type="text" class="form-control"
+                                           placeholder="genres" required/>
+                                    <label for="genres">Genres</label>
+                                </div>
 
 
-                            <button class="btn btn-lg btn-block text-uppercase btn-size rounded-pill" style="background-color: #1a1a1a; color: white" id="btn"
-                                    value="Update Profile" type="submit">Update Profile
-                            </button>
-                            <hr class="my-4">
-                            <!--Update Profile Photo -->
-                            <!--Filestack-->
-                            <div class="form-label-group">
-                                <label for="upload"></label>
-                                <button type="button" class="btn btn-lg btn-block text-uppercase btn-size rounded-pill" id="upload" name="upload" style="background-color: goldenrod">Update photo
+                                <button class="btn btn-lg btn-block text-uppercase btn-size rounded-pill"
+                                        style="background-color: #1a1a1a; color: white" id="btn"
+                                        value="Update Profile" type="submit">Update Profile
                                 </button>
-                                <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{profilePhoto}" type="hidden">
-                            </div>
+                                <hr class="my-4">
+                                <!--Update Profile Photo -->
+                                <!--Filestack-->
+                                <div class="form-label-group">
+                                    <label for="upload"></label>
+                                    <button type="button"
+                                            class="btn btn-lg btn-block text-uppercase btn-size rounded-pill"
+                                            id="upload" name="upload" style="background-color: goldenrod">Update photo
+                                    </button>
+                                    <input id="stashFilestackURL" name="stashFilestackURL" value="replace"
+                                           th:field="*{profilePhoto}" type="hidden">
+                                </div>
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!--            <label for="city">City</label>-->
-    <!--            <input id="city" th:field="*{city}"/>-->
-    <!--&lt;!&ndash;            <input id="city"  type="text" name="city" placeholder="City"/>&ndash;&gt;-->
-
-    <!--            <label for="state">State</label>-->
-    <!--            <input id="state" th:field="*{state}"/>-->
-    <!--&lt;!&ndash;            <input id="state"  type="text" name="state" placeholder="State"/>&ndash;&gt;-->
-
-    <!--            <label for="profileType">Profile Type</label>-->
-    <!--            <input id="profileType" th:field="*{profileType}"/>-->
-    <!--&lt;!&ndash;            <input id="profileType"  type="text" name="profileType" placeholder="Profile type"/>&ndash;&gt;-->
-
-    <!--            <label for="bio">Bio</label>-->
-    <!--            <input id="bio" th:field="*{bio}"/>-->
-    <!--&lt;!&ndash;            <input id="bio"  type="text" name="bio" placeholder="About/Bio"/>&ndash;&gt;-->
-
-    <!--            <label for="interests">Interests</label>-->
-    <!--            <input id="interests" th:field="*{interests}"/>-->
-    <!--&lt;!&ndash;            <input id="interests"  type="text" name="interests" placeholder="Interests"/>&ndash;&gt;-->
-
-    <!--            <label for="skills">Skills</label>-->
-    <!--            <input id="skills" th:field="*{skills}"/>-->
-    <!--            <input id="skills"  type="text" name="skills" placeholder="Skills"/>-->
-
-    <!--            <label for="genres">Genres</label>-->
-    <!--            <input id="genres" th:field="*{genres}"/>-->
-    <!--&lt;!&ndash;            <input id="genres"  type="text" name="genres" placeholder="Genres"/>&ndash;&gt;-->
-
-    <!--            &lt;!&ndash;            <input value="Update Profile" type="submit"/>&ndash;&gt;-->
-    <!--            <input type="submit" value="Update Profile" />-->
-
-</div>
 </div>
 
 

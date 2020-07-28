@@ -23,63 +23,20 @@
         </li>
         <li>
             <a th:href="'/my-profile/' + ${profileId}">
-                <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile" aria-hidden="true"></i>My Profile
+                <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile" aria-hidden="true"></i>My
+                Profile
             </a>
         </li>
         <li>
             <form th:action="@{/logout}" th:method="post">
-                <!--                            <a href="">-->
-                <!--                                <i class="fas fa-sign-out-alt"></i>Logout-->
-                <!--                            </a>-->
+
                 <button class="btn-link btn logout-button">
                     <i class="fas fa-sign-out-alt left-nav-icon"></i> Logout
                 </button>
             </form>
         </li>
-
-        <!--                    <li>-->
-        <!--                        <a href="#">-->
-        <!--                            <i class="fa fa-cog" aria-hidden="true"></i> Notifcations-->
-        <!--                        </a>-->
-        <!--                    </li>-->
-        <!--                    <li>-->
-        <!--                        <a href="#">-->
-        <!--                            <i class="fa fa-info-circle" aria-hidden="true"></i> Messages-->
-        <!--                        </a>-->
-        <!--                    </li>-->
     </ul>
 </div>
-<!--<div class="sidebar-container">-->
-
-<!--    <ul class="sidebar-navigation">-->
-<!--        <li class="header"></li>-->
-<!--        <li>-->
-<!--            <a href="/feed/posts">-->
-<!--                <i class="fa fa-home" aria-hidden="true"></i>Posts-->
-<!--            </a>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <a href="/feed/events">-->
-<!--                <i class="fa fa-tachometer" aria-hidden="true"></i>Events-->
-<!--            </a>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <a th:href="'/my-profile/' + ${profileId}">-->
-<!--                <i class="fa fa-users" aria-hidden="true"></i>My Profile-->
-<!--            </a>-->
-<!--        </li>-->
-<!--&lt;!&ndash;        <li>&ndash;&gt;-->
-<!--&lt;!&ndash;            <a href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                <i class="fa fa-cog" aria-hidden="true"></i> Notifcations&ndash;&gt;-->
-<!--&lt;!&ndash;            </a>&ndash;&gt;-->
-<!--&lt;!&ndash;        </li>&ndash;&gt;-->
-<!--&lt;!&ndash;        <li>&ndash;&gt;-->
-<!--&lt;!&ndash;            <a href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                <i class="fa fa-info-circle" aria-hidden="true"></i> Messages&ndash;&gt;-->
-<!--&lt;!&ndash;            </a>&ndash;&gt;-->
-<!--&lt;!&ndash;        </li>&ndash;&gt;-->
-<!--    </ul>-->
-<!--</div>-->
 
 
 <div class="container" id="form-margin">
@@ -88,9 +45,10 @@
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Create an event</h5>
-                    <form th:action="@{/events/create}" method="POST" th:object="${event}" >
+                    <form th:action="@{/events/create}" method="POST" th:object="${event}">
                         <div class="form-label-group">
-                            <input type="text" id="streetAddress" class="form-control" name="streetAddress"  placeholder="street" required autofocus/>
+                            <input type="text" id="streetAddress" class="form-control" name="streetAddress"
+                                   placeholder="street" required autofocus/>
                             <label for="streetAddress">Street Address</label>
                         </div>
                         <div class="form-label-group">
@@ -98,20 +56,25 @@
                             <label for="city">City</label>
                         </div>
                         <div class="form-label-group">
-                            <input type="text" id="state" class="form-control" placeholder="state" name="state" required/>
+                            <input type="text" id="state" class="form-control" placeholder="state" name="state"
+                                   required/>
                             <label for="state">State</label>
                         </div>
                         <div class="form-label-group">
-                            <input type="text" id="zipcode" class="form-control" placeholder="zipcode" name="zipcode" required/>
+                            <input type="text" id="zipcode" class="form-control" placeholder="zipcode" name="zipcode"
+                                   required/>
                             <label for="zipcode">Zipcode</label>
                         </div>
                         <div class="form-label-group">
-                            <textarea id="description" class="form-control" placeholder="Description" name="description" th:rows="4" style="border-radius: 1rem" required></textarea>
+                            <textarea id="description" class="form-control" placeholder="Description" name="description"
+                                      th:rows="4" style="border-radius: 1rem" required></textarea>
                         </div>
 
 
-                        <button class="btn btn-lg rounded-pill btn-block text-uppercase btn-size" id="btn" value="Sign Up" style="background-color: #1a1a1a; color: white" type="submit">Create Your Event</button>
-<!--                        <hr class="my-4">-->
+                        <button class="btn btn-lg rounded-pill btn-block text-uppercase btn-size" id="btn"
+                                value="Sign Up" style="background-color: #1a1a1a; color: white" type="submit">Create
+                            Your Event
+                        </button>
 
                     </form>
                 </div>

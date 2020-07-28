@@ -8,23 +8,14 @@
 <div class="main-bg">
     <div class="container main-bg">
         <div class="row">
-            <div class="col-md-3">
-                <!--            <div class="card">-->
-                <!--                <ul class="list-group list-group-flush">-->
-                <!--                    <li class="list-group-item"><a href="#">Notifications</a></li>-->
-                <!--                    <li class="list-group-item"><a href="#">Messages</a></li>-->
-                <!--                    <li class="list-group-item"><a href="/feed/posts">Posts</a></li>-->
-                <!--                    <li class="list-group-item"><a href="/feed/events">Events</a></li>-->
-                <!--                    <li class="list-group-item"><a th:href="'/my-profile/' + ${profileId}">My Profile</a></li>-->
-                <!--                </ul>-->
-                <!--            </div>-->
-            </div>
+            <div class="col-md-3"></div>
 
             <div class="sidebar-container">
 
                 <ul class="sidebar-navigation">
                     <li class="header">
-                        <a href="/feed/posts"><img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid" alt=""></a>
+                        <a href="/feed/posts"><img src="https://i.ibb.co/ykncWn2/logo-cutout.png" class="img-fluid"
+                                                   alt=""></a>
                     </li>
                     <li>
                         <a href="/feed/posts">
@@ -33,68 +24,26 @@
                     </li>
                     <li>
                         <a href="/feed/events">
-                            <i class="far fa-calendar-alt left-nav-icon " id="left-icon-padding-events" aria-hidden="true"></i>Events
+                            <i class="far fa-calendar-alt left-nav-icon " id="left-icon-padding-events"
+                               aria-hidden="true"></i>Events
                         </a>
                     </li>
                     <li>
                         <a th:href="'/my-profile/' + ${currentUserProfileId}">
-                            <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile" aria-hidden="true"></i>My Profile
+                            <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile"
+                               aria-hidden="true"></i>My Profile
                         </a>
                     </li>
                     <li>
                         <form th:action="@{/logout}" th:method="post">
-                            <!--                            <a href="">-->
-                            <!--                                <i class="fas fa-sign-out-alt"></i>Logout-->
-                            <!--                            </a>-->
+
                             <button class="btn-link btn logout-button">
                                 <i class="fas fa-sign-out-alt left-nav-icon"></i> Logout
                             </button>
                         </form>
                     </li>
-
-                    <!--                    <li>-->
-                    <!--                        <a href="#">-->
-                    <!--                            <i class="fa fa-cog" aria-hidden="true"></i> Notifcations-->
-                    <!--                        </a>-->
-                    <!--                    </li>-->
-                    <!--                    <li>-->
-                    <!--                        <a href="#">-->
-                    <!--                            <i class="fa fa-info-circle" aria-hidden="true"></i> Messages-->
-                    <!--                        </a>-->
-                    <!--                    </li>-->
                 </ul>
             </div>
-<!--            <div class="sidebar-container">-->
-
-<!--                <ul class="sidebar-navigation">-->
-<!--                    <li class="header"></li>-->
-<!--                    <li>-->
-<!--                        <a href="/feed/posts">-->
-<!--                            <i class="fa fa-home" aria-hidden="true"></i>Posts-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <a href="/feed/events">-->
-<!--                            <i class="fa fa-tachometer" aria-hidden="true"></i>Events-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    <li>-->
-<!--                        <a th:href="'/my-profile/' + ${profileId}">-->
-<!--                            <i class="fa fa-users" aria-hidden="true"></i>My Profile-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    &lt;!&ndash;                <li>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <a href="#">&ndash;&gt;-->
-<!--                    &lt;!&ndash;                        <i class="fa fa-cog" aria-hidden="true"></i> Notifcations&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    </a>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                </li>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                <li>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <a href="#">&ndash;&gt;-->
-<!--                    &lt;!&ndash;                        <i class="fa fa-info-circle" aria-hidden="true"></i> Messages&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    </a>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                </li>&ndash;&gt;-->
-<!--                </ul>-->
-<!--            </div>-->
 
 
             <div class="col-md-6 mt-3">
@@ -102,23 +51,24 @@
                     <div class="row no-gutters">
                         <div class="col-md-4">
                             <div class="wrapper profile-img pl-2">
-                                <img id="all-image" class="image--cover all-image-cover" th:src="*{profile.profilePhoto}" style="border-radius: 50%; width: 200px; height: 200px" />
+                                <img id="all-image" class="image--cover all-image-cover"
+                                     th:src="*{profile.profilePhoto}"
+                                     style="border-radius: 50%; width: 200px; height: 200px"/>
                             </div>
                         </div>
-
-
-
 
 
                         <div class="col-md-8">
                             <div class="card-body">
                                 <div class="pl-3">
-                                <h3 class="card-title" th:text="${profile.owner.first_name} + ' ' + ${profile.owner.last_name}">First Last</h3>
-                                <p class="card-title" th:text="${profile.owner.username}">First Last</p>
-                                <p class="card-title" th:text="${profile.owner.email}">Email</p>
-                                <h3 th:text="${profile.profileType}">Profile Type</h3>
+                                    <h3 class="card-title"
+                                        th:text="${profile.owner.first_name} + ' ' + ${profile.owner.last_name}">First
+                                        Last</h3>
+                                    <p class="card-title" th:text="${profile.owner.username}">First Last</p>
+                                    <p class="card-title" th:text="${profile.owner.email}">Email</p>
+                                    <h3 th:text="${profile.profileType}">Profile Type</h3>
                                 </div>
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -168,40 +118,22 @@
                     </div>
                     <div class="card-body ">
                         <p class="card-text" th:text="${post.body}"></p>
+
                         <!--Image for Post-->
                         <!--Filestack-->
-                        <div th:if="${post.img} == ''">
-                            <!--                    <img  th:src="@{/img/logoGig.jpg}"-->
-                            <!--                         class="card-img m-2" alt=" ">-->
-                        </div>
+
+                        <div th:if="${post.img} == ''"></div>
+
                         <div th:unless="${post.img} == ''">
                             <img th:src="${post.img}"
                                  class="card-img" alt="image for post" style="max-height: 300px">
                         </div>
                     </div>
 
-                    <!--POST REACTION TO CONNECT TO DATABASE&ndash;&gt;-->
-                    <!--<div>-->
-                    <!--<a th:text="${post.userReactions.size()}"></a>-->
-                    <!--</div>-->
-                    <!--<form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'" >-->
-                    <!--<input type="submit" value="Like">-->
-                    <!--</form>-->
-
                     <!--POST REACTION TO CONNECT TO DATABASE-->
                     <div class="card-footer d-flex justify-content-between">
                         <p th:text="' Interested' + ' ' + ${ post.userReactions.size()}"></p>
-<!--                        <form th:method="Post" th:action="'/posts/'+ ${post.id} + '/reactions'">-->
-<!--                            <button  type="submit"-->
-<!--                                     class="fas fa-thumbs-up card-link btn" style="background-color: goldenrod; " ><i id="like-button-text" onclick="myFunction(this)">-->
-<!--                            </i><span style="font-family: sans-serif" th:text="' Interested' + ' ' + ${post.userReactions.size()}"></span>-->
-<!--                            </button>-->
-
-<!--                        </form>-->
-                        <!--                        <a th:href="'/posts/' + ${post.id}" class="ml-5">View Post</a>-->
                     </div>
-
-
                     <div class="row bootstrap snippets">
                         <div class="col-sm-12">
                             <div class="comment-wrapper">
@@ -212,11 +144,15 @@
                                         <form th:action="${'/posts/' + post.id + '/comment'}" method="POST">
                                             <div class="row mb-4">
                                                 <div class="form-group col-md-9">
-                                                    <input id="content" type="text" name="comment" placeholder="Comment" class="form-control form-control-underlined test">
+                                                    <input id="content" type="text" name="comment" placeholder="Comment"
+                                                           class="form-control form-control-underlined test">
                                                 </div>
                                                 <br>
                                                 <div class="form-group col-md-3">
-                                                    <button type="submit" class="btn btn-light rounded-pill btn-block shadow-sm">Comment</button>
+                                                    <button type="submit"
+                                                            class="btn btn-light rounded-pill btn-block shadow-sm">
+                                                        Comment
+                                                    </button>
                                                 </div>
                                             </div>
                                         </form>
@@ -225,21 +161,6 @@
                                             <p class="card-text" th:text="${comment.content}"></p>
                                             <hr>
                                         </div>
-
-
-
-
-                                        <!--                                        <form th:action="${'/posts/' + post.id + '/comment'}" method="POST">-->
-                                        <!--                                            <div class="form-group mx-sm-3 mb-2">-->
-                                        <!--                                                <label for="content" class="sr-only">Comment</label>-->
-                                        <!--                                                <input id="content" name="comment">-->
-                                        <!--                                            </div>-->
-
-                                        <!--                                            <br>-->
-                                        <!--                                            <button type="submit" class="btn btn-info pull-right">Comment</button>-->
-
-                                        <!--                                            </ul>-->
-                                        <!--                                        </form>-->
                                     </div>
                                 </div>
                             </div>

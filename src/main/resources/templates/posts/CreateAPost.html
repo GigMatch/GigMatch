@@ -25,111 +25,55 @@
             </li>
             <li>
                 <a th:href="'/my-profile/' + ${myProfileId}">
-                    <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile" aria-hidden="true"></i>My Profile
+                    <i class="fas fa-user-alt left-nav-icon " id="left-icon-padding-profile" aria-hidden="true"></i>My
+                    Profile
                 </a>
             </li>
             <li>
                 <form th:action="@{/logout}" th:method="post">
-                    <!--                            <a href="">-->
-                    <!--                                <i class="fas fa-sign-out-alt"></i>Logout-->
-                    <!--                            </a>-->
                     <button class="btn-link btn logout-button">
                         <i class="fas fa-sign-out-alt left-nav-icon"></i> Logout
                     </button>
                 </form>
             </li>
-
-            <!--                    <li>-->
-            <!--                        <a href="#">-->
-            <!--                            <i class="fa fa-cog" aria-hidden="true"></i> Notifcations-->
-            <!--                        </a>-->
-            <!--                    </li>-->
-            <!--                    <li>-->
-            <!--                        <a href="#">-->
-            <!--                            <i class="fa fa-info-circle" aria-hidden="true"></i> Messages-->
-            <!--                        </a>-->
-            <!--                    </li>-->
         </ul>
     </div>
-<!--<div class="sidebar-container">-->
-<!--    <ul class="sidebar-navigation">-->
-<!--        <li class="header"></li>-->
-<!--        <li>-->
-<!--            <a href="/feed/posts">-->
-<!--                <i class="fa fa-home" aria-hidden="true"></i>Posts-->
-<!--            </a>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <a href="/feed/events">-->
-<!--                <i class="fa fa-tachometer" aria-hidden="true"></i>Events-->
-<!--            </a>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <a th:href="'/my-profile/' + ${myProfileId}">-->
-<!--                <i class="fa fa-users" aria-hidden="true"></i>My Profile-->
-<!--            </a>-->
-<!--        </li>-->
-<!--&lt;!&ndash;        <li>&ndash;&gt;-->
-<!--&lt;!&ndash;            <a href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                <i class="fa fa-cog" aria-hidden="true"></i> Notifcations&ndash;&gt;-->
-<!--&lt;!&ndash;            </a>&ndash;&gt;-->
-<!--&lt;!&ndash;        </li>&ndash;&gt;-->
-<!--&lt;!&ndash;        <li>&ndash;&gt;-->
-<!--&lt;!&ndash;            <a href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                <i class="fa fa-info-circle" aria-hidden="true"></i> Messages&ndash;&gt;-->
-<!--&lt;!&ndash;            </a>&ndash;&gt;-->
-<!--&lt;!&ndash;        </li>&ndash;&gt;-->
-<!--    </ul>-->
-<!--</div>-->
 
-<div class="container " id="form-margin">
-    <div class="row">
-        <div class="col-sm-9 col-md-7 col-lg-7 mx-auto create-m">
-            <div class="card card-signin my-5">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Create a post</h5>
-                    <form name="username" class="form-signin" th:action="@{/posts/create}" method="POST"
-                          th:object="${post}">
-                        <div class="form-label-group">
+    <div class="container " id="form-margin">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-7 mx-auto create-m">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Create a post</h5>
+                        <form name="username" class="form-signin" th:action="@{/posts/create}" method="POST"
+                              th:object="${post}">
+                            <div class="form-label-group">
                             <textarea id="body" class="form-control form-rounded" name="body"
                                       placeholder="message..." th:rows="3" required autofocus></textarea>
-                        </div>
+                            </div>
+
+                            <button class=" btn btn-lg btn-block text-uppercase"
+                                    style="background-color: #1a1a1a; color: white; font-size: 80%" id="btn"
+                                    value="Create post"
+                                    type="submit">create your post
+                            </button>
+                            <hr class="my-4">
+                            <label for="upload"></label>
+                            <button class="btn btn-lg btn-photo btn-block text-uppercase" id="upload" name="upload"
+                                    type="button"><i class="fas fa-upload mr-2"></i>Add a photo
+                            </button>
+                            <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{img}"
+                                   type="hidden">
 
 
-                        <!--Update Profile Photo -->
-                        <!--Filestack-->
-<!--                        <label for="upload"></label>-->
-<!--                        <button type="button" id="upload" name="upload">Add photo or video-->
-<!--                        </button>-->
-<!--                        <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{img}" type="hidden">-->
-
-
-                        <button class=" btn btn-lg btn-block text-uppercase" style="background-color: #1a1a1a; color: white; font-size: 80%" id="btn" value="Create post"
-                                type="submit">create your post
-                        </button>
-                        <hr class="my-4">
-                        <label for="upload"></label>
-                        <button class="btn btn-lg btn-photo btn-block text-uppercase" id="upload" name="upload" type="button"><i class="fas fa-upload mr-2"></i>Add a photo</button>
-                        <input id="stashFilestackURL" name="stashFilestackURL" value="replace" th:field="*{img}" type="hidden">
-
-
-
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
-
 </div>
-</div>
-<!--            &lt;!&ndash;Image for Post&ndash;&gt;-->
-<!--            &lt;!&ndash;Filestack&ndash;&gt;-->
-<!--            <img th:if="${post.img} == ''" th:src="@{/img/logoGig.jpg}"-->
-<!--                 class="card-img m-2" alt="placeholder">-->
-<!--            <img th:unless="${post.img} == ''"  th:src="${post.img}"-->
-<!--                 class="card-img m-2" alt="image for post">-->
-<!--            <div class="ml-4"><a th:href="'/posts/' + ${post.id} + '/edit'">Update image</a></div>-->
-
 
 
 <!--Filestack-->
