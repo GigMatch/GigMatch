@@ -4,6 +4,7 @@ import com.gigmatch.demo.daos.PostsRepository;
 import com.gigmatch.demo.daos.UsersRepository;
 import com.gigmatch.demo.models.User;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,7 +25,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringBootApplication.class)
+@SpringBootTest(classes = DemoApplication.class)
 @AutoConfigureMockMvc
 public class PostsIntegrationTests {
 
@@ -68,6 +69,20 @@ public class PostsIntegrationTests {
                 .getSession();
 
     }
+
+    @Test
+    public void contextLoads() {
+        // Sanity Test, just to make sure the MVC bean is working
+        assertNotNull(mvc);
+    }
+
+    @Test
+    public void testIfUserSessionIsActive() throws Exception {
+        // It makes sure the returned session is not null
+        assertNotNull(httpSession);
+    }
+
+
 
 
 }
