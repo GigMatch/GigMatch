@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -55,6 +56,8 @@ public class PostsIntegrationTests {
             newUser.setUsername("testUser");
             newUser.setPassword(passwordEncoder.encode("pass"));
             newUser.setEmail("testUser@codeup.com");
+            newUser.setFirst_name("test");
+            newUser.setLast_name("User");
             testUser = userDao.save(newUser);
         }
 
@@ -63,7 +66,7 @@ public class PostsIntegrationTests {
                 .param("username", "testUser")
                 .param("password", "pass"))
                 .andExpect(status().is(HttpStatus.FOUND.value()))
-                .andExpect(redirectedUrl("/ads"))
+                .andExpect(redirectedUrl("/feed/posts"))
                 .andReturn()
                 .getRequest()
                 .getSession();
@@ -81,6 +84,19 @@ public class PostsIntegrationTests {
         // It makes sure the returned session is not null
         assertNotNull(httpSession);
     }
+
+    @Test
+    public void testCreatePost() throws Exception {
+        // Makes a Post request to /post/create and expect a redirection to the post feed
+        this.mvc.perform(
+                post("/posts/create").with(csrf())
+                        .session((MockHttpSession) httpSession)
+                        // Add all the required parameters to your request like this
+                        .param("body", "brand new post"))
+                .andExpect(status().is3xxRedirection());
+    }
+
+
 
 
 
