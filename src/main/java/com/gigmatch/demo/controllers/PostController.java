@@ -22,6 +22,9 @@ public class PostController {
     @Value("${filestack.api.key}")
     private String apiKey;
 
+    @Value("${mapbox.api.key}")
+    private String mapKey;
+
     private PostsRepository postsDao;
     private UsersRepository usersDao;
     private ProfilesRepository profilesDao;
@@ -50,6 +53,7 @@ public class PostController {
             List<Profile> profiles = profilesDao.findAll();
             model.addAttribute("profiles", profiles);
             model.addAttribute("apiKey", apiKey);
+            model.addAttribute("mapKey", mapKey);
 
         }
         return "posts/postsFeed";

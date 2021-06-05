@@ -255,10 +255,10 @@
 <script th:inline="javascript">
 
     var city = [[${currentUserProfile.city}]];
-
-    geocode(city, mapboxToken).then(function (result) {
+    var mapKey = [[${mapKey}]]
+    geocode(city, mapKey).then(function (result) {
         console.log(result);
-        mapboxgl.accessToken = mapboxToken;
+        mapboxgl.accessToken = mapKey;
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v9',

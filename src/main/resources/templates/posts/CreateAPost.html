@@ -45,8 +45,7 @@
                 <div class="card card-signin my-5">
                     <div class="card-body">
                         <h5 class="card-title text-center">Create a post</h5>
-                        <form name="username" class="form-signin" th:action="@{/posts/create}" method="POST"
-                              th:object="${post}">
+                        <form name="username" class="form-signin" th:action="@{/posts/create}" method="POST" th:object="${post}">
                             <div class="form-label-group">
                             <textarea id="body" class="form-control form-rounded" name="body"
                                       placeholder="message..." th:rows="3" required autofocus></textarea>
